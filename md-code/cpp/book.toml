@@ -1,0 +1,8 @@
+[book]
+title = "CPP"
+authors = ["Dev Namdev"]
+language = "en"
+src = "src"
+
+[build]
+build-dir = "../../docs/cpp"

@@ -1,0 +1,8 @@
+[book]
+title = "AWS Hands-on"
+authors = ["Dev Namdev"]
+language = "en"
+src = "src"
+
+[build]
+build-dir = "../../docs/aws-hands-on"

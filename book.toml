@@ -1,8 +1,0 @@
-[book]
-title = "DevDocs"
-authors = ["Dev Namdev"]
-language = "en"
-src = "md-code/src"
-
-[build]
-build-dir = "docs/src"

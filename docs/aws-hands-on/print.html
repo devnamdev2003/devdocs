@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-969143b0.js";
+            window.path_to_searchindex_js = "searchindex-9d81359b.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-17bfd5d2.js"></script>
+        <script src="toc-6c8a5e48.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,6 +177,92 @@
                     <main>
                         <link rel="stylesheet" href="https://devnamdev2003.github.io/md/static/style.css">
 <h1 id="-complete-aws-ec2-hands-on-roadmap"><a class="header" href="#-complete-aws-ec2-hands-on-roadmap">🧭 COMPLETE AWS EC2 HANDS-ON ROADMAP</a></h1>
+<blockquote>
+<p><em>(Beginner → Intermediate → Advanced → Real-World)</em></p>
+</blockquote>
+<hr>
+<h2 id="-phase-1-ec2-foundations-you-did-most-of-these"><a class="header" href="#-phase-1-ec2-foundations-you-did-most-of-these">🟢 PHASE 1: EC2 FOUNDATIONS (YOU DID MOST OF THESE)</a></h2>
+<ul>
+<li>✅ <strong>LAB 1</strong> – <a href="#-ec2-hands-on--lab-1">Launch EC2 Instance</a></li>
+<li>✅ <strong>LAB 2</strong> – <a href="#-ec2-hands-on--lab-2">Connect to EC2 using SSH</a></li>
+<li>✅ <strong>LAB 3</strong> – <a href="#-ec2-hands-on--lab-3">Install Apache &amp; Host Website</a></li>
+<li>✅ <strong>LAB 4</strong> – <a href="#-ec2-hands-on--lab-4">Elastic IP (Static IP)</a></li>
+<li>✅ <strong>LAB 5</strong> – <a href="#-ec2-hands-on--lab-5">Domain mapping using <strong>Amazon Route 53</strong></a></li>
+</ul>
+<h3 id="-extra-topics-covered"><a class="header" href="#-extra-topics-covered">📘 Extra Topics Covered</a></h3>
+<ul>
+<li><a href="#-what-is-a-key-pair-in-ec2">🔑 What is a Key Pair in EC2?</a></li>
+<li><a href="#-what-key-pair-means-internally-big-picture">🔐 What “Key Pair” Means Internally (Big Picture)</a></li>
+</ul>
+<hr>
+<h2 id="-phase-2-ec2-core-concepts-very-important"><a class="header" href="#-phase-2-ec2-core-concepts-very-important">🟡 PHASE 2: EC2 CORE CONCEPTS (VERY IMPORTANT)</a></h2>
+<ul>
+<li>🔲 <strong>LAB 6</strong> – <a href="#-ec2-hands-on--lab-6">Security Groups (Inbound / Outbound rules)</a></li>
+<li>🔲 <strong>LAB 7</strong> – <a href="#-ec2-hands-on--lab-7">Network ACLs (NACL) &amp; difference vs Security Group</a></li>
+<li>🔲 <strong>LAB 8</strong> – <a href="#-ec2-hands-on--lab-8">Key Pairs (create, delete, recover access)</a></li>
+<li>🔲 <strong>LAB 9</strong> – <a href="#-ec2-hands-on--lab-9">EC2 User Data (boot-time automation)</a></li>
+<li>🔲 <strong>LAB 10</strong> – <a href="#-ec2-hands-on--lab-10">EC2 Instance Lifecycle (start, stop, reboot, terminate)</a></li>
+</ul>
+<h3 id="-extra-topics-covered-1"><a class="header" href="#-extra-topics-covered-1">📘 Extra Topics Covered</a></h3>
+<ul>
+<li><a href="#-ec2-security-group--ssh-ports-and-ip-access">🔐 EC2 Security Group – SSH, Ports, and IP Access</a></li>
+</ul>
+<hr>
+<h2 id="-phase-3-storage--data-real-project-skills"><a class="header" href="#-phase-3-storage--data-real-project-skills">🟠 PHASE 3: STORAGE &amp; DATA (REAL PROJECT SKILLS)</a></h2>
+<ul>
+<li>🔲 <strong>LAB 11</strong> – <a href="#-ec2-hands-on--lab-11">EBS Volume (attach, detach, resize)</a></li>
+<li>🔲 <strong>LAB 12</strong> – <a href="#-ec2-hands-on--lab-12">Take Snapshot &amp; Restore EC2</a></li>
+<li>🔲 <strong>LAB 13</strong> – <a href="#-ec2-hands-on--lab-13">AMI Creation (custom image)</a></li>
+<li>🔲 <strong>LAB 14</strong> – <a href="#-ec2-hands-on--lab-14">Root vs Additional Volumes</a></li>
+<li>🔲 <strong>LAB 15</strong> – <a href="#-ec2-hands-on--lab-15">EBS vs Instance Store</a></li>
+</ul>
+<hr>
+<h2 id="-phase-4-scaling--high-availability-interview-favorite"><a class="header" href="#-phase-4-scaling--high-availability-interview-favorite">🔵 PHASE 4: SCALING &amp; HIGH AVAILABILITY (INTERVIEW FAVORITE)</a></h2>
+<ul>
+<li>🔲 <strong>LAB 16</strong> – <a href="#-ec2-hands-on--lab-16">Launch EC2 in Multiple AZs</a></li>
+<li>🔲 <strong>LAB 17</strong> – <a href="#-ec2-hands-on--lab-17">Application Load Balancer (ALB)</a></li>
+<li>🔲 <strong>LAB 18</strong> – <a href="#-ec2-hands-on--lab-18">Target Groups &amp; Health Checks</a></li>
+<li>🔲 <strong>LAB 19</strong> – <a href="#-ec2-hands-on--lab-19">Auto Scaling Group (ASG)</a></li>
+<li>🔲 <strong>LAB 20</strong> – <a href="#-ec2-hands-on--lab-20">High Availability Architecture</a></li>
+</ul>
+<hr>
+<h2 id="-phase-5-monitoring-logging--access"><a class="header" href="#-phase-5-monitoring-logging--access">🔴 PHASE 5: MONITORING, LOGGING &amp; ACCESS</a></h2>
+<ul>
+<li>🔲 <strong>LAB 21</strong> – <a href="#-ec2-hands-on--lab-21">CloudWatch Metrics</a></li>
+<li>🔲 <strong>LAB 22</strong> – <a href="#-ec2-hands-on--lab-22">CloudWatch Alarms</a></li>
+<li>🔲 <strong>LAB 23</strong> – <a href="#-ec2-hands-on--lab-23">EC2 Logs &amp; Troubleshooting</a></li>
+<li>🔲 <strong>LAB 24</strong> – <a href="#-ec2-hands-on--lab-24">IAM Role for EC2 (NO access keys)</a></li>
+<li>🔲 <strong>LAB 25</strong> – <a href="#-ec2-hands-on--lab-25">Session Manager (SSH without key)</a></li>
+</ul>
+<hr>
+<h2 id="-phase-6-security--best-practices-real-world"><a class="header" href="#-phase-6-security--best-practices-real-world">🟣 PHASE 6: SECURITY &amp; BEST PRACTICES (REAL WORLD)</a></h2>
+<ul>
+<li>🔲 <strong>LAB 26</strong> – <a href="#-ec2-hands-on--lab-26">Bastion Host Architecture</a></li>
+<li>🔲 <strong>LAB 27</strong> – <a href="#-ec2-hands-on--lab-27">Private EC2 (No Internet Access)</a></li>
+<li>🔲 <strong>LAB 28</strong> – <a href="#-ec2-hands-on--lab-28">EC2 in Public vs Private Subnet</a></li>
+<li>🔲 <strong>LAB 29</strong> – <a href="#-ec2-hands-on--lab-29">Patch Management</a></li>
+<li>🔲 <strong>LAB 30</strong> – <a href="#-ec2-hands-on--lab-30">EC2 Backup Strategy</a></li>
+</ul>
+<hr>
+<h2 id="-phase-7-cost-performance--real-projects"><a class="header" href="#-phase-7-cost-performance--real-projects">⚫ PHASE 7: COST, PERFORMANCE &amp; REAL PROJECTS</a></h2>
+<ul>
+<li>🔲 <strong>LAB 31</strong> – <a href="#-ec2-hands-on--lab-31">EC2 Pricing (On-Demand / Reserved / Spot)</a></li>
+<li>🔲 <strong>LAB 32</strong> – <a href="#-ec2-hands-on--lab-32">Spot Instance Hands-on</a></li>
+<li>🔲 <strong>LAB 33</strong> – <a href="#-ec2-hands-on--lab-33">Instance Rightsizing</a></li>
+<li>🔲 <strong>LAB 34</strong> – <a href="#-ec2-hands-on--lab-34">Free Tier Safety Practices</a></li>
+<li>🔲 <strong>LAB 35</strong> – <a href="#-ec2-hands-on--lab-35">Production EC2 Architecture (End-to-End)</a></li>
+</ul>
+<hr>
+<h2 id="-final-real-world-projects"><a class="header" href="#-final-real-world-projects">🏁 FINAL REAL-WORLD PROJECTS</a></h2>
+<ul>
+<li>🔲 <strong>LAB 36</strong> – <a href="#-ec2-hands-on--lab-36">Host Full Web App (Frontend + Backend)</a></li>
+<li>🔲 <strong>LAB 37</strong> – <a href="#-ec2-hands-on--lab-37">EC2 + RDS Architecture</a></li>
+<li>🔲 <strong>LAB 38</strong> – <a href="#-ec2-hands-on--lab-38">EC2 Zero-Downtime Deployment</a></li>
+<li>🔲 <strong>LAB 39</strong> – <a href="#-ec2-hands-on--lab-39">EC2 Failure Recovery Simulation</a></li>
+<li>🔲 <strong>LAB 40</strong> – <a href="#-ec2-hands-on--lab-40">EC2 Interview Scenario Questions</a></li>
+</ul>
+<hr><div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://devnamdev2003.github.io/md/static/style.css">
+<h1 id="-complete-aws-ec2-hands-on-roadmap-1"><a class="header" href="#-complete-aws-ec2-hands-on-roadmap-1">🧭 COMPLETE AWS EC2 HANDS-ON ROADMAP</a></h1>
 <h2 id="-ec2-hands-on--lab-1"><a class="header" href="#-ec2-hands-on--lab-1">🧪 EC2 HANDS-ON – LAB 1</a></h2>
 <h3 id="-launch-your-first-ec2-instance-free-tier--safe"><a class="header" href="#-launch-your-first-ec2-instance-free-tier--safe">👉 Launch Your First EC2 Instance (Free Tier – SAFE)</a></h3>
 <h3 id="-objective"><a class="header" href="#-objective">🎯 Objective</a></h3>

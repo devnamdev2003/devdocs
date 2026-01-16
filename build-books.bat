@@ -3,16 +3,13 @@ echo ===============================
 echo Building all mdBook projects
 echo ===============================
 
-mdbook build
-
-set BOOKS=aws aws-hands-on cpp javascript mssql python
-
-for %%B in (%BOOKS%) do (
+REM Loop through all folders inside md-code
+for /d %%B in (md-code\*) do (
     echo.
     echo -------------------------------
-    echo Building %%B
+    echo Building %%~nxB
     echo -------------------------------
-    cd md-code\%%B
+    cd "%%B"
     mdbook build
     cd ../..
 )

@@ -1,3 +1,0 @@
-# Summary
-
-- [Topics](topic.md)

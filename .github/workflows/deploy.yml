@@ -22,13 +22,8 @@ jobs:
 
       - name: Build all books
         run: |
-          mkdir docs
-          for dir in md-code/*; do
-            if [ -f "$dir/book.toml" ]; then
-              echo "Building $dir"
-              (cd "$dir" && mdbook build)
-            fi
-          done
+          chmod +x build-books.sh
+          ./build-books.sh
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

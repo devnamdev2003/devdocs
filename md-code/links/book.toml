@@ -1,0 +1,13 @@
+[book]
+description = "All my live projects and deployments, organized in one place."
+authors = ["Dev Namdev"]
+language = "en"
+src = "src"
+
+[build]
+build-dir = "../../docs/links"
+
+[output.html]
+site-url = "https://devnamdev2003.github.io/devdocs/links/"
+git-repository-url = "https://github.com/devnamdev2003/links"
+edit-url-template = "https://github.com/devnamdev2003/devdocs/edit/main/md-code/links/{path}"

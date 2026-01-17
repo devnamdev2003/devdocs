@@ -2,7 +2,6 @@
 h2, h3{
     margin-top: 0;
 }
-
 </style>
 
 ## 📚 Topics

@@ -1,11 +1,22 @@
-# Topics
+<style>
+h2, h3{
+    margin-top: 0;
+}
 
-### [AWS](../aws)
+</style>
 
-### [AWS-Hands-On](../aws-hands-on)
+## 📚 Topics
 
-### [Python](../python)
+### ☁️ Cloud Computing
 
-### [JavaScript](../javascript)
+* **[AWS](../aws)**
+* **[AWS Hands-On](../aws-hands-on)**
 
-### [Posts](../posts)
+### 💻 Programming Languages
+
+* **[Python](../python)**
+* **[JavaScript](../javascript)**
+
+### ✍️ Articles & Notes
+
+* **[Posts](../posts)**

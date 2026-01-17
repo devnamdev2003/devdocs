@@ -5,6 +5,9 @@ echo "Cleaning docs folder"
 rm -rf docs
 mkdir -p docs
 
+echo "Copying root index.html"
+cp index.html docs/index.html
+
 echo "Building all mdBook projects"
 
 for dir in md-code/*; do
@@ -14,4 +17,4 @@ for dir in md-code/*; do
   fi
 done
 
-echo "All mdBooks built successfully"
+echo "Build complete"

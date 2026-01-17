@@ -1,0 +1,37 @@
+name: Build and Deploy mdBook
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install mdBook
+        run: |
+          cargo install mdbook
+
+      - name: Build all books
+        run: |
+          mkdir docs
+          for dir in md-code/*; do
+            if [ -f "$dir/book.toml" ]; then
+              echo "Building $dir"
+              (cd "$dir" && mdbook build)
+            fi
+          done
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs

@@ -19,3 +19,7 @@ h2, h3{
 ### ✍️ Articles & Notes
 
 * **[Posts](../posts)**
+
+### 🔗 Links
+
+* **[Links](../links)**

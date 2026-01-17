@@ -1,0 +1,2455 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>AWS index</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- PWA -->
+        <link rel="icon" type="image/x-icon" href="https://devnamdev2003.github.io/devdocs/static/icons/favicon.ico">
+        <link rel="manifest" href="https://devnamdev2003.github.io/devdocs/static/manifest.webmanifest">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="theme-color" content="#0d1117">
+        
+        <meta name="title" content="AWS">
+        <meta name="description" content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="og:image" content="https://devnamdev2003.github.io/devdocs/static/img/aws/aws_c.png">
+        <meta property="og:title" content="AWS">
+        <meta property="og:description"
+            content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="twitter:image" content="https://devnamdev2003.github.io/devdocs/static/img/aws/aws_c.png">
+        <meta property="twitter:title" content="AWS">
+        <meta property="twitter:description"
+            content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        <meta name="description" content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-9d759411.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-b2d25a99.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs/edit/main/md-code/aws/src/aws_index.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+<h2 id=""><a class="header" href="#"><a href="../src">👈</a></a></h2>
+<ul>
+<li><a href="#️-cloud-computing-fundamentals">☁️ CLOUD COMPUTING FUNDAMENTALS</a></li>
+<li><a href="#-aws-overview--basics">🚀 AWS OVERVIEW &amp; BASICS</a></li>
+<li><a href="#-aws-global-infrastructure">🌍 AWS GLOBAL INFRASTRUCTURE</a></li>
+<li><a href="#-aws-shared-responsibility-model">🔐 AWS SHARED RESPONSIBILITY MODEL</a></li>
+<li><a href="#-accessing--managing-aws">🧭 ACCESSING &amp; MANAGING AWS</a></li>
+<li><a href="#️-compute-services-servers">🖥️ COMPUTE SERVICES (SERVERS)</a></li>
+<li><a href="#-storage-services">💾 STORAGE SERVICES</a></li>
+<li><a href="#️-database-services">🗄️ DATABASE SERVICES</a></li>
+<li><a href="#-networking--content-delivery">🌐 NETWORKING &amp; CONTENT DELIVERY</a></li>
+<li><a href="#-identity--access-management-iam">👤 IDENTITY &amp; ACCESS MANAGEMENT (IAM)</a></li>
+<li><a href="#️-security-services">🛡️ SECURITY SERVICES</a></li>
+<li><a href="#-monitoring-logging--governance">📊 MONITORING, LOGGING &amp; GOVERNANCE</a></li>
+<li><a href="#-application-integration--messaging">🔄 APPLICATION INTEGRATION &amp; MESSAGING</a></li>
+<li><a href="#-analytics-services">📈 ANALYTICS SERVICES</a></li>
+<li><a href="#-ai--machine-learning-services">🤖 AI &amp; MACHINE LEARNING SERVICES</a></li>
+<li><a href="#-infrastructure-as-code--management">🧱 INFRASTRUCTURE AS CODE &amp; MANAGEMENT</a></li>
+<li><a href="#-devops--cicd">🔁 DEVOPS &amp; CI/CD</a></li>
+<li><a href="#-pricing-billing--cost-management">💰 PRICING, BILLING &amp; COST MANAGEMENT</a></li>
+<li><a href="#️-reliability--architecture-best-practices">🏗️ RELIABILITY &amp; ARCHITECTURE BEST PRACTICES</a></li>
+<li><a href="#-migration--support">🚚 MIGRATION &amp; SUPPORT</a></li>
+</ul>
+<hr>
+<h1 id="-cloud-computing-fundamentals"><a class="header" href="#-cloud-computing-fundamentals"><a href="./aws.html#️-cloud-computing-fundamentals">☁️ CLOUD COMPUTING FUNDAMENTALS</a></a></h1>
+<ul>
+<li><a href="./aws.html#what-is-cloud-computing-and-how-it-works">What is Cloud Computing and How It Works</a>
+<ul>
+<li><a href="./aws.html#defining-cloud-computing-the-utility-model">Defining Cloud Computing: The Utility Model</a></li>
+<li><a href="./aws.html#the-cloud-metaphor-explained">The “Cloud” Metaphor Explained</a></li>
+<li><a href="./aws.html#key-characteristics-of-cloud-computing-the-nist-five">Key Characteristics of Cloud Computing (The NIST Five)</a></li>
+<li><a href="./aws.html#cloud-service-models-what-you-manage-vs-what-aws-manages">Cloud Service Models: What You Manage vs. What AWS Manages</a>
+<ul>
+<li><a href="./aws.html#1-infrastructure-as-a-service-iaas">1. Infrastructure as a Service (IaaS)</a></li>
+<li><a href="./aws.html#2-platform-as-a-service-paas">2. Platform as a Service (PaaS)</a></li>
+<li><a href="./aws.html#3-software-as-a-service-saas">3. Software as a Service (SaaS)</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#cloud-deployment-models-where-your-cloud-lives">Cloud Deployment Models: Where Your Cloud Lives</a></li>
+<li><a href="./aws.html#how-cloud-computing-works-under-the-hood-the-magic-behind-the-scenes">How Cloud Computing Works Under the Hood: The Magic Behind the Scenes</a></li>
+<li><a href="./aws.html#core-benefits-of-cloud-computing">Core Benefits of Cloud Computing</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#problems-with-traditional-on-premises-infrastructure">Problems with Traditional On-Premises Infrastructure</a>
+<ul>
+<li><a href="./aws.html#defining-traditional-on-premises-infrastructure">Defining Traditional On-Premises Infrastructure</a></li>
+<li><a href="./aws.html#1-high-upfront-capital-expenditure-capex">1. High Upfront Capital Expenditure (CapEx)</a></li>
+<li><a href="./aws.html#2-significant-operational-expenses-opex-and-maintenance-burden">2. Significant Operational Expenses (OpEx) and Maintenance Burden</a></li>
+<li><a href="./aws.html#3-scalability-challenges-up-and-down">3. Scalability Challenges (Up and Down)</a></li>
+<li><a href="./aws.html#4-reliability-and-disaster-recovery-difficulties">4. Reliability and Disaster Recovery Difficulties</a></li>
+<li><a href="./aws.html#5-security-concerns-and-compliance-burden">5. Security Concerns and Compliance Burden</a></li>
+<li><a href="./aws.html#6-limited-global-reach-and-geographic-constraints">6. Limited Global Reach and Geographic Constraints</a></li>
+<li><a href="./aws.html#7-obsolescence-and-technology-refresh-cycles">7. Obsolescence and Technology Refresh Cycles</a></li>
+<li><a href="./aws.html#8-diversion-of-focus-from-core-business">8. Diversion of Focus from Core Business</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#benefits-of-using-cloud-computing">Benefits of Using Cloud Computing</a>
+<ul>
+<li><a href="./aws.html#1-trade-capital-expense-for-variable-expense-capex-to-opex">1. Trade Capital Expense for Variable Expense (CapEx to OpEx)</a></li>
+<li><a href="./aws.html#2-benefit-from-massive-economies-of-scale">2. Benefit from Massive Economies of Scale</a></li>
+<li><a href="./aws.html#3-stop-guessing-capacity-elasticity-and-scalability">3. Stop Guessing Capacity (Elasticity and Scalability)</a></li>
+<li><a href="./aws.html#4-increase-agility-and-speed-of-innovation">4. Increase Agility and Speed of Innovation</a></li>
+<li><a href="./aws.html#5-go-global-in-minutes">5. Go Global in Minutes</a></li>
+<li><a href="./aws.html#6-focus-on-core-business-offload-undifferentiated-heavy-lifting">6. Focus on Core Business (Offload Undifferentiated Heavy Lifting)</a></li>
+<li><a href="./aws.html#7-enhanced-security-posture">7. Enhanced Security Posture</a></li>
+<li><a href="./aws.html#8-greater-reliability-and-disaster-recovery">8. Greater Reliability and Disaster Recovery</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#real-world-examples-of-cloud-usage">Real-World Examples of Cloud Usage</a>
+<ul>
+<li><a href="./aws.html#1-e-commerce-and-online-retail">1. E-commerce and Online Retail</a></li>
+<li><a href="./aws.html#2-media-and-entertainment-video-streaming-and-content-creation">2. Media and Entertainment (Video Streaming and Content Creation)</a></li>
+<li><a href="./aws.html#3-healthcare-and-life-sciences-genomics-and-patient-data">3. Healthcare and Life Sciences (Genomics and Patient Data)</a></li>
+<li><a href="./aws.html#4-financial-services-trading-platforms-fraud-detection-compliance">4. Financial Services (Trading Platforms, Fraud Detection, Compliance)</a></li>
+<li><a href="./aws.html#5-startups-and-small-businesses-agility-and-cost-effectiveness">5. Startups and Small Businesses (Agility and Cost-Effectiveness)</a></li>
+<li><a href="./aws.html#6-government-and-education-public-services-and-research">6. Government and Education (Public Services and Research)</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#types-of-cloud-computing-public-private-hybrid-multi-cloud">Types of Cloud Computing (Public, Private, Hybrid, Multi-Cloud)</a>
+<ul>
+<li><a href="./aws.html#1-public-cloud">1. Public Cloud</a>
+<ul>
+<li><a href="./aws.html#characteristics-of-public-cloud">Characteristics of Public Cloud:</a></li>
+<li><a href="./aws.html#benefits-of-public-cloud">Benefits of Public Cloud:</a></li>
+<li><a href="./aws.html#drawbacks-of-public-cloud">Drawbacks of Public Cloud:</a></li>
+<li><a href="./aws.html#aws-example">AWS Example:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#2-private-cloud">2. Private Cloud</a>
+<ul>
+<li><a href="./aws.html#characteristics-of-private-cloud">Characteristics of Private Cloud:</a></li>
+<li><a href="./aws.html#benefits-of-private-cloud">Benefits of Private Cloud:</a></li>
+<li><a href="./aws.html#drawbacks-of-private-cloud">Drawbacks of Private Cloud:</a></li>
+<li><a href="./aws.html#aws-example-or-related-offering">AWS Example (or related offering):</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#3-hybrid-cloud">3. Hybrid Cloud</a>
+<ul>
+<li><a href="./aws.html#characteristics-of-hybrid-cloud">Characteristics of Hybrid Cloud:</a></li>
+<li><a href="./aws.html#benefits-of-hybrid-cloud">Benefits of Hybrid Cloud:</a></li>
+<li><a href="./aws.html#drawbacks-of-hybrid-cloud">Drawbacks of Hybrid Cloud:</a></li>
+<li><a href="./aws.html#aws-example-1">AWS Example:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#4-multi-cloud">4. Multi-Cloud</a>
+<ul>
+<li><a href="./aws.html#characteristics-of-multi-cloud">Characteristics of Multi-Cloud:</a></li>
+<li><a href="./aws.html#benefits-of-multi-cloud">Benefits of Multi-Cloud:</a></li>
+<li><a href="./aws.html#drawbacks-of-multi-cloud">Drawbacks of Multi-Cloud:</a></li>
+<li><a href="./aws.html#aws-example-2">AWS Example:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="./aws.html#cloud-deployment-models-explained">Cloud Deployment Models Explained</a>
+<ul>
+<li><a href="./aws.html#1-public-cloud-deployment-model">1. Public Cloud Deployment Model</a></li>
+<li><a href="./aws.html#2-private-cloud-deployment-model">2. Private Cloud Deployment Model</a></li>
+<li><a href="./aws.html#3-hybrid-cloud-deployment-model">3. Hybrid Cloud Deployment Model</a></li>
+<li><a href="./aws.html#4-community-cloud-deployment-model">4. Community Cloud Deployment Model</a>
+<ul>
+<li><a href="./aws.html#explanation-of-community">Explanation of “Community”:</a></li>
+<li><a href="./aws.html#characteristics-of-community-cloud">Characteristics of Community Cloud:</a></li>
+<li><a href="./aws.html#benefits-of-community-cloud">Benefits of Community Cloud:</a></li>
+<li><a href="./aws.html#drawbacks-of-community-cloud">Drawbacks of Community Cloud:</a></li>
+<li><a href="./aws.html#aws-example-related-offerings">AWS Example (related offerings):</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="./aws.html#cloud-service-models-explained-iaas-paas-saas">Cloud Service Models Explained (IaaS, PaaS, SaaS)</a>
+<ul>
+<li><a href="./aws.html#understanding-the-shared-responsibility-model">Understanding the Shared Responsibility Model</a></li>
+<li><a href="./aws.html#1-infrastructure-as-a-service-iaas-1">1. Infrastructure as a Service (IaaS)</a>
+<ul>
+<li><a href="./aws.html#what-iaas-provides">What IaaS Provides:</a></li>
+<li><a href="./aws.html#customer-responsibilities-in-the-cloud">Customer Responsibilities (in the Cloud):</a></li>
+<li><a href="./aws.html#aws-responsibilities-of-the-cloud">AWS Responsibilities (of the Cloud):</a></li>
+<li><a href="./aws.html#analogy-renting-an-empty-apartment">Analogy: Renting an Empty Apartment</a></li>
+<li><a href="./aws.html#aws-examples-of-iaas">AWS Examples of IaaS:</a></li>
+<li><a href="./aws.html#when-to-choose-iaas">When to Choose IaaS:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#2-platform-as-a-service-paas-1">2. Platform as a Service (PaaS)</a>
+<ul>
+<li><a href="./aws.html#what-paas-provides">What PaaS Provides:</a></li>
+<li><a href="./aws.html#customer-responsibilities-in-the-cloud-1">Customer Responsibilities (in the Cloud):</a></li>
+<li><a href="./aws.html#aws-responsibilities-of-the-cloud-1">AWS Responsibilities (of the Cloud):</a></li>
+<li><a href="./aws.html#analogy-ordering-a-custom-pizza-from-a-pizzeria">Analogy: Ordering a Custom Pizza from a Pizzeria</a></li>
+<li><a href="./aws.html#aws-examples-of-paas">AWS Examples of PaaS:</a></li>
+<li><a href="./aws.html#when-to-choose-paas">When to Choose PaaS:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#3-software-as-a-service-saas-1">3. Software as a Service (SaaS)</a>
+<ul>
+<li><a href="./aws.html#what-saas-provides">What SaaS Provides:</a></li>
+<li><a href="./aws.html#customer-responsibilities-in-the-cloud-2">Customer Responsibilities (in the Cloud):</a></li>
+<li><a href="./aws.html#aws-responsibilities-of-the-cloud-2">AWS Responsibilities (of the Cloud):</a></li>
+<li><a href="./aws.html#analogy-going-to-a-restaurant-or-buying-a-frozen-pizza">Analogy: Going to a Restaurant or Buying a Frozen Pizza</a></li>
+<li><a href="./aws.html#aws-examples-of-saas">AWS Examples of SaaS:</a></li>
+<li><a href="./aws.html#common-non-aws-saas-examples">Common Non-AWS SaaS Examples:</a></li>
+<li><a href="./aws.html#when-to-choose-saas">When to Choose SaaS:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#summary-of-cloud-service-models-and-responsibility">Summary of Cloud Service Models and Responsibility</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="-aws-overview--basics"><a class="header" href="#-aws-overview--basics"><a href="./aws.html#-aws-overview--basics">🚀 AWS OVERVIEW &amp; BASICS</a></a></h1>
+<ul>
+<li><a href="./aws.html#what-is-amazon-web-services-aws">What is Amazon Web Services (AWS)</a>
+<ul>
+<li><a href="./aws.html#understanding-cloud-computing-and-aws">Understanding Cloud Computing and AWS</a></li>
+<li><a href="./aws.html#key-characteristics-and-benefits-of-aws-cloud-computing">Key Characteristics and Benefits of AWS (Cloud Computing)</a></li>
+<li><a href="./aws.html#core-service-categories-and-examples">Core Service Categories and Examples</a></li>
+<li><a href="./aws.html#aws-global-infrastructure">AWS Global Infrastructure</a></li>
+<li><a href="./aws.html#real-world-applications-of-aws">Real-World Applications of AWS</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#why-aws-is-the-leading-cloud-provider">Why AWS is the Leading Cloud Provider</a>
+<ul>
+<li><a href="./aws.html#1-first-mover-advantage-and-experience">1. First-Mover Advantage and Experience</a></li>
+<li><a href="./aws.html#2-unmatched-breadth-and-depth-of-services">2. Unmatched Breadth and Depth of Services</a></li>
+<li><a href="./aws.html#3-extensive-global-infrastructure">3. Extensive Global Infrastructure</a></li>
+<li><a href="./aws.html#4-robust-partner-ecosystem-and-community">4. Robust Partner Ecosystem and Community</a></li>
+<li><a href="./aws.html#5-continuous-innovation-and-customer-obsession">5. Continuous Innovation and Customer Obsession</a></li>
+<li><a href="./aws.html#6-security-and-compliance">6. Security and Compliance</a></li>
+<li><a href="./aws.html#7-cost-effectiveness-and-pricing-models">7. Cost-Effectiveness and Pricing Models</a></li>
+<li><a href="./aws.html#8-enterprise-readiness-and-trust">8. Enterprise Readiness and Trust</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#overview-of-aws-services-and-categories">Overview of AWS Services and Categories</a>
+<ul>
+<li><a href="./aws.html#1-compute-services">1. Compute Services</a>
+<ul>
+<li><a href="./aws.html#key-services">Key Services:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#2-storage-services">2. Storage Services</a>
+<ul>
+<li><a href="./aws.html#key-services-1">Key Services:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#3-networking--content-delivery-services">3. Networking &amp; Content Delivery Services</a>
+<ul>
+<li><a href="./aws.html#key-services-2">Key Services:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#4-databases-services">4. Databases Services</a>
+<ul>
+<li><a href="./aws.html#key-services-3">Key Services:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#5-management--governance-services">5. Management &amp; Governance Services</a>
+<ul>
+<li><a href="./aws.html#key-services-4">Key Services:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#6-security-identity--compliance-services">6. Security, Identity, &amp; Compliance Services</a>
+<ul>
+<li><a href="./aws.html#key-services-5">Key Services:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#7-developer-tools">7. Developer Tools</a>
+<ul>
+<li><a href="./aws.html#key-services-6">Key Services:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#8-analytics-services">8. Analytics Services</a>
+<ul>
+<li><a href="./aws.html#key-services-7">Key Services:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#9-machine-learning-ml-services">9. Machine Learning (ML) Services</a>
+<ul>
+<li><a href="./aws.html#key-services-8">Key Services:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="-aws-global-infrastructure"><a class="header" href="#-aws-global-infrastructure"><a href="./aws.html#-aws-global-infrastructure">🌍 AWS GLOBAL INFRASTRUCTURE</a></a></h1>
+<ul>
+<li><a href="./aws.html#what-is-aws-global-infrastructure">What is AWS Global Infrastructure</a>
+<ul>
+<li><a href="./aws.html#the-problem-before-global-infrastructure">The Problem Before Global Infrastructure</a></li>
+<li><a href="./aws.html#the-aws-solution-a-distributed-global-network">The AWS Solution: A Distributed Global Network</a></li>
+<li><a href="./aws.html#design-principles-of-the-aws-global-infrastructure">Design Principles of the AWS Global Infrastructure</a></li>
+<li><a href="./aws.html#how-it-works-together-simplified-view">How it Works Together (Simplified View)</a></li>
+<li><a href="./aws.html#benefits-of-the-aws-global-infrastructure">Benefits of the AWS Global Infrastructure</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-an-aws-region-and-why-it-matters">What is an AWS Region and Why It Matters</a>
+<ul>
+<li><a href="./aws.html#anatomy-of-an-aws-region">Anatomy of an AWS Region</a></li>
+<li><a href="./aws.html#why-aws-regions-are-isolated">Why AWS Regions are Isolated</a></li>
+<li><a href="./aws.html#why-aws-regions-matter-for-your-applications-and-business">Why AWS Regions Matter for Your Applications and Business</a>
+<ul>
+<li><a href="./aws.html#1-latency-performance">1. Latency (Performance)</a></li>
+<li><a href="./aws.html#2-data-sovereignty-and-compliance">2. Data Sovereignty and Compliance</a></li>
+<li><a href="./aws.html#3-service-availability">3. Service Availability</a></li>
+<li><a href="./aws.html#4-cost">4. Cost</a></li>
+<li><a href="./aws.html#5-disaster-recovery-strategy">5. Disaster Recovery Strategy</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#how-to-choose-an-aws-region">How to Choose an AWS Region</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-an-aws-availability-zone">What is an AWS Availability Zone</a>
+<ul>
+<li><a href="./aws.html#key-characteristics-of-an-availability-zone">Key Characteristics of an Availability Zone:</a></li>
+<li><a href="./aws.html#why-availability-zones-exist">Why Availability Zones Exist</a></li>
+<li><a href="./aws.html#analogy-independent-buildings-in-a-campus">Analogy: Independent Buildings in a Campus</a></li>
+<li><a href="./aws.html#aws-availability-zone-numbers">AWS Availability Zone Numbers</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#how-availability-zones-provide-high-availability">How Availability Zones Provide High Availability</a>
+<ul>
+<li><a href="./aws.html#1-fault-isolation">1. Fault Isolation</a></li>
+<li><a href="./aws.html#2-redundancy-and-distribution-of-resources">2. Redundancy and Distribution of Resources</a></li>
+<li><a href="./aws.html#3-automatic-failover-with-load-balancers">3. Automatic Failover with Load Balancers</a></li>
+<li><a href="./aws.html#4-multi-az-database-deployments">4. Multi-AZ Database Deployments</a></li>
+<li><a href="./aws.html#5-auto-scaling">5. Auto Scaling</a></li>
+<li><a href="./aws.html#6-data-replication-and-durability">6. Data Replication and Durability</a></li>
+<li><a href="./aws.html#real-world-example-a-highly-available-web-application">Real-World Example: A Highly Available Web Application</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-are-aws-edge-locations-and-cdn-concept">What are AWS Edge Locations and CDN Concept</a>
+<ul>
+<li><a href="./aws.html#what-are-aws-edge-locations">What are AWS Edge Locations?</a>
+<ul>
+<li><a href="./aws.html#key-characteristics-of-edge-locations">Key Characteristics of Edge Locations:</a></li>
+<li><a href="./aws.html#analogy-local-libraries-for-digital-content">Analogy: Local Libraries for Digital Content</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#the-concept-of-a-content-delivery-network-cdn">The Concept of a Content Delivery Network (CDN)</a>
+<ul>
+<li><a href="./aws.html#how-a-cdn-cloudfront-works-with-edge-locations">How a CDN (CloudFront) Works with Edge Locations:</a></li>
+<li><a href="./aws.html#benefits-of-using-a-cdn-cloudfront-and-edge-locations">Benefits of Using a CDN (CloudFront) and Edge Locations:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#other-services-leveraging-edge-locations">Other Services Leveraging Edge Locations:</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="-aws-shared-responsibility-model"><a class="header" href="#-aws-shared-responsibility-model"><a href="./aws.html#-aws-shared-responsibility-model">🔐 AWS SHARED RESPONSIBILITY MODEL</a></a></h1>
+<ul>
+<li><a href="./aws.html#what-is-the-aws-shared-responsibility-model">What is the AWS Shared Responsibility Model</a>
+<ul>
+<li><a href="./aws.html#the-core-principle-security-of-the-cloud-vs-security-in-the-cloud">The Core Principle: “Security <em>of</em> the Cloud” vs. “Security <em>in</em> the Cloud”</a>
+<ul>
+<li><a href="./aws.html#security-of-the-cloud-awss-responsibility">Security <em>of</em> the Cloud (AWS’s Responsibility)</a></li>
+<li><a href="./aws.html#security-in-the-cloud-customers-responsibility">Security <em>in</em> the Cloud (Customer’s Responsibility)</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#why-a-shared-model">Why a Shared Model?</a></li>
+<li><a href="./aws.html#understanding-the-shifting-sands-of-responsibility-with-service-models">Understanding the “Shifting Sands” of Responsibility with Service Models</a></li>
+<li><a href="./aws.html#example-scenario-a-misunderstanding-of-the-model">Example Scenario: A Misunderstanding of the Model</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#aws-responsibilities-vs-customer-responsibilities">AWS Responsibilities vs Customer Responsibilities</a>
+<ul>
+<li><a href="./aws.html#aws-responsibilities-security-of-the-cloud">AWS Responsibilities (Security <em>of</em> the Cloud)</a></li>
+<li><a href="./aws.html#customer-responsibilities-security-in-the-cloud">Customer Responsibilities (Security <em>in</em> the Cloud)</a></li>
+<li><a href="./aws.html#example-a-web-application-with-rds-database">Example: A Web Application with RDS Database</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#shared-responsibility-model-for-compute-services">Shared Responsibility Model for Compute Services</a>
+<ul>
+<li><a href="./aws.html#1-amazon-ec2-elastic-compute-cloud---infrastructure-as-a-service-iaas">1. Amazon EC2 (Elastic Compute Cloud) - Infrastructure as a Service (IaaS)</a>
+<ul>
+<li><a href="./aws.html#awss-responsibilities-security-of-the-cloud">AWS’s Responsibilities (Security <em>of</em> the Cloud):</a></li>
+<li><a href="./aws.html#customers-responsibilities-security-in-the-cloud">Customer’s Responsibilities (Security <em>in</em> the Cloud):</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#2-aws-elastic-beanstalk---platform-as-a-service-paas">2. AWS Elastic Beanstalk - Platform as a Service (PaaS)</a>
+<ul>
+<li><a href="./aws.html#awss-responsibilities-security-of-the-cloud--platform">AWS’s Responsibilities (Security <em>of</em> the Cloud + Platform):</a></li>
+<li><a href="./aws.html#customers-responsibilities-security-in-the-cloud--application">Customer’s Responsibilities (Security <em>in</em> the Cloud + Application):</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#3-aws-lambda---serverless-function-as-a-service---faas">3. AWS Lambda - Serverless (Function as a Service - FaaS)</a>
+<ul>
+<li><a href="./aws.html#awss-responsibilities-security-of-the-cloud--platform--runtime">AWS’s Responsibilities (Security <em>of</em> the Cloud + Platform + Runtime):</a></li>
+<li><a href="./aws.html#customers-responsibilities-security-in-the-cloud--codedata">Customer’s Responsibilities (Security <em>in</em> the Cloud + Code/Data):</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#summary-for-compute-services">Summary for Compute Services:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#shared-responsibility-model-for-storage-services">Shared Responsibility Model for Storage Services</a>
+<ul>
+<li><a href="./aws.html#1-amazon-s3-simple-storage-service---object-storage">1. Amazon S3 (Simple Storage Service) - Object Storage</a>
+<ul>
+<li><a href="./aws.html#awss-responsibilities-security-of-the-cloud-1">AWS’s Responsibilities (Security <em>of</em> the Cloud):</a></li>
+<li><a href="./aws.html#customers-responsibilities-security-in-the-cloud-1">Customer’s Responsibilities (Security <em>in</em> the Cloud):</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#2-amazon-ebs-elastic-block-store---block-storage">2. Amazon EBS (Elastic Block Store) - Block Storage</a>
+<ul>
+<li><a href="./aws.html#awss-responsibilities-security-of-the-cloud-2">AWS’s Responsibilities (Security <em>of</em> the Cloud):</a></li>
+<li><a href="./aws.html#customers-responsibilities-security-in-the-cloud-2">Customer’s Responsibilities (Security <em>in</em> the Cloud):</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#3-amazon-efs-elastic-file-system---file-storage">3. Amazon EFS (Elastic File System) - File Storage</a>
+<ul>
+<li><a href="./aws.html#awss-responsibilities-security-of-the-cloud-3">AWS’s Responsibilities (Security <em>of</em> the Cloud):</a></li>
+<li><a href="./aws.html#customers-responsibilities-security-in-the-cloud-3">Customer’s Responsibilities (Security <em>in</em> the Cloud):</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#general-principle-for-storage-services">General Principle for Storage Services:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#shared-responsibility-model-for-database-services">Shared Responsibility Model for Database Services</a>
+<ul>
+<li><a href="./aws.html#1-amazon-rds-relational-database-service---platform-as-a-service-paas">1. Amazon RDS (Relational Database Service) - Platform as a Service (PaaS)</a>
+<ul>
+<li><a href="./aws.html#awss-responsibilities-security-of-the-cloud--platform-1">AWS’s Responsibilities (Security <em>of</em> the Cloud + Platform):</a></li>
+<li><a href="./aws.html#customers-responsibilities-security-in-the-cloud--database-contentconfiguration">Customer’s Responsibilities (Security <em>in</em> the Cloud + Database Content/Configuration):</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#2-amazon-dynamodb---fully-managed-nosql-database">2. Amazon DynamoDB - Fully Managed NoSQL Database</a>
+<ul>
+<li><a href="./aws.html#awss-responsibilities-security-of-the-cloud--platform--operations">AWS’s Responsibilities (Security <em>of</em> the Cloud + Platform + Operations):</a></li>
+<li><a href="./aws.html#customers-responsibilities-security-in-the-cloud--data-contentaccess">Customer’s Responsibilities (Security <em>in</em> the Cloud + Data Content/Access):</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#summary-for-database-services">Summary for Database Services:</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="-accessing--managing-aws"><a class="header" href="#-accessing--managing-aws"><a href="./aws.html#-accessing--managing-aws">🧭 ACCESSING &amp; MANAGING AWS</a></a></h1>
+<ul>
+<li><a href="./aws.html#how-to-access-aws-aws-management-console-cli-sdk">How to Access AWS (AWS Management Console, CLI, SDK)</a>
+<ul>
+<li><a href="./aws.html#1-aws-management-console">1. AWS Management Console</a>
+<ul>
+<li><a href="./aws.html#how-it-works">How it Works:</a></li>
+<li><a href="./aws.html#when-to-use-the-console">When to Use the Console:</a></li>
+<li><a href="./aws.html#example-launching-an-ec2-instance">Example: Launching an EC2 Instance</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#2-aws-command-line-interface-cli">2. AWS Command Line Interface (CLI)</a>
+<ul>
+<li><a href="./aws.html#how-it-works-1">How it Works:</a></li>
+<li><a href="./aws.html#when-to-use-the-cli">When to Use the CLI:</a></li>
+<li><a href="./aws.html#example-launching-an-ec2-instance-1">Example: Launching an EC2 Instance</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#3-aws-software-development-kits-sdks">3. AWS Software Development Kits (SDKs)</a>
+<ul>
+<li><a href="./aws.html#how-it-works-2">How it Works:</a></li>
+<li><a href="./aws.html#when-to-use-sdks">When to Use SDKs:</a></li>
+<li><a href="./aws.html#example-uploading-a-file-to-s3-python-with-boto3">Example: Uploading a File to S3 (Python with Boto3)</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#summary-of-access-methods">Summary of Access Methods:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-the-aws-management-console">What is the AWS Management Console</a>
+<ul>
+<li><a href="./aws.html#core-purpose-and-functionality">Core Purpose and Functionality</a></li>
+<li><a href="./aws.html#key-features-and-components">Key Features and Components</a></li>
+<li><a href="./aws.html#how-it-works-under-the-hood">How it Works (Under the Hood)</a></li>
+<li><a href="./aws.html#why-the-aws-management-console-matters">Why the AWS Management Console Matters</a></li>
+<li><a href="./aws.html#limitations-and-when-to-use-other-tools">Limitations and When to Use Other Tools</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-the-aws-command-line-interface-cli">What is the AWS Command Line Interface (CLI)</a>
+<ul>
+<li><a href="./aws.html#how-the-aws-cli-works">How the AWS CLI Works</a></li>
+<li><a href="./aws.html#key-benefits-of-using-the-aws-cli">Key Benefits of Using the AWS CLI</a></li>
+<li><a href="./aws.html#example-aws-cli-commands">Example AWS CLI Commands:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-are-aws-sdks-and-when-to-use-them">What are AWS SDKs and When to Use Them</a>
+<ul>
+<li><a href="./aws.html#how-aws-sdks-work">How AWS SDKs Work</a></li>
+<li><a href="./aws.html#when-to-use-aws-sdks">When to Use AWS SDKs</a></li>
+<li><a href="./aws.html#example-code-python-with-boto3-for-ec2">Example Code (Python with Boto3 for EC2)</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="-compute-services-servers"><a class="header" href="#-compute-services-servers"><a href="./aws.html#️-compute-services-servers">🖥️ COMPUTE SERVICES (SERVERS)</a></a></h1>
+<ul>
+<li><a href="./aws.html#what-is-compute-in-cloud-computing">What is Compute in Cloud Computing</a>
+<ul>
+<li><a href="./aws.html#the-evolution-of-compute-from-on-premises-to-cloud">The Evolution of Compute: From On-Premises to Cloud</a>
+<ul>
+<li><a href="./aws.html#traditional-on-premises-compute">Traditional On-Premises Compute</a></li>
+<li><a href="./aws.html#cloud-compute-a-paradigm-shift">Cloud Compute: A Paradigm Shift</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#core-components-of-cloud-compute">Core Components of Cloud Compute</a>
+<ul>
+<li><a href="./aws.html#1-central-processing-unit-cpu">1. Central Processing Unit (CPU)</a></li>
+<li><a href="./aws.html#2-memory-ram---random-access-memory">2. Memory (RAM - Random Access Memory)</a></li>
+<li><a href="./aws.html#3-storage-ephemeral-and-persistent">3. Storage (Ephemeral and Persistent)</a></li>
+<li><a href="./aws.html#4-networking">4. Networking</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#types-of-compute-services-in-the-cloud-aws-context">Types of Compute Services in the Cloud (AWS Context)</a>
+<ul>
+<li><a href="./aws.html#1-infrastructure-as-a-service-iaas-virtual-machines">1. Infrastructure as a Service (IaaS): Virtual Machines</a></li>
+<li><a href="./aws.html#2-platform-as-a-service-paas-managed-application-runtimes">2. Platform as a Service (PaaS): Managed Application Runtimes</a></li>
+<li><a href="./aws.html#3-containers-as-a-service-caas-container-orchestration">3. Containers as a Service (CaaS): Container Orchestration</a></li>
+<li><a href="./aws.html#4-function-as-a-service-faas--serverless-compute">4. Function as a Service (FaaS) / Serverless Compute</a></li>
+<li><a href="./aws.html#5-bare-metal-instances-aws-ec2-bare-metal">5. Bare Metal Instances (AWS EC2 Bare Metal)</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#key-benefits-of-cloud-compute">Key Benefits of Cloud Compute</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-an-amazon-ec2-virtual-server">What is an Amazon EC2 Virtual Server</a>
+<ul>
+<li><a href="./aws.html#the-core-concept-virtualization">The Core Concept: Virtualization</a></li>
+<li><a href="./aws.html#key-components-and-features-of-an-ec2-instance">Key Components and Features of an EC2 Instance</a>
+<ul>
+<li><a href="./aws.html#1-instance-types">1. Instance Types</a></li>
+<li><a href="./aws.html#2-amazon-machine-images-amis">2. Amazon Machine Images (AMIs)</a></li>
+<li><a href="./aws.html#3-elastic-block-store-ebs-volumes">3. Elastic Block Store (EBS) Volumes</a></li>
+<li><a href="./aws.html#4-networking-1">4. Networking</a></li>
+<li><a href="./aws.html#5-key-pairs">5. Key Pairs</a></li>
+<li><a href="./aws.html#6-instance-user-data">6. Instance User Data</a></li>
+<li><a href="./aws.html#7-iam-roles-for-ec2-instances">7. IAM Roles for EC2 Instances</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#lifecycle-of-an-ec2-instance">Lifecycle of an EC2 Instance</a></li>
+<li><a href="./aws.html#ec2-pricing-models">EC2 Pricing Models</a></li>
+<li><a href="./aws.html#real-world-use-cases-for-ec2-instances">Real-World Use Cases for EC2 Instances</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#types-of-ec2-instances-and-their-use-cases">Types of EC2 Instances and Their Use Cases</a>
+<ul>
+<li><a href="./aws.html#understanding-ec2-instance-naming-convention">Understanding EC2 Instance Naming Convention</a></li>
+<li><a href="./aws.html#major-ec2-instance-families-and-their-use-cases">Major EC2 Instance Families and Their Use Cases</a>
+<ul>
+<li><a href="./aws.html#1-general-purpose-instances-m-t-a-series">1. General Purpose Instances (M, T, A Series)</a></li>
+<li><a href="./aws.html#2-compute-optimized-instances-c-series">2. Compute Optimized Instances (C Series)</a></li>
+<li><a href="./aws.html#3-memory-optimized-instances-r-x-z-series">3. Memory Optimized Instances (R, X, Z Series)</a></li>
+<li><a href="./aws.html#4-storage-optimized-instances-i-d-h-series">4. Storage Optimized Instances (I, D, H Series)</a></li>
+<li><a href="./aws.html#5-accelerated-computing-instances-p-g-f-series">5. Accelerated Computing Instances (P, G, F Series)</a></li>
+<li><a href="./aws.html#6-bare-metal-instances-metal">6. Bare Metal Instances (.metal)</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#table-summary-of-ec2-instance-families">Table Summary of EC2 Instance Families</a></li>
+<li><a href="./aws.html#flow-diagram-deciding-on-an-ec2-instance-type">Flow Diagram: Deciding on an EC2 Instance Type</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-an-amazon-machine-image-ami">What is an Amazon Machine Image (AMI)</a>
+<ul>
+<li><a href="./aws.html#the-role-of-an-ami-in-the-ec2-launch-process">The Role of an AMI in the EC2 Launch Process</a></li>
+<li><a href="./aws.html#components-of-an-ami">Components of an AMI</a></li>
+<li><a href="./aws.html#types-of-amis">Types of AMIs</a>
+<ul>
+<li><a href="./aws.html#1-aws-provided-amis-public-amis">1. AWS-Provided AMIs (Public AMIs)</a></li>
+<li><a href="./aws.html#2-aws-marketplace-amis">2. AWS Marketplace AMIs</a></li>
+<li><a href="./aws.html#3-community-amis">3. Community AMIs</a></li>
+<li><a href="./aws.html#4-custom-amis">4. Custom AMIs</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#ami-vs-ebs-snapshots">AMI vs. EBS Snapshots</a></li>
+<li><a href="./aws.html#ami-best-practices">AMI Best Practices</a></li>
+<li><a href="./aws.html#flow-diagram-creating-and-using-a-custom-ami">Flow Diagram: Creating and Using a Custom AMI</a></li>
+<li><a href="./aws.html#table-comparison-of-ami-types">Table: Comparison of AMI Types</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#how-ec2-key-pairs-work-for-secure-access">How EC2 Key Pairs Work for Secure Access</a>
+<ul>
+<li><a href="./aws.html#the-foundation-asymmetric-encryption">The Foundation: Asymmetric Encryption</a></li>
+<li><a href="./aws.html#components-of-an-ec2-key-pair">Components of an EC2 Key Pair</a></li>
+<li><a href="./aws.html#how-ec2-key-pairs-facilitate-secure-access-ssh-for-linux">How EC2 Key Pairs Facilitate Secure Access (SSH for Linux)</a>
+<ul>
+<li><a href="./aws.html#step-by-step-connection-process">Step-by-Step Connection Process</a></li>
+<li><a href="./aws.html#the-ssh-handshake-authentication-behind-the-scenes">The SSH Handshake (Authentication Behind the Scenes)</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#key-pairs-for-windows-instances">Key Pairs for Windows Instances</a></li>
+<li><a href="./aws.html#why-key-pairs-are-more-secure-than-passwords">Why Key Pairs are More Secure Than Passwords</a></li>
+<li><a href="./aws.html#key-pair-management-and-best-practices">Key Pair Management and Best Practices</a></li>
+<li><a href="./aws.html#alternatives-to-ec2-key-pairs-for-instance-access">Alternatives to EC2 Key Pairs for Instance Access</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-are-security-groups-and-how-they-protect-ec2">What are Security Groups and How They Protect EC2</a>
+<ul>
+<li><a href="./aws.html#the-role-of-a-security-group-a-stateful-virtual-firewall">The Role of a Security Group: A Stateful Virtual Firewall</a></li>
+<li><a href="./aws.html#anatomy-of-a-security-group-rule">Anatomy of a Security Group Rule</a></li>
+<li><a href="./aws.html#how-security-groups-protect-ec2-instances-real-world-examples">How Security Groups Protect EC2 Instances: Real-World Examples</a>
+<ul>
+<li><a href="./aws.html#scenario-1-protecting-a-web-server">Scenario 1: Protecting a Web Server</a></li>
+<li><a href="./aws.html#scenario-2-protecting-a-database-server">Scenario 2: Protecting a Database Server</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#security-groups-vs-network-access-control-lists-nacls">Security Groups vs. Network Access Control Lists (NACLs)</a></li>
+<li><a href="./aws.html#best-practices-for-security-groups">Best Practices for Security Groups</a></li>
+<li><a href="./aws.html#flow-diagram-traffic-flow-with-security-groups">Flow Diagram: Traffic Flow with Security Groups</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-elastic-load-balancing-and-why-it-is-needed">What is Elastic Load Balancing and Why It Is Needed</a>
+<ul>
+<li><a href="./aws.html#the-core-problem-elb-solves-single-point-of-failure-and-scalability-limits">The Core Problem ELB Solves: Single Point of Failure and Scalability Limits</a>
+<ul>
+<li><a href="./aws.html#1-single-point-of-failure-spof">1. Single Point of Failure (SPOF)</a></li>
+<li><a href="./aws.html#2-limited-scalability">2. Limited Scalability</a></li>
+<li><a href="./aws.html#3-traffic-management-complexity">3. Traffic Management Complexity</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#key-benefits-of-elastic-load-balancing">Key Benefits of Elastic Load Balancing</a>
+<ul>
+<li><a href="./aws.html#1-high-availability">1. High Availability</a></li>
+<li><a href="./aws.html#2-automatic-scalability">2. Automatic Scalability</a></li>
+<li><a href="./aws.html#3-fault-tolerance">3. Fault Tolerance</a></li>
+<li><a href="./aws.html#4-security">4. Security</a></li>
+<li><a href="./aws.html#5-operational-simplification">5. Operational Simplification</a></li>
+<li><a href="./aws.html#6-cost-optimization">6. Cost Optimization</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#flow-diagram-how-elb-works-with-ec2-and-auto-scaling">Flow Diagram: How ELB Works with EC2 and Auto Scaling</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#types-of-aws-load-balancers-explained">Types of AWS Load Balancers Explained</a>
+<ul>
+<li><a href="./aws.html#1-application-load-balancer-alb">1. Application Load Balancer (ALB)</a></li>
+<li><a href="./aws.html#2-network-load-balancer-nlb">2. Network Load Balancer (NLB)</a></li>
+<li><a href="./aws.html#3-gateway-load-balancer-glb">3. Gateway Load Balancer (GLB)</a></li>
+<li><a href="./aws.html#4-classic-load-balancer-clb">4. Classic Load Balancer (CLB)</a></li>
+<li><a href="./aws.html#comparison-table-of-aws-load-balancer-types">Comparison Table of AWS Load Balancer Types</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-auto-scaling-and-how-it-works">What is Auto Scaling and How It Works</a>
+<ul>
+<li><a href="./aws.html#the-core-problem-auto-scaling-solves-dynamic-capacity-management">The Core Problem Auto Scaling Solves: Dynamic Capacity Management</a></li>
+<li><a href="./aws.html#how-aws-auto-scaling-works-key-components">How AWS Auto Scaling Works: Key Components</a>
+<ul>
+<li><a href="./aws.html#1-auto-scaling-group-asg">1. Auto Scaling Group (ASG)</a></li>
+<li><a href="./aws.html#2-launch-template-or-launch-configuration">2. Launch Template (or Launch Configuration)</a></li>
+<li><a href="./aws.html#3-scaling-policies">3. Scaling Policies</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#how-auto-scaling-delivers-key-cloud-benefits">How Auto Scaling Delivers Key Cloud Benefits</a></li>
+<li><a href="./aws.html#integration-with-other-aws-services">Integration with Other AWS Services</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#how-high-availability-and-fault-tolerance-are-achieved">How High Availability and Fault Tolerance Are Achieved</a>
+<ul>
+<li><a href="./aws.html#1-high-availability-ha">1. High Availability (HA)</a>
+<ul>
+<li><a href="./aws.html#key-aws-strategies-and-services-for-high-availability">Key AWS Strategies and Services for High Availability:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#2-fault-tolerance">2. Fault Tolerance</a>
+<ul>
+<li><a href="./aws.html#key-aws-strategies-and-services-for-fault-tolerance">Key AWS Strategies and Services for Fault Tolerance:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="-storage-services"><a class="header" href="#-storage-services"><a href="./aws.html#-storage-services">💾 STORAGE SERVICES</a></a></h1>
+<ul>
+<li><a href="./aws.html#what-is-cloud-storage">What is Cloud Storage</a>
+<ul>
+<li><a href="./aws.html#the-evolution-of-storage-from-on-premises-to-cloud">The Evolution of Storage: From On-Premises to Cloud</a>
+<ul>
+<li><a href="./aws.html#traditional-on-premises-storage">Traditional On-Premises Storage</a></li>
+<li><a href="./aws.html#cloud-storage-a-transformative-approach">Cloud Storage: A Transformative Approach</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#types-of-cloud-storage">Types of Cloud Storage</a>
+<ul>
+<li><a href="./aws.html#1-object-storage">1. Object Storage</a></li>
+<li><a href="./aws.html#2-block-storage">2. Block Storage</a></li>
+<li><a href="./aws.html#3-file-storage">3. File Storage</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#comparison-table-of-cloud-storage-types-aws-examples">Comparison Table of Cloud Storage Types (AWS Examples)</a></li>
+<li><a href="./aws.html#benefits-of-cloud-storage-across-all-types">Benefits of Cloud Storage Across All Types</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-amazon-s3-object-storage">What is Amazon S3 Object Storage</a>
+<ul>
+<li><a href="./aws.html#key-concepts-of-amazon-s3">Key Concepts of Amazon S3</a>
+<ul>
+<li><a href="./aws.html#1-objects">1. Objects</a></li>
+<li><a href="./aws.html#2-buckets">2. Buckets</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#core-features-and-benefits-of-amazon-s3">Core Features and Benefits of Amazon S3</a></li>
+<li><a href="./aws.html#amazon-s3-storage-classes">Amazon S3 Storage Classes</a></li>
+<li><a href="./aws.html#real-world-use-cases-for-amazon-s3">Real-World Use Cases for Amazon S3</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#how-s3-buckets-and-objects-work">How S3 Buckets and Objects Work</a>
+<ul>
+<li><a href="./aws.html#s3-buckets-the-containers-for-your-data">S3 Buckets: The Containers for Your Data</a>
+<ul>
+<li><a href="./aws.html#key-characteristics-of-s3-buckets">Key Characteristics of S3 Buckets:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#s3-objects-the-data-itself">S3 Objects: The Data Itself</a>
+<ul>
+<li><a href="./aws.html#key-characteristics-of-s3-objects">Key Characteristics of S3 Objects:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#how-buckets-and-objects-interact">How Buckets and Objects Interact</a></li>
+<li><a href="./aws.html#flow-diagram-s3-put-object-operation">Flow Diagram: S3 Put Object Operation</a></li>
+<li><a href="./aws.html#real-world-example-an-online-photo-sharing-application">Real-World Example: An Online Photo Sharing Application</a></li>
+<li><a href="./aws.html#s3-prefix-vs-folders">S3 Prefix vs. Folders</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#s3-storage-classes-and-cost-optimization">S3 Storage Classes and Cost Optimization</a>
+<ul>
+<li><a href="./aws.html#understanding-the-cost-components-of-s3">Understanding the Cost Components of S3</a></li>
+<li><a href="./aws.html#detailed-explanation-of-s3-storage-classes">Detailed Explanation of S3 Storage Classes</a>
+<ul>
+<li><a href="./aws.html#1-s3-standard-s3-std">1. S3 Standard (S3-STD)</a></li>
+<li><a href="./aws.html#2-s3-intelligent-tiering-s3-int">2. S3 Intelligent-Tiering (S3-INT)</a></li>
+<li><a href="./aws.html#3-s3-standard-infrequent-access-s3-standard-ia">3. S3 Standard-Infrequent Access (S3 Standard-IA)</a></li>
+<li><a href="./aws.html#4-s3-one-zone-infrequent-access-s3-one-zone-ia">4. S3 One Zone-Infrequent Access (S3 One Zone-IA)</a></li>
+<li><a href="./aws.html#5-amazon-s3-glacier-instant-retrieval-s3-glacier-ir">5. Amazon S3 Glacier Instant Retrieval (S3 Glacier IR)</a></li>
+<li><a href="./aws.html#6-amazon-s3-glacier-flexible-retrieval-formerly-s3-glacier">6. Amazon S3 Glacier Flexible Retrieval (formerly S3 Glacier)</a></li>
+<li><a href="./aws.html#7-amazon-s3-glacier-deep-archive-s3-glacier-da">7. Amazon S3 Glacier Deep Archive (S3 Glacier DA)</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#cost-optimization-strategies-with-s3-storage-classes">Cost Optimization Strategies with S3 Storage Classes</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-s3-versioning-and-lifecycle-management">What is S3 Versioning and Lifecycle Management</a>
+<ul>
+<li><a href="./aws.html#s3-versioning">S3 Versioning</a>
+<ul>
+<li><a href="./aws.html#how-s3-versioning-works">How S3 Versioning Works:</a></li>
+<li><a href="./aws.html#states-of-versioning">States of Versioning:</a></li>
+<li><a href="./aws.html#benefits-of-s3-versioning">Benefits of S3 Versioning:</a></li>
+<li><a href="./aws.html#considerations-for-s3-versioning">Considerations for S3 Versioning:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#s3-lifecycle-management">S3 Lifecycle Management</a>
+<ul>
+<li><a href="./aws.html#how-s3-lifecycle-management-works">How S3 Lifecycle Management Works:</a></li>
+<li><a href="./aws.html#common-lifecycle-rule-scenarios">Common Lifecycle Rule Scenarios:</a></li>
+<li><a href="./aws.html#benefits-of-s3-lifecycle-management">Benefits of S3 Lifecycle Management:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#how-versioning-and-lifecycle-management-work-together">How Versioning and Lifecycle Management Work Together</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#how-security-and-access-control-work-in-s3">How Security and Access Control Work in S3</a>
+<ul>
+<li><a href="./aws.html#1-identity-and-access-management-iam-policies">1. Identity and Access Management (IAM) Policies</a></li>
+<li><a href="./aws.html#2-s3-bucket-policies">2. S3 Bucket Policies</a></li>
+<li><a href="./aws.html#3-s3-access-control-lists-acls">3. S3 Access Control Lists (ACLs)</a></li>
+<li><a href="./aws.html#4-block-public-access">4. Block Public Access</a></li>
+<li><a href="./aws.html#5-data-encryption">5. Data Encryption</a>
+<ul>
+<li><a href="./aws.html#encryption-at-rest">Encryption at Rest:</a></li>
+<li><a href="./aws.html#encryption-in-transit">Encryption in Transit:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#6-logging-and-monitoring">6. Logging and Monitoring</a></li>
+<li><a href="./aws.html#7-other-security-considerations">7. Other Security Considerations</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-amazon-ebs-block-storage">What is Amazon EBS Block Storage</a>
+<ul>
+<li><a href="./aws.html#understanding-block-storage">Understanding Block Storage</a></li>
+<li><a href="./aws.html#key-characteristics-of-amazon-ebs">Key Characteristics of Amazon EBS</a></li>
+<li><a href="./aws.html#ebs-volume-types">EBS Volume Types</a>
+<ul>
+<li><a href="./aws.html#ssd-backed-volumes-for-transactional-workloads">SSD-Backed Volumes (for transactional workloads)</a></li>
+<li><a href="./aws.html#hdd-backed-volumes-for-throughput-intensive-workloads">HDD-Backed Volumes (for throughput-intensive workloads)</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#use-cases-for-amazon-ebs">Use Cases for Amazon EBS</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-amazon-efs-file-storage">What is Amazon EFS File Storage</a>
+<ul>
+<li><a href="./aws.html#understanding-file-storage-shared-storage">Understanding File Storage (Shared Storage)</a></li>
+<li><a href="./aws.html#key-characteristics-of-amazon-efs">Key Characteristics of Amazon EFS</a></li>
+<li><a href="./aws.html#how-efs-works-with-ec2-and-on-premises">How EFS Works with EC2 and On-Premises</a></li>
+<li><a href="./aws.html#use-cases-for-amazon-efs">Use Cases for Amazon EFS</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#difference-between-s3-ebs-and-efs">Difference Between S3, EBS, and EFS</a>
+<ul>
+<li><a href="./aws.html#1-amazon-s3-simple-storage-service---object-storage-1">1. Amazon S3 (Simple Storage Service) - Object Storage</a>
+<ul>
+<li><a href="./aws.html#key-characteristics">Key Characteristics:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#2-amazon-ebs-elastic-block-store---block-storage-1">2. Amazon EBS (Elastic Block Store) - Block Storage</a>
+<ul>
+<li><a href="./aws.html#key-characteristics-1">Key Characteristics:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#3-amazon-efs-elastic-file-system---file-storage-1">3. Amazon EFS (Elastic File System) - File Storage</a>
+<ul>
+<li><a href="./aws.html#key-characteristics-2">Key Characteristics:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#comparison-table-s3-vs-ebs-vs-efs">Comparison Table: S3 vs. EBS vs. EFS</a></li>
+<li><a href="./aws.html#flow-diagram-choosing-the-right-aws-storage-service">Flow Diagram: Choosing the Right AWS Storage Service</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="-database-services"><a class="header" href="#-database-services"><a href="./aws.html#️-database-services">🗄️ DATABASE SERVICES</a></a></h1>
+<ul>
+<li><a href="./aws.html#what-is-a-database-and-why-applications-need-it">What is a Database and Why Applications Need It</a>
+<ul>
+<li><a href="./aws.html#the-problem-before-databases-manual-data-management">The Problem Before Databases: Manual Data Management</a></li>
+<li><a href="./aws.html#why-applications-need-databases-the-core-value-proposition">Why Applications Need Databases: The Core Value Proposition</a>
+<ul>
+<li><a href="./aws.html#1-persistent-storage">1. Persistent Storage</a></li>
+<li><a href="./aws.html#2-data-organization-and-structure">2. Data Organization and Structure</a></li>
+<li><a href="./aws.html#3-efficient-data-retrieval-and-querying">3. Efficient Data Retrieval and Querying</a></li>
+<li><a href="./aws.html#4-data-integrity-and-validation">4. Data Integrity and Validation</a></li>
+<li><a href="./aws.html#5-concurrency-control">5. Concurrency Control</a></li>
+<li><a href="./aws.html#6-security">6. Security</a></li>
+<li><a href="./aws.html#7-backup-and-recovery">7. Backup and Recovery</a></li>
+<li><a href="./aws.html#8-scalability">8. Scalability</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="./aws.html#difference-between-relational-and-non-relational-databases">Difference Between Relational and Non-Relational Databases</a>
+<ul>
+<li><a href="./aws.html#1-relational-databases-sql-databases">1. Relational Databases (SQL Databases)</a>
+<ul>
+<li><a href="./aws.html#key-characteristics-3">Key Characteristics:</a></li>
+<li><a href="./aws.html#when-to-use-relational-databases">When to Use Relational Databases:</a></li>
+<li><a href="./aws.html#aws-relational-database-services">AWS Relational Database Services:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#2-non-relational-databases-nosql-databases">2. Non-Relational Databases (NoSQL Databases)</a>
+<ul>
+<li><a href="./aws.html#key-characteristics-4">Key Characteristics:</a></li>
+<li><a href="./aws.html#when-to-use-non-relational-databases">When to Use Non-Relational Databases:</a></li>
+<li><a href="./aws.html#aws-non-relational-database-services">AWS Non-Relational Database Services:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#key-differences-summarized">Key Differences Summarized</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-amazon-rds-managed-relational-database">What is Amazon RDS Managed Relational Database</a>
+<ul>
+<li><a href="./aws.html#the-problem-before-amazon-rds-self-managing-databases">The Problem Before Amazon RDS: Self-Managing Databases</a></li>
+<li><a href="./aws.html#how-amazon-rds-solves-these-problems-the-managed-advantage">How Amazon RDS Solves These Problems: The Managed Advantage</a>
+<ul>
+<li><a href="./aws.html#key-benefits-and-features-of-amazon-rds">Key Benefits and Features of Amazon RDS:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#core-components-of-an-amazon-rds-deployment">Core Components of an Amazon RDS Deployment</a></li>
+<li><a href="./aws.html#how-multi-az-works-for-high-availability-visual-flow">How Multi-AZ Works for High Availability (Visual Flow)</a></li>
+<li><a href="./aws.html#use-cases-for-amazon-rds">Use Cases for Amazon RDS</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#supported-database-engines-in-amazon-rds">Supported Database Engines in Amazon RDS</a>
+<ul>
+<li><a href="./aws.html#1-amazon-aurora">1. Amazon Aurora</a></li>
+<li><a href="./aws.html#2-mysql">2. MySQL</a></li>
+<li><a href="./aws.html#3-postgresql">3. PostgreSQL</a></li>
+<li><a href="./aws.html#4-oracle-database">4. Oracle Database</a></li>
+<li><a href="./aws.html#5-sql-server">5. SQL Server</a></li>
+<li><a href="./aws.html#6-mariadb">6. MariaDB</a></li>
+<li><a href="./aws.html#considerations-when-choosing-an-rds-engine">Considerations When Choosing an RDS Engine</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-amazon-aurora-and-why-it-is-faster">What is Amazon Aurora and Why It Is Faster</a>
+<ul>
+<li><a href="./aws.html#the-challenge-with-traditional-relational-databases-and-how-aurora-addresses-it">The Challenge with Traditional Relational Databases (and how Aurora addresses it)</a></li>
+<li><a href="./aws.html#how-amazon-aurora-is-engineered-for-speed-and-performance">How Amazon Aurora is Engineered for Speed and Performance</a>
+<ul>
+<li><a href="./aws.html#1-separated-compute-and-storage">1. Separated Compute and Storage</a></li>
+<li><a href="./aws.html#2-distributed-shared-storage-system">2. Distributed, Shared Storage System</a></li>
+<li><a href="./aws.html#3-optimized-log-processing">3. Optimized Log Processing</a></li>
+<li><a href="./aws.html#4-fast-read-replicas">4. Fast Read Replicas</a></li>
+<li><a href="./aws.html#5-cache-aware-storage">5. Cache-Aware Storage</a></li>
+<li><a href="./aws.html#flow-diagram-aurora-architecture-vs-traditional-rds">Flow Diagram: Aurora Architecture vs. Traditional RDS</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#key-benefits-of-amazon-aurora">Key Benefits of Amazon Aurora</a></li>
+<li><a href="./aws.html#use-cases-for-amazon-aurora">Use Cases for Amazon Aurora</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-amazon-dynamodb-nosql-database">What is Amazon DynamoDB NoSQL Database</a>
+<ul>
+<li><a href="./aws.html#the-rise-of-nosql-and-dynamodbs-role">The Rise of NoSQL and DynamoDB’s Role</a></li>
+<li><a href="./aws.html#key-characteristics-and-features-of-amazon-dynamodb">Key Characteristics and Features of Amazon DynamoDB</a></li>
+<li><a href="./aws.html#core-components-of-dynamodb">Core Components of DynamoDB</a></li>
+<li><a href="./aws.html#use-cases-for-amazon-dynamodb">Use Cases for Amazon DynamoDB</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#when-to-use-dynamodb-vs-rds">When to Use DynamoDB vs RDS</a>
+<ul>
+<li><a href="./aws.html#understanding-the-fundamental-differences">Understanding the Fundamental Differences</a></li>
+<li><a href="./aws.html#when-to-choose-amazon-rds">When to Choose Amazon RDS</a></li>
+<li><a href="./aws.html#when-to-choose-amazon-dynamodb">When to Choose Amazon DynamoDB</a></li>
+<li><a href="./aws.html#summary-table-dynamodb-vs-rds">Summary Table: DynamoDB vs. RDS</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-amazon-redshift-data-warehouse">What is Amazon Redshift Data Warehouse</a>
+<ul>
+<li><a href="./aws.html#the-problem-redshift-solves-analyzing-big-data">The Problem Redshift Solves: Analyzing Big Data</a></li>
+<li><a href="./aws.html#how-amazon-redshift-works-columnar-and-distributed-architecture">How Amazon Redshift Works: Columnar and Distributed Architecture</a></li>
+<li><a href="./aws.html#key-features-and-benefits-of-amazon-redshift">Key Features and Benefits of Amazon Redshift</a></li>
+<li><a href="./aws.html#core-components-of-a-redshift-cluster">Core Components of a Redshift Cluster</a></li>
+<li><a href="./aws.html#use-cases-for-amazon-redshift">Use Cases for Amazon Redshift</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#how-backup-restore-and-disaster-recovery-work">How Backup, Restore, and Disaster Recovery Work</a>
+<ul>
+<li><a href="./aws.html#backup">Backup</a>
+<ul>
+<li><a href="./aws.html#purpose-of-backups">Purpose of Backups</a></li>
+<li><a href="./aws.html#types-of-backups">Types of Backups</a></li>
+<li><a href="./aws.html#backup-strategies-and-policies">Backup Strategies and Policies</a></li>
+<li><a href="./aws.html#aws-specific-database-backup-terminology-and-services">AWS-Specific Database Backup Terminology and Services</a></li>
+<li><a href="./aws.html#flow-diagram-backup-process-conceptual">Flow Diagram: Backup Process (Conceptual)</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#restore">Restore</a>
+<ul>
+<li><a href="./aws.html#purpose-of-restores">Purpose of Restores</a></li>
+<li><a href="./aws.html#the-restore-process">The Restore Process</a></li>
+<li><a href="./aws.html#testing-restores">Testing Restores</a></li>
+<li><a href="./aws.html#aws-specific-database-restore-terminology-and-services">AWS-Specific Database Restore Terminology and Services</a></li>
+<li><a href="./aws.html#flow-diagram-restore-process-conceptual">Flow Diagram: Restore Process (Conceptual)</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#disaster-recovery-dr">Disaster Recovery (DR)</a>
+<ul>
+<li><a href="./aws.html#distinction-from-backup-and-restore">Distinction from Backup and Restore</a></li>
+<li><a href="./aws.html#key-metrics-in-disaster-recovery">Key Metrics in Disaster Recovery</a></li>
+<li><a href="./aws.html#disaster-recovery-strategies-aws-context">Disaster Recovery Strategies (AWS Context)</a></li>
+<li><a href="./aws.html#flow-diagram-dr-strategy---pilot-light-conceptual">Flow Diagram: DR Strategy - Pilot Light (Conceptual)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="-networking--content-delivery"><a class="header" href="#-networking--content-delivery"><a href="./aws.html#-networking--content-delivery">🌐 NETWORKING &amp; CONTENT DELIVERY</a></a></h1>
+<ul>
+<li><a href="./aws.html#what-is-networking-in-cloud-computing">What is Networking in Cloud Computing</a>
+<ul>
+<li><a href="./aws.html#core-principles-of-networking-in-cloud-computing">Core Principles of Networking in Cloud Computing</a>
+<ul>
+<li><a href="./aws.html#1-virtualization">1. Virtualization</a></li>
+<li><a href="./aws.html#2-software-defined-networking-sdn">2. Software-Defined Networking (SDN)</a></li>
+<li><a href="./aws.html#3-programmability-and-api-driven-management">3. Programmability and API-Driven Management</a></li>
+<li><a href="./aws.html#4-scalability-and-elasticity">4. Scalability and Elasticity</a></li>
+<li><a href="./aws.html#5-global-reach">5. Global Reach</a></li>
+<li><a href="./aws.html#6-robust-security">6. Robust Security</a></li>
+<li><a href="./aws.html#7-managed-services">7. Managed Services</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#key-components-of-cloud-networking-aws-context">Key Components of Cloud Networking (AWS Context)</a></li>
+<li><a href="./aws.html#how-cloud-networking-works-simplified-flow">How Cloud Networking Works (Simplified Flow)</a>
+<ul>
+<li><a href="./aws.html#flow-diagram-basic-aws-cloud-network-architecture">Flow Diagram: Basic AWS Cloud Network Architecture</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#conclusion-1">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-an-amazon-virtual-private-cloud-vpc">What is an Amazon Virtual Private Cloud (VPC)</a>
+<ul>
+<li><a href="./aws.html#key-features-and-benefits-of-an-amazon-vpc">Key Features and Benefits of an Amazon VPC</a></li>
+<li><a href="./aws.html#core-components-of-an-amazon-vpc">Core Components of an Amazon VPC</a>
+<ul>
+<li><a href="./aws.html#1-cidr-blocks">1. CIDR Blocks</a></li>
+<li><a href="./aws.html#2-subnets">2. Subnets</a></li>
+<li><a href="./aws.html#3-route-tables">3. Route Tables</a></li>
+<li><a href="./aws.html#4-internet-gateway-igw">4. Internet Gateway (IGW)</a></li>
+<li><a href="./aws.html#5-nat-gateway-network-address-translation-gateway">5. NAT Gateway (Network Address Translation Gateway)</a></li>
+<li><a href="./aws.html#6-security-groups">6. Security Groups</a></li>
+<li><a href="./aws.html#7-network-access-control-lists-nacls">7. Network Access Control Lists (NACLs)</a></li>
+<li><a href="./aws.html#table-security-groups-vs-network-acls">Table: Security Groups vs. Network ACLs</a></li>
+<li><a href="./aws.html#8-vpc-endpoints">8. VPC Endpoints</a></li>
+<li><a href="./aws.html#9-vpc-peering">9. VPC Peering</a></li>
+<li><a href="./aws.html#10-aws-transit-gateway">10. AWS Transit Gateway</a></li>
+<li><a href="./aws.html#11-aws-site-to-site-vpn-and-aws-direct-connect">11. AWS Site-to-Site VPN and AWS Direct Connect</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#designing-a-vpc">Designing a VPC</a>
+<ul>
+<li><a href="./aws.html#flow-diagram-a-typical-3-tier-vpc-architecture">Flow Diagram: A Typical 3-Tier VPC Architecture</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="./aws.html#what-are-subnets-and-why-public-and-private-subnets-are-used">What are Subnets and Why Public and Private Subnets Are Used</a>
+<ul>
+<li><a href="./aws.html#what-are-subnets">What are Subnets?</a>
+<ul>
+<li><a href="./aws.html#purpose-and-benefits-of-subnets">Purpose and Benefits of Subnets:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#why-public-and-private-subnets-are-used">Why Public and Private Subnets Are Used</a>
+<ul>
+<li><a href="./aws.html#1-public-subnets">1. Public Subnets</a></li>
+<li><a href="./aws.html#2-private-subnets">2. Private Subnets</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#flow-diagram-public-and-private-subnets-in-a-vpc">Flow Diagram: Public and Private Subnets in a VPC</a></li>
+<li><a href="./aws.html#conclusion-on-subnets">Conclusion on Subnets</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-an-internet-gateway">What is an Internet Gateway</a>
+<ul>
+<li><a href="./aws.html#how-an-internet-gateway-works">How an Internet Gateway Works</a></li>
+<li><a href="./aws.html#purpose-and-benefits-of-an-internet-gateway">Purpose and Benefits of an Internet Gateway</a></li>
+<li><a href="./aws.html#real-world-examples-of-internet-gateway-usage">Real-world Examples of Internet Gateway Usage</a>
+<ul>
+<li><a href="./aws.html#flow-diagram-internet-gateway-in-action">Flow Diagram: Internet Gateway in Action</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#interview-ready-answer">Interview-ready Answer</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-a-nat-gateway-and-why-it-is-required">What is a NAT Gateway and Why It Is Required</a>
+<ul>
+<li><a href="./aws.html#what-is-a-nat-gateway">What is a NAT Gateway?</a></li>
+<li><a href="./aws.html#why-is-a-nat-gateway-required">Why is a NAT Gateway Required?</a>
+<ul>
+<li><a href="./aws.html#how-a-nat-gateway-addresses-the-need">How a NAT Gateway Addresses the Need:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#nat-gateway-vs-nat-instance-deprecated">NAT Gateway vs. NAT Instance (Deprecated)</a></li>
+<li><a href="./aws.html#how-a-nat-gateway-works-simplified-flow">How a NAT Gateway Works (Simplified Flow)</a>
+<ul>
+<li><a href="./aws.html#flow-diagram-nat-gateway-usage">Flow Diagram: NAT Gateway Usage</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#conclusion-on-nat-gateway">Conclusion on NAT Gateway</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#how-route-tables-control-network-traffic">How Route Tables Control Network Traffic</a>
+<ul>
+<li><a href="./aws.html#what-are-route-tables">What are Route Tables?</a></li>
+<li><a href="./aws.html#core-components-of-a-route-table">Core Components of a Route Table</a></li>
+<li><a href="./aws.html#how-route-tables-control-traffic-flow">How Route Tables Control Traffic Flow</a></li>
+<li><a href="./aws.html#types-of-route-tables">Types of Route Tables</a></li>
+<li><a href="./aws.html#real-world-examples-of-route-table-usage">Real-world Examples of Route Table Usage</a>
+<ul>
+<li><a href="./aws.html#1-public-subnet-route-table">1. Public Subnet Route Table</a></li>
+<li><a href="./aws.html#2-private-subnet-route-table-outbound-internet-via-nat-gateway">2. Private Subnet Route Table (Outbound Internet via NAT Gateway)</a></li>
+<li><a href="./aws.html#3-private-subnet-route-table-no-internet-access">3. Private Subnet Route Table (No Internet Access)</a></li>
+<li><a href="./aws.html#4-vpn-subnet-route-table-hybrid-cloud">4. VPN Subnet Route Table (Hybrid Cloud)</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#interview-ready-answer-1">Interview-ready Answer</a></li>
+<li><a href="./aws.html#conclusion-on-route-tables">Conclusion on Route Tables</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#difference-between-security-groups-and-network-acls">Difference Between Security Groups and Network ACLs</a>
+<ul>
+<li><a href="./aws.html#security-groups-sgs">Security Groups (SGs)</a>
+<ul>
+<li><a href="./aws.html#what-a-security-group-is">What a Security Group Is</a></li>
+<li><a href="./aws.html#how-security-groups-work">How Security Groups Work</a></li>
+<li><a href="./aws.html#real-world-analogy-apartment-building-door">Real-World Analogy: Apartment Building Door</a></li>
+<li><a href="./aws.html#interview-ready-answer-what-is-a-security-group-and-its-key-characteristics">Interview Ready Answer: What is a Security Group and its key characteristics?</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#network-access-control-lists-nacls">Network Access Control Lists (NACLs)</a>
+<ul>
+<li><a href="./aws.html#what-a-network-acl-is">What a Network ACL Is</a></li>
+<li><a href="./aws.html#how-network-acls-work">How Network ACLs Work</a></li>
+<li><a href="./aws.html#real-world-analogy-main-gate-of-a-housing-complex">Real-World Analogy: Main Gate of a Housing Complex</a></li>
+<li><a href="./aws.html#interview-ready-answer-what-is-a-network-acl-and-how-does-it-differ-from-a-security-group">Interview Ready Answer: What is a Network ACL and how does it differ from a Security Group?</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#key-differences-between-security-groups-and-network-acls">Key Differences Between Security Groups and Network ACLs</a>
+<ul>
+<li><a href="./aws.html#traffic-flow-diagram">Traffic Flow Diagram</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#when-to-use-which-and-why-both">When to Use Which (and Why Both)</a>
+<ul>
+<li><a href="./aws.html#best-practices">Best Practices</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-an-elastic-ip-address">What is an Elastic IP Address</a>
+<ul>
+<li><a href="./aws.html#understanding-dynamic-vs-static-ips-in-cloud">Understanding Dynamic vs. Static IPs in Cloud</a></li>
+<li><a href="./aws.html#what-is-an-elastic-ip-address-eip">What is an Elastic IP Address (EIP)?</a>
+<ul>
+<li><a href="./aws.html#key-characteristics-of-an-eip">Key Characteristics of an EIP:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#why-are-elastic-ips-needed">Why are Elastic IPs Needed?</a>
+<ul>
+<li><a href="./aws.html#primary-use-cases">Primary Use Cases:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#how-elastic-ips-work">How Elastic IPs Work</a>
+<ul>
+<li><a href="./aws.html#diagram-elastic-ip-lifecycle-and-association">Diagram: Elastic IP Lifecycle and Association</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#interview-ready-answer-what-is-an-elastic-ip-and-why-is-it-useful">Interview Ready Answer: What is an Elastic IP and why is it useful?</a></li>
+<li><a href="./aws.html#billing-implications-of-elastic-ips">Billing Implications of Elastic IPs</a></li>
+<li><a href="./aws.html#best-practices-and-considerations">Best Practices and Considerations</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-dns-and-how-it-works">What is DNS and How It Works</a>
+<ul>
+<li><a href="./aws.html#why-do-we-need-dns">Why Do We Need DNS?</a></li>
+<li><a href="./aws.html#core-components-of-dns">Core Components of DNS</a>
+<ul>
+<li><a href="./aws.html#dns-hierarchy">DNS Hierarchy</a></li>
+<li><a href="./aws.html#dns-servers-name-servers">DNS Servers (Name Servers)</a></li>
+<li><a href="./aws.html#dns-records">DNS Records</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#the-dns-resolution-process-how-it-works">The DNS Resolution Process: How It Works</a></li>
+<li><a href="./aws.html#caching-and-time-to-live-ttl">Caching and Time To Live (TTL)</a></li>
+<li><a href="./aws.html#benefits-of-dns">Benefits of DNS</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-amazon-route-53-dns-service">What is Amazon Route 53 DNS Service</a>
+<ul>
+<li><a href="./aws.html#why-use-amazon-route-53">Why Use Amazon Route 53?</a></li>
+<li><a href="./aws.html#core-capabilities-of-amazon-route-53">Core Capabilities of Amazon Route 53</a>
+<ul>
+<li><a href="./aws.html#1-domain-registration">1. Domain Registration</a></li>
+<li><a href="./aws.html#2-dns-service-authoritative-dns">2. DNS Service (Authoritative DNS)</a></li>
+<li><a href="./aws.html#3-traffic-management">3. Traffic Management</a></li>
+<li><a href="./aws.html#health-checks--dns-failover">Health Checks &amp; DNS Failover</a></li>
+<li><a href="./aws.html#private-hosted-zones">Private Hosted Zones</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#route-53-and-other-aws-services">Route 53 and Other AWS Services</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="-identity--access-management-iam"><a class="header" href="#-identity--access-management-iam"><a href="./aws.html#-identity--access-management-iam">👤 IDENTITY &amp; ACCESS MANAGEMENT (IAM)</a></a></h1>
+<ul>
+<li><a href="./aws.html#what-is-identity-and-access-management-iam">What is Identity and Access Management (IAM)?</a>
+<ul>
+<li><a href="./aws.html#core-concepts-of-iam">Core Concepts of IAM</a></li>
+<li><a href="./aws.html#why-is-iam-important">Why is IAM Important?</a></li>
+<li><a href="./aws.html#key-components-and-concepts-in-a-general-iam-system">Key Components and Concepts in a General IAM System</a></li>
+<li><a href="./aws.html#flow-diagram-general-iam-process">Flow Diagram: General IAM Process</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#how-authentication-and-authorization-work-in-aws">How Authentication and Authorization Work in AWS</a>
+<ul>
+<li><a href="./aws.html#aws-iam-core-components">AWS IAM Core Components</a></li>
+<li><a href="./aws.html#how-authentication-works-in-aws">How Authentication Works in AWS</a></li>
+<li><a href="./aws.html#how-authorization-works-in-aws">How Authorization Works in AWS</a>
+<ul>
+<li><a href="./aws.html#aws-policy-evaluation-logic">AWS Policy Evaluation Logic</a></li>
+<li><a href="./aws.html#authorization-decision-process">Authorization Decision Process:</a></li>
+<li><a href="./aws.html#example-iam-user-accessing-s3-bucket">Example: IAM User Accessing S3 Bucket</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-an-iam-user">What is an IAM User</a>
+<ul>
+<li><a href="./aws.html#core-concept-and-purpose">Core Concept and Purpose</a></li>
+<li><a href="./aws.html#attributes-and-credentials-of-an-iam-user">Attributes and Credentials of an IAM User</a></li>
+<li><a href="./aws.html#types-of-access-for-iam-users">Types of Access for IAM Users</a></li>
+<li><a href="./aws.html#best-practices-for-managing-iam-users">Best Practices for Managing IAM Users</a></li>
+<li><a href="./aws.html#iam-user-creation-flow-simplified">IAM User Creation Flow (Simplified)</a></li>
+<li><a href="./aws.html#differentiating-iam-user-from-root-user">Differentiating IAM User from Root User</a></li>
+<li><a href="./aws.html#security-considerations-for-iam-users">Security Considerations for IAM Users</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-an-iam-group">What is an IAM Group</a>
+<ul>
+<li><a href="./aws.html#core-concept-and-purpose-1">Core Concept and Purpose</a></li>
+<li><a href="./aws.html#attributes-and-functionality-of-an-iam-group">Attributes and Functionality of an IAM Group</a></li>
+<li><a href="./aws.html#how-permissions-work-with-groups">How Permissions Work with Groups</a></li>
+<li><a href="./aws.html#benefits-of-using-iam-groups">Benefits of Using IAM Groups</a></li>
+<li><a href="./aws.html#best-practices-for-managing-iam-groups">Best Practices for Managing IAM Groups</a></li>
+<li><a href="./aws.html#relationship-between-users-groups-and-policies">Relationship between Users, Groups, and Policies</a></li>
+<li><a href="./aws.html#differentiating-iam-group-from-iam-role">Differentiating IAM Group from IAM Role</a></li>
+<li><a href="./aws.html#security-considerations-for-iam-groups">Security Considerations for IAM Groups</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-an-iam-role">What is an IAM Role</a>
+<ul>
+<li><a href="./aws.html#core-concept-and-purpose-2">Core Concept and Purpose</a></li>
+<li><a href="./aws.html#key-components-of-an-iam-role">Key Components of an IAM Role</a></li>
+<li><a href="./aws.html#how-iam-roles-work-the-assumption-process">How IAM Roles Work: The Assumption Process</a></li>
+<li><a href="./aws.html#use-cases-for-iam-roles-with-aws-specific-examples">Use Cases for IAM Roles (with AWS Specific Examples)</a></li>
+<li><a href="./aws.html#iam-role-vs-iam-user">IAM Role vs. IAM User</a></li>
+<li><a href="./aws.html#benefits-of-using-iam-roles">Benefits of Using IAM Roles</a></li>
+<li><a href="./aws.html#best-practices-for-managing-iam-roles">Best Practices for Managing IAM Roles</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-are-iam-policies-and-permission-boundaries">What are IAM Policies and Permission Boundaries</a>
+<ul>
+<li><a href="./aws.html#part-1-iam-policies">Part 1: IAM Policies</a>
+<ul>
+<li><a href="./aws.html#core-concept-and-purpose-3">Core Concept and Purpose</a></li>
+<li><a href="./aws.html#structure-of-an-iam-policy">Structure of an IAM Policy</a></li>
+<li><a href="./aws.html#types-of-iam-policies">Types of IAM Policies</a></li>
+<li><a href="./aws.html#policy-evaluation-logic">Policy Evaluation Logic</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#part-2-permission-boundaries">Part 2: Permission Boundaries</a>
+<ul>
+<li><a href="./aws.html#core-concept-and-purpose-4">Core Concept and Purpose</a></li>
+<li><a href="./aws.html#how-permission-boundaries-work">How Permission Boundaries Work</a></li>
+<li><a href="./aws.html#key-characteristics-of-permission-boundaries">Key Characteristics of Permission Boundaries</a></li>
+<li><a href="./aws.html#use-cases-for-permission-boundaries">Use Cases for Permission Boundaries</a></li>
+<li><a href="./aws.html#permission-boundaries-vs-service-control-policies-scps">Permission Boundaries vs. Service Control Policies (SCPs)</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#best-practices-for-iam-policies-and-permission-boundaries">Best Practices for IAM Policies and Permission Boundaries</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#iam-best-practices-for-secure-access">IAM Best Practices for Secure Access</a>
+<ul>
+<li><a href="./aws.html#1-principle-of-least-privilege">1. Principle of Least Privilege</a></li>
+<li><a href="./aws.html#2-implement-multi-factor-authentication-mfa">2. Implement Multi-Factor Authentication (MFA)</a></li>
+<li><a href="./aws.html#3-enforce-strong-password-policies">3. Enforce Strong Password Policies</a></li>
+<li><a href="./aws.html#4-rotate-credentials-regularly">4. Rotate Credentials Regularly</a></li>
+<li><a href="./aws.html#5-use-iam-roles-for-aws-services-and-ec2-instances">5. Use IAM Roles for AWS Services and EC2 Instances</a></li>
+<li><a href="./aws.html#6-limit-root-user-access">6. Limit Root User Access</a></li>
+<li><a href="./aws.html#7-monitor-and-audit-iam-activity">7. Monitor and Audit IAM Activity</a></li>
+<li><a href="./aws.html#8-remove-unused-credentials-users-and-roles">8. Remove Unused Credentials, Users, and Roles</a></li>
+<li><a href="./aws.html#9-use-iam-access-analyzer">9. Use IAM Access Analyzer</a></li>
+<li><a href="./aws.html#10-implement-permission-boundaries">10. Implement Permission Boundaries</a></li>
+<li><a href="./aws.html#11-centralize-iam-for-multiple-accounts-with-aws-organizations-and-iam-identity-center-aws-sso">11. Centralize IAM for Multiple Accounts with AWS Organizations and IAM Identity Center (AWS SSO)</a></li>
+<li><a href="./aws.html#12-review-and-refine-permissions-regularly">12. Review and Refine Permissions Regularly</a></li>
+<li><a href="./aws.html#13-use-condition-keys-for-granular-control">13. Use Condition Keys for Granular Control</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="-security-services"><a class="header" href="#-security-services"><a href="./aws.html#️-security-services">🛡️ SECURITY SERVICES</a></a></h1>
+<ul>
+<li><a href="./aws.html#what-is-security-in-the-aws-cloud">What is Security in the AWS Cloud</a>
+<ul>
+<li><a href="./aws.html#the-aws-shared-responsibility-model">The AWS Shared Responsibility Model</a>
+<ul>
+<li><a href="./aws.html#shared-responsibility-model-overview">Shared Responsibility Model Overview</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#pillars-of-security-in-the-aws-cloud-customer-perspective">Pillars of Security in the AWS Cloud (Customer Perspective)</a>
+<ul>
+<li><a href="./aws.html#1-identity-and-access-management-iam">1. Identity and Access Management (IAM)</a></li>
+<li><a href="./aws.html#2-detective-controls">2. Detective Controls</a></li>
+<li><a href="./aws.html#3-infrastructure-security">3. Infrastructure Security</a></li>
+<li><a href="./aws.html#4-data-protection">4. Data Protection</a></li>
+<li><a href="./aws.html#5-incident-response">5. Incident Response</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="./aws.html#how-aws-secures-infrastructure">How AWS Secures Infrastructure</a>
+<ul>
+<li><a href="./aws.html#1-physical-security">1. Physical Security</a></li>
+<li><a href="./aws.html#2-network-security">2. Network Security</a></li>
+<li><a href="./aws.html#3-hardware-and-infrastructure-security">3. Hardware and Infrastructure Security</a></li>
+<li><a href="./aws.html#4-operational-security">4. Operational Security</a></li>
+<li><a href="./aws.html#5-compliance-and-certifications">5. Compliance and Certifications</a></li>
+<li><a href="./aws.html#6-global-infrastructure-security">6. Global Infrastructure Security</a></li>
+<li><a href="./aws.html#7-aws-security-team-and-expertise">7. AWS Security Team and Expertise</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-amazon-guardduty-threat-detection">What is Amazon GuardDuty Threat Detection</a>
+<ul>
+<li><a href="./aws.html#how-amazon-guardduty-works">How Amazon GuardDuty Works</a></li>
+<li><a href="./aws.html#interview-ready-what-is-amazon-guardduty">Interview Ready: What is Amazon GuardDuty?</a></li>
+<li><a href="./aws.html#key-capabilities-and-features">Key Capabilities and Features</a></li>
+<li><a href="./aws.html#types-of-threats-detected-by-guardduty">Types of Threats Detected by GuardDuty</a></li>
+<li><a href="./aws.html#interview-ready-what-kind-of-threats-can-guardduty-detect">Interview Ready: What kind of threats can GuardDuty detect?</a></li>
+<li><a href="./aws.html#real-world-examples">Real-World Examples</a>
+<ul>
+<li><a href="./aws.html#example-1-detecting-a-compromised-ec2-instance-for-cryptocurrency-mining">Example 1: Detecting a Compromised EC2 Instance for Cryptocurrency Mining</a></li>
+<li><a href="./aws.html#example-2-preventing-data-exfiltration-from-an-s3-bucket">Example 2: Preventing Data Exfiltration from an S3 Bucket</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#diagram-guardduty-workflow">Diagram: GuardDuty Workflow</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-amazon-inspector-security-assessment">What is Amazon Inspector Security Assessment</a>
+<ul>
+<li><a href="./aws.html#how-amazon-inspector-works">How Amazon Inspector Works</a></li>
+<li><a href="./aws.html#interview-ready-what-is-amazon-inspector">Interview Ready: What is Amazon Inspector?</a></li>
+<li><a href="./aws.html#key-capabilities-and-features-1">Key Capabilities and Features</a></li>
+<li><a href="./aws.html#types-of-vulnerabilities-and-exposures-detected">Types of Vulnerabilities and Exposures Detected</a></li>
+<li><a href="./aws.html#interview-ready-what-types-of-resources-does-inspector-scan-and-what-kind-of-issues-does-it-find">Interview Ready: What types of resources does Inspector scan and what kind of issues does it find?</a></li>
+<li><a href="./aws.html#real-world-examples-1">Real-World Examples</a>
+<ul>
+<li><a href="./aws.html#example-1-identifying-and-remediating-vulnerabilities-in-an-ec2-web-server">Example 1: Identifying and Remediating Vulnerabilities in an EC2 Web Server</a></li>
+<li><a href="./aws.html#example-2-securing-container-images-in-ecr-pipeline">Example 2: Securing Container Images in ECR Pipeline</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#diagram-inspector-workflow">Diagram: Inspector Workflow</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-aws-key-management-service-kms">What is AWS Key Management Service (KMS)</a>
+<ul>
+<li><a href="./aws.html#core-concepts-of-aws-kms">Core Concepts of AWS KMS</a></li>
+<li><a href="./aws.html#how-envelope-encryption-works-with-kms">How Envelope Encryption Works with KMS</a></li>
+<li><a href="./aws.html#interview-ready-explain-envelope-encryption-in-aws-kms">Interview Ready: Explain Envelope Encryption in AWS KMS.</a></li>
+<li><a href="./aws.html#types-of-aws-kms-keys-cmks">Types of AWS KMS Keys (CMKs)</a></li>
+<li><a href="./aws.html#key-management-operations">Key Management Operations</a></li>
+<li><a href="./aws.html#integration-with-other-aws-services-1">Integration with other AWS Services</a></li>
+<li><a href="./aws.html#interview-ready-which-aws-services-integrate-with-kms">Interview Ready: Which AWS services integrate with KMS?</a></li>
+<li><a href="./aws.html#real-world-examples-2">Real-World Examples</a>
+<ul>
+<li><a href="./aws.html#example-1-encrypting-sensitive-customer-data-in-s3">Example 1: Encrypting Sensitive Customer Data in S3</a></li>
+<li><a href="./aws.html#example-2-securing-database-credentials-with-aws-secrets-manager">Example 2: Securing Database Credentials with AWS Secrets Manager</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="./aws.html#how-data-encryption-works-at-rest-and-in-transit">How Data Encryption Works at Rest and In Transit</a>
+<ul>
+<li><a href="./aws.html#why-encrypt-data">Why Encrypt Data?</a></li>
+<li><a href="./aws.html#data-encryption-at-rest">Data Encryption At Rest</a>
+<ul>
+<li><a href="./aws.html#aws-service-examples-for-encryption-at-rest">AWS Service Examples for Encryption At Rest</a></li>
+<li><a href="./aws.html#real-world-example-encrypting-a-database-for-pci-dss-compliance">Real-World Example: Encrypting a Database for PCI DSS Compliance</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#data-encryption-in-transit">Data Encryption In Transit</a>
+<ul>
+<li><a href="./aws.html#aws-service-examples-for-encryption-in-transit">AWS Service Examples for Encryption In Transit</a></li>
+<li><a href="./aws.html#real-world-example-securing-a-web-application-with-https">Real-World Example: Securing a Web Application with HTTPS</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#key-differences-and-importance">Key Differences and Importance</a></li>
+<li><a href="./aws.html#interview-ready-whats-the-difference-between-encryption-at-rest-and-in-transit-and-why-are-both-important">Interview Ready: What’s the difference between encryption at rest and in transit, and why are both important?</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="-monitoring-logging--governance"><a class="header" href="#-monitoring-logging--governance"><a href="./aws.html#-monitoring-logging--governance">📊 MONITORING, LOGGING &amp; GOVERNANCE</a></a></h1>
+<ul>
+<li><a href="./aws.html#what-is-monitoring-and-observability-in-aws">What is Monitoring and Observability in AWS</a>
+<ul>
+<li><a href="./aws.html#understanding-monitoring-in-aws">Understanding Monitoring in AWS</a></li>
+<li><a href="./aws.html#key-aspects-of-monitoring">Key Aspects of Monitoring</a></li>
+<li><a href="./aws.html#interview-ready-what-is-monitoring-in-aws">Interview Ready: What is Monitoring in AWS?</a></li>
+<li><a href="./aws.html#understanding-observability-in-aws">Understanding Observability in AWS</a></li>
+<li><a href="./aws.html#key-aspects-of-observability">Key Aspects of Observability</a></li>
+<li><a href="./aws.html#interview-ready-what-is-observability-in-aws">Interview Ready: What is Observability in AWS?</a></li>
+<li><a href="./aws.html#the-three-pillars-of-observability-in-aws">The Three Pillars of Observability in AWS</a>
+<ul>
+<li><a href="./aws.html#1-metrics-what">1. Metrics (What)</a></li>
+<li><a href="./aws.html#2-logs-context">2. Logs (Context)</a></li>
+<li><a href="./aws.html#3-traces-path">3. Traces (Path)</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#aws-tools-for-monitoring-and-observability">AWS Tools for Monitoring and Observability</a></li>
+<li><a href="./aws.html#flow-diagram-aws-monitoring--observability-ecosystem">Flow Diagram: AWS Monitoring &amp; Observability Ecosystem</a></li>
+<li><a href="./aws.html#real-world-examples-3">Real-World Examples</a>
+<ul>
+<li><a href="./aws.html#1-monitoring-an-ec2-based-web-application">1. Monitoring an EC2-based Web Application</a></li>
+<li><a href="./aws.html#2-observability-for-a-serverless-microservices-application">2. Observability for a Serverless Microservices Application</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-amazon-cloudwatch">What is Amazon CloudWatch</a>
+<ul>
+<li><a href="./aws.html#core-components-of-amazon-cloudwatch">Core Components of Amazon CloudWatch</a></li>
+<li><a href="./aws.html#1-metrics">1. Metrics</a>
+<ul>
+<li><a href="./aws.html#interview-ready-what-are-cloudwatch-metrics">Interview Ready: What are CloudWatch Metrics?</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#2-alarms">2. Alarms</a>
+<ul>
+<li><a href="./aws.html#interview-ready-how-do-cloudwatch-alarms-work">Interview Ready: How do CloudWatch Alarms work?</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#3-logs-cloudwatch-logs">3. Logs (CloudWatch Logs)</a>
+<ul>
+<li><a href="./aws.html#interview-ready-what-is-cloudwatch-logs">Interview Ready: What is CloudWatch Logs?</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#4-dashboards">4. Dashboards</a></li>
+<li><a href="./aws.html#5-events-amazon-eventbridge">5. Events (Amazon EventBridge)</a></li>
+<li><a href="./aws.html#advanced-cloudwatch-features-for-observability">Advanced CloudWatch Features for Observability</a></li>
+<li><a href="./aws.html#aws-service-integration">AWS Service Integration</a></li>
+<li><a href="./aws.html#real-world-examples-4">Real-World Examples</a>
+<ul>
+<li><a href="./aws.html#1-monitoring-a-web-server-fleet-with-auto-scaling">1. Monitoring a Web Server Fleet with Auto Scaling</a></li>
+<li><a href="./aws.html#2-proactive-monitoring-of-a-critical-api-endpoint">2. Proactive Monitoring of a Critical API Endpoint</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="./aws.html#how-cloudwatch-metrics-and-alarms-work">How CloudWatch Metrics and Alarms Work</a>
+<ul>
+<li><a href="./aws.html#how-cloudwatch-metrics-work">How CloudWatch Metrics Work</a>
+<ul>
+<li><a href="./aws.html#1-metric-collection">1. Metric Collection</a></li>
+<li><a href="./aws.html#2-metric-structure">2. Metric Structure</a></li>
+<li><a href="./aws.html#3-metric-storage-and-aggregation">3. Metric Storage and Aggregation</a></li>
+<li><a href="./aws.html#4-metric-math">4. Metric Math</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#interview-ready-how-do-cloudwatch-metrics-work">Interview Ready: How do CloudWatch Metrics work?</a></li>
+<li><a href="./aws.html#how-cloudwatch-alarms-work">How CloudWatch Alarms Work</a>
+<ul>
+<li><a href="./aws.html#1-alarm-configuration">1. Alarm Configuration</a></li>
+<li><a href="./aws.html#2-alarm-states">2. Alarm States</a></li>
+<li><a href="./aws.html#3-alarm-actions">3. Alarm Actions</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#interview-ready-how-do-cloudwatch-alarms-work-1">Interview Ready: How do CloudWatch Alarms work?</a></li>
+<li><a href="./aws.html#real-world-examples-5">Real-World Examples</a>
+<ul>
+<li><a href="./aws.html#example-1-scaling-an-application-based-on-cpu-utilization">Example 1: Scaling an Application based on CPU Utilization</a></li>
+<li><a href="./aws.html#example-2-detecting-and-notifying-for-api-gateway-errors">Example 2: Detecting and Notifying for API Gateway Errors</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="./aws.html#how-cloudwatch-logs-are-used">How CloudWatch Logs Are Used</a>
+<ul>
+<li><a href="./aws.html#core-functionality-and-concepts">Core Functionality and Concepts</a>
+<ul>
+<li><a href="./aws.html#1-log-collection">1. Log Collection</a></li>
+<li><a href="./aws.html#2-log-structure">2. Log Structure</a></li>
+<li><a href="./aws.html#3-log-storage-and-management">3. Log Storage and Management</a></li>
+<li><a href="./aws.html#4-monitoring-and-analysis-capabilities">4. Monitoring and Analysis Capabilities</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#interview-ready-how-are-cloudwatch-logs-used">Interview Ready: How are CloudWatch Logs used?</a></li>
+<li><a href="./aws.html#real-world-examples-6">Real-World Examples</a>
+<ul>
+<li><a href="./aws.html#example-1-real-time-error-detection-and-alerting-for-a-lambda-function">Example 1: Real-time Error Detection and Alerting for a Lambda Function</a></li>
+<li><a href="./aws.html#example-2-analyzing-network-traffic-for-security-incidents">Example 2: Analyzing Network Traffic for Security Incidents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-aws-cloudtrail-and-api-auditing">What is AWS CloudTrail and API Auditing</a>
+<ul>
+<li><a href="./aws.html#how-aws-cloudtrail-works">How AWS CloudTrail Works</a></li>
+<li><a href="./aws.html#what-is-api-auditing">What is API Auditing?</a>
+<ul>
+<li><a href="./aws.html#importance-of-api-auditing">Importance of API Auditing:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#interview-ready-what-is-aws-cloudtrail-and-its-role-in-api-auditing">Interview Ready: What is AWS CloudTrail and its role in API Auditing?</a></li>
+<li><a href="./aws.html#real-world-examples-7">Real-World Examples</a>
+<ul>
+<li><a href="./aws.html#example-1-detecting-unauthorized-iam-activity">Example 1: Detecting Unauthorized IAM Activity</a></li>
+<li><a href="./aws.html#example-2-troubleshooting-a-resource-configuration-change">Example 2: Troubleshooting a Resource Configuration Change</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-aws-config-and-resource-compliance">What is AWS Config and Resource Compliance</a>
+<ul>
+<li><a href="./aws.html#how-aws-config-works">How AWS Config Works</a></li>
+<li><a href="./aws.html#what-is-resource-compliance">What is Resource Compliance?</a>
+<ul>
+<li><a href="./aws.html#how-aws-config-rules-work">How AWS Config Rules Work</a></li>
+<li><a href="./aws.html#importance-of-resource-compliance">Importance of Resource Compliance:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#interview-ready-what-is-aws-config-and-its-role-in-resource-compliance">Interview Ready: What is AWS Config and its role in Resource Compliance?</a></li>
+<li><a href="./aws.html#real-world-examples-8">Real-World Examples</a>
+<ul>
+<li><a href="./aws.html#example-1-enforcing-s3-bucket-public-access-prohibition">Example 1: Enforcing S3 Bucket Public Access Prohibition</a></li>
+<li><a href="./aws.html#example-2-ensuring-ec2-instances-are-tagged-for-cost-allocation-and-inventory">Example 2: Ensuring EC2 Instances are Tagged for Cost Allocation and Inventory</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="-application-integration--messaging"><a class="header" href="#-application-integration--messaging"><a href="./aws.html#-application-integration--messaging">🔄 APPLICATION INTEGRATION &amp; MESSAGING</a></a></h1>
+<ul>
+<li><a href="./aws.html#what-is-application-integration-in-aws">What is Application Integration in AWS</a>
+<ul>
+<li><a href="./aws.html#the-need-for-application-integration">The Need for Application Integration</a></li>
+<li><a href="./aws.html#key-concepts-in-application-integration">Key Concepts in Application Integration</a></li>
+<li><a href="./aws.html#aws-application-integration-services">AWS Application Integration Services</a>
+<ul>
+<li><a href="./aws.html#1-message-queues-point-to-point-messaging">1. Message Queues (Point-to-Point Messaging)</a></li>
+<li><a href="./aws.html#2-publishsubscribe-pubsub-messaging">2. Publish/Subscribe (Pub/Sub Messaging)</a></li>
+<li><a href="./aws.html#3-event-buses-event-driven-architectures">3. Event Buses (Event-Driven Architectures)</a></li>
+<li><a href="./aws.html#4-workflow-orchestration">4. Workflow Orchestration</a></li>
+<li><a href="./aws.html#5-api-management">5. API Management</a></li>
+<li><a href="./aws.html#6-streaming-data">6. Streaming Data</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#interview-ready-what-is-application-integration-in-aws">Interview Ready: What is Application Integration in AWS?</a></li>
+<li><a href="./aws.html#real-world-examples-9">Real-World Examples</a>
+<ul>
+<li><a href="./aws.html#example-1-decoupling-an-e-commerce-order-processing-system">Example 1: Decoupling an E-commerce Order Processing System</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-amazon-sqs-message-queue-service">What is Amazon SQS Message Queue Service</a>
+<ul>
+<li><a href="./aws.html#the-core-problem-sqs-solves">The Core Problem SQS Solves</a></li>
+<li><a href="./aws.html#how-amazon-sqs-works">How Amazon SQS Works</a>
+<ul>
+<li><a href="./aws.html#message-states-in-sqs">Message States in SQS</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#types-of-amazon-sqs-queues">Types of Amazon SQS Queues</a>
+<ul>
+<li><a href="./aws.html#1-standard-queues">1. Standard Queues</a></li>
+<li><a href="./aws.html#2-fifo-first-in-first-out-queues">2. FIFO (First-In-First-Out) Queues</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#key-sqs-features">Key SQS Features</a></li>
+<li><a href="./aws.html#interview-ready-what-is-amazon-sqs">Interview Ready: What is Amazon SQS?</a></li>
+<li><a href="./aws.html#real-world-examples-10">Real-World Examples</a>
+<ul>
+<li><a href="./aws.html#example-1-decoupling-a-photo-processing-microservice">Example 1: Decoupling a Photo Processing Microservice</a></li>
+<li><a href="./aws.html#example-2-ensuring-strict-order-for-financial-transactions-with-sqs-fifo">Example 2: Ensuring Strict Order for Financial Transactions with SQS FIFO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-amazon-sns-notification-service">What is Amazon SNS Notification Service</a>
+<ul>
+<li><a href="./aws.html#core-concepts-of-sns">Core Concepts of SNS</a></li>
+<li><a href="./aws.html#how-amazon-sns-works">How Amazon SNS Works</a></li>
+<li><a href="./aws.html#key-features-and-capabilities">Key Features and Capabilities</a></li>
+<li><a href="./aws.html#interview-ready-what-is-amazon-sns">Interview Ready: What is Amazon SNS?</a></li>
+<li><a href="./aws.html#real-world-examples-11">Real-World Examples</a>
+<ul>
+<li><a href="./aws.html#example-1-real-time-alerting-for-system-health-issues">Example 1: Real-time Alerting for System Health Issues</a></li>
+<li><a href="./aws.html#example-2-event-driven-microservices-with-fan-out">Example 2: Event-Driven Microservices with Fan-Out</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="./aws.html#difference-between-messaging-and-event-driven-systems">Difference Between Messaging and Event-Driven Systems</a>
+<ul>
+<li><a href="./aws.html#messaging-systems">Messaging Systems</a></li>
+<li><a href="./aws.html#event-driven-systems">Event-Driven Systems</a></li>
+<li><a href="./aws.html#interplay-and-differences">Interplay and Differences</a></li>
+<li><a href="./aws.html#interview-ready-what-is-the-difference-between-messaging-and-event-driven-systems">Interview Ready: What is the difference between messaging and event-driven systems?</a></li>
+<li><a href="./aws.html#real-world-example-combining-both">Real-World Example Combining Both</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-amazon-eventbridge">What is Amazon EventBridge</a>
+<ul>
+<li><a href="./aws.html#evolution-from-cloudwatch-events">Evolution from CloudWatch Events</a></li>
+<li><a href="./aws.html#core-concepts-of-amazon-eventbridge">Core Concepts of Amazon EventBridge</a></li>
+<li><a href="./aws.html#how-amazon-eventbridge-works">How Amazon EventBridge Works</a></li>
+<li><a href="./aws.html#key-eventbridge-features">Key EventBridge Features</a></li>
+<li><a href="./aws.html#interview-ready-what-is-amazon-eventbridge">Interview Ready: What is Amazon EventBridge?</a></li>
+<li><a href="./aws.html#real-world-examples-12">Real-World Examples</a>
+<ul>
+<li><a href="./aws.html#example-1-building-a-real-time-inventory-management-system">Example 1: Building a Real-time Inventory Management System</a></li>
+<li><a href="./aws.html#example-2-integrating-with-saas-and-reacting-to-health-events">Example 2: Integrating with SaaS and Reacting to Health Events</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="-analytics-services"><a class="header" href="#-analytics-services"><a href="./aws.html#-analytics-services">📈 ANALYTICS SERVICES</a></a></h1>
+<ul>
+<li><a href="./aws.html#what-is-analytics-in-aws">What is Analytics in AWS</a>
+<ul>
+<li><a href="./aws.html#the-analytics-data-journey-in-aws">The Analytics Data Journey in AWS</a></li>
+<li><a href="./aws.html#key-principles-of-aws-analytics">Key Principles of AWS Analytics</a></li>
+<li><a href="./aws.html#interview-ready-what-is-analytics-in-aws">Interview Ready: What is Analytics in AWS?</a></li>
+<li><a href="./aws.html#real-world-examples-13">Real-World Examples</a>
+<ul>
+<li><a href="./aws.html#example-1-customer-behavior-analytics-for-an-e-commerce-website">Example 1: Customer Behavior Analytics for an E-commerce Website</a></li>
+<li><a href="./aws.html#example-2-iot-device-monitoring-and-predictive-maintenance">Example 2: IoT Device Monitoring and Predictive Maintenance</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-amazon-athena-query-service">What is Amazon Athena Query Service</a>
+<ul>
+<li><a href="./aws.html#the-problem-athena-solves">The Problem Athena Solves</a></li>
+<li><a href="./aws.html#how-amazon-athena-works">How Amazon Athena Works</a></li>
+<li><a href="./aws.html#key-features-and-benefits">Key Features and Benefits</a></li>
+<li><a href="./aws.html#interview-ready-what-is-amazon-athena">Interview Ready: What is Amazon Athena?</a></li>
+<li><a href="./aws.html#real-world-examples-14">Real-World Examples</a>
+<ul>
+<li><a href="./aws.html#example-1-analyzing-website-clickstream-logs-in-s3">Example 1: Analyzing Website Clickstream Logs in S3</a></li>
+<li><a href="./aws.html#example-2-analyzing-aws-cloudtrail-logs-for-security-auditing">Example 2: Analyzing AWS CloudTrail Logs for Security Auditing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-aws-glue-data-integration-service">What is AWS Glue Data Integration Service</a>
+<ul>
+<li><a href="./aws.html#the-problem-aws-glue-solves">The Problem AWS Glue Solves</a></li>
+<li><a href="./aws.html#core-components-of-aws-glue">Core Components of AWS Glue</a>
+<ul>
+<li><a href="./aws.html#1-aws-glue-data-catalog">1. AWS Glue Data Catalog</a></li>
+<li><a href="./aws.html#2-aws-glue-crawlers">2. AWS Glue Crawlers</a></li>
+<li><a href="./aws.html#3-aws-glue-etl-jobs">3. AWS Glue ETL Jobs</a></li>
+<li><a href="./aws.html#4-aws-glue-databrew">4. AWS Glue DataBrew</a></li>
+<li><a href="./aws.html#5-aws-glue-studio">5. AWS Glue Studio</a></li>
+<li><a href="./aws.html#6-aws-glue-data-quality-new">6. AWS Glue Data Quality (New!)</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#how-aws-glue-integrates-into-the-data-lake-strategy">How AWS Glue Integrates into the Data Lake Strategy</a></li>
+<li><a href="./aws.html#interview-ready-what-is-aws-glue">Interview Ready: What is AWS Glue?</a></li>
+<li><a href="./aws.html#real-world-examples-15">Real-World Examples</a>
+<ul>
+<li><a href="./aws.html#example-1-building-a-data-lake-from-various-sources">Example 1: Building a Data Lake from Various Sources</a></li>
+<li><a href="./aws.html#example-2-migrating-from-on-premises-etl-to-serverless-etl">Example 2: Migrating from On-Premises ETL to Serverless ETL</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-amazon-quicksight-bi-tool">What is Amazon QuickSight BI Tool</a>
+<ul>
+<li><a href="./aws.html#the-problem-quicksight-solves">The Problem QuickSight Solves</a></li>
+<li><a href="./aws.html#core-concepts-of-amazon-quicksight">Core Concepts of Amazon QuickSight</a></li>
+<li><a href="./aws.html#how-amazon-quicksight-works-high-level-flow">How Amazon QuickSight Works (High-Level Flow)</a></li>
+<li><a href="./aws.html#interview-ready-what-is-amazon-quicksight">Interview Ready: What is Amazon QuickSight?</a></li>
+<li><a href="./aws.html#real-world-examples-16">Real-World Examples</a>
+<ul>
+<li><a href="./aws.html#example-1-sales-performance-dashboard-for-a-retail-company">Example 1: Sales Performance Dashboard for a Retail Company</a></li>
+<li><a href="./aws.html#example-2-financial-reporting-and-cost-optimization-dashboard">Example 2: Financial Reporting and Cost Optimization Dashboard</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="-ai--machine-learning-services"><a class="header" href="#-ai--machine-learning-services"><a href="./aws.html#-ai--machine-learning-services">🤖 AI &amp; MACHINE LEARNING SERVICES</a></a></h1>
+<ul>
+<li><a href="./aws.html#what-is-artificial-intelligence-and-machine-learning-in-aws">What is Artificial Intelligence and Machine Learning in AWS</a>
+<ul>
+<li><a href="./aws.html#understanding-ai-and-ml">Understanding AI and ML</a></li>
+<li><a href="./aws.html#why-aws-for-aiml">Why AWS for AI/ML?</a></li>
+<li><a href="./aws.html#the-aws-aiml-stack-a-three-layered-approach">The AWS AI/ML Stack: A Three-Layered Approach</a>
+<ul>
+<li><a href="./aws.html#1-ai-services-high-level--pre-trained">1. AI Services (High-Level / Pre-trained)</a></li>
+<li><a href="./aws.html#2-machine-learning-services-mid-level--amazon-sagemaker">2. Machine Learning Services (Mid-Level / Amazon SageMaker)</a></li>
+<li><a href="./aws.html#3-ml-frameworks--infrastructure-low-level">3. ML Frameworks &amp; Infrastructure (Low-Level)</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#diagram-aws-aiml-stack">Diagram: AWS AI/ML Stack</a></li>
+<li><a href="./aws.html#conclusion-for-aws-aiml">Conclusion for AWS AI/ML</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-amazon-rekognition-image-and-video-analysis">What is Amazon Rekognition Image and Video Analysis</a>
+<ul>
+<li><a href="./aws.html#how-amazon-rekognition-works-high-level-flow">How Amazon Rekognition Works (High-Level Flow)</a></li>
+<li><a href="./aws.html#key-capabilities-of-amazon-rekognition">Key Capabilities of Amazon Rekognition</a>
+<ul>
+<li><a href="./aws.html#a-image-analysis-capabilities">A. Image Analysis Capabilities</a></li>
+<li><a href="./aws.html#b-video-analysis-capabilities">B. Video Analysis Capabilities</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#real-world-use-cases-for-amazon-rekognition">Real-World Use Cases for Amazon Rekognition</a></li>
+<li><a href="./aws.html#benefits-of-amazon-rekognition">Benefits of Amazon Rekognition</a></li>
+<li><a href="./aws.html#ethical-considerations">Ethical Considerations</a></li>
+<li><a href="./aws.html#flow-diagram-amazon-rekognition-image-analysis-example">Flow Diagram: Amazon Rekognition Image Analysis Example</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-amazon-comprehend-natural-language-processing">What is Amazon Comprehend Natural Language Processing</a>
+<ul>
+<li><a href="./aws.html#understanding-natural-language-processing-nlp">Understanding Natural Language Processing (NLP)</a></li>
+<li><a href="./aws.html#key-capabilities-of-amazon-comprehend">Key Capabilities of Amazon Comprehend</a>
+<ul>
+<li><a href="./aws.html#1-sentiment-analysis">1. Sentiment Analysis</a></li>
+<li><a href="./aws.html#2-entity-recognition">2. Entity Recognition</a></li>
+<li><a href="./aws.html#3-keyphrase-extraction">3. Keyphrase Extraction</a></li>
+<li><a href="./aws.html#4-language-detection">4. Language Detection</a></li>
+<li><a href="./aws.html#5-syntax-analysis">5. Syntax Analysis</a></li>
+<li><a href="./aws.html#6-topic-modeling">6. Topic Modeling</a></li>
+<li><a href="./aws.html#7-personally-identifiable-information-pii-detection-and-redaction">7. Personally Identifiable Information (PII) Detection and Redaction</a></li>
+<li><a href="./aws.html#8-customization-custom-entities-and-custom-classification">8. Customization (Custom Entities and Custom Classification)</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#how-amazon-comprehend-works-simplified-flow">How Amazon Comprehend Works (Simplified Flow)</a></li>
+<li><a href="./aws.html#real-world-use-cases-for-amazon-comprehend">Real-World Use Cases for Amazon Comprehend</a></li>
+<li><a href="./aws.html#benefits-of-amazon-comprehend">Benefits of Amazon Comprehend</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-amazon-lex-chatbot-service">What is Amazon Lex Chatbot Service</a>
+<ul>
+<li><a href="./aws.html#core-components-of-an-amazon-lex-bot">Core Components of an Amazon Lex Bot</a>
+<ul>
+<li><a href="./aws.html#1-intent">1. Intent</a></li>
+<li><a href="./aws.html#2-utterances">2. Utterances</a></li>
+<li><a href="./aws.html#3-slot-and-slot-type">3. Slot and Slot Type</a></li>
+<li><a href="./aws.html#4-fulfillment">4. Fulfillment</a></li>
+<li><a href="./aws.html#5-prompts">5. Prompts</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#how-amazon-lex-works-simplified-flow">How Amazon Lex Works (Simplified Flow)</a></li>
+<li><a href="./aws.html#key-features-of-amazon-lex">Key Features of Amazon Lex</a></li>
+<li><a href="./aws.html#real-world-use-cases-for-amazon-lex">Real-World Use Cases for Amazon Lex</a></li>
+<li><a href="./aws.html#benefits-of-amazon-lex">Benefits of Amazon Lex</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-amazon-polly-text-to-speech-service">What is Amazon Polly Text-to-Speech Service</a>
+<ul>
+<li><a href="./aws.html#how-amazon-polly-works">How Amazon Polly Works</a></li>
+<li><a href="./aws.html#the-four-voice-engines">The Four Voice Engines</a></li>
+<li><a href="./aws.html#core-features-and-aws-terminology">Core Features and AWS Terminology</a>
+<ul>
+<li><a href="./aws.html#1-ssml-speech-synthesis-markup-language">1. SSML (Speech Synthesis Markup Language)</a></li>
+<li><a href="./aws.html#2-pronunciation-lexicons">2. Pronunciation Lexicons</a></li>
+<li><a href="./aws.html#3-speech-marks">3. Speech Marks</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#real-world-examples-17">Real-World Examples</a></li>
+<li><a href="./aws.html#interview-ready-answers">Interview Ready Answers</a>
+<ul>
+<li><a href="./aws.html#q1-what-makes-amazon-polly-elastic">Q1: What makes Amazon Polly “Elastic”?</a></li>
+<li><a href="./aws.html#q2-what-is-the-difference-between-the-standard-and-neural-engines">Q2: What is the difference between the Standard and Neural engines?</a></li>
+<li><a href="./aws.html#q3-how-do-you-handle-words-that-have-different-meanings-but-the-same-spelling-homographs">Q3: How do you handle words that have different meanings but the same spelling (Homographs)?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-amazon-transcribe-speech-to-text">What is Amazon Transcribe (Speech-to-Text)</a>
+<ul>
+<li><a href="./aws.html#key-capabilities-of-transcribe">Key Capabilities of Transcribe</a></li>
+<li><a href="./aws.html#transcribe-service-variants">Transcribe Service Variants</a></li>
+<li><a href="./aws.html#real-world-examples-18">Real-World Examples</a></li>
+<li><a href="./aws.html#technical-workflow-the-pipeline">Technical Workflow: The Pipeline</a></li>
+<li><a href="./aws.html#interview-ready-answers-1">Interview Ready Answers</a>
+<ul>
+<li><a href="./aws.html#q1-how-does-amazon-transcribe-handle-multiple-languages-in-the-same-audio">Q1: How does Amazon Transcribe handle multiple languages in the same audio?</a></li>
+<li><a href="./aws.html#q2-why-are-confidence-scores-important-in-transcribe">Q2: Why are ‘Confidence Scores’ important in Transcribe?</a></li>
+<li><a href="./aws.html#q3-can-amazon-transcribe-process-audio-in-real-time">Q3: Can Amazon Transcribe process audio in real-time?</a></li>
+<li><a href="./aws.html#q4-what-is-the-benefit-of-content-redaction-in-transcribe">Q4: What is the benefit of Content Redaction in Transcribe?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="-infrastructure-as-code--management"><a class="header" href="#-infrastructure-as-code--management"><a href="./aws.html#-infrastructure-as-code--management">🧱 INFRASTRUCTURE AS CODE &amp; MANAGEMENT</a></a></h1>
+<ul>
+<li><a href="./aws.html#what-is-infrastructure-as-code">What is Infrastructure as Code</a>
+<ul>
+<li><a href="./aws.html#traditional-infrastructure-management-vs-infrastructure-as-code">Traditional Infrastructure Management vs. Infrastructure as Code</a></li>
+<li><a href="./aws.html#core-principles-and-characteristics-of-iac">Core Principles and Characteristics of IaC</a>
+<ul>
+<li><a href="./aws.html#1-declarative-vs-imperative-approaches">1. Declarative vs. Imperative Approaches</a></li>
+<li><a href="./aws.html#2-version-control">2. Version Control</a></li>
+<li><a href="./aws.html#3-idempotence">3. Idempotence</a></li>
+<li><a href="./aws.html#4-automation">4. Automation</a></li>
+<li><a href="./aws.html#5-reusability-and-modularity">5. Reusability and Modularity</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#benefits-of-infrastructure-as-code">Benefits of Infrastructure as Code</a></li>
+<li><a href="./aws.html#challenges-and-considerations-for-iac">Challenges and Considerations for IaC</a></li>
+<li><a href="./aws.html#common-iac-tools">Common IaC Tools</a></li>
+<li><a href="./aws.html#real-world-example-of-iac">Real-world Example of IaC</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-aws-cloudformation-and-why-it-is-used">What is AWS CloudFormation and Why It Is Used</a>
+<ul>
+<li><a href="./aws.html#core-concepts-of-aws-cloudformation">Core Concepts of AWS CloudFormation</a>
+<ul>
+<li><a href="./aws.html#1-templates">1. Templates</a></li>
+<li><a href="./aws.html#2-stacks">2. Stacks</a></li>
+<li><a href="./aws.html#3-change-sets">3. Change Sets</a></li>
+<li><a href="./aws.html#4-stacksets">4. StackSets</a></li>
+<li><a href="./aws.html#5-drift-detection">5. Drift Detection</a></li>
+<li><a href="./aws.html#6-custom-resources">6. Custom Resources</a></li>
+<li><a href="./aws.html#7-nested-stacks">7. Nested Stacks</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#why-aws-cloudformation-is-used-benefits">Why AWS CloudFormation Is Used (Benefits)</a></li>
+<li><a href="./aws.html#cloudformation-lifecycle-flow-diagram">CloudFormation Lifecycle Flow Diagram</a></li>
+<li><a href="./aws.html#real-world-example-deploying-a-multi-tier-web-application-with-cloudformation">Real-world Example: Deploying a Multi-Tier Web Application with CloudFormation</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-aws-elastic-beanstalk-application-deployment">What is AWS Elastic Beanstalk Application Deployment</a>
+<ul>
+<li><a href="./aws.html#understanding-aws-elastic-beanstalk">Understanding AWS Elastic Beanstalk</a></li>
+<li><a href="./aws.html#the-why-of-elastic-beanstalk">The “Why” of Elastic Beanstalk</a></li>
+<li><a href="./aws.html#core-concepts-and-components">Core Concepts and Components</a></li>
+<li><a href="./aws.html#supported-application-platforms">Supported Application Platforms</a></li>
+<li><a href="./aws.html#underlying-aws-resources-the-abstraction-layer">Underlying AWS Resources (The Abstraction Layer)</a></li>
+<li><a href="./aws.html#deployment-strategies">Deployment Strategies</a></li>
+<li><a href="./aws.html#configuration-management">Configuration Management</a></li>
+<li><a href="./aws.html#advantages-of-elastic-beanstalk">Advantages of Elastic Beanstalk</a></li>
+<li><a href="./aws.html#disadvantages-and-when-to-consider-alternatives">Disadvantages and When to Consider Alternatives</a></li>
+<li><a href="./aws.html#real-world-examples-19">Real-World Examples</a></li>
+<li><a href="./aws.html#flow-diagram-typical-elastic-beanstalk-deployment-workflow">Flow Diagram: Typical Elastic Beanstalk Deployment Workflow</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-aws-systems-manager">What is AWS Systems Manager</a>
+<ul>
+<li><a href="./aws.html#understanding-aws-systems-manager">Understanding AWS Systems Manager</a></li>
+<li><a href="./aws.html#the-why-of-aws-systems-manager">The “Why” of AWS Systems Manager</a></li>
+<li><a href="./aws.html#how-aws-systems-manager-works-ssm-agent">How AWS Systems Manager Works (SSM Agent)</a></li>
+<li><a href="./aws.html#key-capabilities-of-aws-systems-manager">Key Capabilities of AWS Systems Manager</a>
+<ul>
+<li><a href="./aws.html#operational-visibility">Operational Visibility</a></li>
+<li><a href="./aws.html#actionable-insights--automation">Actionable Insights &amp; Automation</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#hybrid-and-multi-cloud-management">Hybrid and Multi-Cloud Management</a></li>
+<li><a href="./aws.html#security-and-compliance-with-systems-manager">Security and Compliance with Systems Manager</a></li>
+<li><a href="./aws.html#benefits-of-aws-systems-manager">Benefits of AWS Systems Manager</a></li>
+<li><a href="./aws.html#real-world-examples-20">Real-World Examples</a></li>
+<li><a href="./aws.html#table-summary-of-key-systems-manager-capabilities">Table: Summary of Key Systems Manager Capabilities</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="-devops--cicd"><a class="header" href="#-devops--cicd"><a href="./aws.html#-devops--cicd">🔁 DEVOPS &amp; CI/CD</a></a></h1>
+<ul>
+<li><a href="./aws.html#what-is-devops-in-aws">What is DevOps in AWS</a>
+<ul>
+<li><a href="./aws.html#core-principles-of-devops">Core Principles of DevOps</a></li>
+<li><a href="./aws.html#benefits-of-devops-on-aws">Benefits of DevOps on AWS</a></li>
+<li><a href="./aws.html#devops-on-aws-key-practices-and-services">DevOps on AWS: Key Practices and Services</a>
+<ul>
+<li><a href="./aws.html#1-source-control-and-collaboration">1. Source Control and Collaboration</a></li>
+<li><a href="./aws.html#2-continuous-integration-ci">2. Continuous Integration (CI)</a></li>
+<li><a href="./aws.html#3-continuous-delivery-cd-and-continuous-deployment-cd">3. Continuous Delivery (CD) and Continuous Deployment (CD)</a></li>
+<li><a href="./aws.html#4-infrastructure-as-code-iac">4. Infrastructure as Code (IaC)</a></li>
+<li><a href="./aws.html#5-monitoring-and-logging">5. Monitoring and Logging</a></li>
+<li><a href="./aws.html#6-configuration-management-and-operations">6. Configuration Management and Operations</a></li>
+<li><a href="./aws.html#7-containerization-and-serverless">7. Containerization and Serverless</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#conclusion-for-devops-on-aws">Conclusion for DevOps on AWS</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-cicd-pipeline">What is CI/CD Pipeline</a>
+<ul>
+<li><a href="./aws.html#understanding-ci-cd-and-continuous-deployment">Understanding CI, CD, and Continuous Deployment</a>
+<ul>
+<li><a href="./aws.html#1-continuous-integration-ci">1. Continuous Integration (CI)</a></li>
+<li><a href="./aws.html#2-continuous-delivery-cd">2. Continuous Delivery (CD)</a></li>
+<li><a href="./aws.html#3-continuous-deployment">3. Continuous Deployment</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#benefits-of-a-cicd-pipeline">Benefits of a CI/CD Pipeline</a></li>
+<li><a href="./aws.html#typical-stages-of-a-cicd-pipeline-with-aws-services">Typical Stages of a CI/CD Pipeline (with AWS Services)</a>
+<ul>
+<li><a href="./aws.html#1-sourcecommit-stage">1. Source/Commit Stage</a></li>
+<li><a href="./aws.html#2-build-stage">2. Build Stage</a></li>
+<li><a href="./aws.html#3-test-stage-unit--integration-tests">3. Test Stage (Unit &amp; Integration Tests)</a></li>
+<li><a href="./aws.html#4-deploy-stage-to-developmentstaging-environments">4. Deploy Stage (to Development/Staging Environments)</a></li>
+<li><a href="./aws.html#5-test-stage-acceptance--performance-tests">5. Test Stage (Acceptance &amp; Performance Tests)</a></li>
+<li><a href="./aws.html#6-deploy-stage-to-production">6. Deploy Stage (to Production)</a></li>
+<li><a href="./aws.html#7-monitor--feedback-stage">7. Monitor &amp; Feedback Stage</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#key-aws-services-for-building-cicd-pipelines">Key AWS Services for Building CI/CD Pipelines</a></li>
+<li><a href="./aws.html#conclusion-for-cicd-pipeline">Conclusion for CI/CD Pipeline</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-aws-codecommit">What is AWS CodeCommit</a>
+<ul>
+<li><a href="./aws.html#understanding-source-control">Understanding Source Control</a></li>
+<li><a href="./aws.html#key-features-and-concepts-of-aws-codecommit">Key Features and Concepts of AWS CodeCommit</a></li>
+<li><a href="./aws.html#use-cases-for-aws-codecommit">Use Cases for AWS CodeCommit</a></li>
+<li><a href="./aws.html#advantages-of-aws-codecommit">Advantages of AWS CodeCommit</a></li>
+<li><a href="./aws.html#comparison-with-other-git-hosting-services">Comparison with Other Git Hosting Services</a></li>
+<li><a href="./aws.html#flow-diagram-codecommit-in-a-cicd-pipeline">Flow Diagram: CodeCommit in a CI/CD Pipeline</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-aws-codebuild">What is AWS CodeBuild</a>
+<ul>
+<li><a href="./aws.html#understanding-continuous-integration-ci">Understanding Continuous Integration (CI)</a></li>
+<li><a href="./aws.html#key-features-and-concepts-of-aws-codebuild">Key Features and Concepts of AWS CodeBuild</a></li>
+<li><a href="./aws.html#use-cases-for-aws-codebuild">Use Cases for AWS CodeBuild</a></li>
+<li><a href="./aws.html#advantages-of-aws-codebuild">Advantages of AWS CodeBuild</a></li>
+<li><a href="./aws.html#limitations-and-considerations">Limitations and Considerations</a></li>
+<li><a href="./aws.html#flow-diagram-codebuild-in-a-cicd-pipeline">Flow Diagram: CodeBuild in a CI/CD Pipeline</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-aws-codedeploy">What is AWS CodeDeploy</a>
+<ul>
+<li><a href="./aws.html#the-why-of-aws-codedeploy">The “Why” of AWS CodeDeploy</a></li>
+<li><a href="./aws.html#core-concepts-and-components-of-aws-codedeploy">Core Concepts and Components of AWS CodeDeploy</a></li>
+<li><a href="./aws.html#supported-compute-platforms">Supported Compute Platforms</a></li>
+<li><a href="./aws.html#deployment-types-and-strategies">Deployment Types and Strategies</a>
+<ul>
+<li><a href="./aws.html#a-in-place-deployment-for-ec2on-premises-only">A. In-Place Deployment (for EC2/On-Premises only)</a></li>
+<li><a href="./aws.html#b-bluegreen-deployment-for-ec2on-premises-lambda-ecs">B. Blue/Green Deployment (for EC2/On-Premises, Lambda, ECS)</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#integration-with-aws-services">Integration with AWS Services</a></li>
+<li><a href="./aws.html#flow-diagram-aws-codedeploy-bluegreen-deployment-ec2">Flow Diagram: AWS CodeDeploy Blue/Green Deployment (EC2)</a></li>
+<li><a href="./aws.html#conclusion-for-aws-codedeploy">Conclusion for AWS CodeDeploy</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-aws-codepipeline">What is AWS CodePipeline</a>
+<ul>
+<li><a href="./aws.html#the-why-of-aws-codepipeline">The “Why” of AWS CodePipeline</a></li>
+<li><a href="./aws.html#core-concepts-and-components-of-aws-codepipeline">Core Concepts and Components of AWS CodePipeline</a></li>
+<li><a href="./aws.html#typical-stages-of-a-cicd-pipeline-with-aws-codepipeline">Typical Stages of a CI/CD Pipeline with AWS CodePipeline</a></li>
+<li><a href="./aws.html#integration-with-aws-services-1">Integration with AWS Services</a></li>
+<li><a href="./aws.html#advanced-features">Advanced Features</a></li>
+<li><a href="./aws.html#flow-diagram-full-cicd-pipeline-with-aws-codepipeline">Flow Diagram: Full CI/CD Pipeline with AWS CodePipeline</a></li>
+<li><a href="./aws.html#conclusion-for-aws-codepipeline">Conclusion for AWS CodePipeline</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="-pricing-billing--cost-management"><a class="header" href="#-pricing-billing--cost-management"><a href="./aws.html#-pricing-billing--cost-management">💰 PRICING, BILLING &amp; COST MANAGEMENT</a></a></h1>
+<ul>
+<li><a href="./aws.html#how-aws-pricing-works">How AWS Pricing Works</a>
+<ul>
+<li><a href="./aws.html#key-factors-influencing-aws-pricing">Key Factors Influencing AWS Pricing</a>
+<ul>
+<li><a href="./aws.html#1-compute">1. Compute</a></li>
+<li><a href="./aws.html#2-storage">2. Storage</a></li>
+<li><a href="./aws.html#3-data-transfer">3. Data Transfer</a></li>
+<li><a href="./aws.html#4-requests-and-operations">4. Requests and Operations</a></li>
+<li><a href="./aws.html#5-specialized-services">5. Specialized Services</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#common-pricing-models-and-optimization-strategies">Common Pricing Models and Optimization Strategies</a></li>
+<li><a href="./aws.html#tools-for-cost-management">Tools for Cost Management</a></li>
+<li><a href="./aws.html#diagram-aws-pricing-model-hierarchy-conceptual">Diagram: AWS Pricing Model Hierarchy (Conceptual)</a></li>
+<li><a href="./aws.html#conclusion-for-aws-pricing-works">Conclusion for AWS Pricing Works</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-the-aws-free-tier-and-its-limits">What is the AWS Free Tier and Its Limits</a>
+<ul>
+<li><a href="./aws.html#key-components-and-limits-of-the-aws-free-tier-examples---always-check-current-aws-documentation">Key Components and Limits of the AWS Free Tier (Examples - always check current AWS documentation)</a>
+<ul>
+<li><a href="./aws.html#1-compute-services-1">1. Compute Services</a></li>
+<li><a href="./aws.html#2-storage-services-1">2. Storage Services</a></li>
+<li><a href="./aws.html#3-database-services">3. Database Services</a></li>
+<li><a href="./aws.html#4-networking-and-content-delivery">4. Networking and Content Delivery</a></li>
+<li><a href="./aws.html#5-other-notable-services-examples">5. Other Notable Services (Examples)</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#who-is-eligible-for-the-aws-free-tier">Who is Eligible for the AWS Free Tier?</a></li>
+<li><a href="./aws.html#how-to-monitor-free-tier-usage-to-avoid-costs">How to Monitor Free Tier Usage to Avoid Costs</a></li>
+<li><a href="./aws.html#best-practices-for-using-the-aws-free-tier">Best Practices for Using the AWS Free Tier</a></li>
+<li><a href="./aws.html#diagram-aws-free-tier-monitoring-flow">Diagram: AWS Free Tier Monitoring Flow</a></li>
+<li><a href="./aws.html#conclusion-for-aws-free-tier">Conclusion for AWS Free Tier</a></li>
+<li><a href="./aws.html#-12-months-free-services-from-account-creation-date">🔵 12-MONTHS FREE SERVICES (FROM ACCOUNT CREATION DATE)</a></li>
+<li><a href="./aws.html#-always-free-services-no-expiry">🟢 ALWAYS FREE SERVICES (NO EXPIRY)</a></li>
+<li><a href="./aws.html#-trial--limited-free-services">🟡 TRIAL / LIMITED FREE SERVICES</a></li>
+<li><a href="./aws.html#-common-services-that-cause-billing-not-free">🔴 COMMON SERVICES THAT CAUSE BILLING (NOT FREE)</a></li>
+<li><a href="./aws.html#️-most-important-rules-remember">⚠️ MOST IMPORTANT RULES (REMEMBER)</a></li>
+<li><a href="./aws.html#-interview-ready-one-line-answer">🎯 INTERVIEW-READY ONE-LINE ANSWER</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-on-demand-pricing">What is On-Demand Pricing</a>
+<ul>
+<li><a href="./aws.html#understanding-on-demand-pricing">Understanding On-Demand Pricing</a></li>
+<li><a href="./aws.html#key-characteristics-of-on-demand-pricing">Key Characteristics of On-Demand Pricing</a></li>
+<li><a href="./aws.html#aws-services-that-primarily-use-on-demand-pricing-or-have-it-as-a-default">AWS Services that Primarily Use On-Demand Pricing (or have it as a default)</a></li>
+<li><a href="./aws.html#when-to-use-on-demand-pricing">When to Use On-Demand Pricing</a></li>
+<li><a href="./aws.html#advantages-of-on-demand-pricing">Advantages of On-Demand Pricing</a></li>
+<li><a href="./aws.html#disadvantages-of-on-demand-pricing">Disadvantages of On-Demand Pricing</a></li>
+<li><a href="./aws.html#real-world-example">Real-world Example</a></li>
+<li><a href="./aws.html#flow-diagram-on-demand-resource-usage">Flow Diagram: On-Demand Resource Usage</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-are-reserved-instances">What are Reserved Instances</a>
+<ul>
+<li><a href="./aws.html#understanding-reserved-instances">Understanding Reserved Instances</a></li>
+<li><a href="./aws.html#key-characteristics-of-reserved-instances">Key Characteristics of Reserved Instances</a></li>
+<li><a href="./aws.html#types-of-reserved-instances-ec2-focus">Types of Reserved Instances (EC2 Focus)</a></li>
+<li><a href="./aws.html#aws-services-with-reservation-models">AWS Services with Reservation Models</a></li>
+<li><a href="./aws.html#when-to-use-reserved-instances">When to Use Reserved Instances</a></li>
+<li><a href="./aws.html#advantages-of-reserved-instances">Advantages of Reserved Instances</a></li>
+<li><a href="./aws.html#disadvantages-of-reserved-instances">Disadvantages of Reserved Instances</a></li>
+<li><a href="./aws.html#real-world-example-1">Real-world Example</a></li>
+<li><a href="./aws.html#flow-diagram-ri-vs-on-demand-pricing-conceptual">Flow Diagram: RI vs. On-Demand Pricing (Conceptual)</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-are-savings-plans">What are Savings Plans</a>
+<ul>
+<li><a href="./aws.html#understanding-savings-plans">Understanding Savings Plans</a></li>
+<li><a href="./aws.html#key-characteristics-of-savings-plans">Key Characteristics of Savings Plans</a></li>
+<li><a href="./aws.html#savings-plans-vs-reserved-instances-ris">Savings Plans vs. Reserved Instances (RIs)</a></li>
+<li><a href="./aws.html#when-to-use-savings-plans">When to Use Savings Plans</a></li>
+<li><a href="./aws.html#advantages-of-savings-plans">Advantages of Savings Plans</a></li>
+<li><a href="./aws.html#disadvantages-of-savings-plans">Disadvantages of Savings Plans</a></li>
+<li><a href="./aws.html#real-world-example-2">Real-world Example</a></li>
+<li><a href="./aws.html#flow-diagram-savings-plan-application">Flow Diagram: Savings Plan Application</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-are-spot-instances">What are Spot Instances</a>
+<ul>
+<li><a href="./aws.html#understanding-spot-instances">Understanding Spot Instances</a></li>
+<li><a href="./aws.html#key-characteristics-of-spot-instances">Key Characteristics of Spot Instances</a></li>
+<li><a href="./aws.html#when-to-use-spot-instances">When to Use Spot Instances</a></li>
+<li><a href="./aws.html#common-use-cases-for-spot-instances">Common Use Cases for Spot Instances</a></li>
+<li><a href="./aws.html#best-practices-for-using-spot-instances">Best Practices for Using Spot Instances</a></li>
+<li><a href="./aws.html#advantages-of-spot-instances">Advantages of Spot Instances</a></li>
+<li><a href="./aws.html#disadvantages-of-spot-instances">Disadvantages of Spot Instances</a></li>
+<li><a href="./aws.html#real-world-example-3">Real-world Example</a></li>
+<li><a href="./aws.html#flow-diagram-spot-instance-lifecycle">Flow Diagram: Spot Instance Lifecycle</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#how-to-monitor-costs-using-aws-cost-explorer">How to Monitor Costs Using AWS Cost Explorer</a>
+<ul>
+<li><a href="./aws.html#key-capabilities-and-features-of-aws-cost-explorer">Key Capabilities and Features of AWS Cost Explorer</a></li>
+<li><a href="./aws.html#how-to-access-and-navigate-cost-explorer">How to Access and Navigate Cost Explorer</a></li>
+<li><a href="./aws.html#best-practices-for-using-aws-cost-explorer">Best Practices for Using AWS Cost Explorer</a></li>
+<li><a href="./aws.html#real-world-example-of-cost-explorer-usage">Real-World Example of Cost Explorer Usage</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#how-to-control-costs-using-aws-budgets">How to Control Costs Using AWS Budgets</a>
+<ul>
+<li><a href="./aws.html#key-capabilities-and-features-of-aws-budgets">Key Capabilities and Features of AWS Budgets</a></li>
+<li><a href="./aws.html#how-to-create-an-aws-budget">How to Create an AWS Budget</a></li>
+<li><a href="./aws.html#best-practices-for-using-aws-budgets">Best Practices for Using AWS Budgets</a></li>
+<li><a href="./aws.html#real-world-example-of-aws-budgets-usage">Real-World Example of AWS Budgets Usage</a></li>
+<li><a href="./aws.html#conclusion-for-aws-cost-explorer-and-budgets">Conclusion for AWS Cost Explorer and Budgets</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="-reliability--architecture-best-practices"><a class="header" href="#-reliability--architecture-best-practices"><a href="./aws.html#️-reliability--architecture-best-practices">🏗️ RELIABILITY &amp; ARCHITECTURE BEST PRACTICES</a></a></h1>
+<ul>
+<li><a href="./aws.html#what-is-reliability-in-cloud-architecture">What is Reliability in Cloud Architecture</a>
+<ul>
+<li><a href="./aws.html#key-aspects-and-principles-of-reliability">Key Aspects and Principles of Reliability</a>
+<ul>
+<li><a href="./aws.html#1-resiliency-fault-tolerance-and-recovery">1. Resiliency (Fault Tolerance and Recovery)</a></li>
+<li><a href="./aws.html#2-scalability">2. Scalability</a></li>
+<li><a href="./aws.html#3-performance-efficiency">3. Performance Efficiency</a></li>
+<li><a href="./aws.html#4-monitoring-and-observability">4. Monitoring and Observability</a></li>
+<li><a href="./aws.html#5-disaster-recovery-dr">5. Disaster Recovery (DR)</a></li>
+<li><a href="./aws.html#6-change-management-and-automation">6. Change Management and Automation</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#metrics-for-measuring-reliability">Metrics for Measuring Reliability</a></li>
+<li><a href="./aws.html#designing-for-reliability-in-aws">Designing for Reliability in AWS</a></li>
+<li><a href="./aws.html#diagram-multi-az-web-application-for-high-availability">Diagram: Multi-AZ Web Application for High Availability</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-the-aws-well-architected-framework">What is the AWS Well-Architected Framework</a>
+<ul>
+<li><a href="./aws.html#the-six-pillars-of-the-aws-well-architected-framework">The Six Pillars of the AWS Well-Architected Framework</a>
+<ul>
+<li><a href="./aws.html#1-operational-excellence">1. Operational Excellence</a></li>
+<li><a href="./aws.html#2-security">2. Security</a></li>
+<li><a href="./aws.html#3-reliability">3. Reliability</a></li>
+<li><a href="./aws.html#4-performance-efficiency">4. Performance Efficiency</a></li>
+<li><a href="./aws.html#5-cost-optimization">5. Cost Optimization</a></li>
+<li><a href="./aws.html#6-sustainability-added-in-2021">6. Sustainability (Added in 2021)</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#how-the-framework-is-used">How the Framework is Used</a></li>
+<li><a href="./aws.html#benefits-of-adopting-the-aws-well-architected-framework">Benefits of Adopting the AWS Well-Architected Framework</a></li>
+<li><a href="./aws.html#diagram-the-six-pillars-of-the-aws-well-architected-framework">Diagram: The Six Pillars of the AWS Well-Architected Framework</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#the-five-pillars-of-the-well-architected-framework">The Five Pillars of the Well-Architected Framework</a>
+<ul>
+<li><a href="./aws.html#the-five-pillars-explained">The Five Pillars Explained</a>
+<ul>
+<li><a href="./aws.html#1-operational-excellence-1">1. Operational Excellence</a></li>
+<li><a href="./aws.html#2-security-1">2. Security</a></li>
+<li><a href="./aws.html#3-reliability-1">3. Reliability</a></li>
+<li><a href="./aws.html#4-performance-efficiency-1">4. Performance Efficiency</a></li>
+<li><a href="./aws.html#5-cost-optimization-1">5. Cost Optimization</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#the-well-architected-tool">The Well-Architected Tool</a></li>
+<li><a href="./aws.html#conclusion-for-the-five-pillars-of-the-well-architected-framework">Conclusion for The Five Pillars of the Well-Architected Framework</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#high-availability-design-principles">High Availability Design Principles</a>
+<ul>
+<li><a href="./aws.html#key-high-availability-design-principles">Key High Availability Design Principles</a></li>
+<li><a href="./aws.html#high-availability-across-aws-regions-and-availability-zones">High Availability Across AWS Regions and Availability Zones</a>
+<ul>
+<li><a href="./aws.html#diagram-multi-region-activepassive-dr-warm-standby-for-high-availability">Diagram: Multi-Region Active/Passive DR (Warm Standby) for High Availability</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#conclusion-for-high-availability-design-principles">Conclusion for High Availability Design Principles</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#disaster-recovery-strategies-in-aws">Disaster Recovery Strategies in AWS</a>
+<ul>
+<li><a href="./aws.html#common-aws-disaster-recovery-strategies">Common AWS Disaster Recovery Strategies</a>
+<ul>
+<li><a href="./aws.html#1-backup-and-restore">1. Backup and Restore</a></li>
+<li><a href="./aws.html#2-pilot-light">2. Pilot Light</a></li>
+<li><a href="./aws.html#3-warm-standby">3. Warm Standby</a></li>
+<li><a href="./aws.html#4-multi-site-activeactive-hot-standby">4. Multi-Site Active/Active (Hot Standby)</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#table-summary-of-disaster-recovery-strategies">Table: Summary of Disaster Recovery Strategies</a></li>
+<li><a href="./aws.html#key-considerations-for-dr-planning">Key Considerations for DR Planning</a></li>
+<li><a href="./aws.html#conclusion-for-disaster-recovery-strategies-in-aws">Conclusion for Disaster Recovery Strategies in AWS</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="-migration--support"><a class="header" href="#-migration--support"><a href="./aws.html#-migration--support">🚚 MIGRATION &amp; SUPPORT</a></a></h1>
+<ul>
+<li><a href="./aws.html#what-is-cloud-migration">What is Cloud Migration</a>
+<ul>
+<li><a href="./aws.html#why-organizations-migrate-to-the-cloud">Why Organizations Migrate to the Cloud</a></li>
+<li><a href="./aws.html#phases-of-a-cloud-migration-journey">Phases of a Cloud Migration Journey</a>
+<ul>
+<li><a href="./aws.html#1-assessment-and-planning">1. Assessment and Planning</a></li>
+<li><a href="./aws.html#2-migration">2. Migration</a></li>
+<li><a href="./aws.html#3-optimization-and-modernization">3. Optimization and Modernization</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#challenges-in-cloud-migration">Challenges in Cloud Migration</a></li>
+<li><a href="./aws.html#aws-cloud-migration-tools">AWS Cloud Migration Tools</a></li>
+<li><a href="./aws.html#conclusion-for-what-is-cloud-migration">Conclusion for What is Cloud Migration</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#common-cloud-migration-strategies">Common Cloud Migration Strategies</a>
+<ul>
+<li><a href="./aws.html#the-6-or-7-rs-of-cloud-migration-strategies">The 6 (or 7) Rs of Cloud Migration Strategies</a>
+<ul>
+<li><a href="./aws.html#1-rehost-lift-and-shift">1. Rehost (Lift and Shift)</a></li>
+<li><a href="./aws.html#2-replatform-lift-tinker-and-shift">2. Replatform (Lift, Tinker, and Shift)</a></li>
+<li><a href="./aws.html#3-refactorre-architect">3. Refactor/Re-architect</a></li>
+<li><a href="./aws.html#4-replatform-to-containers-sometimes-considered-a-specialized-replatform-or-light-refactor">4. Replatform to Containers (sometimes considered a specialized Replatform or light Refactor)</a></li>
+<li><a href="./aws.html#5-repurchase-drop-and-shop">5. Repurchase (Drop and Shop)</a></li>
+<li><a href="./aws.html#6-retain-revisit">6. Retain (Revisit)</a></li>
+<li><a href="./aws.html#7-retire">7. Retire</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#summary-table-of-migration-strategies">Summary Table of Migration Strategies</a></li>
+<li><a href="./aws.html#conclusion-for-common-cloud-migration-strategies">Conclusion for Common Cloud Migration Strategies</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#aws-migration-tools-overview">AWS Migration Tools Overview</a>
+<ul>
+<li><a href="./aws.html#categories-of-aws-migration-tools">Categories of AWS Migration Tools</a>
+<ul>
+<li><a href="./aws.html#1-discovery-and-assessment-tools">1. Discovery and Assessment Tools</a></li>
+<li><a href="./aws.html#2-server-migration-tools">2. Server Migration Tools</a></li>
+<li><a href="./aws.html#3-database-migration-tools">3. Database Migration Tools</a></li>
+<li><a href="./aws.html#4-data-transfer-and-storage-migration-tools">4. Data Transfer and Storage Migration Tools</a></li>
+<li><a href="./aws.html#5-application-modernization-tools">5. Application Modernization Tools</a></li>
+<li><a href="./aws.html#6-network-connectivity-tools">6. Network Connectivity Tools</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#migration-best-practices-with-aws-tools">Migration Best Practices with AWS Tools</a></li>
+<li><a href="./aws.html#flow-diagram-aws-migration-tools-in-action">Flow Diagram: AWS Migration Tools in Action</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-are-aws-support-plans">What are AWS Support Plans</a>
+<ul>
+<li><a href="./aws.html#overview-of-aws-support-plans">Overview of AWS Support Plans</a></li>
+<li><a href="./aws.html#details-of-each-aws-support-plan">Details of Each AWS Support Plan</a>
+<ul>
+<li><a href="./aws.html#1-basic-support-free">1. Basic Support (Free)</a></li>
+<li><a href="./aws.html#2-developer-support">2. Developer Support</a></li>
+<li><a href="./aws.html#3-business-support">3. Business Support</a></li>
+<li><a href="./aws.html#4-enterprise-support">4. Enterprise Support</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#table-comparison-of-aws-support-plans">Table: Comparison of AWS Support Plans</a></li>
+<li><a href="./aws.html#factors-to-consider-when-choosing-a-support-plan">Factors to Consider When Choosing a Support Plan</a></li>
+<li><a href="./aws.html#conclusion-for-aws-support-plans">Conclusion for AWS Support Plans</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#how-to-use-aws-documentation-and-whitepapers">How to Use AWS Documentation and Whitepapers</a>
+<ul>
+<li><a href="./aws.html#1-aws-documentation-the-official-source-of-truth">1. AWS Documentation: The Official Source of Truth</a>
+<ul>
+<li><a href="./aws.html#key-characteristics-and-sections-of-aws-documentation">Key Characteristics and Sections of AWS Documentation:</a></li>
+<li><a href="./aws.html#best-practices-for-using-aws-documentation">Best Practices for Using AWS Documentation:</a></li>
+<li><a href="./aws.html#real-world-example-of-using-aws-documentation">Real-world Example of Using AWS Documentation:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#2-aws-whitepapers-strategic-and-architectural-guidance">2. AWS Whitepapers: Strategic and Architectural Guidance</a>
+<ul>
+<li><a href="./aws.html#key-characteristics-and-content-of-aws-whitepapers">Key Characteristics and Content of AWS Whitepapers:</a></li>
+<li><a href="./aws.html#popular-aws-whitepapers">Popular AWS Whitepapers:</a></li>
+<li><a href="./aws.html#best-practices-for-using-aws-whitepapers">Best Practices for Using AWS Whitepapers:</a></li>
+<li><a href="./aws.html#real-world-example-of-using-aws-whitepapers">Real-world Example of Using AWS Whitepapers:</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#complementary-nature-of-documentation-and-whitepapers">Complementary Nature of Documentation and Whitepapers</a></li>
+<li><a href="./aws.html#conclusion-for-aws-documentation-and-whitepapers">Conclusion for AWS Documentation and Whitepapers</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#what-is-the-aws-cloud-practitioner-certification">What is the AWS Cloud Practitioner Certification</a>
+<ul>
+<li><a href="./aws.html#purpose-and-target-audience">Purpose and Target Audience</a></li>
+<li><a href="./aws.html#exam-domains-and-content">Exam Domains and Content</a></li>
+<li><a href="./aws.html#exam-format-and-preparation">Exam Format and Preparation</a></li>
+<li><a href="./aws.html#benefits-of-aws-cloud-practitioner-certification">Benefits of AWS Cloud Practitioner Certification</a></li>
+<li><a href="./aws.html#conclusion-for-aws-cloud-practitioner-certification">Conclusion for AWS Cloud Practitioner Certification</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#aws-cloud-practitioner-exam-structure">AWS Cloud Practitioner Exam Structure</a>
+<ul>
+<li><a href="./aws.html#1-exam-overview">1. Exam Overview</a></li>
+<li><a href="./aws.html#2-content-domains-and-weighting">2. Content Domains and Weighting</a>
+<ul>
+<li><a href="./aws.html#detailed-breakdown-of-each-domains-focus">Detailed Breakdown of Each Domain’s Focus:</a></li>
+<li><a href="./aws.html#domain-1-cloud-concepts-24">Domain 1: Cloud Concepts (24%)</a></li>
+<li><a href="./aws.html#domain-2-security-and-compliance-32">Domain 2: Security and Compliance (32%)</a></li>
+<li><a href="./aws.html#domain-3-technology-34">Domain 3: Technology (34%)</a></li>
+<li><a href="./aws.html#domain-4-billing-and-pricing-10">Domain 4: Billing and Pricing (10%)</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#3-question-types">3. Question Types</a></li>
+<li><a href="./aws.html#4-preparation-tips-for-the-cloud-practitioner-exam">4. Preparation Tips for the Cloud Practitioner Exam</a></li>
+</ul>
+</li>
+<li><a href="./aws.html#real-world-aws-architecture-at-beginner-level">Real-World AWS Architecture at Beginner Level</a>
+<ul>
+<li><a href="./aws.html#architecture-overview-highly-available-static-website-with-simple-api">Architecture Overview: Highly Available Static Website with Simple API</a></li>
+<li><a href="./aws.html#key-aws-services-used-in-this-architecture">Key AWS Services Used in this Architecture</a></li>
+<li><a href="./aws.html#beginner-level-architecture-principles-demonstrated">Beginner-Level Architecture Principles Demonstrated</a></li>
+<li><a href="./aws.html#how-to-build-this-architecture-beginner-steps">How to Build This Architecture (Beginner Steps)</a></li>
+</ul>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+                            <a rel="next prefetch" href="aws.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+                    <a rel="next prefetch" href="aws.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

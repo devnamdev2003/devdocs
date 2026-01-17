@@ -1,3 +1,10 @@
+<style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+
 ## [👈](../)
 
-![image8](../img/post1/8.png)
+![image8](https://devnamdev2003.github.io/devdocs/static/img/posts/post1/8.png)

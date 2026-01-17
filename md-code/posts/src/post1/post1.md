@@ -1,8 +1,16 @@
+<style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+
 ## [👈](../)
 
-![image1](../img/post1/1.png)
 
 # 🚨 One filename change. Zero errors. Production broken.
+
+![image1](https://devnamdev2003.github.io/devdocs/static/img/posts/post1/1.png)
 
 **A small Git detail taught me a production-level lesson the hard way.**
 

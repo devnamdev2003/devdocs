@@ -1,3 +1,10 @@
+<style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+
 ## [👈](../src)
 
 # 🧭 COMPLETE AWS EC2 HANDS-ON ROADMAP

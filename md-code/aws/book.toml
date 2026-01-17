@@ -1,5 +1,5 @@
 [book]
-description = "Clear and practical AWS documentation by Dev Namdev"
+description = "Clear and structured notes on AWS services, architecture, and cloud fundamentals."
 authors = ["Dev Namdev"]
 language = "en"
 src = "src"

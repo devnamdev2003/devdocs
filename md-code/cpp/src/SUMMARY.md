@@ -1,3 +1,0 @@
-# Summary
-
-- [CPP](cpp.md)

@@ -1,4 +1,5 @@
 [book]
+description = "Practical JavaScript notes with core concepts, examples, and browser usage."
 authors = ["Dev Namdev"]
 language = "en"
 src = "src"

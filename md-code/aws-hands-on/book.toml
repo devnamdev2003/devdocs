@@ -1,4 +1,5 @@
 [book]
+description = "Step-by-step AWS labs and hands-on exercises for real-world cloud practice."
 authors = ["Dev Namdev"]
 language = "en"
 src = "src"

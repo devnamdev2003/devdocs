@@ -1,4 +1,5 @@
 [book]
+description = "Short articles and notes sharing learnings, tips, and insights from daily development work."
 authors = ["Dev Namdev"]
 language = "en"
 src = "src"

@@ -1,12 +1,11 @@
 [book]
+description = "Concise and practical Python notes covering core concepts, examples, and real-world usage."
 authors = ["Dev Namdev"]
 language = "en"
 src = "src"
 
-
 [build]
 build-dir = "../../docs/python"
-
 
 [output.html]
 git-repository-url = "https://github.com/devnamdev2003/devdocs"

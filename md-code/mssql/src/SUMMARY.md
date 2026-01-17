@@ -1,3 +1,0 @@
-# Summary
-
-- [MSSQL](MSSQL.md)

@@ -1,0 +1,932 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Linux User Management</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- PWA -->
+        <link rel="icon" type="image/x-icon" href="https://devnamdev2003.github.io/devdocs/static/icons/favicon.ico">
+        <link rel="manifest" href="https://devnamdev2003.github.io/devdocs/static/manifest.webmanifest">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="theme-color" content="#0d1117">
+        
+        <meta name="title" content="linux">
+        <meta name="description" content="Concise and practical Linux notes covering core commands, file systems, permissions, processes, networking, and system administration.">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="og:image" content="https://devnamdev2003.github.io/devdocs/static/img/linux/linux_c.png">
+        <meta property="og:title" content="linux">
+        <meta property="og:description" content="Concise and practical Linux notes covering core commands, file systems, permissions, processes, networking, and system administration.">
+        
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="twitter:image" content="https://devnamdev2003.github.io/devdocs/static/img/linux/linux_c.png">
+        <meta property="twitter:title" content="linux">
+        <meta property="twitter:description"
+            content="Concise and practical Linux notes covering core commands, file systems, permissions, processes, networking, and system administration.">
+        <meta name="description" content="Concise and practical Linux notes covering core commands, file systems, permissions, processes, networking, and system administration.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-f0dc081c.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-89ebc1d8.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs/edit/main/md-code/linux/src/linux_user_management.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+<h2 id=""><a class="header" href="#"><a href="../src">👈</a></a></h2>
+<h1 id="-big-picture-ec2-access--linux-users-one-clear-model"><a class="header" href="#-big-picture-ec2-access--linux-users-one-clear-model">🔑 Big Picture: EC2 Access + Linux Users (ONE CLEAR MODEL)</a></h1>
+<p>When you create an <strong>EC2 instance</strong>, there are <strong>two separate systems</strong> involved:</p>
+<h3 id="1-aws-level-iam--key-pair"><a class="header" href="#1-aws-level-iam--key-pair">1️⃣ AWS level (IAM &amp; Key Pair)</a></h3>
+<p>Controls:</p>
+<ul>
+<li><strong>Who can connect to the EC2</strong></li>
+<li>Uses <strong>SSH keys (.pem)</strong></li>
+</ul>
+<h3 id="2-linux-level-users--groups"><a class="header" href="#2-linux-level-users--groups">2️⃣ Linux level (Users &amp; Groups)</a></h3>
+<p>Controls:</p>
+<ul>
+<li><strong>What a person can do inside the server</strong></li>
+<li>Uses <strong>users, groups, permissions</strong></li>
+</ul>
+<p>👉 These two are <strong>independent</strong> but <strong>work together</strong>.</p>
+<hr>
+<h2 id="-what-the-pem-file-really-does"><a class="header" href="#-what-the-pem-file-really-does">🔐 What the <code>.pem</code> file really does</a></h2>
+<ul>
+<li>A <code>.pem</code> file is <strong>NOT a user</strong></li>
+<li>It is <strong>NOT root access</strong></li>
+<li>It only proves:</li>
+</ul>
+<blockquote>
+<p>“I am allowed to connect to this server”</p>
+</blockquote>
+<p>When you SSH using a PEM file:</p>
+<pre><code>ssh -i key.pem ec2-user@IP
+</code></pre>
+<p>You log in as:</p>
+<pre><code>ec2-user
+</code></pre>
+<p>✔ Not root
+✔ Normal Linux user
+✔ Has <code>sudo</code> access</p>
+<hr>
+<h2 id="-are-you-root-after-login"><a class="header" href="#-are-you-root-after-login">👤 Are you root after login?</a></h2>
+<p>❌ <strong>No</strong></p>
+<p>AWS <strong>disables direct root login</strong> for security.</p>
+<p>To become root:</p>
+<pre><code>sudo su -
+</code></pre>
+<p>or</p>
+<pre><code>sudo -i
+</code></pre>
+<p>Root access is <strong>temporary</strong> and <strong>controlled</strong>.</p>
+<hr>
+<h2 id="-giving-ec2-access-to-another-person-correct-way"><a class="header" href="#-giving-ec2-access-to-another-person-correct-way">👥 Giving EC2 access to another person (CORRECT WAY)</a></h2>
+<p>You <strong>do NOT</strong> share your PEM file.</p>
+<h3 id="correct-process"><a class="header" href="#correct-process">Correct process:</a></h3>
+<ol>
+<li><strong>Other person generates their own SSH key</strong></li>
+<li>They send you <strong>only the public key</strong></li>
+<li>You create a <strong>Linux user</strong> on EC2</li>
+<li>You add their public key to that user</li>
+<li>You set <strong>permissions</strong> for what they can access</li>
+</ol>
+<hr>
+<h1 id="-1-what-does-login-with-a-pem-file-actually-mean"><a class="header" href="#-1-what-does-login-with-a-pem-file-actually-mean">🔑 1️⃣ What does “login with a PEM file” actually mean?</a></h1>
+<p>When you run this command:</p>
+<pre><code>ssh -i mykey.pem ec2-user@EC2-IP
+</code></pre>
+<p>You are doing <strong>SSH key-based authentication</strong>.</p>
+<p>Let’s break it down:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Part</th><th>Meaning</th></tr>
+</thead>
+<tbody>
+<tr><td><code>ssh</code></td><td>Secure Shell (connect to server)</td></tr>
+<tr><td><code>-i mykey.pem</code></td><td>Use this <strong>private key</strong> to prove identity</td></tr>
+<tr><td><code>ec2-user@EC2-IP</code></td><td>Login as Linux user <code>ec2-user</code></td></tr>
+</tbody>
+</table>
+</div>
+<p>👉 <strong>Important:</strong>
+The PEM file is <strong>not a user</strong>.
+It is <strong>not root access</strong>.
+It is just a <strong>key to open the door</strong>.</p>
+<hr>
+<h2 id="-2-which-user-do-you-become-after-login"><a class="header" href="#-2-which-user-do-you-become-after-login">👤 2️⃣ Which user do you become after login?</a></h2>
+<p>You become the <strong>Linux user you specify</strong> in the SSH command.</p>
+<p>Example:</p>
+<pre><code>ssh -i mykey.pem ec2-user@EC2-IP
+</code></pre>
+<p>You are logged in as:</p>
+<pre><code>ec2-user
+</code></pre>
+<p>You can verify:</p>
+<pre><code>whoami
+</code></pre>
+<p>Output:</p>
+<pre><code>ec2-user
+</code></pre>
+<p>✅ You are <strong>NOT root</strong>
+✅ You are a <strong>normal Linux user</strong></p>
+<hr>
+<h2 id="-3-are-you-root-by-default-after-login"><a class="header" href="#-3-are-you-root-by-default-after-login">❌ 3️⃣ Are you root by default after login?</a></h2>
+<p><strong>NO. Never.</strong></p>
+<p>Even though you used a PEM file:</p>
+<ul>
+<li>You are <strong>not root</strong></li>
+<li>You are <strong>not superuser</strong></li>
+<li>You have <strong>limited permissions</strong></li>
+</ul>
+<p>AWS does this <strong>intentionally</strong> for security.</p>
+<hr>
+<h2 id="-4-why-aws-does-not-log-you-in-as-root"><a class="header" href="#-4-why-aws-does-not-log-you-in-as-root">🧠 4️⃣ Why AWS does NOT log you in as root</a></h2>
+<p>AWS <strong>disables direct root login by default</strong>.</p>
+<h3 id="reasons"><a class="header" href="#reasons">Reasons:</a></h3>
+<ol>
+<li>
+<p><strong>Security</strong></p>
+<ul>
+<li>Root can delete OS, disks, users</li>
+</ul>
+</li>
+<li>
+<p><strong>Accidental damage</strong></p>
+<ul>
+<li>One wrong command can destroy server</li>
+</ul>
+</li>
+<li>
+<p><strong>Industry best practice</strong></p>
+<ul>
+<li>Least privilege principle</li>
+</ul>
+</li>
+</ol>
+<p>So AWS says:</p>
+<blockquote>
+<p>“Login as a normal user, become root only when needed.”</p>
+</blockquote>
+<hr>
+<h2 id="-5-then-how-can-ec2-user-do-admin-work"><a class="header" href="#-5-then-how-can-ec2-user-do-admin-work">🔐 5️⃣ Then how can <code>ec2-user</code> do admin work?</a></h2>
+<p>Because <code>ec2-user</code> has <strong>sudo access</strong>.</p>
+<p>Check:</p>
+<pre><code>groups ec2-user
+</code></pre>
+<p>Output:</p>
+<pre><code>ec2-user wheel
+</code></pre>
+<p>The <code>wheel</code> group allows:</p>
+<pre><code>sudo
+</code></pre>
+<hr>
+<h2 id="-6-how-to-access-root-important"><a class="header" href="#-6-how-to-access-root-important">🚀 6️⃣ How to access root (IMPORTANT)</a></h2>
+<p>There are <strong>two correct and safe ways</strong>.</p>
+<hr>
+<h3 id="-method-1-run-a-single-command-as-root"><a class="header" href="#-method-1-run-a-single-command-as-root">✅ Method 1: Run a single command as root</a></h3>
+<pre><code>sudo command
+</code></pre>
+<p>Example:</p>
+<pre><code>sudo yum install nginx
+</code></pre>
+<p>What happens:</p>
+<ul>
+<li>Only this command runs as root</li>
+<li>You remain <code>ec2-user</code></li>
+</ul>
+<p>Check:</p>
+<pre><code>sudo whoami
+</code></pre>
+<p>Output:</p>
+<pre><code>root
+</code></pre>
+<hr>
+<h3 id="-method-2-switch-to-full-root-shell"><a class="header" href="#-method-2-switch-to-full-root-shell">✅ Method 2: Switch to full root shell</a></h3>
+<pre><code>sudo su -
+</code></pre>
+<p>OR</p>
+<pre><code>sudo -i
+</code></pre>
+<p>Now your prompt changes:</p>
+<pre><code>[root@ip-172-31-x-x ~]#
+</code></pre>
+<p>Now:</p>
+<ul>
+<li>You are <strong>root</strong></li>
+<li>You have <strong>full control</strong></li>
+</ul>
+<p>To exit root:</p>
+<pre><code>exit
+</code></pre>
+<hr>
+<h2 id="-7-why-root-login-is-dangerous"><a class="header" href="#-7-why-root-login-is-dangerous">⚠️ 7️⃣ Why root login is dangerous</a></h2>
+<p>As root you can:</p>
+<ul>
+<li>Delete <code>/</code></li>
+<li>Stop networking</li>
+<li>Remove users</li>
+<li>Break boot process</li>
+</ul>
+<p>That’s why:</p>
+<ul>
+<li>Root login via SSH is <strong>disabled</strong></li>
+<li>Root is accessed <strong>temporarily via sudo</strong></li>
+</ul>
+<hr>
+<h2 id="-8-mental-model-very-important"><a class="header" href="#-8-mental-model-very-important">🧠 8️⃣ Mental model (VERY IMPORTANT)</a></h2>
+<p>Think like this:</p>
+<ul>
+<li><strong>PEM file</strong> → proves who you are</li>
+<li><strong>Linux user</strong> → decides what you can do</li>
+<li><strong>sudo</strong> → temporary root power</li>
+</ul>
+<pre><code>PEM file ≠ root
+</code></pre>
+<hr>
+<h2 id="-9-one-command-summary"><a class="header" href="#-9-one-command-summary">📌 9️⃣ One-command summary</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Action</th><th>Result</th></tr>
+</thead>
+<tbody>
+<tr><td>SSH with PEM</td><td>Login as normal user</td></tr>
+<tr><td><code>whoami</code></td><td>ec2-user</td></tr>
+<tr><td><code>sudo command</code></td><td>Run as root</td></tr>
+<tr><td><code>sudo su -</code></td><td>Become root</td></tr>
+<tr><td>Root SSH login</td><td>Disabled</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="-final-clear-statement-remember-this"><a class="header" href="#-final-clear-statement-remember-this">✅ Final clear statement (remember this)</a></h2>
+<blockquote>
+<p>When you log in using a PEM file, you are logged in as a normal Linux user (like <code>ec2-user</code>), not as root. AWS disables direct root login for security reasons. To perform administrative tasks, you temporarily become root using <code>sudo</code>.</p>
+</blockquote>
+<hr>
+<h1 id="how-to-create-a-new-user-and-how-to-do-proper-setup-for-that-user"><a class="header" href="#how-to-create-a-new-user-and-how-to-do-proper-setup-for-that-user">How to create a new user and how to do proper setup for that user</a></h1>
+<p>This is exactly how it is done on <strong>real EC2 servers</strong>.</p>
+<hr>
+<h2 id="-first-understand-the-goal"><a class="header" href="#-first-understand-the-goal">🧠 First understand the goal</a></h2>
+<p>When you create a new user, you want:</p>
+<p>✔ The user to log in <strong>with their own SSH key</strong>
+✔ The user to have <strong>their own home directory</strong>
+✔ The user to access <strong>only allowed files</strong>
+✔ The user to <strong>NOT be root by default</strong></p>
+<hr>
+<h2 id="-step-1-login-as-admin-user"><a class="header" href="#-step-1-login-as-admin-user">👤 Step 1: Login as admin user</a></h2>
+<p>First, <strong>you</strong> (admin) log in to EC2:</p>
+<pre><code>ssh -i admin.pem ec2-user@EC2-IP
+</code></pre>
+<p>You are logged in as:</p>
+<pre><code>ec2-user
+</code></pre>
+<p>This user has <strong>sudo access</strong>.</p>
+<hr>
+<h2 id="-step-2-create-a-new-linux-user"><a class="header" href="#-step-2-create-a-new-linux-user">👤 Step 2: Create a new Linux user</a></h2>
+<p>Create a new user (example: <code>devuser</code>):</p>
+<pre><code>sudo useradd devuser
+</code></pre>
+<p>What this does:</p>
+<ul>
+<li>Creates a Linux user named <code>devuser</code></li>
+<li>Assigns a UID (user ID)</li>
+<li>Creates entry in <code>/etc/passwd</code></li>
+</ul>
+<hr>
+<h2 id="-step-3-create-home-directory-important"><a class="header" href="#-step-3-create-home-directory-important">📂 Step 3: Create home directory (IMPORTANT)</a></h2>
+<p>Some systems create it automatically, but to be safe:</p>
+<pre><code>sudo mkdir /home/devuser
+</code></pre>
+<p>Set ownership:</p>
+<pre><code>sudo chown devuser:devuser /home/devuser
+</code></pre>
+<p>Now:</p>
+<pre><code>/home/devuser
+</code></pre>
+<p>belongs only to <code>devuser</code>.</p>
+<hr>
+<h2 id="-step-4-create-ssh-directory"><a class="header" href="#-step-4-create-ssh-directory">🔐 Step 4: Create <code>.ssh</code> directory</a></h2>
+<p>This is required for <strong>SSH key login</strong>.</p>
+<pre><code>sudo mkdir /home/devuser/.ssh
+</code></pre>
+<p>Set correct permissions:</p>
+<pre><code>sudo chmod 700 /home/devuser/.ssh
+sudo chown devuser:devuser /home/devuser/.ssh
+</code></pre>
+<h3 id="why-700"><a class="header" href="#why-700">Why 700?</a></h3>
+<ul>
+<li>Only the user can read/write/enter</li>
+<li>SSH will <strong>refuse login</strong> if permissions are wrong</li>
+</ul>
+<hr>
+<h2 id="-step-5-add-public-key-most-important"><a class="header" href="#-step-5-add-public-key-most-important">🔑 Step 5: Add public key (MOST IMPORTANT)</a></h2>
+<p>Create the authorized keys file:</p>
+<pre><code>sudo nano /home/devuser/.ssh/authorized_keys
+</code></pre>
+<p>Paste the <strong>public key</strong> of the user here.</p>
+<p>⚠️ <strong>Only public key</strong>, never private key.</p>
+<p>Set permissions:</p>
+<pre><code>sudo chmod 600 /home/devuser/.ssh/authorized_keys
+sudo chown devuser:devuser /home/devuser/.ssh/authorized_keys
+</code></pre>
+<hr>
+<h2 id="-step-6-test-user-login"><a class="header" href="#-step-6-test-user-login">🧪 Step 6: Test user login</a></h2>
+<p>Now the user can log in from <strong>their own machine</strong>:</p>
+<pre><code>ssh -i devuser.pem devuser@EC2-IP
+</code></pre>
+<p>Check:</p>
+<pre><code>whoami
+</code></pre>
+<p>Output:</p>
+<pre><code>devuser
+</code></pre>
+<p>✅ User is logged in
+✅ Not root
+✅ Isolated from other users</p>
+<hr>
+<h2 id="-step-7-decide-sudo-access-very-important"><a class="header" href="#-step-7-decide-sudo-access-very-important">🔐 Step 7: Decide sudo access (VERY IMPORTANT)</a></h2>
+<h3 id="-should-the-user-be-root-capable"><a class="header" href="#-should-the-user-be-root-capable">❓ Should the user be root-capable?</a></h3>
+<h3 id="-if-no-most-secure"><a class="header" href="#-if-no-most-secure">❌ If NO (most secure):</a></h3>
+<p>Do nothing.</p>
+<p>User:</p>
+<ul>
+<li>Cannot install software</li>
+<li>Cannot change system config</li>
+<li>Cannot access <code>/etc</code>, <code>/var</code>, etc.</li>
+</ul>
+<hr>
+<h3 id="-if-yes-admin--senior-dev"><a class="header" href="#-if-yes-admin--senior-dev">✅ If YES (admin / senior dev):</a></h3>
+<p>Add user to sudo group.</p>
+<p>On Amazon Linux:</p>
+<pre><code>sudo usermod -aG wheel devuser
+</code></pre>
+<p>On Ubuntu:</p>
+<pre><code>sudo usermod -aG sudo devuser
+</code></pre>
+<p>Now user can run:</p>
+<pre><code>sudo command
+</code></pre>
+<hr>
+<h2 id="-step-8-folder--file-access-control"><a class="header" href="#-step-8-folder--file-access-control">📂 Step 8: Folder &amp; file access control</a></h2>
+<p>Example:
+You have a folder:</p>
+<pre><code>/app-data
+</code></pre>
+<p>You want:</p>
+<ul>
+<li><code>devuser</code> → access</li>
+<li>Others → no access</li>
+</ul>
+<pre><code>sudo chown devuser:devuser /app-data
+sudo chmod 700 /app-data
+</code></pre>
+<p>Now:</p>
+<ul>
+<li>Only <code>devuser</code> can access</li>
+<li>Others are blocked</li>
+</ul>
+<hr>
+<h2 id="-step-9-groups-professional-setup"><a class="header" href="#-step-9-groups-professional-setup">👥 Step 9: Groups (Professional setup)</a></h2>
+<p>Create a group:</p>
+<pre><code>sudo groupadd devteam
+</code></pre>
+<p>Add user to group:</p>
+<pre><code>sudo usermod -aG devteam devuser
+</code></pre>
+<p>Assign folder to group:</p>
+<pre><code>sudo chown :devteam /shared-data
+sudo chmod 770 /shared-data
+</code></pre>
+<p>Now:</p>
+<ul>
+<li>All devteam members can access</li>
+<li>Others cannot</li>
+</ul>
+<hr>
+<h2 id="-common-mistakes-important"><a class="header" href="#-common-mistakes-important">❌ Common mistakes (IMPORTANT)</a></h2>
+<p>❌ Forgetting <code>.ssh</code> permissions
+❌ Putting private key on server
+❌ Logging everyone in as <code>ec2-user</code>
+❌ Giving sudo to everyone</p>
+<hr>
+<h2 id="-mental-model-remember-this"><a class="header" href="#-mental-model-remember-this">🧠 Mental model (REMEMBER THIS)</a></h2>
+<pre><code>User = identity
+Group = role
+SSH key = login method
+Permissions = access control
+</code></pre>
+<hr>
+<h2 id="-final-summary-task-2"><a class="header" href="#-final-summary-task-2">✅ Final summary (Task 2)</a></h2>
+<blockquote>
+<p>To set up a new user on an EC2 instance, you create a Linux user, create a home directory, configure SSH access using the user’s public key, set strict permissions on <code>.ssh</code> files, and optionally grant sudo access using groups. This ensures secure, controlled access for each individual user.</p>
+</blockquote>
+<hr>
+<h1 id="how-the-other-user-creates-their-pem-file-and-shares-it-with-you"><a class="header" href="#how-the-other-user-creates-their-pem-file-and-shares-it-with-you">How the other user creates their PEM file and shares it with you</a></h1>
+<p>This task is about <strong>what the OTHER PERSON does</strong>, not you.</p>
+<hr>
+<h2 id="-first-clear-one-very-important-misunderstanding"><a class="header" href="#-first-clear-one-very-important-misunderstanding">🧠 First, clear one very important misunderstanding</a></h2>
+<p>👉 <strong>The admin does NOT create the PEM file for the user.</strong>
+👉 <strong>The user creates their OWN PEM file on their OWN machine.</strong></p>
+<p>This is how it works in real companies.</p>
+<hr>
+<h2 id="-who-is-the-other-user"><a class="header" href="#-who-is-the-other-user">👤 Who is “the other user”?</a></h2>
+<ul>
+<li>Developer</li>
+<li>Teammate</li>
+<li>Intern</li>
+<li>Ops engineer</li>
+</ul>
+<p>They want access to <strong>your EC2 server</strong>.</p>
+<hr>
+<h2 id="-step-1-user-creates-ssh-key-pair-on-their-own-machine"><a class="header" href="#-step-1-user-creates-ssh-key-pair-on-their-own-machine">🔑 Step 1: User creates SSH key pair on their own machine</a></h2>
+<p>On their <strong>laptop / system</strong>, they run:</p>
+<pre><code>ssh-keygen
+</code></pre>
+<p>They will see something like:</p>
+<pre><code>Generating public/private rsa key pair.
+Enter file in which to save the key (/home/user/.ssh/id_rsa):
+</code></pre>
+<p>They can press <strong>Enter</strong>
+OR give a custom name:</p>
+<pre><code>devuser.pem
+</code></pre>
+<hr>
+<h3 id="what-files-are-created"><a class="header" href="#what-files-are-created">What files are created?</a></h3>
+<p>Two files are created:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>File</th><th>Purpose</th></tr>
+</thead>
+<tbody>
+<tr><td><code>devuser.pem</code></td><td><strong>PRIVATE KEY</strong> (never shared)</td></tr>
+<tr><td><code>devuser.pem.pub</code></td><td><strong>PUBLIC KEY</strong> (shared with admin)</td></tr>
+</tbody>
+</table>
+</div>
+<p>📌 The <code>.pem</code> file stays <strong>ONLY</strong> with the user.</p>
+<hr>
+<h2 id="-step-2-optional--set-passphrase-recommended"><a class="header" href="#-step-2-optional--set-passphrase-recommended">🔐 Step 2: Optional – set passphrase (recommended)</a></h2>
+<p>User may be asked:</p>
+<pre><code>Enter passphrase (empty for no passphrase):
+</code></pre>
+<ul>
+<li>Passphrase = extra password protection</li>
+<li>If someone steals the key → still cannot use it</li>
+</ul>
+<p>In companies:
+✔️ Passphrase is recommended</p>
+<hr>
+<h2 id="-step-3-user-shares-only-the-public-key"><a class="header" href="#-step-3-user-shares-only-the-public-key">📤 Step 3: User shares ONLY the public key</a></h2>
+<p>The user sends <strong>ONLY</strong> this file (or its content):</p>
+<pre><code>devuser.pem.pub
+</code></pre>
+<p>Example content:</p>
+<pre><code>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7...
+</code></pre>
+<p>They can share it via:</p>
+<ul>
+<li>Email</li>
+<li>Slack</li>
+<li>Ticket</li>
+<li>Git (private repo)</li>
+</ul>
+<p>⚠️ <strong>They NEVER share</strong>:</p>
+<pre><code>devuser.pem
+</code></pre>
+<hr>
+<h2 id="-why-private-key-is-never-shared"><a class="header" href="#-why-private-key-is-never-shared">🔒 Why private key is never shared</a></h2>
+<p>If someone has the private key:</p>
+<ul>
+<li>They can login as that user</li>
+<li>No password needed</li>
+<li>Full access</li>
+</ul>
+<p>So:</p>
+<pre><code>Private key = identity
+</code></pre>
+<hr>
+<h2 id="-step-4-you-admin-add-public-key-to-ec2"><a class="header" href="#-step-4-you-admin-add-public-key-to-ec2">🖥️ Step 4: You (admin) add public key to EC2</a></h2>
+<p>You paste the public key into:</p>
+<pre><code>/home/devuser/.ssh/authorized_keys
+</code></pre>
+<p>Now the server trusts:</p>
+<ul>
+<li>Anyone who proves they own the matching private key</li>
+</ul>
+<hr>
+<h2 id="-step-5-how-the-user-logs-in"><a class="header" href="#-step-5-how-the-user-logs-in">🧪 Step 5: How the user logs in</a></h2>
+<p>From their machine, the user runs:</p>
+<pre><code>ssh -i devuser.pem devuser@EC2-IP
+</code></pre>
+<p>Important points:</p>
+<ul>
+<li>Command runs on <strong>their laptop</strong></li>
+<li>Uses <strong>their private key</strong></li>
+<li>Logs in as <strong>devuser</strong></li>
+</ul>
+<hr>
+<h2 id="-step-6-how-ssh-verifies-identity-simple-explanation"><a class="header" href="#-step-6-how-ssh-verifies-identity-simple-explanation">🔍 Step 6: How SSH verifies identity (Simple explanation)</a></h2>
+<ol>
+<li>Server sends a challenge</li>
+<li>User signs it with private key</li>
+<li>Server checks public key</li>
+<li>Match found ✔️</li>
+<li>Login allowed 🎉</li>
+</ol>
+<p>The private key is <strong>never sent</strong> to the server.</p>
+<hr>
+<h2 id="-common-beginner-mistakes-very-important"><a class="header" href="#-common-beginner-mistakes-very-important">❌ Common beginner mistakes (VERY IMPORTANT)</a></h2>
+<p>❌ Admin generates key and shares PEM
+❌ User sends private key via WhatsApp 😬
+❌ Storing private keys on server
+❌ One key used by multiple users</p>
+<hr>
+<h2 id="-simple-analogy-remember-this"><a class="header" href="#-simple-analogy-remember-this">🧠 Simple analogy (remember this)</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Real world</th><th>SSH</th></tr>
+</thead>
+<tbody>
+<tr><td>House key</td><td>Private key (.pem)</td></tr>
+<tr><td>Lock design</td><td>Public key (.pub)</td></tr>
+<tr><td>House owner</td><td>EC2 admin</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="-final-summary-task-3"><a class="header" href="#-final-summary-task-3">✅ Final summary (Task 3)</a></h2>
+<blockquote>
+<p>The other user generates their own SSH key pair on their own system using <code>ssh-keygen</code>. They keep the private key (<code>.pem</code>) securely with them and share only the public key (<code>.pub</code>) with the EC2 admin. The admin adds this public key to the user’s <code>authorized_keys</code> file, allowing secure SSH access without sharing secrets.</p>
+</blockquote>
+<hr>
+<h1 id="how-the-other-user-creates-their-pem-file-and-shares-it-with-you-1"><a class="header" href="#how-the-other-user-creates-their-pem-file-and-shares-it-with-you-1">How the other user creates their PEM file and shares it with you</a></h1>
+<p>This task is about <strong>what the OTHER PERSON does</strong>, not you.</p>
+<hr>
+<h2 id="-first-clear-one-very-important-misunderstanding-1"><a class="header" href="#-first-clear-one-very-important-misunderstanding-1">🧠 First, clear one very important misunderstanding</a></h2>
+<p>👉 <strong>The admin does NOT create the PEM file for the user.</strong>
+👉 <strong>The user creates their OWN PEM file on their OWN machine.</strong></p>
+<p>This is how it works in real companies.</p>
+<hr>
+<h2 id="-who-is-the-other-user-1"><a class="header" href="#-who-is-the-other-user-1">👤 Who is “the other user”?</a></h2>
+<ul>
+<li>Developer</li>
+<li>Teammate</li>
+<li>Intern</li>
+<li>Ops engineer</li>
+</ul>
+<p>They want access to <strong>your EC2 server</strong>.</p>
+<hr>
+<h2 id="-step-1-user-creates-ssh-key-pair-on-their-own-machine-1"><a class="header" href="#-step-1-user-creates-ssh-key-pair-on-their-own-machine-1">🔑 Step 1: User creates SSH key pair on their own machine</a></h2>
+<p>On their <strong>laptop / system</strong>, they run:</p>
+<pre><code>ssh-keygen
+</code></pre>
+<p>They will see something like:</p>
+<pre><code>Generating public/private rsa key pair.
+Enter file in which to save the key (/home/user/.ssh/id_rsa):
+</code></pre>
+<p>They can press <strong>Enter</strong>
+OR give a custom name:</p>
+<pre><code>devuser.pem
+</code></pre>
+<hr>
+<h3 id="what-files-are-created-1"><a class="header" href="#what-files-are-created-1">What files are created?</a></h3>
+<p>Two files are created:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>File</th><th>Purpose</th></tr>
+</thead>
+<tbody>
+<tr><td><code>devuser.pem</code></td><td><strong>PRIVATE KEY</strong> (never shared)</td></tr>
+<tr><td><code>devuser.pem.pub</code></td><td><strong>PUBLIC KEY</strong> (shared with admin)</td></tr>
+</tbody>
+</table>
+</div>
+<p>📌 The <code>.pem</code> file stays <strong>ONLY</strong> with the user.</p>
+<hr>
+<h2 id="-step-2-optional--set-passphrase-recommended-1"><a class="header" href="#-step-2-optional--set-passphrase-recommended-1">🔐 Step 2: Optional – set passphrase (recommended)</a></h2>
+<p>User may be asked:</p>
+<pre><code>Enter passphrase (empty for no passphrase):
+</code></pre>
+<ul>
+<li>Passphrase = extra password protection</li>
+<li>If someone steals the key → still cannot use it</li>
+</ul>
+<p>In companies:
+✔️ Passphrase is recommended</p>
+<hr>
+<h2 id="-step-3-user-shares-only-the-public-key-1"><a class="header" href="#-step-3-user-shares-only-the-public-key-1">📤 Step 3: User shares ONLY the public key</a></h2>
+<p>The user sends <strong>ONLY</strong> this file (or its content):</p>
+<pre><code>devuser.pem.pub
+</code></pre>
+<p>Example content:</p>
+<pre><code>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7...
+</code></pre>
+<p>They can share it via:</p>
+<ul>
+<li>Email</li>
+<li>Slack</li>
+<li>Ticket</li>
+<li>Git (private repo)</li>
+</ul>
+<p>⚠️ <strong>They NEVER share</strong>:</p>
+<pre><code>devuser.pem
+</code></pre>
+<hr>
+<h2 id="-why-private-key-is-never-shared-1"><a class="header" href="#-why-private-key-is-never-shared-1">🔒 Why private key is never shared</a></h2>
+<p>If someone has the private key:</p>
+<ul>
+<li>They can login as that user</li>
+<li>No password needed</li>
+<li>Full access</li>
+</ul>
+<p>So:</p>
+<pre><code>Private key = identity
+</code></pre>
+<hr>
+<h2 id="-step-4-you-admin-add-public-key-to-ec2-1"><a class="header" href="#-step-4-you-admin-add-public-key-to-ec2-1">🖥️ Step 4: You (admin) add public key to EC2</a></h2>
+<p>You paste the public key into:</p>
+<pre><code>/home/devuser/.ssh/authorized_keys
+</code></pre>
+<p>Now the server trusts:</p>
+<ul>
+<li>Anyone who proves they own the matching private key</li>
+</ul>
+<hr>
+<h2 id="-step-5-how-the-user-logs-in-1"><a class="header" href="#-step-5-how-the-user-logs-in-1">🧪 Step 5: How the user logs in</a></h2>
+<p>From their machine, the user runs:</p>
+<pre><code>ssh -i devuser.pem devuser@EC2-IP
+</code></pre>
+<p>Important points:</p>
+<ul>
+<li>Command runs on <strong>their laptop</strong></li>
+<li>Uses <strong>their private key</strong></li>
+<li>Logs in as <strong>devuser</strong></li>
+</ul>
+<hr>
+<h2 id="-step-6-how-ssh-verifies-identity-simple-explanation-1"><a class="header" href="#-step-6-how-ssh-verifies-identity-simple-explanation-1">🔍 Step 6: How SSH verifies identity (Simple explanation)</a></h2>
+<ol>
+<li>Server sends a challenge</li>
+<li>User signs it with private key</li>
+<li>Server checks public key</li>
+<li>Match found ✔️</li>
+<li>Login allowed 🎉</li>
+</ol>
+<p>The private key is <strong>never sent</strong> to the server.</p>
+<hr>
+<h2 id="-common-beginner-mistakes-very-important-1"><a class="header" href="#-common-beginner-mistakes-very-important-1">❌ Common beginner mistakes (VERY IMPORTANT)</a></h2>
+<p>❌ Admin generates key and shares PEM
+❌ User sends private key via WhatsApp 😬
+❌ Storing private keys on server
+❌ One key used by multiple users</p>
+<hr>
+<h2 id="-simple-analogy-remember-this-1"><a class="header" href="#-simple-analogy-remember-this-1">🧠 Simple analogy (remember this)</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Real world</th><th>SSH</th></tr>
+</thead>
+<tbody>
+<tr><td>House key</td><td>Private key (.pem)</td></tr>
+<tr><td>Lock design</td><td>Public key (.pub)</td></tr>
+<tr><td>House owner</td><td>EC2 admin</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="-final-summary-task-3-1"><a class="header" href="#-final-summary-task-3-1">✅ Final summary (Task 3)</a></h2>
+<blockquote>
+<p>The other user generates their own SSH key pair on their own system using <code>ssh-keygen</code>. They keep the private key (<code>.pem</code>) securely with them and share only the public key (<code>.pub</code>) with the EC2 admin. The admin adds this public key to the user’s <code>authorized_keys</code> file, allowing secure SSH access without sharing secrets.</p>
+</blockquote>
+<hr>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="linux_vi.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="linux_vi.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

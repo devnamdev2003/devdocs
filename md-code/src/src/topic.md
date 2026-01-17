@@ -10,6 +10,7 @@ h2, h3{
 
 * **[AWS](../aws)**
 * **[AWS Hands-On](../aws-hands-on)**
+* **[Linux for Cloud (AWS Context)](../linux)**
 
 ### 💻 Programming Languages
 

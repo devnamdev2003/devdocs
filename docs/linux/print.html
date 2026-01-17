@@ -1,0 +1,2430 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title></title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+        <!-- PWA -->
+        <link rel="icon" type="image/x-icon" href="https://devnamdev2003.github.io/devdocs/static/icons/favicon.ico">
+        <link rel="manifest" href="https://devnamdev2003.github.io/devdocs/static/manifest.webmanifest">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="theme-color" content="#0d1117">
+        
+        <meta name="title" content="linux">
+        <meta name="description" content="Concise and practical Linux notes covering core commands, file systems, permissions, processes, networking, and system administration.">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="og:image" content="https://devnamdev2003.github.io/devdocs/static/img/linux/linux_c.png">
+        <meta property="og:title" content="linux">
+        <meta property="og:description" content="Concise and practical Linux notes covering core commands, file systems, permissions, processes, networking, and system administration.">
+        
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="twitter:image" content="https://devnamdev2003.github.io/devdocs/static/img/linux/linux_c.png">
+        <meta property="twitter:title" content="linux">
+        <meta property="twitter:description"
+            content="Concise and practical Linux notes covering core commands, file systems, permissions, processes, networking, and system administration.">
+        <meta name="description" content="Concise and practical Linux notes covering core commands, file systems, permissions, processes, networking, and system administration.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-f0dc081c.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-89ebc1d8.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="linux-index"><a href="#linux-index" class="header">Linux Index</a></h1>
+<style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+<h2 id=""><a class="header" href="#"><a href="../src">👈</a></a></h2>
+<h1 id="-linux-topics-to-know-before-aws"><a class="header" href="#-linux-topics-to-know-before-aws">🐧 Linux Topics to Know Before AWS</a></h1>
+<h2 id="-linux-basics"><a class="header" href="#-linux-basics"><a href="#-topic-1-linux-basics">🐧 Linux Basics</a></a></h2>
+<ul>
+<li><a href="#1️⃣-what-is-linux">1️⃣ What is Linux?</a></li>
+<li><a href="#2️⃣-why-linux-is-important-for-aws">2️⃣ Why Linux is important for AWS?</a></li>
+<li><a href="#3️⃣-linux-distributions-very-important">3️⃣ Linux Distributions (Very Important)</a></li>
+<li><a href="#4️⃣-linux-is-case-sensitive-">4️⃣ Linux is Case-Sensitive ⚠</a></li>
+<li><a href="#5️⃣-linux-directory-structure-high-level">5️⃣ Linux Directory Structure (High-Level)</a></li>
+<li><a href="#6️⃣-root-user-vs-normal-user">6️⃣ Root User vs Normal User</a></li>
+<li><a href="#7️⃣-linux-shell--terminal">7️⃣ Linux Shell &amp; Terminal</a></li>
+<li><a href="#8️⃣-linux-vs-windows-simple-comparison">8️⃣ Linux vs Windows (Simple Comparison)</a></li>
+<li><a href="#9️⃣-what-you-should-remember-from-topic-1">9️⃣ What you should remember from Topic 1</a></li>
+</ul>
+<h2 id="-file--directory-management-linux"><a class="header" href="#-file--directory-management-linux"><a href="#-topic-2-file--directory-management-linux">📁 File &amp; Directory Management (Linux)</a></a></h2>
+<ul>
+<li><a href="#1️⃣-what-is-a-file--directory">1️⃣ What is a File &amp; Directory?</a></li>
+<li><a href="#2️⃣-current-working-directory">2️⃣ Current Working Directory</a></li>
+<li><a href="#3️⃣-listing-files--folders">3️⃣ Listing Files &amp; Folders</a></li>
+<li><a href="#4️⃣-changing-directories">4️⃣ Changing Directories</a></li>
+<li><a href="#5️⃣-absolute-vs-relative-paths-very-important">5️⃣ Absolute vs Relative Paths (VERY IMPORTANT)</a></li>
+<li><a href="#6️⃣-creating-files--directories">6️⃣ Creating Files &amp; Directories</a></li>
+<li><a href="#7️⃣-copying-files--directories">7️⃣ Copying Files &amp; Directories</a></li>
+<li><a href="#8️⃣-moving--renaming">8️⃣ Moving &amp; Renaming</a></li>
+<li><a href="#9️⃣-deleting-files--directories-">9️⃣ Deleting Files &amp; Directories ⚠</a></li>
+<li><a href="#-useful-shortcuts">🔟 Useful Shortcuts</a></li>
+<li><a href="#1️⃣1️⃣-what-you-must-remember-exam--real-aws">1️⃣1️⃣ What you must remember (Exam + Real AWS)</a></li>
+</ul>
+<h2 id="-file-viewing--editing-linux"><a class="header" href="#-file-viewing--editing-linux"><a href="#-topic-3-file-viewing--editing-linux">📄 File Viewing &amp; Editing (Linux)</a></a></h2>
+<ul>
+<li><a href="#1️⃣-why-this-topic-is-important-for-aws">1️⃣ Why this topic is important for AWS?</a></li>
+<li><a href="#2️⃣-viewing-file-content-basic">2️⃣ Viewing File Content (Basic)</a></li>
+<li><a href="#3️⃣-viewing-part-of-a-file">3️⃣ Viewing Part of a File</a></li>
+<li><a href="#4️⃣-editing-files-in-linux">4️⃣ Editing Files in Linux</a></li>
+<li><a href="#5️⃣-nano-editor-beginner-friendly">5️⃣ <code>nano</code> Editor (Beginner Friendly)</a></li>
+<li><a href="#6️⃣-vi-editor-basic-knowledge-enough">6️⃣ <code>vi</code> Editor (Basic Knowledge Enough)</a></li>
+<li><a href="#8️⃣-what-you-must-remember">8️⃣ What you must remember</a></li>
+</ul>
+<h2 id="-file-permissions--ownership-linux"><a class="header" href="#-file-permissions--ownership-linux"><a href="#-topic-4-file-permissions--ownership-linux">🔐 File Permissions &amp; Ownership (Linux)</a></a></h2>
+<ul>
+<li><a href="#1️⃣-why-permissions-are-important-in-aws">1️⃣ Why permissions are important in AWS?</a></li>
+<li><a href="#2️⃣-understanding-file-permissions">2️⃣ Understanding File Permissions</a></li>
+<li><a href="#3️⃣-permission-structure-very-important">3️⃣ Permission Structure (Very Important)</a></li>
+<li><a href="#4️⃣-user-group-others">4️⃣ User, Group, Others</a></li>
+<li><a href="#5️⃣-file-vs-directory-permissions">5️⃣ File vs Directory Permissions</a></li>
+<li><a href="#6️⃣-changing-permissions-chmod-change-mode">6️⃣ Changing Permissions <code>chmod</code> (change mode)</a></li>
+<li><a href="#7️⃣-making-a-script-executable-aws-common">7️⃣ Making a Script Executable (AWS COMMON)</a></li>
+<li><a href="#8️⃣-file-ownership-chown-change-owner">8️⃣ File Ownership <code>chown</code> (change owner)</a></li>
+<li><a href="#9️⃣-why-sudo-is-needed">9️⃣ Why <code>sudo</code> is needed</a></li>
+<li><a href="#-common-aws-permission-issues">🔟 Common AWS Permission Issues</a></li>
+<li><a href="#1️⃣1️⃣-real-aws-example">1️⃣1️⃣ Real AWS Example</a></li>
+<li><a href="#1️⃣2️⃣-what-you-must-remember">1️⃣2️⃣ What you MUST remember</a></li>
+</ul>
+<h2 id="-user--group-management-linux"><a class="header" href="#-user--group-management-linux"><a href="#-topic-5-user--group-management-linux">👤 User &amp; Group Management (Linux)</a></a></h2>
+<ul>
+<li><a href="#1️⃣-why-this-topic-is-important-for-aws-1">1️⃣ Why this topic is important for AWS?</a></li>
+<li><a href="#2️⃣-what-is-a-user">2️⃣ What is a User?</a></li>
+<li><a href="#3️⃣-root-user-vs-normal-user">3️⃣ Root User vs Normal User</a></li>
+<li><a href="#4️⃣-what-is-a-group">4️⃣ What is a Group?</a></li>
+<li><a href="#5️⃣-important-user-commands">5️⃣ Important User Commands</a></li>
+<li><a href="#6️⃣-creating-a-user-admin-task">6️⃣ Creating a User (Admin Task)</a></li>
+<li><a href="#7️⃣-switching-users">7️⃣ Switching Users</a></li>
+<li><a href="#8️⃣-deleting-a-user">8️⃣ Deleting a User</a></li>
+<li><a href="#9️⃣-group-management">9️⃣ Group Management</a></li>
+<li><a href="#-aws-real-life-examples">🔟 AWS Real-Life Examples</a></li>
+</ul>
+<h2 id="6-process-management"><a class="header" href="#6-process-management">6️⃣ Process Management</a></h2>
+<ul>
+<li>What is a process</li>
+<li>Foreground vs background process</li>
+<li>Process states</li>
+<li>Monitoring processes</li>
+<li>Killing processes</li>
+</ul>
+<hr>
+<h2 id="7-networking-basics"><a class="header" href="#7-networking-basics">7️⃣ Networking Basics</a></h2>
+<ul>
+<li>IP address &amp; hostname</li>
+<li>Network interfaces</li>
+<li>Ports &amp; services</li>
+<li>Connectivity testing</li>
+<li>Downloading from internet</li>
+</ul>
+<hr>
+<h2 id="8-disk--storage-management"><a class="header" href="#8-disk--storage-management">8️⃣ Disk &amp; Storage Management</a></h2>
+<ul>
+<li>File systems</li>
+<li>Disk usage</li>
+<li>Mounting &amp; unmounting disks</li>
+<li>Block devices</li>
+<li>Storage basics (important for EBS)</li>
+</ul>
+<hr>
+<h2 id="9-package-management"><a class="header" href="#9-package-management">9️⃣ Package Management</a></h2>
+<ul>
+<li>Package managers (yum / apt)</li>
+<li>Installing software</li>
+<li>Updating packages</li>
+<li>Removing packages</li>
+<li>Repositories</li>
+</ul>
+<hr>
+<h2 id="-service-management-systemd"><a class="header" href="#-service-management-systemd">🔟 Service Management (systemd)</a></h2>
+<ul>
+<li>What is a service</li>
+<li>Starting &amp; stopping services</li>
+<li>Restarting services</li>
+<li>Enabling services on boot</li>
+<li>Checking service status</li>
+</ul>
+<hr>
+<h2 id="11-environment-variables--shell"><a class="header" href="#11-environment-variables--shell">1️⃣1️⃣ Environment Variables &amp; Shell</a></h2>
+<ul>
+<li>Environment variables</li>
+<li>PATH variable</li>
+<li>Setting variables</li>
+<li>Shell configuration files</li>
+</ul>
+<hr>
+<h2 id="12-searching--text-processing"><a class="header" href="#12-searching--text-processing">1️⃣2️⃣ Searching &amp; Text Processing</a></h2>
+<ul>
+<li>Searching text in files</li>
+<li>Finding files</li>
+<li>Filtering output</li>
+<li>Basic text processing concepts</li>
+</ul>
+<hr>
+<h2 id="13-compression--archiving"><a class="header" href="#13-compression--archiving">1️⃣3️⃣ Compression &amp; Archiving</a></h2>
+<ul>
+<li>Archive files</li>
+<li>Compress &amp; extract files</li>
+<li>Backup basics</li>
+</ul>
+<hr>
+<h2 id="14-ssh--remote-access"><a class="header" href="#14-ssh--remote-access">1️⃣4️⃣ SSH &amp; Remote Access</a></h2>
+<ul>
+<li>What is SSH</li>
+<li>SSH keys</li>
+<li>Remote login</li>
+<li>Copying files over SSH</li>
+</ul>
+<hr>
+<h2 id="15-bash-scripting-basics"><a class="header" href="#15-bash-scripting-basics">1️⃣5️⃣ Bash Scripting Basics</a></h2>
+<ul>
+<li>What is a shell script</li>
+<li>Script structure</li>
+<li>Variables</li>
+<li>Conditions</li>
+<li>Loops</li>
+</ul>
+<hr>
+<h2 id="16-linux-security-basics"><a class="header" href="#16-linux-security-basics">1️⃣6️⃣ Linux Security Basics</a></h2>
+<ul>
+<li>Firewall basics</li>
+<li>File permission security</li>
+<li>SSH security</li>
+<li>Running services securely</li>
+</ul>
+<hr>
+<h2 id="17-logs--troubleshooting"><a class="header" href="#17-logs--troubleshooting">1️⃣7️⃣ Logs &amp; Troubleshooting</a></h2>
+<ul>
+<li>System logs</li>
+<li>Application logs</li>
+<li>Reading error logs</li>
+<li>Basic troubleshooting flow</li>
+</ul>
+<hr>
+<h2 id="18-linux-for-cloud-aws-context"><a class="header" href="#18-linux-for-cloud-aws-context">1️⃣8️⃣ Linux for Cloud (AWS Context)</a></h2>
+<ul>
+<li>Linux on EC2</li>
+<li>User-data scripts</li>
+<li>AMI basics</li>
+<li>Linux boot process (high-level)</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="linux"><a href="#linux" class="header">Linux</a></h1>
+<style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+<h2 id="-1"><a class="header" href="#-1"><a href="../src">👈</a></a></h2>
+<hr>
+<h1 id="-topic-1-linux-basics"><a class="header" href="#-topic-1-linux-basics">🐧 Topic 1: Linux Basics</a></h1>
+<h2 id="1-what-is-linux"><a class="header" href="#1-what-is-linux">1️⃣ What is Linux?</a></h2>
+<p><strong>Linux is an operating system</strong>, just like:</p>
+<ul>
+<li>Windows</li>
+<li>macOS</li>
+</ul>
+<p>But Linux is:</p>
+<ul>
+<li><strong>Free</strong></li>
+<li><strong>Open source</strong></li>
+<li><strong>Very powerful</strong></li>
+<li><strong>Mostly used on servers</strong></li>
+</ul>
+<p>👉 <strong>AWS uses Linux on most servers (EC2)</strong></p>
+<p>So, when you use AWS, you are <strong>actually using Linux machines</strong>.</p>
+<hr>
+<h2 id="2-why-linux-is-important-for-aws"><a class="header" href="#2-why-linux-is-important-for-aws">2️⃣ Why Linux is important for AWS?</a></h2>
+<p>In AWS:</p>
+<ul>
+<li>EC2 instances mostly run <strong>Linux</strong></li>
+<li>Docker runs on Linux</li>
+<li>Kubernetes runs on Linux</li>
+<li>CI/CD servers run on Linux</li>
+</ul>
+<p>💡 If you know Linux:</p>
+<ul>
+<li>You can manage EC2 easily</li>
+<li>You can debug issues faster</li>
+<li>You can deploy applications confidently</li>
+</ul>
+<hr>
+<h2 id="3-linux-distributions-very-important"><a class="header" href="#3-linux-distributions-very-important">3️⃣ Linux Distributions (Very Important)</a></h2>
+<p>Linux has many versions. These are called <strong>distributions (distros)</strong>.</p>
+<h3 id="common-linux-distros-in-aws"><a class="header" href="#common-linux-distros-in-aws">Common Linux distros in AWS:</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Distribution</th><th>Used where</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Amazon Linux</strong></td><td>Default in AWS EC2</td></tr>
+<tr><td><strong>Ubuntu</strong></td><td>Very popular</td></tr>
+<tr><td><strong>RHEL</strong></td><td>Enterprise systems</td></tr>
+<tr><td><strong>CentOS</strong></td><td>Older AWS setups</td></tr>
+</tbody>
+</table>
+</div>
+<p>👉 For AWS learning, focus on:</p>
+<ul>
+<li><strong>Amazon Linux</strong></li>
+<li><strong>Ubuntu</strong></li>
+</ul>
+<hr>
+<h2 id="4-linux-is-case-sensitive-"><a class="header" href="#4-linux-is-case-sensitive-">4️⃣ Linux is Case-Sensitive ⚠</a></h2>
+<p>Linux treats:</p>
+<pre><code>File.txt ≠ file.txt
+DEV ≠ dev
+</code></pre>
+<p>This is <strong>very important in AWS</strong>, especially:</p>
+<ul>
+<li>File names</li>
+<li>Paths</li>
+<li>Scripts</li>
+</ul>
+<hr>
+<h2 id="5-linux-directory-structure-high-level"><a class="header" href="#5-linux-directory-structure-high-level">5️⃣ Linux Directory Structure (High-Level)</a></h2>
+<p>Linux files are organized like a <strong>tree</strong>.</p>
+<h3 id="important-folders-you-must-know"><a class="header" href="#important-folders-you-must-know">Important folders you must know:</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Directory</th><th>Purpose</th></tr>
+</thead>
+<tbody>
+<tr><td><code>/</code></td><td>Root (starting point)</td></tr>
+<tr><td><code>/home</code></td><td>User home folders</td></tr>
+<tr><td><code>/etc</code></td><td>Configuration files</td></tr>
+<tr><td><code>/var</code></td><td>Logs &amp; variable data</td></tr>
+<tr><td><code>/opt</code></td><td>Optional software</td></tr>
+<tr><td><code>/bin</code></td><td>Basic commands</td></tr>
+<tr><td><code>/usr</code></td><td>User programs</td></tr>
+</tbody>
+</table>
+</div>
+<p>Example:</p>
+<pre><code>/home/ec2-user
+/etc/nginx/nginx.conf
+/var/log/messages
+</code></pre>
+<p>👉 In AWS, logs are often in <code>/var/log</code></p>
+<hr>
+<h2 id="6-root-user-vs-normal-user"><a class="header" href="#6-root-user-vs-normal-user">6️⃣ Root User vs Normal User</a></h2>
+<h3 id="root-user"><a class="header" href="#root-user">Root user</a></h3>
+<ul>
+<li>Full access</li>
+<li>Can do <strong>anything</strong></li>
+<li>Very dangerous if misused</li>
+</ul>
+<h3 id="normal-user-recommended"><a class="header" href="#normal-user-recommended">Normal user (Recommended)</a></h3>
+<ul>
+<li>Limited access</li>
+<li>Uses <code>sudo</code> for admin tasks</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-bash">sudo yum install nginx
+</code></pre>
+<p>👉 On AWS EC2:</p>
+<ul>
+<li>
+<p>Default user is <strong>NOT root</strong></p>
+</li>
+<li>
+<p>Example users:</p>
+<ul>
+<li><code>ec2-user</code> (Amazon Linux)</li>
+<li><code>ubuntu</code> (Ubuntu)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="7-linux-shell--terminal"><a class="header" href="#7-linux-shell--terminal">7️⃣ Linux Shell &amp; Terminal</a></h2>
+<h3 id="shell"><a class="header" href="#shell">Shell</a></h3>
+<ul>
+<li>A program that understands your commands</li>
+</ul>
+<p>Common shell:</p>
+<ul>
+<li><strong>bash</strong> (most common)</li>
+</ul>
+<h3 id="terminal"><a class="header" href="#terminal">Terminal</a></h3>
+<ul>
+<li>The place where you type commands</li>
+</ul>
+<p>In AWS:</p>
+<ul>
+<li>You connect to EC2</li>
+<li>You get a <strong>terminal</strong></li>
+<li>You run <strong>Linux commands</strong></li>
+</ul>
+<hr>
+<h2 id="8-linux-vs-windows-simple-comparison"><a class="header" href="#8-linux-vs-windows-simple-comparison">8️⃣ Linux vs Windows (Simple Comparison)</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Linux</th><th>Windows</th></tr>
+</thead>
+<tbody>
+<tr><td>CLI focused</td><td>GUI focused</td></tr>
+<tr><td>Lightweight</td><td>Heavy</td></tr>
+<tr><td>Free</td><td>Paid</td></tr>
+<tr><td>Best for servers</td><td>Best for desktop</td></tr>
+</tbody>
+</table>
+</div>
+<p>AWS = <strong>Linux-first</strong></p>
+<hr>
+<h2 id="9-what-you-should-remember-from-topic-1"><a class="header" href="#9-what-you-should-remember-from-topic-1">9️⃣ What you should remember from Topic 1</a></h2>
+<p>✅ Linux is the backbone of AWS
+✅ AWS EC2 mostly runs Linux
+✅ Linux is case-sensitive
+✅ Know basic directories
+✅ Root vs normal user concept</p>
+<hr>
+<h1 id="-topic-2-file--directory-management-linux"><a class="header" href="#-topic-2-file--directory-management-linux">📁 Topic 2: File &amp; Directory Management (Linux)</a></h1>
+<h2 id="1-what-is-a-file--directory"><a class="header" href="#1-what-is-a-file--directory">1️⃣ What is a File &amp; Directory?</a></h2>
+<ul>
+<li>
+<p><strong>File</strong> → Stores data
+Example:
+<code>app.js</code>, <code>config.yml</code>, <code>log.txt</code></p>
+</li>
+<li>
+<p><strong>Directory (folder)</strong> → Stores files and other folders
+Example:
+<code>/home/ec2-user</code>, <code>/var/log</code></p>
+</li>
+</ul>
+<p>👉 On AWS EC2, everything you do is inside files &amp; directories.</p>
+<hr>
+<h2 id="2-current-working-directory"><a class="header" href="#2-current-working-directory">2️⃣ Current Working Directory</a></h2>
+<p>When you open a terminal, you are <strong>inside a directory</strong>.</p>
+<p>Command:</p>
+<pre><code class="language-bash">pwd
+</code></pre>
+<p>📌 Shows <strong>where you are now</strong></p>
+<p>Example output:</p>
+<pre><code>/home/ec2-user
+</code></pre>
+<hr>
+<h2 id="3-listing-files--folders"><a class="header" href="#3-listing-files--folders">3️⃣ Listing Files &amp; Folders</a></h2>
+<pre><code class="language-bash">ls        # list files
+ls -l     # detailed list
+ls -a     # show hidden files
+ls -la    # detailed + hidden
+</code></pre>
+<ul>
+<li><code>l</code> → <strong>long listing format</strong> (Shows detailed information about files)</li>
+<li><code>a</code> → <strong>all files</strong>, including hidden files (those starting with <code>.</code>)</li>
+</ul>
+<h3 id="columns-explanation-left-to-right"><a class="header" href="#columns-explanation-left-to-right">Columns explanation (left to right)</a></h3>
+<p>Example line:</p>
+<pre><code>-rw-rw-r--. 1 ec2-user ec2-user 53142881 Jan  9 13:41 EWA-1.0.0.jar
+</code></pre>
+<hr>
+<h4 id="-column-1-file-type--permissions"><a class="header" href="#-column-1-file-type--permissions">🔹 Column 1: File type + Permissions</a></h4>
+<pre><code>-rw-rw-r--.
+</code></pre>
+<p><strong>Breakdown:</strong></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Part</th><th>Meaning</th></tr>
+</thead>
+<tbody>
+<tr><td><code>-</code></td><td>File type</td></tr>
+<tr><td><code>rw-</code></td><td>Owner permissions</td></tr>
+<tr><td><code>rw-</code></td><td>Group permissions</td></tr>
+<tr><td><code>r--</code></td><td>Others permissions</td></tr>
+<tr><td><code>.</code></td><td>SELinux context (Amazon Linux uses SELinux)</td></tr>
+</tbody>
+</table>
+</div>
+<h4 id="file-type-first-character"><a class="header" href="#file-type-first-character">File type (first character)</a></h4>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Symbol</th><th>Meaning</th></tr>
+</thead>
+<tbody>
+<tr><td><code>-</code></td><td>Regular file</td></tr>
+<tr><td><code>d</code></td><td>Directory</td></tr>
+<tr><td><code>l</code></td><td>Symbolic link</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h4 id="-column-2-number-of-links"><a class="header" href="#-column-2-number-of-links">🔹 Column 2: Number of links</a></h4>
+<pre><code>1
+</code></pre>
+<ul>
+<li>For <strong>files</strong> → usually <code>1</code></li>
+<li>For <strong>directories</strong> → number of subdirectories + itself</li>
+</ul>
+<hr>
+<h4 id="-column-3-owner-user"><a class="header" href="#-column-3-owner-user">🔹 Column 3: Owner (User)</a></h4>
+<pre><code>ec2-user
+</code></pre>
+<ul>
+<li>The <strong>user who owns the file</strong></li>
+</ul>
+<hr>
+<h4 id="-column-4-group"><a class="header" href="#-column-4-group">🔹 Column 4: Group</a></h4>
+<pre><code>ec2-user
+</code></pre>
+<ul>
+<li>The <strong>group</strong> that owns the file</li>
+</ul>
+<hr>
+<h4 id="-column-5-file-size-in-bytes"><a class="header" href="#-column-5-file-size-in-bytes">🔹 Column 5: File size (in bytes)</a></h4>
+<pre><code>53142881
+</code></pre>
+<ul>
+<li>Size is always in <strong>bytes</strong></li>
+<li>Example: <code>53142881</code> bytes ≈ <strong>50.7 MB</strong></li>
+</ul>
+<hr>
+<h4 id="-column-68-date--time-last-modified"><a class="header" href="#-column-68-date--time-last-modified">🔹 Column 6–8: Date &amp; Time (Last Modified)</a></h4>
+<pre><code>Jan  9 13:41
+</code></pre>
+<ul>
+<li>This shows <strong>last modification time</strong></li>
+<li>If the file is old, you’ll see <strong>year</strong> instead of time.</li>
+</ul>
+<hr>
+<h4 id="-column-9-file--directory-name"><a class="header" href="#-column-9-file--directory-name">🔹 Column 9: File / Directory name</a></h4>
+<pre><code>EWA-1.0.0.jar
+</code></pre>
+<ul>
+<li>Actual name of the file or directory</li>
+<li>Hidden files start with <code>.</code></li>
+</ul>
+<p>Example: .bashrc, .ssh</p>
+<hr>
+<h3 id="special-entries-in-your-output"><a class="header" href="#special-entries-in-your-output">Special entries in your output</a></h3>
+<h4 id="--current-directory"><a class="header" href="#--current-directory">🔸 <code>.</code> (current directory)</a></h4>
+<pre><code>drwx------. 3 ec2-user ec2-user 131 Jan  9 15:37 .
+</code></pre>
+<ul>
+<li>Refers to <strong>current directory</strong></li>
+</ul>
+<hr>
+<h4 id="--parent-directory"><a class="header" href="#--parent-directory">🔸 <code>..</code> (parent directory)</a></h4>
+<pre><code>drwxr-xr-x. 3 root root 22 Jan  9 13:15 ..
+</code></pre>
+<ul>
+<li>Refers to <strong>parent directory</strong></li>
+</ul>
+<hr>
+<h2 id="4-changing-directories"><a class="header" href="#4-changing-directories">4️⃣ Changing Directories</a></h2>
+<pre><code class="language-bash">cd folder-name     # go inside folder
+cd ..              # go back one level
+cd ~               # go to home directory
+cd /               # go to root
+</code></pre>
+<p>Example:</p>
+<pre><code class="language-bash">cd /var/log
+</code></pre>
+<hr>
+<h2 id="5-absolute-vs-relative-paths-very-important"><a class="header" href="#5-absolute-vs-relative-paths-very-important">5️⃣ Absolute vs Relative Paths (VERY IMPORTANT)</a></h2>
+<h3 id="absolute-path"><a class="header" href="#absolute-path">Absolute Path</a></h3>
+<ul>
+<li>Starts from <code>/</code></li>
+<li>Works from anywhere</li>
+</ul>
+<p>Example:</p>
+<pre><code>/home/ec2-user/app/config.yml
+</code></pre>
+<h3 id="relative-path"><a class="header" href="#relative-path">Relative Path</a></h3>
+<ul>
+<li>Based on current directory</li>
+</ul>
+<p>Example:</p>
+<pre><code>config.yml
+../logs/app.log
+</code></pre>
+<p>👉 In AWS scripts, <strong>absolute paths are safer</strong>.</p>
+<hr>
+<h2 id="6-creating-files--directories"><a class="header" href="#6-creating-files--directories">6️⃣ Creating Files &amp; Directories</a></h2>
+<pre><code class="language-bash">touch file.txt         # create empty file
+mkdir folder           # create folder
+mkdir -p a/b/c         # create nested folders
+</code></pre>
+<ul>
+<li>-p → Parents (Create parent directories as needed.)</li>
+</ul>
+<hr>
+<h2 id="7-copying-files--directories"><a class="header" href="#7-copying-files--directories">7️⃣ Copying Files &amp; Directories</a></h2>
+<pre><code class="language-bash">cp file1 file2         # copy file
+cp file folder/        # copy into folder
+cp -r dir1 dir2        # copy directory
+</code></pre>
+<ul>
+<li>First = OLD (source)</li>
+<li>Second = NEW (destination)</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-bash">cp config.yml backup.yml
+</code></pre>
+<hr>
+<h2 id="8-moving--renaming"><a class="header" href="#8-moving--renaming">8️⃣ Moving &amp; Renaming</a></h2>
+<pre><code class="language-bash">mv oldname newname     # rename
+mv file folder/        # move
+</code></pre>
+<p>Example:</p>
+<pre><code class="language-bash">mv app.log app-old.log
+</code></pre>
+<hr>
+<h2 id="9-deleting-files--directories-"><a class="header" href="#9-deleting-files--directories-">9️⃣ Deleting Files &amp; Directories ⚠</a></h2>
+<pre><code class="language-bash">rm file               # delete file
+rm -r folder          # delete folder
+rm -rf folder         # force delete (DANGEROUS)
+</code></pre>
+<ul>
+<li>-r → Recursive (Remove the folder and everything inside it, recursively)</li>
+<li>-f → Force (Forcefully remove the folder and all its contents recursively, without asking for confirmation)</li>
+</ul>
+<p>⚠ <strong>Important warning</strong></p>
+<ul>
+<li>Linux has <strong>NO recycle bin</strong></li>
+<li><code>rm -rf /</code> can destroy the system</li>
+</ul>
+<p>👉 Be extra careful on <strong>production EC2 servers</strong>.</p>
+<hr>
+<h2 id="-useful-shortcuts"><a class="header" href="#-useful-shortcuts">🔟 Useful Shortcuts</a></h2>
+<pre><code class="language-bash">cd .     # current directory
+cd ..    # parent directory
+cd ~     # home directory
+cd /     # root directory
+</code></pre>
+<hr>
+<hr>
+<h2 id="11-what-you-must-remember-exam--real-aws"><a class="header" href="#11-what-you-must-remember-exam--real-aws">1️⃣1️⃣ What you must remember (Exam + Real AWS)</a></h2>
+<p>✅ Linux has <strong>no GUI</strong> on EC2
+✅ You manage everything via <strong>files &amp; folders</strong>
+✅ Paths matter (case-sensitive)
+✅ <code>rm -rf</code> is dangerous
+✅ Absolute paths are safer in AWS scripts</p>
+<hr>
+<h1 id="-topic-3-file-viewing--editing-linux"><a class="header" href="#-topic-3-file-viewing--editing-linux">📄 Topic 3: File Viewing &amp; Editing (Linux)</a></h1>
+<h2 id="1-why-this-topic-is-important-for-aws"><a class="header" href="#1-why-this-topic-is-important-for-aws">1️⃣ Why this topic is important for AWS?</a></h2>
+<p>On AWS EC2, you will:</p>
+<ul>
+<li>Read <strong>log files</strong></li>
+<li>Edit <strong>configuration files</strong></li>
+<li>Check <strong>application output</strong></li>
+<li>Debug errors</li>
+</ul>
+<hr>
+<h2 id="2-viewing-file-content-basic"><a class="header" href="#2-viewing-file-content-basic">2️⃣ Viewing File Content (Basic)</a></h2>
+<h3 id="cat--show-entire-file"><a class="header" href="#cat--show-entire-file"><code>cat</code> – show entire file</a></h3>
+<pre><code class="language-bash">cat file.txt
+</code></pre>
+<p>Use when:</p>
+<ul>
+<li>File is small</li>
+</ul>
+<p>⚠ Not good for large log files.</p>
+<hr>
+<h3 id="less--best-command-recommended"><a class="header" href="#less--best-command-recommended"><code>less</code> – best command (recommended)</a></h3>
+<pre><code class="language-bash">less file.txt
+</code></pre>
+<p>Controls:</p>
+<ul>
+<li><code>↑ ↓</code> → scroll</li>
+<li><code>Space</code> → next page</li>
+<li><code>/error</code> → search</li>
+<li><code>q</code> → quit</li>
+</ul>
+<hr>
+<h3 id="more--simple-pager"><a class="header" href="#more--simple-pager"><code>more</code> – simple pager</a></h3>
+<pre><code class="language-bash">more file.txt
+</code></pre>
+<p>Less powerful than <code>less</code>.</p>
+<hr>
+<h2 id="3-viewing-part-of-a-file"><a class="header" href="#3-viewing-part-of-a-file">3️⃣ Viewing Part of a File</a></h2>
+<h3 id="head--beginning-of-file"><a class="header" href="#head--beginning-of-file"><code>head</code> – beginning of file</a></h3>
+<pre><code class="language-bash">head file.txt
+head -n 20 file.txt
+</code></pre>
+<ul>
+<li>-n → Number of lines (Show N number of lines, by defult 10).</li>
+</ul>
+<h3 id="tail--end-of-file"><a class="header" href="#tail--end-of-file"><code>tail</code> – end of file</a></h3>
+<pre><code class="language-bash">tail file.txt
+tail -n 50 file.txt
+</code></pre>
+<hr>
+<h3 id="-tail--f--live-log-monitoring-very-important"><a class="header" href="#-tail--f--live-log-monitoring-very-important">🔥 <code>tail -f</code> – LIVE log monitoring (VERY IMPORTANT)</a></h3>
+<pre><code class="language-bash">tail -f /var/log/nginx/access.log
+</code></pre>
+<ul>
+<li>-f → Follow (keep following the file and show new lines as they are added)</li>
+</ul>
+<p>👉 Used to:</p>
+<ul>
+<li>Monitor running applications</li>
+<li>Debug live issues on EC2</li>
+</ul>
+<p>Press <code>Ctrl + C</code> to stop.</p>
+<hr>
+<h2 id="4-editing-files-in-linux"><a class="header" href="#4-editing-files-in-linux">4️⃣ Editing Files in Linux</a></h2>
+<p>On AWS EC2, you usually edit files using:</p>
+<ul>
+<li><code>nano</code> (easy)</li>
+<li><code>vi</code> / <code>vim</code> (powerful)</li>
+</ul>
+<hr>
+<h2 id="5-nano-editor-beginner-friendly"><a class="header" href="#5-nano-editor-beginner-friendly">5️⃣ <code>nano</code> Editor (Beginner Friendly)</a></h2>
+<pre><code class="language-bash">nano file.txt
+</code></pre>
+<p>Controls:</p>
+<ul>
+<li>Type → edit</li>
+<li><code>Ctrl + O</code> → save</li>
+<li><code>Enter</code> → confirm</li>
+<li><code>Ctrl + X</code> → exit</li>
+</ul>
+<p>👉 Recommended when you are starting AWS.</p>
+<hr>
+<h2 id="6-vi-editor-basic-knowledge-enough"><a class="header" href="#6-vi-editor-basic-knowledge-enough">6️⃣ <code>vi</code> Editor (Basic Knowledge Enough)</a></h2>
+<p>Open file:</p>
+<pre><code class="language-bash">vi file.txt
+</code></pre>
+<h3 id="modes-in-vi"><a class="header" href="#modes-in-vi">Modes in <code>vi</code></a></h3>
+<ul>
+<li><strong>Normal mode</strong> → navigation</li>
+<li><strong>Insert mode</strong> → editing</li>
+<li><strong>Command mode</strong> → save/exit</li>
+</ul>
+<h3 id="important-commands"><a class="header" href="#important-commands">Important commands:</a></h3>
+<pre><code class="language-text">i       → insert mode
+Esc     → normal mode
+:w      → save
+:q      → quit
+:wq     → save &amp; quit
+:q!     → quit without saving
+</code></pre>
+<hr>
+<h2 id="8-what-you-must-remember"><a class="header" href="#8-what-you-must-remember">8️⃣ What you must remember</a></h2>
+<p>✅ Use <code>less</code> for reading files
+✅ Use <code>tail -f</code> for live logs
+✅ Use <code>nano</code> for easy editing
+✅ Know basic <code>vi</code> commands
+✅ Use <code>sudo</code> for system files</p>
+<hr>
+<p>Excellent 👍
+Now we are at <strong>Topic 4: File Permissions &amp; Ownership</strong>.
+This topic is <strong>CRITICAL for AWS</strong>. Many EC2 issues happen <strong>only because of permissions</strong>.</p>
+<p>I’ll explain <strong>slowly</strong>, <strong>clearly</strong>, and with <strong>real AWS examples</strong>.</p>
+<hr>
+<h1 id="-topic-4-file-permissions--ownership-linux"><a class="header" href="#-topic-4-file-permissions--ownership-linux">🔐 Topic 4: File Permissions &amp; Ownership (Linux)</a></h1>
+<h2 id="1-why-permissions-are-important-in-aws"><a class="header" href="#1-why-permissions-are-important-in-aws">1️⃣ Why permissions are important in AWS?</a></h2>
+<p>On AWS EC2:</p>
+<ul>
+<li>Applications fail to start ❌</li>
+<li>Scripts don’t run ❌</li>
+<li>Logs can’t be written ❌</li>
+</ul>
+<p>Most of the time the reason is:
+👉 <strong>Wrong file permissions</strong></p>
+<hr>
+<h2 id="2-understanding-file-permissions"><a class="header" href="#2-understanding-file-permissions">2️⃣ Understanding File Permissions</a></h2>
+<p>Run:</p>
+<pre><code class="language-bash">ls -l
+</code></pre>
+<p>Example output:</p>
+<pre><code>-rwxr-xr-- 1 ec2-user ec2-user  512 app.sh
+</code></pre>
+<p>Let’s break it down.</p>
+<hr>
+<h2 id="3-permission-structure-very-important"><a class="header" href="#3-permission-structure-very-important">3️⃣ Permission Structure (Very Important)</a></h2>
+<pre><code>-rwx r-x r--
+  │    │   │
+  │    │   └── Others
+  │    └────── Group
+  └────────── User (Owner)
+</code></pre>
+<h3 id="permission-letters"><a class="header" href="#permission-letters">Permission letters:</a></h3>
+<ul>
+<li><code>r</code> → read</li>
+<li><code>w</code> → write</li>
+<li><code>x</code> → execute</li>
+<li><code>-</code> → no permission</li>
+</ul>
+<hr>
+<h2 id="4-user-group-others"><a class="header" href="#4-user-group-others">4️⃣ User, Group, Others</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Type</th><th>Meaning</th></tr>
+</thead>
+<tbody>
+<tr><td>User</td><td>File owner</td></tr>
+<tr><td>Group</td><td>Group owner</td></tr>
+<tr><td>Others</td><td>Everyone else</td></tr>
+</tbody>
+</table>
+</div>
+<p>👉 Linux always checks permissions in this order:
+<strong>User → Group → Others</strong></p>
+<hr>
+<h2 id="5-file-vs-directory-permissions"><a class="header" href="#5-file-vs-directory-permissions">5️⃣ File vs Directory Permissions</a></h2>
+<h3 id="file"><a class="header" href="#file">File</a></h3>
+<ul>
+<li><code>r</code> → read file</li>
+<li><code>w</code> → modify file</li>
+<li><code>x</code> → run file (script)</li>
+</ul>
+<h3 id="directory"><a class="header" href="#directory">Directory</a></h3>
+<ul>
+<li><code>r</code> → list files</li>
+<li><code>w</code> → create/delete files</li>
+<li><code>x</code> → enter directory</li>
+</ul>
+<p>👉 Without <code>x</code> on a directory, you <strong>cannot cd into it</strong>.</p>
+<hr>
+<h2 id="6-changing-permissions-chmod-change-mode"><a class="header" href="#6-changing-permissions-chmod-change-mode">6️⃣ Changing Permissions <code>chmod</code> (change mode)</a></h2>
+<h3 id="symbolic-mode"><a class="header" href="#symbolic-mode">Symbolic mode</a></h3>
+<pre><code class="language-bash">chmod u+x file.sh              # add execute to user
+chmod g-w file.txt             # remove write from group
+chmod o+r file.txt             # add read to others
+chmod u=rwx,g=rx,o=r file.txt  # set exact permissions
+chmod a+x script.sh            # add execute to all
+chmod a-r file.txt             # remove read from all
+chmod a=r file.txt             # set read for all
+chmod +x script.sh             # add execute to all
+</code></pre>
+<ul>
+<li><code>a</code> means all (user, group, others)</li>
+<li><code>u</code> means user (owner)</li>
+<li><code>g</code> means group</li>
+<li><code>o</code> means others</li>
+</ul>
+<h3 id="numeric-mode-very-important"><a class="header" href="#numeric-mode-very-important">Numeric mode (VERY IMPORTANT)</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Number</th><th>Permission</th></tr>
+</thead>
+<tbody>
+<tr><td>4</td><td>read</td></tr>
+<tr><td>2</td><td>write</td></tr>
+<tr><td>1</td><td>execute</td></tr>
+</tbody>
+</table>
+</div>
+<p>Example:</p>
+<pre><code class="language-bash">chmod 755 app.sh
+</code></pre>
+<p>Meaning:</p>
+<pre><code>User   → 7 (rwx)
+Group  → 5 (r-x)
+Others → 5 (r-x)
+</code></pre>
+<hr>
+<h2 id="7-making-a-script-executable-aws-common"><a class="header" href="#7-making-a-script-executable-aws-common">7️⃣ Making a Script Executable (AWS COMMON)</a></h2>
+<p>If you see:</p>
+<pre><code>permission denied
+</code></pre>
+<p>Fix:</p>
+<pre><code class="language-bash">chmod +x script.sh
+./script.sh
+</code></pre>
+<p>👉 Common in <strong>user-data scripts</strong>.</p>
+<hr>
+<h2 id="8-file-ownership-chown-change-owner"><a class="header" href="#8-file-ownership-chown-change-owner">8️⃣ File Ownership <code>chown</code> (change owner)</a></h2>
+<p>Change owner:</p>
+<pre><code class="language-bash">chown user file.txt  # user → new owner (user)
+</code></pre>
+<p>Change owner &amp; group:</p>
+<pre><code class="language-bash">chown user:group file.txt  # user → new owner, group → new group
+</code></pre>
+<p>Example (AWS):</p>
+<pre><code class="language-bash">sudo chown ec2-user:ec2-user app.log 
+</code></pre>
+<hr>
+<h2 id="9-why-sudo-is-needed"><a class="header" href="#9-why-sudo-is-needed">9️⃣ Why <code>sudo</code> is needed</a></h2>
+<p>System files are owned by <strong>root</strong>.</p>
+<p>Example:</p>
+<pre><code class="language-bash">sudo chmod 644 /etc/nginx/nginx.conf
+</code></pre>
+<p>Without <code>sudo</code>:</p>
+<pre><code>Permission denied
+</code></pre>
+<hr>
+<h2 id="-common-aws-permission-issues"><a class="header" href="#-common-aws-permission-issues">🔟 Common AWS Permission Issues</a></h2>
+<p>❌ App cannot write logs
+❌ Script not executing
+❌ Nginx cannot access files
+❌ Docker volume permission issues</p>
+<hr>
+<h2 id="11-real-aws-example"><a class="header" href="#11-real-aws-example">1️⃣1️⃣ Real AWS Example</a></h2>
+<pre><code class="language-bash">ls -l /var/www/html
+sudo chown -R nginx:nginx /var/www/html
+sudo chmod -R 755 /var/www/html
+</code></pre>
+<ul>
+<li>-R means recursive (apply the command to the folder AND everything inside it)</li>
+</ul>
+<h2 id="12-what-you-must-remember"><a class="header" href="#12-what-you-must-remember">1️⃣2️⃣ What you MUST remember</a></h2>
+<ul>
+<li>Permissions = User | Group | Others</li>
+<li>chmod controls access</li>
+<li>chown controls ownership</li>
+<li>755 is very common in AWS</li>
+<li>sudo is required for system files</li>
+</ul>
+<hr>
+<h1 id="-topic-5-user--group-management-linux"><a class="header" href="#-topic-5-user--group-management-linux">👤 Topic 5: User &amp; Group Management (Linux)</a></h1>
+<h2 id="1-why-this-topic-is-important-for-aws-1"><a class="header" href="#1-why-this-topic-is-important-for-aws-1">1️⃣ Why this topic is important for AWS?</a></h2>
+<p>On AWS EC2:</p>
+<ul>
+<li>Multiple people may access one server</li>
+<li>Applications should not run as root</li>
+<li>Security is very important</li>
+</ul>
+<p>👉 <strong>Linux users &amp; groups help control access</strong></p>
+<hr>
+<h2 id="2-what-is-a-user"><a class="header" href="#2-what-is-a-user">2️⃣ What is a User?</a></h2>
+<p>A <strong>user</strong> is an account that can:</p>
+<ul>
+<li>Login to Linux</li>
+<li>Run commands</li>
+<li>Own files</li>
+<li>Run applications</li>
+</ul>
+<hr>
+<h2 id="3-root-user-vs-normal-user"><a class="header" href="#3-root-user-vs-normal-user">3️⃣ Root User vs Normal User</a></h2>
+<h3 id="root-user-1"><a class="header" href="#root-user-1">Root user</a></h3>
+<ul>
+<li>Superuser</li>
+<li>Full access</li>
+<li>Can break the system</li>
+</ul>
+<h3 id="normal-user-recommended-1"><a class="header" href="#normal-user-recommended-1">Normal user (Recommended)</a></h3>
+<ul>
+<li>Limited permissions</li>
+<li>Uses <code>sudo</code> for admin tasks</li>
+</ul>
+<p>👉 On AWS:</p>
+<ul>
+<li>You login as <strong>ec2-user</strong> or <strong>ubuntu</strong></li>
+<li>You use <code>sudo</code> when needed</li>
+</ul>
+<hr>
+<h2 id="4-what-is-a-group"><a class="header" href="#4-what-is-a-group">4️⃣ What is a Group?</a></h2>
+<p>A <strong>group</strong> is a collection of users.</p>
+<p>Why groups?</p>
+<ul>
+<li>Easier permission management</li>
+<li>Used by applications (nginx, docker, etc.)</li>
+</ul>
+<hr>
+<h2 id="5-important-user-commands"><a class="header" href="#5-important-user-commands">5️⃣ Important User Commands</a></h2>
+<h3 id="check-current-user"><a class="header" href="#check-current-user">Check current user</a></h3>
+<pre><code class="language-bash">whoami
+</code></pre>
+<h3 id="user-details"><a class="header" href="#user-details">User details</a></h3>
+<pre><code class="language-bash">id
+</code></pre>
+<hr>
+<h2 id="6-creating-a-user-admin-task"><a class="header" href="#6-creating-a-user-admin-task">6️⃣ Creating a User (Admin Task)</a></h2>
+<pre><code class="language-bash">sudo useradd devuser
+sudo passwd devuser
+</code></pre>
+<hr>
+<h2 id="7-switching-users"><a class="header" href="#7-switching-users">7️⃣ Switching Users</a></h2>
+<pre><code class="language-bash">su devuser
+</code></pre>
+<p>Switch to root:</p>
+<pre><code class="language-bash">sudo su -
+</code></pre>
+<p>⚠ Be careful with root.</p>
+<hr>
+<h2 id="8-deleting-a-user"><a class="header" href="#8-deleting-a-user">8️⃣ Deleting a User</a></h2>
+<pre><code class="language-bash">sudo userdel devuser
+</code></pre>
+<hr>
+<h2 id="9-group-management"><a class="header" href="#9-group-management">9️⃣ Group Management</a></h2>
+<h3 id="create-group"><a class="header" href="#create-group">Create group</a></h3>
+<pre><code class="language-bash">sudo groupadd devgroup
+</code></pre>
+<h3 id="add-user-to-group"><a class="header" href="#add-user-to-group">Add user to group</a></h3>
+<pre><code class="language-bash">sudo usermod -aG devgroup devuser
+</code></pre>
+<p>Example (AWS common):</p>
+<pre><code class="language-bash">sudo usermod -aG docker ec2-user
+</code></pre>
+<hr>
+<h2 id="-aws-real-life-examples"><a class="header" href="#-aws-real-life-examples">🔟 AWS Real-Life Examples</a></h2>
+<ul>
+<li>Add user for SSH access</li>
+<li>Add user to docker group</li>
+<li>Restrict access to logs</li>
+<li>Avoid using root</li>
+</ul>
+<hr><div style="break-before: page; page-break-before: always;"></div>
+<h1 id="linux-nano"><a href="#linux-nano" class="header">Linux Nano</a></h1>
+<style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+<h2 id="-2"><a class="header" href="#-2"><a href="../src">👈</a></a></h2>
+<h1 id="-nano-editor-beginner-friendly"><a class="header" href="#-nano-editor-beginner-friendly">📝 Nano Editor (Beginner Friendly)</a></h1>
+<h2 id="what-is-nano"><a class="header" href="#what-is-nano">What is Nano?</a></h2>
+<p><strong>Nano</strong> is a <strong>terminal-based text editor</strong> in Linux.</p>
+<p>📌 Think of Nano like:</p>
+<ul>
+<li><strong>Notepad</strong>, but inside the terminal</li>
+<li>Very easy compared to <code>vi</code> / <code>vim</code></li>
+</ul>
+<hr>
+<h2 id="how-to-open-nano"><a class="header" href="#how-to-open-nano">How to open Nano</a></h2>
+<h3 id="open-a-file-or-create-if-not-exists"><a class="header" href="#open-a-file-or-create-if-not-exists">Open a file (or create if not exists)</a></h3>
+<pre><code>nano file.txt
+</code></pre>
+<ul>
+<li>If <code>file.txt</code> exists → it opens</li>
+<li>If not → Nano creates it</li>
+</ul>
+<hr>
+<h2 id="nano-screen-layout"><a class="header" href="#nano-screen-layout">Nano screen layout</a></h2>
+<p>When Nano opens, you’ll see:</p>
+<ul>
+<li><strong>Top</strong> → File name</li>
+<li><strong>Middle</strong> → Text area (where you type)</li>
+<li><strong>Bottom</strong> → Shortcut keys</li>
+</ul>
+<p>Example at bottom:</p>
+<pre><code>^G Get Help   ^O Write Out   ^X Exit
+</code></pre>
+<p>👉 <code>^</code> means <strong>CTRL</strong></p>
+<p>So:</p>
+<ul>
+<li><code>^X</code> = <code>CTRL + X</code></li>
+<li><code>^O</code> = <code>CTRL + O</code></li>
+</ul>
+<hr>
+<h2 id="most-important-nano-commands-"><a class="header" href="#most-important-nano-commands-">MOST IMPORTANT Nano commands ⭐</a></h2>
+<h3 id="1-save-file"><a class="header" href="#1-save-file">1️⃣ Save file</a></h3>
+<pre><code>CTRL + O
+</code></pre>
+<ul>
+<li>Write Out (save)</li>
+<li>Press <strong>Enter</strong> to confirm file name</li>
+</ul>
+<hr>
+<h3 id="2-exit-nano"><a class="header" href="#2-exit-nano">2️⃣ Exit Nano</a></h3>
+<pre><code>CTRL + X
+</code></pre>
+<p>If file is not saved:</p>
+<ul>
+<li>Nano will ask → <strong>Save? (Y/N)</strong></li>
+</ul>
+<hr>
+<h3 id="3-cut-a-line"><a class="header" href="#3-cut-a-line">3️⃣ Cut a line</a></h3>
+<pre><code>CTRL + K
+</code></pre>
+<ul>
+<li>Cuts (removes) the current line</li>
+<li>Works like <strong>cut</strong>, not copy</li>
+</ul>
+<hr>
+<h3 id="4-paste-a-line"><a class="header" href="#4-paste-a-line">4️⃣ Paste a line</a></h3>
+<pre><code>CTRL + U
+</code></pre>
+<ul>
+<li>Pastes the last cut line</li>
+</ul>
+<hr>
+<h3 id="5-search-text"><a class="header" href="#5-search-text">5️⃣ Search text</a></h3>
+<pre><code>CTRL + W
+</code></pre>
+<ul>
+<li>Search for a word in the file</li>
+</ul>
+<hr>
+<h3 id="6-replace-text"><a class="header" href="#6-replace-text">6️⃣ Replace text</a></h3>
+<pre><code>CTRL + \
+</code></pre>
+<ul>
+<li>Search and replace</li>
+</ul>
+<hr>
+<h2 id="navigation-commands-"><a class="header" href="#navigation-commands-">Navigation commands 🧭</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Action</th></tr>
+</thead>
+<tbody>
+<tr><td>Arrow keys</td><td>Move cursor</td></tr>
+<tr><td><code>CTRL + A</code></td><td>Start of line</td></tr>
+<tr><td><code>CTRL + E</code></td><td>End of line</td></tr>
+<tr><td><code>CTRL + Y</code></td><td>Page up</td></tr>
+<tr><td><code>CTRL + V</code></td><td>Page down</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="selecting-text-mark-mode"><a class="header" href="#selecting-text-mark-mode">Selecting text (Mark mode)</a></h2>
+<h3 id="start-selection"><a class="header" href="#start-selection">Start selection</a></h3>
+<pre><code>CTRL + ^
+</code></pre>
+<p>(or <code>CTRL + SHIFT + 6</code>)</p>
+<ul>
+<li>Move cursor to select text</li>
+</ul>
+<h3 id="cut-selected-text"><a class="header" href="#cut-selected-text">Cut selected text</a></h3>
+<pre><code>CTRL + K
+</code></pre>
+<hr>
+<h2 id="undo--redo"><a class="header" href="#undo--redo">Undo / Redo</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Action</th><th>Command</th></tr>
+</thead>
+<tbody>
+<tr><td>Undo</td><td><code>ALT + U</code></td></tr>
+<tr><td>Redo</td><td><code>ALT + E</code></td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="show-line-numbers-very-useful"><a class="header" href="#show-line-numbers-very-useful">Show line numbers (very useful)</a></h2>
+<p>Inside Nano:</p>
+<pre><code>ALT + N
+</code></pre>
+<p>Or open with line numbers:</p>
+<pre><code>nano -l file.txt
+</code></pre>
+<hr>
+<h2 id="help-inside-nano-"><a class="header" href="#help-inside-nano-">Help inside Nano 🆘</a></h2>
+<pre><code>CTRL + G
+</code></pre>
+<p>Shows:</p>
+<ul>
+<li>All commands</li>
+<li>Key combinations</li>
+</ul>
+<hr>
+<h2 id="real-world-usage-examples-very-common"><a class="header" href="#real-world-usage-examples-very-common">Real-world usage examples (VERY COMMON)</a></h2>
+<h3 id="edit-config-file"><a class="header" href="#edit-config-file">Edit config file</a></h3>
+<pre><code>nano /etc/nginx/nginx.conf
+</code></pre>
+<h3 id="edit-app-config"><a class="header" href="#edit-app-config">Edit app config</a></h3>
+<pre><code>nano application.properties
+</code></pre>
+<h3 id="edit-crontab-file"><a class="header" href="#edit-crontab-file">Edit crontab file</a></h3>
+<pre><code>crontab -e
+</code></pre>
+<p>(Default editor is often Nano)</p>
+<hr>
+<h2 id="why-nano-is-beginner-friendly-"><a class="header" href="#why-nano-is-beginner-friendly-">Why Nano is beginner-friendly ❤️</a></h2>
+<p>✔ No modes (unlike vim)
+✔ Commands always visible
+✔ Easy save &amp; exit
+✔ Simple shortcuts</p>
+<hr>
+<h2 id="quick-cheat-sheet-"><a class="header" href="#quick-cheat-sheet-">Quick cheat sheet 📌</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Task</th><th>Command</th></tr>
+</thead>
+<tbody>
+<tr><td>Open file</td><td><code>nano file.txt</code></td></tr>
+<tr><td>Save</td><td><code>CTRL + O</code></td></tr>
+<tr><td>Exit</td><td><code>CTRL + X</code></td></tr>
+<tr><td>Cut line</td><td><code>CTRL + K</code></td></tr>
+<tr><td>Paste</td><td><code>CTRL + U</code></td></tr>
+<tr><td>Search</td><td><code>CTRL + W</code></td></tr>
+<tr><td>Replace</td><td><code>CTRL + \</code></td></tr>
+<tr><td>Help</td><td><code>CTRL + G</code></td></tr>
+</tbody>
+</table>
+</div>
+<hr><div style="break-before: page; page-break-before: always;"></div>
+<h1 id="linux-vim"><a href="#linux-vim" class="header">Linux Vim</a></h1>
+<style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+<h2 id="-3"><a class="header" href="#-3"><a href="../src">👈</a></a></h2>
+<h1 id="-vi-editor-powerful-but-confusing-at-first"><a class="header" href="#-vi-editor-powerful-but-confusing-at-first">📝 VI Editor (Powerful but Confusing at First)</a></h1>
+<h2 id="what-is-vi"><a class="header" href="#what-is-vi">What is <code>vi</code>?</a></h2>
+<p><code>vi</code> is a <strong>terminal-based text editor</strong> in Linux/Unix systems.</p>
+<ul>
+<li>Old</li>
+<li>Extremely powerful</li>
+<li>Available on <strong>almost every Linux server</strong></li>
+<li>Default editor on many servers (EC2, production machines)</li>
+</ul>
+<p>📌 Important:</p>
+<blockquote>
+<p>Even if Nano is easier, <strong>you MUST know vi</strong>
+Because sometimes <strong>Nano is not installed</strong>, but <code>vi</code> always is.</p>
+</blockquote>
+<hr>
+<h2 id="why-vi-feels-difficult-for-beginners-"><a class="header" href="#why-vi-feels-difficult-for-beginners-">Why <code>vi</code> feels difficult for beginners 😵</a></h2>
+<p>Because <strong>vi has MODES</strong>.</p>
+<p>Nano → type directly
+Vi → depends on <strong>which mode you are in</strong></p>
+<p>👉 This is the <strong>most important concept</strong>.</p>
+<hr>
+<h1 id="-vi-modes-most-important-part"><a class="header" href="#-vi-modes-most-important-part">🔁 VI MODES (MOST IMPORTANT PART)</a></h1>
+<p><code>vi</code> works in <strong>three main modes</strong>:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Mode</th><th>Purpose</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Normal mode</strong></td><td>Navigation + commands</td></tr>
+<tr><td><strong>Insert mode</strong></td><td>Typing text</td></tr>
+<tr><td><strong>Command mode</strong></td><td>Save, quit, search</td></tr>
+</tbody>
+</table>
+</div>
+<p>When you open <code>vi</code>, you are <strong>NOT in typing mode</strong>.</p>
+<p>You start in <strong>Normal mode</strong> ❗</p>
+<hr>
+<h2 id="1-normal-mode-default-mode"><a class="header" href="#1-normal-mode-default-mode">1️⃣ Normal Mode (Default mode)</a></h2>
+<p>This is the <strong>command mode for movement and actions</strong>.</p>
+<ul>
+<li>You <strong>cannot type text</strong></li>
+<li>Every key is treated as a <strong>command</strong></li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li><code>dd</code> → delete line</li>
+<li><code>yy</code> → copy line</li>
+<li><code>p</code> → paste</li>
+<li><code>gg</code> → go to top</li>
+</ul>
+<p>📌 If something weird happens →
+You are probably in <strong>Normal mode</strong> 😄</p>
+<hr>
+<h2 id="2-insert-mode-typing-mode"><a class="header" href="#2-insert-mode-typing-mode">2️⃣ Insert Mode (Typing mode)</a></h2>
+<p>This is where you can <strong>type text normally</strong>.</p>
+<p>To enter Insert mode, press:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Key</th><th>Meaning</th></tr>
+</thead>
+<tbody>
+<tr><td><code>i</code></td><td>Insert before cursor</td></tr>
+<tr><td><code>a</code></td><td>Append after cursor</td></tr>
+<tr><td><code>o</code></td><td>New line below</td></tr>
+<tr><td><code>O</code></td><td>New line above</td></tr>
+</tbody>
+</table>
+</div>
+<p>When Insert mode is active:</p>
+<ul>
+<li>Bottom shows: <code>-- INSERT --</code></li>
+</ul>
+<p>To <strong>exit Insert mode</strong>:</p>
+<pre><code>ESC
+</code></pre>
+<p>👉 ESC is your <strong>best friend</strong> in vi.</p>
+<hr>
+<h2 id="3-command-mode-colon--mode"><a class="header" href="#3-command-mode-colon--mode">3️⃣ Command Mode (Colon <code>:</code> mode)</a></h2>
+<p>Used for:</p>
+<ul>
+<li>Save</li>
+<li>Quit</li>
+<li>Search</li>
+<li>Replace</li>
+<li>Line numbers</li>
+</ul>
+<p>You enter command mode by typing:</p>
+<pre><code>:
+</code></pre>
+<p>(while in Normal mode)</p>
+<p>Example:</p>
+<pre><code>:w
+:q
+:wq
+</code></pre>
+<hr>
+<h1 id="-opening-a-file-in-vi"><a class="header" href="#-opening-a-file-in-vi">🚀 Opening a file in vi</a></h1>
+<pre><code>vi file.txt
+</code></pre>
+<p>If file doesn’t exist:</p>
+<ul>
+<li>It will be created when you save</li>
+</ul>
+<hr>
+<h1 id="-basic-workflow-very-important"><a class="header" href="#-basic-workflow-very-important">✍️ BASIC WORKFLOW (VERY IMPORTANT)</a></h1>
+<p>This is how <strong>90% of people use vi</strong>:</p>
+<ol>
+<li>Open file</li>
+<li>Press <code>i</code></li>
+<li>Type text</li>
+<li>Press <code>ESC</code></li>
+<li>Save and quit</li>
+</ol>
+<p>Let’s see commands.</p>
+<hr>
+<h1 id="-save-and-exit-commands-must-know"><a class="header" href="#-save-and-exit-commands-must-know">💾 Save and Exit Commands (MUST KNOW)</a></h1>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Meaning</th></tr>
+</thead>
+<tbody>
+<tr><td><code>:w</code></td><td>Save (write)</td></tr>
+<tr><td><code>:q</code></td><td>Quit</td></tr>
+<tr><td><code>:wq</code></td><td>Save and quit</td></tr>
+<tr><td><code>:x</code></td><td>Save and quit</td></tr>
+<tr><td><code>:q!</code></td><td>Quit without saving (force)</td></tr>
+<tr><td><code>:w!</code></td><td>Force save</td></tr>
+</tbody>
+</table>
+</div>
+<p>📌 Examples:</p>
+<p>Save only:</p>
+<pre><code>:w
+</code></pre>
+<p>Save and exit:</p>
+<pre><code>:wq
+</code></pre>
+<p>Exit without saving:</p>
+<pre><code>:q!
+</code></pre>
+<hr>
+<h1 id="-movement-navigation--core-vi-skill"><a class="header" href="#-movement-navigation--core-vi-skill">🧭 MOVEMENT (Navigation) – Core vi skill</a></h1>
+<p>You can use arrow keys, BUT real vi users use:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Key</th><th>Action</th></tr>
+</thead>
+<tbody>
+<tr><td><code>h</code></td><td>Left</td></tr>
+<tr><td><code>l</code></td><td>Right</td></tr>
+<tr><td><code>j</code></td><td>Down</td></tr>
+<tr><td><code>k</code></td><td>Up</td></tr>
+</tbody>
+</table>
+</div>
+<p>Why?</p>
+<ul>
+<li>Faster</li>
+<li>Hands stay on keyboard</li>
+</ul>
+<hr>
+<h3 id="line--file-movement"><a class="header" href="#line--file-movement">Line &amp; file movement</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Meaning</th></tr>
+</thead>
+<tbody>
+<tr><td><code>0</code></td><td>Start of line</td></tr>
+<tr><td><code>$</code></td><td>End of line</td></tr>
+<tr><td><code>gg</code></td><td>Go to top</td></tr>
+<tr><td><code>G</code></td><td>Go to bottom</td></tr>
+<tr><td><code>:10</code></td><td>Go to line 10</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h1 id="-delete-copy-paste-very-important"><a class="header" href="#-delete-copy-paste-very-important">✂️ DELETE, COPY, PASTE (VERY IMPORTANT)</a></h1>
+<h2 id="delete"><a class="header" href="#delete">Delete</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Action</th></tr>
+</thead>
+<tbody>
+<tr><td><code>dd</code></td><td>Delete current line</td></tr>
+<tr><td><code>dw</code></td><td>Delete word</td></tr>
+<tr><td><code>d$</code></td><td>Delete till end of line</td></tr>
+<tr><td><code>x</code></td><td>Delete one character</td></tr>
+</tbody>
+</table>
+</div>
+<p>📌 Delete = cut (stored in buffer)</p>
+<hr>
+<h2 id="copy-yank"><a class="header" href="#copy-yank">Copy (Yank)</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Action</th></tr>
+</thead>
+<tbody>
+<tr><td><code>yy</code></td><td>Copy current line</td></tr>
+<tr><td><code>yw</code></td><td>Copy word</td></tr>
+<tr><td><code>y$</code></td><td>Copy till end</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="paste"><a class="header" href="#paste">Paste</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Action</th></tr>
+</thead>
+<tbody>
+<tr><td><code>p</code></td><td>Paste below cursor</td></tr>
+<tr><td><code>P</code></td><td>Paste above cursor</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h1 id="-undo-and-redo"><a class="header" href="#-undo-and-redo">🔁 Undo and Redo</a></h1>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Action</th><th>Command</th></tr>
+</thead>
+<tbody>
+<tr><td>Undo</td><td><code>u</code></td></tr>
+<tr><td>Redo</td><td><code>CTRL + R</code></td></tr>
+</tbody>
+</table>
+</div>
+<p>📌 Undo is <strong>life saver</strong>.</p>
+<hr>
+<h1 id="-searching-very-useful"><a class="header" href="#-searching-very-useful">🔍 SEARCHING (Very useful)</a></h1>
+<h3 id="search-forward"><a class="header" href="#search-forward">Search forward</a></h3>
+<pre><code>/word
+</code></pre>
+<h3 id="search-backward"><a class="header" href="#search-backward">Search backward</a></h3>
+<pre><code>?word
+</code></pre>
+<p>Press:</p>
+<ul>
+<li><code>n</code> → next match</li>
+<li><code>N</code> → previous match</li>
+</ul>
+<hr>
+<h1 id="-search--replace-power-feature"><a class="header" href="#-search--replace-power-feature">🔄 SEARCH &amp; REPLACE (POWER FEATURE)</a></h1>
+<p>Format:</p>
+<pre><code>:s/old/new/
+</code></pre>
+<p>Examples:</p>
+<p>Replace first match in line:</p>
+<pre><code>:s/java/spring/
+</code></pre>
+<p>Replace all in line:</p>
+<pre><code>:s/java/spring/g
+</code></pre>
+<p>Replace in entire file:</p>
+<pre><code>:%s/java/spring/g
+</code></pre>
+<p>Replace with confirmation:</p>
+<pre><code>:%s/java/spring/gc
+</code></pre>
+<hr>
+<h1 id="-line-numbers-very-important-in-debugging"><a class="header" href="#-line-numbers-very-important-in-debugging">🔢 Line Numbers (VERY IMPORTANT IN DEBUGGING)</a></h1>
+<p>Show line numbers:</p>
+<pre><code>:set number
+</code></pre>
+<p>Hide line numbers:</p>
+<pre><code>:set nonumber
+</code></pre>
+<p>Shortcut:</p>
+<pre><code>:set nu
+</code></pre>
+<hr>
+<h1 id="-visual-mode-text-selection"><a class="header" href="#-visual-mode-text-selection">📌 VISUAL MODE (Text selection)</a></h1>
+<p>Enter Visual mode:</p>
+<pre><code>v
+</code></pre>
+<ul>
+<li>Move cursor to select text</li>
+</ul>
+<p>Commands after selection:</p>
+<ul>
+<li><code>d</code> → delete</li>
+<li><code>y</code> → copy</li>
+</ul>
+<p>Visual line mode:</p>
+<pre><code>V
+</code></pre>
+<hr>
+<h1 id="-real-production-usage-examples"><a class="header" href="#-real-production-usage-examples">⚙️ REAL PRODUCTION USAGE EXAMPLES</a></h1>
+<h3 id="edit-config-file-on-ec2"><a class="header" href="#edit-config-file-on-ec2">Edit config file on EC2</a></h3>
+<pre><code>vi /etc/nginx/nginx.conf
+</code></pre>
+<h3 id="edit-environment-variables"><a class="header" href="#edit-environment-variables">Edit environment variables</a></h3>
+<pre><code>vi ~/.bashrc
+</code></pre>
+<h3 id="edit-application-properties"><a class="header" href="#edit-application-properties">Edit application properties</a></h3>
+<pre><code>vi application.properties
+</code></pre>
+<hr>
+<h1 id="-common-beginner-mistakes"><a class="header" href="#-common-beginner-mistakes">⚠️ COMMON BEGINNER MISTAKES</a></h1>
+<p>❌ Typing without entering Insert mode
+❌ Forgetting to press ESC
+❌ Not knowing how to quit
+❌ Panic when screen freezes</p>
+<p>✅ Solution:</p>
+<pre><code>ESC
+:q!
+</code></pre>
+<p>Always works 😄</p>
+<hr>
+<h1 id="-mental-model-important"><a class="header" href="#-mental-model-important">🧠 MENTAL MODEL (IMPORTANT)</a></h1>
+<p>Think like this:</p>
+<ul>
+<li><strong>Normal mode</strong> → THINK</li>
+<li><strong>Insert mode</strong> → TYPE</li>
+<li><strong>Command mode</strong> → CONTROL</li>
+</ul>
+<hr>
+<h1 id="-vi-vs-nano-quick-comparison"><a class="header" href="#-vi-vs-nano-quick-comparison">🆚 VI vs NANO (Quick Comparison)</a></h1>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Feature</th><th>Nano</th><th>Vi</th></tr>
+</thead>
+<tbody>
+<tr><td>Beginner friendly</td><td>✅</td><td>❌</td></tr>
+<tr><td>Always installed</td><td>❌</td><td>✅</td></tr>
+<tr><td>Powerful editing</td><td>❌</td><td>✅</td></tr>
+<tr><td>Used in production</td><td>Rare</td><td>Very common</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h1 id="-must-memorize-commands-cheat-sheet"><a class="header" href="#-must-memorize-commands-cheat-sheet">🧾 MUST-MEMORIZE COMMANDS (Cheat Sheet)</a></h1>
+<pre><code>i        → insert
+ESC      → normal mode
+:w       → save
+:q       → quit
+:wq      → save &amp; quit
+:q!      → quit force
+dd       → delete line
+yy       → copy line
+p        → paste
+u        → undo
+/word    → search
+:set nu  → line numbers
+</code></pre>
+<hr>
+<h2 id="final-advice-"><a class="header" href="#final-advice-">Final Advice ❤️</a></h2>
+<p>Don’t try to <strong>memorize everything at once</strong>.</p>
+<p>Start with:</p>
+<ol>
+<li><code>i</code></li>
+<li><code>ESC</code></li>
+<li><code>:wq</code></li>
+<li><code>dd</code></li>
+<li><code>/search</code></li>
+</ol>
+<p>That’s enough for <strong>real-world server work</strong>.</p>
+<hr><div style="break-before: page; page-break-before: always;"></div>
+<h1 id="linux-user-management"><a href="#linux-user-management" class="header">Linux User Management</a></h1>
+<style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+<h2 id="-4"><a class="header" href="#-4"><a href="../src">👈</a></a></h2>
+<h1 id="-big-picture-ec2-access--linux-users-one-clear-model"><a class="header" href="#-big-picture-ec2-access--linux-users-one-clear-model">🔑 Big Picture: EC2 Access + Linux Users (ONE CLEAR MODEL)</a></h1>
+<p>When you create an <strong>EC2 instance</strong>, there are <strong>two separate systems</strong> involved:</p>
+<h3 id="1-aws-level-iam--key-pair"><a class="header" href="#1-aws-level-iam--key-pair">1️⃣ AWS level (IAM &amp; Key Pair)</a></h3>
+<p>Controls:</p>
+<ul>
+<li><strong>Who can connect to the EC2</strong></li>
+<li>Uses <strong>SSH keys (.pem)</strong></li>
+</ul>
+<h3 id="2-linux-level-users--groups"><a class="header" href="#2-linux-level-users--groups">2️⃣ Linux level (Users &amp; Groups)</a></h3>
+<p>Controls:</p>
+<ul>
+<li><strong>What a person can do inside the server</strong></li>
+<li>Uses <strong>users, groups, permissions</strong></li>
+</ul>
+<p>👉 These two are <strong>independent</strong> but <strong>work together</strong>.</p>
+<hr>
+<h2 id="-what-the-pem-file-really-does"><a class="header" href="#-what-the-pem-file-really-does">🔐 What the <code>.pem</code> file really does</a></h2>
+<ul>
+<li>A <code>.pem</code> file is <strong>NOT a user</strong></li>
+<li>It is <strong>NOT root access</strong></li>
+<li>It only proves:</li>
+</ul>
+<blockquote>
+<p>“I am allowed to connect to this server”</p>
+</blockquote>
+<p>When you SSH using a PEM file:</p>
+<pre><code>ssh -i key.pem ec2-user@IP
+</code></pre>
+<p>You log in as:</p>
+<pre><code>ec2-user
+</code></pre>
+<p>✔ Not root
+✔ Normal Linux user
+✔ Has <code>sudo</code> access</p>
+<hr>
+<h2 id="-are-you-root-after-login"><a class="header" href="#-are-you-root-after-login">👤 Are you root after login?</a></h2>
+<p>❌ <strong>No</strong></p>
+<p>AWS <strong>disables direct root login</strong> for security.</p>
+<p>To become root:</p>
+<pre><code>sudo su -
+</code></pre>
+<p>or</p>
+<pre><code>sudo -i
+</code></pre>
+<p>Root access is <strong>temporary</strong> and <strong>controlled</strong>.</p>
+<hr>
+<h2 id="-giving-ec2-access-to-another-person-correct-way"><a class="header" href="#-giving-ec2-access-to-another-person-correct-way">👥 Giving EC2 access to another person (CORRECT WAY)</a></h2>
+<p>You <strong>do NOT</strong> share your PEM file.</p>
+<h3 id="correct-process"><a class="header" href="#correct-process">Correct process:</a></h3>
+<ol>
+<li><strong>Other person generates their own SSH key</strong></li>
+<li>They send you <strong>only the public key</strong></li>
+<li>You create a <strong>Linux user</strong> on EC2</li>
+<li>You add their public key to that user</li>
+<li>You set <strong>permissions</strong> for what they can access</li>
+</ol>
+<hr>
+<h1 id="-1-what-does-login-with-a-pem-file-actually-mean"><a class="header" href="#-1-what-does-login-with-a-pem-file-actually-mean">🔑 1️⃣ What does “login with a PEM file” actually mean?</a></h1>
+<p>When you run this command:</p>
+<pre><code>ssh -i mykey.pem ec2-user@EC2-IP
+</code></pre>
+<p>You are doing <strong>SSH key-based authentication</strong>.</p>
+<p>Let’s break it down:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Part</th><th>Meaning</th></tr>
+</thead>
+<tbody>
+<tr><td><code>ssh</code></td><td>Secure Shell (connect to server)</td></tr>
+<tr><td><code>-i mykey.pem</code></td><td>Use this <strong>private key</strong> to prove identity</td></tr>
+<tr><td><code>ec2-user@EC2-IP</code></td><td>Login as Linux user <code>ec2-user</code></td></tr>
+</tbody>
+</table>
+</div>
+<p>👉 <strong>Important:</strong>
+The PEM file is <strong>not a user</strong>.
+It is <strong>not root access</strong>.
+It is just a <strong>key to open the door</strong>.</p>
+<hr>
+<h2 id="-2-which-user-do-you-become-after-login"><a class="header" href="#-2-which-user-do-you-become-after-login">👤 2️⃣ Which user do you become after login?</a></h2>
+<p>You become the <strong>Linux user you specify</strong> in the SSH command.</p>
+<p>Example:</p>
+<pre><code>ssh -i mykey.pem ec2-user@EC2-IP
+</code></pre>
+<p>You are logged in as:</p>
+<pre><code>ec2-user
+</code></pre>
+<p>You can verify:</p>
+<pre><code>whoami
+</code></pre>
+<p>Output:</p>
+<pre><code>ec2-user
+</code></pre>
+<p>✅ You are <strong>NOT root</strong>
+✅ You are a <strong>normal Linux user</strong></p>
+<hr>
+<h2 id="-3-are-you-root-by-default-after-login"><a class="header" href="#-3-are-you-root-by-default-after-login">❌ 3️⃣ Are you root by default after login?</a></h2>
+<p><strong>NO. Never.</strong></p>
+<p>Even though you used a PEM file:</p>
+<ul>
+<li>You are <strong>not root</strong></li>
+<li>You are <strong>not superuser</strong></li>
+<li>You have <strong>limited permissions</strong></li>
+</ul>
+<p>AWS does this <strong>intentionally</strong> for security.</p>
+<hr>
+<h2 id="-4-why-aws-does-not-log-you-in-as-root"><a class="header" href="#-4-why-aws-does-not-log-you-in-as-root">🧠 4️⃣ Why AWS does NOT log you in as root</a></h2>
+<p>AWS <strong>disables direct root login by default</strong>.</p>
+<h3 id="reasons"><a class="header" href="#reasons">Reasons:</a></h3>
+<ol>
+<li>
+<p><strong>Security</strong></p>
+<ul>
+<li>Root can delete OS, disks, users</li>
+</ul>
+</li>
+<li>
+<p><strong>Accidental damage</strong></p>
+<ul>
+<li>One wrong command can destroy server</li>
+</ul>
+</li>
+<li>
+<p><strong>Industry best practice</strong></p>
+<ul>
+<li>Least privilege principle</li>
+</ul>
+</li>
+</ol>
+<p>So AWS says:</p>
+<blockquote>
+<p>“Login as a normal user, become root only when needed.”</p>
+</blockquote>
+<hr>
+<h2 id="-5-then-how-can-ec2-user-do-admin-work"><a class="header" href="#-5-then-how-can-ec2-user-do-admin-work">🔐 5️⃣ Then how can <code>ec2-user</code> do admin work?</a></h2>
+<p>Because <code>ec2-user</code> has <strong>sudo access</strong>.</p>
+<p>Check:</p>
+<pre><code>groups ec2-user
+</code></pre>
+<p>Output:</p>
+<pre><code>ec2-user wheel
+</code></pre>
+<p>The <code>wheel</code> group allows:</p>
+<pre><code>sudo
+</code></pre>
+<hr>
+<h2 id="-6-how-to-access-root-important"><a class="header" href="#-6-how-to-access-root-important">🚀 6️⃣ How to access root (IMPORTANT)</a></h2>
+<p>There are <strong>two correct and safe ways</strong>.</p>
+<hr>
+<h3 id="-method-1-run-a-single-command-as-root"><a class="header" href="#-method-1-run-a-single-command-as-root">✅ Method 1: Run a single command as root</a></h3>
+<pre><code>sudo command
+</code></pre>
+<p>Example:</p>
+<pre><code>sudo yum install nginx
+</code></pre>
+<p>What happens:</p>
+<ul>
+<li>Only this command runs as root</li>
+<li>You remain <code>ec2-user</code></li>
+</ul>
+<p>Check:</p>
+<pre><code>sudo whoami
+</code></pre>
+<p>Output:</p>
+<pre><code>root
+</code></pre>
+<hr>
+<h3 id="-method-2-switch-to-full-root-shell"><a class="header" href="#-method-2-switch-to-full-root-shell">✅ Method 2: Switch to full root shell</a></h3>
+<pre><code>sudo su -
+</code></pre>
+<p>OR</p>
+<pre><code>sudo -i
+</code></pre>
+<p>Now your prompt changes:</p>
+<pre><code>[root@ip-172-31-x-x ~]#
+</code></pre>
+<p>Now:</p>
+<ul>
+<li>You are <strong>root</strong></li>
+<li>You have <strong>full control</strong></li>
+</ul>
+<p>To exit root:</p>
+<pre><code>exit
+</code></pre>
+<hr>
+<h2 id="-7-why-root-login-is-dangerous"><a class="header" href="#-7-why-root-login-is-dangerous">⚠️ 7️⃣ Why root login is dangerous</a></h2>
+<p>As root you can:</p>
+<ul>
+<li>Delete <code>/</code></li>
+<li>Stop networking</li>
+<li>Remove users</li>
+<li>Break boot process</li>
+</ul>
+<p>That’s why:</p>
+<ul>
+<li>Root login via SSH is <strong>disabled</strong></li>
+<li>Root is accessed <strong>temporarily via sudo</strong></li>
+</ul>
+<hr>
+<h2 id="-8-mental-model-very-important"><a class="header" href="#-8-mental-model-very-important">🧠 8️⃣ Mental model (VERY IMPORTANT)</a></h2>
+<p>Think like this:</p>
+<ul>
+<li><strong>PEM file</strong> → proves who you are</li>
+<li><strong>Linux user</strong> → decides what you can do</li>
+<li><strong>sudo</strong> → temporary root power</li>
+</ul>
+<pre><code>PEM file ≠ root
+</code></pre>
+<hr>
+<h2 id="-9-one-command-summary"><a class="header" href="#-9-one-command-summary">📌 9️⃣ One-command summary</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Action</th><th>Result</th></tr>
+</thead>
+<tbody>
+<tr><td>SSH with PEM</td><td>Login as normal user</td></tr>
+<tr><td><code>whoami</code></td><td>ec2-user</td></tr>
+<tr><td><code>sudo command</code></td><td>Run as root</td></tr>
+<tr><td><code>sudo su -</code></td><td>Become root</td></tr>
+<tr><td>Root SSH login</td><td>Disabled</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="-final-clear-statement-remember-this"><a class="header" href="#-final-clear-statement-remember-this">✅ Final clear statement (remember this)</a></h2>
+<blockquote>
+<p>When you log in using a PEM file, you are logged in as a normal Linux user (like <code>ec2-user</code>), not as root. AWS disables direct root login for security reasons. To perform administrative tasks, you temporarily become root using <code>sudo</code>.</p>
+</blockquote>
+<hr>
+<h1 id="how-to-create-a-new-user-and-how-to-do-proper-setup-for-that-user"><a class="header" href="#how-to-create-a-new-user-and-how-to-do-proper-setup-for-that-user">How to create a new user and how to do proper setup for that user</a></h1>
+<p>This is exactly how it is done on <strong>real EC2 servers</strong>.</p>
+<hr>
+<h2 id="-first-understand-the-goal"><a class="header" href="#-first-understand-the-goal">🧠 First understand the goal</a></h2>
+<p>When you create a new user, you want:</p>
+<p>✔ The user to log in <strong>with their own SSH key</strong>
+✔ The user to have <strong>their own home directory</strong>
+✔ The user to access <strong>only allowed files</strong>
+✔ The user to <strong>NOT be root by default</strong></p>
+<hr>
+<h2 id="-step-1-login-as-admin-user"><a class="header" href="#-step-1-login-as-admin-user">👤 Step 1: Login as admin user</a></h2>
+<p>First, <strong>you</strong> (admin) log in to EC2:</p>
+<pre><code>ssh -i admin.pem ec2-user@EC2-IP
+</code></pre>
+<p>You are logged in as:</p>
+<pre><code>ec2-user
+</code></pre>
+<p>This user has <strong>sudo access</strong>.</p>
+<hr>
+<h2 id="-step-2-create-a-new-linux-user"><a class="header" href="#-step-2-create-a-new-linux-user">👤 Step 2: Create a new Linux user</a></h2>
+<p>Create a new user (example: <code>devuser</code>):</p>
+<pre><code>sudo useradd devuser
+</code></pre>
+<p>What this does:</p>
+<ul>
+<li>Creates a Linux user named <code>devuser</code></li>
+<li>Assigns a UID (user ID)</li>
+<li>Creates entry in <code>/etc/passwd</code></li>
+</ul>
+<hr>
+<h2 id="-step-3-create-home-directory-important"><a class="header" href="#-step-3-create-home-directory-important">📂 Step 3: Create home directory (IMPORTANT)</a></h2>
+<p>Some systems create it automatically, but to be safe:</p>
+<pre><code>sudo mkdir /home/devuser
+</code></pre>
+<p>Set ownership:</p>
+<pre><code>sudo chown devuser:devuser /home/devuser
+</code></pre>
+<p>Now:</p>
+<pre><code>/home/devuser
+</code></pre>
+<p>belongs only to <code>devuser</code>.</p>
+<hr>
+<h2 id="-step-4-create-ssh-directory"><a class="header" href="#-step-4-create-ssh-directory">🔐 Step 4: Create <code>.ssh</code> directory</a></h2>
+<p>This is required for <strong>SSH key login</strong>.</p>
+<pre><code>sudo mkdir /home/devuser/.ssh
+</code></pre>
+<p>Set correct permissions:</p>
+<pre><code>sudo chmod 700 /home/devuser/.ssh
+sudo chown devuser:devuser /home/devuser/.ssh
+</code></pre>
+<h3 id="why-700"><a class="header" href="#why-700">Why 700?</a></h3>
+<ul>
+<li>Only the user can read/write/enter</li>
+<li>SSH will <strong>refuse login</strong> if permissions are wrong</li>
+</ul>
+<hr>
+<h2 id="-step-5-add-public-key-most-important"><a class="header" href="#-step-5-add-public-key-most-important">🔑 Step 5: Add public key (MOST IMPORTANT)</a></h2>
+<p>Create the authorized keys file:</p>
+<pre><code>sudo nano /home/devuser/.ssh/authorized_keys
+</code></pre>
+<p>Paste the <strong>public key</strong> of the user here.</p>
+<p>⚠️ <strong>Only public key</strong>, never private key.</p>
+<p>Set permissions:</p>
+<pre><code>sudo chmod 600 /home/devuser/.ssh/authorized_keys
+sudo chown devuser:devuser /home/devuser/.ssh/authorized_keys
+</code></pre>
+<hr>
+<h2 id="-step-6-test-user-login"><a class="header" href="#-step-6-test-user-login">🧪 Step 6: Test user login</a></h2>
+<p>Now the user can log in from <strong>their own machine</strong>:</p>
+<pre><code>ssh -i devuser.pem devuser@EC2-IP
+</code></pre>
+<p>Check:</p>
+<pre><code>whoami
+</code></pre>
+<p>Output:</p>
+<pre><code>devuser
+</code></pre>
+<p>✅ User is logged in
+✅ Not root
+✅ Isolated from other users</p>
+<hr>
+<h2 id="-step-7-decide-sudo-access-very-important"><a class="header" href="#-step-7-decide-sudo-access-very-important">🔐 Step 7: Decide sudo access (VERY IMPORTANT)</a></h2>
+<h3 id="-should-the-user-be-root-capable"><a class="header" href="#-should-the-user-be-root-capable">❓ Should the user be root-capable?</a></h3>
+<h3 id="-if-no-most-secure"><a class="header" href="#-if-no-most-secure">❌ If NO (most secure):</a></h3>
+<p>Do nothing.</p>
+<p>User:</p>
+<ul>
+<li>Cannot install software</li>
+<li>Cannot change system config</li>
+<li>Cannot access <code>/etc</code>, <code>/var</code>, etc.</li>
+</ul>
+<hr>
+<h3 id="-if-yes-admin--senior-dev"><a class="header" href="#-if-yes-admin--senior-dev">✅ If YES (admin / senior dev):</a></h3>
+<p>Add user to sudo group.</p>
+<p>On Amazon Linux:</p>
+<pre><code>sudo usermod -aG wheel devuser
+</code></pre>
+<p>On Ubuntu:</p>
+<pre><code>sudo usermod -aG sudo devuser
+</code></pre>
+<p>Now user can run:</p>
+<pre><code>sudo command
+</code></pre>
+<hr>
+<h2 id="-step-8-folder--file-access-control"><a class="header" href="#-step-8-folder--file-access-control">📂 Step 8: Folder &amp; file access control</a></h2>
+<p>Example:
+You have a folder:</p>
+<pre><code>/app-data
+</code></pre>
+<p>You want:</p>
+<ul>
+<li><code>devuser</code> → access</li>
+<li>Others → no access</li>
+</ul>
+<pre><code>sudo chown devuser:devuser /app-data
+sudo chmod 700 /app-data
+</code></pre>
+<p>Now:</p>
+<ul>
+<li>Only <code>devuser</code> can access</li>
+<li>Others are blocked</li>
+</ul>
+<hr>
+<h2 id="-step-9-groups-professional-setup"><a class="header" href="#-step-9-groups-professional-setup">👥 Step 9: Groups (Professional setup)</a></h2>
+<p>Create a group:</p>
+<pre><code>sudo groupadd devteam
+</code></pre>
+<p>Add user to group:</p>
+<pre><code>sudo usermod -aG devteam devuser
+</code></pre>
+<p>Assign folder to group:</p>
+<pre><code>sudo chown :devteam /shared-data
+sudo chmod 770 /shared-data
+</code></pre>
+<p>Now:</p>
+<ul>
+<li>All devteam members can access</li>
+<li>Others cannot</li>
+</ul>
+<hr>
+<h2 id="-common-mistakes-important"><a class="header" href="#-common-mistakes-important">❌ Common mistakes (IMPORTANT)</a></h2>
+<p>❌ Forgetting <code>.ssh</code> permissions
+❌ Putting private key on server
+❌ Logging everyone in as <code>ec2-user</code>
+❌ Giving sudo to everyone</p>
+<hr>
+<h2 id="-mental-model-remember-this"><a class="header" href="#-mental-model-remember-this">🧠 Mental model (REMEMBER THIS)</a></h2>
+<pre><code>User = identity
+Group = role
+SSH key = login method
+Permissions = access control
+</code></pre>
+<hr>
+<h2 id="-final-summary-task-2"><a class="header" href="#-final-summary-task-2">✅ Final summary (Task 2)</a></h2>
+<blockquote>
+<p>To set up a new user on an EC2 instance, you create a Linux user, create a home directory, configure SSH access using the user’s public key, set strict permissions on <code>.ssh</code> files, and optionally grant sudo access using groups. This ensures secure, controlled access for each individual user.</p>
+</blockquote>
+<hr>
+<h1 id="how-the-other-user-creates-their-pem-file-and-shares-it-with-you"><a class="header" href="#how-the-other-user-creates-their-pem-file-and-shares-it-with-you">How the other user creates their PEM file and shares it with you</a></h1>
+<p>This task is about <strong>what the OTHER PERSON does</strong>, not you.</p>
+<hr>
+<h2 id="-first-clear-one-very-important-misunderstanding"><a class="header" href="#-first-clear-one-very-important-misunderstanding">🧠 First, clear one very important misunderstanding</a></h2>
+<p>👉 <strong>The admin does NOT create the PEM file for the user.</strong>
+👉 <strong>The user creates their OWN PEM file on their OWN machine.</strong></p>
+<p>This is how it works in real companies.</p>
+<hr>
+<h2 id="-who-is-the-other-user"><a class="header" href="#-who-is-the-other-user">👤 Who is “the other user”?</a></h2>
+<ul>
+<li>Developer</li>
+<li>Teammate</li>
+<li>Intern</li>
+<li>Ops engineer</li>
+</ul>
+<p>They want access to <strong>your EC2 server</strong>.</p>
+<hr>
+<h2 id="-step-1-user-creates-ssh-key-pair-on-their-own-machine"><a class="header" href="#-step-1-user-creates-ssh-key-pair-on-their-own-machine">🔑 Step 1: User creates SSH key pair on their own machine</a></h2>
+<p>On their <strong>laptop / system</strong>, they run:</p>
+<pre><code>ssh-keygen
+</code></pre>
+<p>They will see something like:</p>
+<pre><code>Generating public/private rsa key pair.
+Enter file in which to save the key (/home/user/.ssh/id_rsa):
+</code></pre>
+<p>They can press <strong>Enter</strong>
+OR give a custom name:</p>
+<pre><code>devuser.pem
+</code></pre>
+<hr>
+<h3 id="what-files-are-created"><a class="header" href="#what-files-are-created">What files are created?</a></h3>
+<p>Two files are created:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>File</th><th>Purpose</th></tr>
+</thead>
+<tbody>
+<tr><td><code>devuser.pem</code></td><td><strong>PRIVATE KEY</strong> (never shared)</td></tr>
+<tr><td><code>devuser.pem.pub</code></td><td><strong>PUBLIC KEY</strong> (shared with admin)</td></tr>
+</tbody>
+</table>
+</div>
+<p>📌 The <code>.pem</code> file stays <strong>ONLY</strong> with the user.</p>
+<hr>
+<h2 id="-step-2-optional--set-passphrase-recommended"><a class="header" href="#-step-2-optional--set-passphrase-recommended">🔐 Step 2: Optional – set passphrase (recommended)</a></h2>
+<p>User may be asked:</p>
+<pre><code>Enter passphrase (empty for no passphrase):
+</code></pre>
+<ul>
+<li>Passphrase = extra password protection</li>
+<li>If someone steals the key → still cannot use it</li>
+</ul>
+<p>In companies:
+✔️ Passphrase is recommended</p>
+<hr>
+<h2 id="-step-3-user-shares-only-the-public-key"><a class="header" href="#-step-3-user-shares-only-the-public-key">📤 Step 3: User shares ONLY the public key</a></h2>
+<p>The user sends <strong>ONLY</strong> this file (or its content):</p>
+<pre><code>devuser.pem.pub
+</code></pre>
+<p>Example content:</p>
+<pre><code>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7...
+</code></pre>
+<p>They can share it via:</p>
+<ul>
+<li>Email</li>
+<li>Slack</li>
+<li>Ticket</li>
+<li>Git (private repo)</li>
+</ul>
+<p>⚠️ <strong>They NEVER share</strong>:</p>
+<pre><code>devuser.pem
+</code></pre>
+<hr>
+<h2 id="-why-private-key-is-never-shared"><a class="header" href="#-why-private-key-is-never-shared">🔒 Why private key is never shared</a></h2>
+<p>If someone has the private key:</p>
+<ul>
+<li>They can login as that user</li>
+<li>No password needed</li>
+<li>Full access</li>
+</ul>
+<p>So:</p>
+<pre><code>Private key = identity
+</code></pre>
+<hr>
+<h2 id="-step-4-you-admin-add-public-key-to-ec2"><a class="header" href="#-step-4-you-admin-add-public-key-to-ec2">🖥️ Step 4: You (admin) add public key to EC2</a></h2>
+<p>You paste the public key into:</p>
+<pre><code>/home/devuser/.ssh/authorized_keys
+</code></pre>
+<p>Now the server trusts:</p>
+<ul>
+<li>Anyone who proves they own the matching private key</li>
+</ul>
+<hr>
+<h2 id="-step-5-how-the-user-logs-in"><a class="header" href="#-step-5-how-the-user-logs-in">🧪 Step 5: How the user logs in</a></h2>
+<p>From their machine, the user runs:</p>
+<pre><code>ssh -i devuser.pem devuser@EC2-IP
+</code></pre>
+<p>Important points:</p>
+<ul>
+<li>Command runs on <strong>their laptop</strong></li>
+<li>Uses <strong>their private key</strong></li>
+<li>Logs in as <strong>devuser</strong></li>
+</ul>
+<hr>
+<h2 id="-step-6-how-ssh-verifies-identity-simple-explanation"><a class="header" href="#-step-6-how-ssh-verifies-identity-simple-explanation">🔍 Step 6: How SSH verifies identity (Simple explanation)</a></h2>
+<ol>
+<li>Server sends a challenge</li>
+<li>User signs it with private key</li>
+<li>Server checks public key</li>
+<li>Match found ✔️</li>
+<li>Login allowed 🎉</li>
+</ol>
+<p>The private key is <strong>never sent</strong> to the server.</p>
+<hr>
+<h2 id="-common-beginner-mistakes-very-important"><a class="header" href="#-common-beginner-mistakes-very-important">❌ Common beginner mistakes (VERY IMPORTANT)</a></h2>
+<p>❌ Admin generates key and shares PEM
+❌ User sends private key via WhatsApp 😬
+❌ Storing private keys on server
+❌ One key used by multiple users</p>
+<hr>
+<h2 id="-simple-analogy-remember-this"><a class="header" href="#-simple-analogy-remember-this">🧠 Simple analogy (remember this)</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Real world</th><th>SSH</th></tr>
+</thead>
+<tbody>
+<tr><td>House key</td><td>Private key (.pem)</td></tr>
+<tr><td>Lock design</td><td>Public key (.pub)</td></tr>
+<tr><td>House owner</td><td>EC2 admin</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="-final-summary-task-3"><a class="header" href="#-final-summary-task-3">✅ Final summary (Task 3)</a></h2>
+<blockquote>
+<p>The other user generates their own SSH key pair on their own system using <code>ssh-keygen</code>. They keep the private key (<code>.pem</code>) securely with them and share only the public key (<code>.pub</code>) with the EC2 admin. The admin adds this public key to the user’s <code>authorized_keys</code> file, allowing secure SSH access without sharing secrets.</p>
+</blockquote>
+<hr>
+<h1 id="how-the-other-user-creates-their-pem-file-and-shares-it-with-you-1"><a class="header" href="#how-the-other-user-creates-their-pem-file-and-shares-it-with-you-1">How the other user creates their PEM file and shares it with you</a></h1>
+<p>This task is about <strong>what the OTHER PERSON does</strong>, not you.</p>
+<hr>
+<h2 id="-first-clear-one-very-important-misunderstanding-1"><a class="header" href="#-first-clear-one-very-important-misunderstanding-1">🧠 First, clear one very important misunderstanding</a></h2>
+<p>👉 <strong>The admin does NOT create the PEM file for the user.</strong>
+👉 <strong>The user creates their OWN PEM file on their OWN machine.</strong></p>
+<p>This is how it works in real companies.</p>
+<hr>
+<h2 id="-who-is-the-other-user-1"><a class="header" href="#-who-is-the-other-user-1">👤 Who is “the other user”?</a></h2>
+<ul>
+<li>Developer</li>
+<li>Teammate</li>
+<li>Intern</li>
+<li>Ops engineer</li>
+</ul>
+<p>They want access to <strong>your EC2 server</strong>.</p>
+<hr>
+<h2 id="-step-1-user-creates-ssh-key-pair-on-their-own-machine-1"><a class="header" href="#-step-1-user-creates-ssh-key-pair-on-their-own-machine-1">🔑 Step 1: User creates SSH key pair on their own machine</a></h2>
+<p>On their <strong>laptop / system</strong>, they run:</p>
+<pre><code>ssh-keygen
+</code></pre>
+<p>They will see something like:</p>
+<pre><code>Generating public/private rsa key pair.
+Enter file in which to save the key (/home/user/.ssh/id_rsa):
+</code></pre>
+<p>They can press <strong>Enter</strong>
+OR give a custom name:</p>
+<pre><code>devuser.pem
+</code></pre>
+<hr>
+<h3 id="what-files-are-created-1"><a class="header" href="#what-files-are-created-1">What files are created?</a></h3>
+<p>Two files are created:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>File</th><th>Purpose</th></tr>
+</thead>
+<tbody>
+<tr><td><code>devuser.pem</code></td><td><strong>PRIVATE KEY</strong> (never shared)</td></tr>
+<tr><td><code>devuser.pem.pub</code></td><td><strong>PUBLIC KEY</strong> (shared with admin)</td></tr>
+</tbody>
+</table>
+</div>
+<p>📌 The <code>.pem</code> file stays <strong>ONLY</strong> with the user.</p>
+<hr>
+<h2 id="-step-2-optional--set-passphrase-recommended-1"><a class="header" href="#-step-2-optional--set-passphrase-recommended-1">🔐 Step 2: Optional – set passphrase (recommended)</a></h2>
+<p>User may be asked:</p>
+<pre><code>Enter passphrase (empty for no passphrase):
+</code></pre>
+<ul>
+<li>Passphrase = extra password protection</li>
+<li>If someone steals the key → still cannot use it</li>
+</ul>
+<p>In companies:
+✔️ Passphrase is recommended</p>
+<hr>
+<h2 id="-step-3-user-shares-only-the-public-key-1"><a class="header" href="#-step-3-user-shares-only-the-public-key-1">📤 Step 3: User shares ONLY the public key</a></h2>
+<p>The user sends <strong>ONLY</strong> this file (or its content):</p>
+<pre><code>devuser.pem.pub
+</code></pre>
+<p>Example content:</p>
+<pre><code>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7...
+</code></pre>
+<p>They can share it via:</p>
+<ul>
+<li>Email</li>
+<li>Slack</li>
+<li>Ticket</li>
+<li>Git (private repo)</li>
+</ul>
+<p>⚠️ <strong>They NEVER share</strong>:</p>
+<pre><code>devuser.pem
+</code></pre>
+<hr>
+<h2 id="-why-private-key-is-never-shared-1"><a class="header" href="#-why-private-key-is-never-shared-1">🔒 Why private key is never shared</a></h2>
+<p>If someone has the private key:</p>
+<ul>
+<li>They can login as that user</li>
+<li>No password needed</li>
+<li>Full access</li>
+</ul>
+<p>So:</p>
+<pre><code>Private key = identity
+</code></pre>
+<hr>
+<h2 id="-step-4-you-admin-add-public-key-to-ec2-1"><a class="header" href="#-step-4-you-admin-add-public-key-to-ec2-1">🖥️ Step 4: You (admin) add public key to EC2</a></h2>
+<p>You paste the public key into:</p>
+<pre><code>/home/devuser/.ssh/authorized_keys
+</code></pre>
+<p>Now the server trusts:</p>
+<ul>
+<li>Anyone who proves they own the matching private key</li>
+</ul>
+<hr>
+<h2 id="-step-5-how-the-user-logs-in-1"><a class="header" href="#-step-5-how-the-user-logs-in-1">🧪 Step 5: How the user logs in</a></h2>
+<p>From their machine, the user runs:</p>
+<pre><code>ssh -i devuser.pem devuser@EC2-IP
+</code></pre>
+<p>Important points:</p>
+<ul>
+<li>Command runs on <strong>their laptop</strong></li>
+<li>Uses <strong>their private key</strong></li>
+<li>Logs in as <strong>devuser</strong></li>
+</ul>
+<hr>
+<h2 id="-step-6-how-ssh-verifies-identity-simple-explanation-1"><a class="header" href="#-step-6-how-ssh-verifies-identity-simple-explanation-1">🔍 Step 6: How SSH verifies identity (Simple explanation)</a></h2>
+<ol>
+<li>Server sends a challenge</li>
+<li>User signs it with private key</li>
+<li>Server checks public key</li>
+<li>Match found ✔️</li>
+<li>Login allowed 🎉</li>
+</ol>
+<p>The private key is <strong>never sent</strong> to the server.</p>
+<hr>
+<h2 id="-common-beginner-mistakes-very-important-1"><a class="header" href="#-common-beginner-mistakes-very-important-1">❌ Common beginner mistakes (VERY IMPORTANT)</a></h2>
+<p>❌ Admin generates key and shares PEM
+❌ User sends private key via WhatsApp 😬
+❌ Storing private keys on server
+❌ One key used by multiple users</p>
+<hr>
+<h2 id="-simple-analogy-remember-this-1"><a class="header" href="#-simple-analogy-remember-this-1">🧠 Simple analogy (remember this)</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Real world</th><th>SSH</th></tr>
+</thead>
+<tbody>
+<tr><td>House key</td><td>Private key (.pem)</td></tr>
+<tr><td>Lock design</td><td>Public key (.pub)</td></tr>
+<tr><td>House owner</td><td>EC2 admin</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="-final-summary-task-3-1"><a class="header" href="#-final-summary-task-3-1">✅ Final summary (Task 3)</a></h2>
+<blockquote>
+<p>The other user generates their own SSH key pair on their own system using <code>ssh-keygen</code>. They keep the private key (<code>.pem</code>) securely with them and share only the public key (<code>.pub</code>) with the EC2 admin. The admin adds this public key to the user’s <code>authorized_keys</code> file, allowing secure SSH access without sharing secrets.</p>
+</blockquote>
+<hr>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+
+    </div>
+    </body>
+</html>

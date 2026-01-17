@@ -1,8 +1,13 @@
 [book]
 title = "DevDocs"
+description = "A personal knowledge base with structured notes on programming, cloud, databases, and software engineering."
 authors = ["Dev Namdev"]
 language = "en"
 src = "src"
 
 [build]
 build-dir = "../../docs/src"
+
+[output.html]
+git-repository-url = "https://github.com/devnamdev2003/devdocs"
+edit-url-template = "https://github.com/devnamdev2003/devdocs/edit/main/md-code/src/{path}"

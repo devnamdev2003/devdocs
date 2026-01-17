@@ -7,3 +7,8 @@ src = "src"
 
 [build]
 build-dir = "../../docs/python"
+
+
+[output.html]
+git-repository-url = "https://github.com/devnamdev2003/devdocs"
+edit-url-template = "https://github.com/devnamdev2003/devdocs/edit/main/md-code/python/{path}"

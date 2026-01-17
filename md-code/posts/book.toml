@@ -1,0 +1,13 @@
+[book]
+title = "Post"
+authors = ["Dev Namdev"]
+language = "en"
+src = "src"
+
+[build]
+build-dir = "../../docs/posts"
+
+
+[output.html]
+git-repository-url = "https://github.com/devnamdev2003/devdocs"
+edit-url-template = "https://github.com/devnamdev2003/devdocs/edit/main/md-code/posts/{path}"

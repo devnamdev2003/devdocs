@@ -1,0 +1,40 @@
+{
+    "name": "DevDocs",
+    "short_name": "DevDocs",
+    "description": "A personal knowledge base with structured notes on programming, cloud, databases, and software engineering.",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "background_color": "#0f172a",
+    "theme_color": "#0f172a",
+    "lang": "en",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "https://devnamdev2003.github.io/devdocs/static/icons/favicon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "https://devnamdev2003.github.io/devdocs/static/icons/favicon-32x32.png",
+            "sizes": "32x32",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "https://devnamdev2003.github.io/devdocs/static/icons/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "https://devnamdev2003.github.io/devdocs/static/icons/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable any"
+        }
+    ],
+    "prefer_related_applications": false,
+    "related_applications": []
+}

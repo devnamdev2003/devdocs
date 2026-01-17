@@ -10,6 +10,7 @@ for /d %%B in (md-code\*) do (
     echo Building %%~nxB
     echo -------------------------------
     cd "%%B"
+    mdbook clean
     mdbook build
     cd ../..
 )

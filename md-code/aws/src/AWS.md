@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="https://devnamdev2003.github.io/md/static/style.css">
+## [👈](../src)
 
 # ☁️ CLOUD COMPUTING FUNDAMENTALS
 

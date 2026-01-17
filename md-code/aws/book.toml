@@ -1,8 +1,14 @@
 [book]
-title = "AWS"
+title = "AWS Docs"
+description = "Clear and practical AWS documentation by Dev Namdev"
 authors = ["Dev Namdev"]
 language = "en"
 src = "src"
 
 [build]
 build-dir = "../../docs/aws"
+
+[output.html]
+site-url = "https://devnamdev2003.github.io/devdocs/aws/"
+git-repository-url = "https://github.com/devnamdev2003/devdocs"
+edit-url-template = "https://github.com/devnamdev2003/devdocs/edit/main/md-code/aws/{path}"

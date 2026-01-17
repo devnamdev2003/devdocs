@@ -1,5 +1,4 @@
 [book]
-title = "Python"
 authors = ["Dev Namdev"]
 language = "en"
 src = "src"

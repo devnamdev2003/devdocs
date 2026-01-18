@@ -58,10 +58,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-92b60d29.js";
+            window.path_to_searchindex_js = "searchindex-b2dba0bd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-f0349525.js"></script>
+        <script src="toc-462b78c1.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -211,6 +211,7 @@ h2{
 <h1 id="topics"><a class="header" href="#topics">Topics:</a></h1>
 <ul>
 <li><a href="#-one-filename-change-zero-errors-production-broken-1">🚨 One filename change. Zero errors. Production broken.</a></li>
+<li><a href="#can-i-run-apache-and-nginx-on-the-same-aws-ec2-instance-1">Can I run Apache and Nginx on the same AWS EC2 instance?</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="-one-filename-change-zero-errors-production-broken-1"><a href="#-one-filename-change-zero-errors-production-broken-1" class="header">🚨 One filename change. Zero errors. Production broken.</a></h1>
@@ -322,7 +323,131 @@ h2{
 </style>
 <h2 id="-8"><a class="header" href="#-8"><a href="">👈</a></a></h2>
 <p><img src="https://devnamdev2003.github.io/devdocs/static/img/posts/post1/8.png" alt="image8"></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="can-i-run-apache-and-nginx-on-the-same-aws-ec2-instance-1"><a href="#can-i-run-apache-and-nginx-on-the-same-aws-ec2-instance-1" class="header">Can I run Apache and Nginx on the same AWS EC2 instance?</a></h1>
+<style>
+h2{
+    margin-top: 0;
+}
 
+</style>
+<h2 id="-9"><a class="header" href="#-9"><a href="">👈</a></a></h2>
+<h1 id="can-i-run-apache-and-nginx-on-the-same-aws-ec2-instance"><a class="header" href="#can-i-run-apache-and-nginx-on-the-same-aws-ec2-instance">Can I run Apache and Nginx on the same AWS EC2 instance?</a></h1>
+<p><img src="https://devnamdev2003.github.io/devdocs/static/img/posts/post2/post2_m.png" alt="image1"></p>
+<h2 id="yes--you-can-install-another-web-server-like-nginx-but-there-is-one-important-rule-you-must-understand-first"><a class="header" href="#yes--you-can-install-another-web-server-like-nginx-but-there-is-one-important-rule-you-must-understand-first">Yes ✅ <strong>you can install another web server like Nginx</strong>,
+but there is <strong>one important rule</strong> you must understand first.</a></h2>
+<h2 id="1-can-multiple-web-servers-be-installed"><a class="header" href="#1-can-multiple-web-servers-be-installed">1️⃣ Can multiple web servers be installed?</a></h2>
+<h3 id="-yes--installed"><a class="header" href="#-yes--installed">✔ YES — installed</a></h3>
+<h3 id="-no--running-on-the-same-port-by-default"><a class="header" href="#-no--running-on-the-same-port-by-default">❌ NO — running on the same port (by default)</a></h3>
+<p>You can <strong>install</strong>:</p>
+<ul>
+<li><code>httpd</code> (Apache)</li>
+<li><code>nginx</code></li>
+</ul>
+<p>at the <strong>same time</strong>.</p>
+<p>But you <strong>cannot run both on port 80 at the same time</strong>.</p>
+<hr>
+<h2 id="2-why-port-80-is-the-problem"><a class="header" href="#2-why-port-80-is-the-problem">2️⃣ Why port 80 is the problem</a></h2>
+<p>By default:</p>
+<ul>
+<li>Apache (<code>httpd</code>) → listens on <strong>port 80</strong></li>
+<li>Nginx → listens on <strong>port 80</strong></li>
+</ul>
+<p>Only <strong>one process</strong> can bind to a port.</p>
+<p>So:</p>
+<ul>
+<li>One will start ✅</li>
+<li>The other will fail ❌</li>
+</ul>
+<hr>
+<h2 id="3-check-if-apache-is-currently-running"><a class="header" href="#3-check-if-apache-is-currently-running">3️⃣ Check if Apache is currently running</a></h2>
+<pre><code class="language-bash">sudo systemctl status httpd
+</code></pre>
+<p>If you see:</p>
+<pre><code class="language-text">Active: active (running)
+</code></pre>
+<p>👉 Apache is running on port 80.</p>
+<hr>
+<h2 id="4-you-can-safely-install-nginx-now"><a class="header" href="#4-you-can-safely-install-nginx-now">4️⃣ You can safely install Nginx now</a></h2>
+<p>Installing does <strong>not affect Apache</strong>.</p>
+<pre><code class="language-bash">sudo yum install nginx -y
+</code></pre>
+<p>This only:</p>
+<ul>
+<li>Downloads packages</li>
+<li>Installs files</li>
+<li>Does NOT start nginx automatically</li>
+</ul>
+<hr>
+<h2 id="5-what-happens-if-you-start-nginx-now"><a class="header" href="#5-what-happens-if-you-start-nginx-now">5️⃣ What happens if you start Nginx now?</a></h2>
+<p>If Apache is running:</p>
+<pre><code class="language-bash">sudo systemctl start nginx
+</code></pre>
+<p>You’ll likely see:</p>
+<pre><code class="language-text">Failed to start nginx.service: Address already in use
+</code></pre>
+<p>This is <strong>normal</strong>, not an error in installation.</p>
+<hr>
+<h2 id="6-two-safe-ways-to-use-both-web-servers"><a class="header" href="#6-two-safe-ways-to-use-both-web-servers">6️⃣ Two safe ways to use both web servers</a></h2>
+<h3 id="-option-1-stop-apache-use-nginx"><a class="header" href="#-option-1-stop-apache-use-nginx">✅ Option 1: Stop Apache, use Nginx</a></h3>
+<pre><code class="language-bash">sudo systemctl stop httpd
+sudo systemctl disable httpd
+</code></pre>
+<p>Then:</p>
+<pre><code class="language-bash">sudo systemctl start nginx
+sudo systemctl enable nginx
+</code></pre>
+<p>👉 Now Nginx uses port 80.</p>
+<hr>
+<h3 id="-option-2-run-both-using-different-ports-learning-setup"><a class="header" href="#-option-2-run-both-using-different-ports-learning-setup">✅ Option 2: Run both using different ports (Learning setup)</a></h3>
+<p>Change Nginx port to <strong>8080</strong>.</p>
+<pre><code class="language-bash">sudo vi /etc/nginx/nginx.conf
+</code></pre>
+<p>Change:</p>
+<pre><code class="language-nginx">listen       80;
+</code></pre>
+<p>To:</p>
+<pre><code class="language-nginx">listen       8080;
+</code></pre>
+<p>Then:</p>
+<pre><code class="language-bash">sudo systemctl start nginx
+</code></pre>
+<p>Access:</p>
+<pre><code class="language-text">http://&lt;EC2-IP&gt;:8080
+</code></pre>
+<hr>
+<h2 id="7-check-which-service-is-using-port-80"><a class="header" href="#7-check-which-service-is-using-port-80">7️⃣ Check which service is using port 80</a></h2>
+<p>Very important command:</p>
+<pre><code class="language-bash">sudo ss -tulnp | grep :80
+</code></pre>
+<p>or</p>
+<pre><code class="language-bash">sudo lsof -i :80
+</code></pre>
+<p>This tells you <strong>exactly which process</strong> is using the port.</p>
+<hr>
+<h2 id="8-why-would-someone-install-both"><a class="header" href="#8-why-would-someone-install-both">8️⃣ Why would someone install both?</a></h2>
+<p>Common real-world reasons:</p>
+<ul>
+<li>Learning &amp; comparison</li>
+<li>Migrating from Apache → Nginx</li>
+<li>Apache for legacy apps, Nginx as reverse proxy</li>
+<li>Load balancing setup</li>
+</ul>
+<hr>
+<h2 id="9-aws-ec2-security-group-reminder-"><a class="header" href="#9-aws-ec2-security-group-reminder-">9️⃣ AWS EC2 security group reminder ⚠️</a></h2>
+<p>Make sure:</p>
+<ul>
+<li>Port <strong>80</strong> is allowed (HTTP)</li>
+<li>Port <strong>8080</strong> is allowed (if used)</li>
+</ul>
+<p>Security Group → Inbound rules</p>
+<hr>
+<h2 id="-final-answer-simple"><a class="header" href="#-final-answer-simple">✅ Final Answer (Simple)</a></h2>
+<p>✔ You <strong>can install</strong> Nginx even if Apache exists
+✔ You <strong>cannot run both on port 80</strong>
+✔ Stop one OR change port
+✔ This is normal Linux behavior</p>
+<hr>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

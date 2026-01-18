@@ -59,10 +59,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-e729bcbc.js";
+            window.path_to_searchindex_js = "searchindex-930907f0.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-c56c8163.js"></script>
+        <script src="toc-b5145348.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -4070,6 +4070,296 @@ chown
 <p><strong>Linux is the backbone of AWS cloud computing.</strong>
 Mastering Linux means you can deploy, secure, scale, and troubleshoot cloud infrastructure confidently.</p>
 </blockquote>
+<hr><div style="break-before: page; page-break-before: always;"></div>
+<h1 id="-linux-basics-you-must-know-before-aws"><a class="header" href="#-linux-basics-you-must-know-before-aws">🐧 Linux Basics You MUST Know Before AWS</a></h1>
+<p>Think of Linux commands in <strong>8 core groups</strong>.</p>
+<hr>
+<h2 id="1-file--directory-commands-most-used"><a class="header" href="#1-file--directory-commands-most-used">1️⃣ File &amp; Directory Commands (MOST USED)</a></h2>
+<h3 id="-pwd"><a class="header" href="#-pwd">📂 <code>pwd</code></a></h3>
+<pre><code class="language-bash">pwd
+</code></pre>
+<p>Shows <strong>current directory</strong></p>
+<p>📌 Used when navigating EC2.</p>
+<hr>
+<h3 id="-ls"><a class="header" href="#-ls">📂 <code>ls</code></a></h3>
+<pre><code class="language-bash">ls
+ls -l
+ls -la
+</code></pre>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Option</th><th>Meaning</th></tr>
+</thead>
+<tbody>
+<tr><td><code>-l</code></td><td>long listing</td></tr>
+<tr><td><code>-a</code></td><td>show hidden files</td></tr>
+</tbody>
+</table>
+</div>
+<p>📌 Used all the time.</p>
+<hr>
+<h3 id="-cd"><a class="header" href="#-cd">📂 <code>cd</code></a></h3>
+<pre><code class="language-bash">cd /var/log
+cd ~
+cd ..
+</code></pre>
+<p>📌 Move between directories.</p>
+<hr>
+<h3 id="-touch"><a class="header" href="#-touch">📄 <code>touch</code></a></h3>
+<pre><code class="language-bash">touch file.txt
+</code></pre>
+<p>Creates empty file.</p>
+<hr>
+<h3 id="-cat"><a class="header" href="#-cat">📄 <code>cat</code></a></h3>
+<pre><code class="language-bash">cat file.txt
+</code></pre>
+<p>Show file content.</p>
+<hr>
+<h3 id="-less-important"><a class="header" href="#-less-important">📄 <code>less</code> (IMPORTANT)</a></h3>
+<pre><code class="language-bash">less file.txt
+</code></pre>
+<p>Scroll large files (logs).</p>
+<p>Keys:</p>
+<ul>
+<li><code>q</code> → quit</li>
+<li><code>/</code> → search</li>
+</ul>
+<hr>
+<h3 id="-head--tail"><a class="header" href="#-head--tail">📄 <code>head</code> / <code>tail</code></a></h3>
+<pre><code class="language-bash">head file.txt
+tail file.txt
+tail -f /var/log/messages
+</code></pre>
+<p>📌 <code>tail -f</code> = live logs (AWS debugging).</p>
+<hr>
+<h3 id="-mkdir"><a class="header" href="#-mkdir">📂 <code>mkdir</code></a></h3>
+<pre><code class="language-bash">mkdir logs
+mkdir -p app/data
+</code></pre>
+<hr>
+<h3 id="-rm"><a class="header" href="#-rm">📂 <code>rm</code></a></h3>
+<pre><code class="language-bash">rm file.txt
+rm -r folder
+rm -rf folder
+</code></pre>
+<p>⚠ Dangerous:</p>
+<ul>
+<li><code>-r</code> → recursive</li>
+<li><code>-f</code> → force</li>
+</ul>
+<hr>
+<h3 id="-cp"><a class="header" href="#-cp">📂 <code>cp</code></a></h3>
+<pre><code class="language-bash">cp file1 file2
+cp -r dir1 dir2
+</code></pre>
+<hr>
+<h3 id="-mv"><a class="header" href="#-mv">📂 <code>mv</code></a></h3>
+<pre><code class="language-bash">mv old.txt new.txt
+mv file.txt /tmp/
+</code></pre>
+<p>Rename OR move.</p>
+<hr>
+<h2 id="2-file-permissions--ownership-aws-critical"><a class="header" href="#2-file-permissions--ownership-aws-critical">2️⃣ File Permissions &amp; Ownership (AWS CRITICAL)</a></h2>
+<h3 id="-chmod"><a class="header" href="#-chmod">🔐 <code>chmod</code></a></h3>
+<pre><code class="language-bash">chmod +x script.sh
+chmod 755 script.sh
+</code></pre>
+<p>📌 Used for:</p>
+<ul>
+<li>Scripts</li>
+<li>User-data</li>
+<li>Deployments</li>
+</ul>
+<hr>
+<h3 id="-chown"><a class="header" href="#-chown">👤 <code>chown</code></a></h3>
+<pre><code class="language-bash">sudo chown ec2-user:ec2-user file.txt
+</code></pre>
+<p>📌 Fix permission errors in EC2.</p>
+<hr>
+<h3 id="-whoami"><a class="header" href="#-whoami">👀 <code>whoami</code></a></h3>
+<pre><code class="language-bash">whoami
+</code></pre>
+<p>Shows current user.</p>
+<hr>
+<h3 id="-id"><a class="header" href="#-id">👀 <code>id</code></a></h3>
+<pre><code class="language-bash">id
+</code></pre>
+<p>Shows UID, GID.</p>
+<hr>
+<h2 id="3-user--privilege-commands"><a class="header" href="#3-user--privilege-commands">3️⃣ User &amp; Privilege Commands</a></h2>
+<h3 id="-sudo"><a class="header" href="#-sudo">🔑 <code>sudo</code></a></h3>
+<pre><code class="language-bash">sudo yum install nginx
+</code></pre>
+<p>📌 Required for:</p>
+<ul>
+<li>Installing packages</li>
+<li>Starting services</li>
+<li>Editing system files</li>
+</ul>
+<hr>
+<h3 id="-su"><a class="header" href="#-su">👥 <code>su</code></a></h3>
+<pre><code class="language-bash">su -
+</code></pre>
+<p>Switch to root (not recommended often).</p>
+<hr>
+<h2 id="4-package-management-already-covered--quick-list"><a class="header" href="#4-package-management-already-covered--quick-list">4️⃣ Package Management (Already Covered – Quick List)</a></h2>
+<h3 id="amazon-linux"><a class="header" href="#amazon-linux">Amazon Linux</a></h3>
+<pre><code class="language-bash">yum install
+yum remove
+yum update
+dnf install
+</code></pre>
+<h3 id="ubuntu"><a class="header" href="#ubuntu">Ubuntu</a></h3>
+<pre><code class="language-bash">apt update
+apt install
+apt remove
+</code></pre>
+<p>📌 Used in <strong>user-data scripts</strong>.</p>
+<hr>
+<h2 id="5-service-management-systemd"><a class="header" href="#5-service-management-systemd">5️⃣ Service Management (systemd)</a></h2>
+<h3 id="-systemctl"><a class="header" href="#-systemctl">🔧 <code>systemctl</code></a></h3>
+<pre><code class="language-bash">systemctl start httpd
+systemctl stop httpd
+systemctl restart httpd
+systemctl enable httpd
+systemctl status httpd
+</code></pre>
+<p>📌 AWS = services must survive reboot.</p>
+<hr>
+<h3 id="-journalctl"><a class="header" href="#-journalctl">📜 <code>journalctl</code></a></h3>
+<pre><code class="language-bash">journalctl -u httpd
+journalctl -u httpd -f
+</code></pre>
+<p>📌 Debug EC2 issues.</p>
+<hr>
+<h2 id="6-networking-commands-aws-important"><a class="header" href="#6-networking-commands-aws-important">6️⃣ Networking Commands (AWS IMPORTANT)</a></h2>
+<h3 id="-ip"><a class="header" href="#-ip">🌐 <code>ip</code></a></h3>
+<pre><code class="language-bash">ip a
+</code></pre>
+<p>Shows IP address.</p>
+<hr>
+<h3 id="-ss"><a class="header" href="#-ss">🌐 <code>ss</code></a></h3>
+<pre><code class="language-bash">ss -tuln
+</code></pre>
+<p>Shows listening ports.</p>
+<hr>
+<h3 id="-curl"><a class="header" href="#-curl">🌐 <code>curl</code></a></h3>
+<pre><code class="language-bash">curl http://localhost
+</code></pre>
+<p>📌 Test web server.</p>
+<hr>
+<h3 id="-ping"><a class="header" href="#-ping">🌐 <code>ping</code></a></h3>
+<pre><code class="language-bash">ping google.com
+</code></pre>
+<p>📌 Check connectivity.</p>
+<hr>
+<h3 id="-netstat-older"><a class="header" href="#-netstat-older">🌐 <code>netstat</code> (older)</a></h3>
+<pre><code class="language-bash">netstat -tuln
+</code></pre>
+<hr>
+<h2 id="7-process-management"><a class="header" href="#7-process-management">7️⃣ Process Management</a></h2>
+<h3 id="-ps"><a class="header" href="#-ps">⚙ <code>ps</code></a></h3>
+<pre><code class="language-bash">ps aux
+</code></pre>
+<hr>
+<h3 id="-top"><a class="header" href="#-top">⚙ <code>top</code></a></h3>
+<pre><code class="language-bash">top
+</code></pre>
+<p>📌 Monitor CPU &amp; memory.</p>
+<hr>
+<h3 id="-kill"><a class="header" href="#-kill">⚙ <code>kill</code></a></h3>
+<pre><code class="language-bash">kill PID
+kill -9 PID
+</code></pre>
+<p>📌 Stop stuck processes.</p>
+<hr>
+<h2 id="8-disk--memory-commands"><a class="header" href="#8-disk--memory-commands">8️⃣ Disk &amp; Memory Commands</a></h2>
+<h3 id="-df--disk-free-ebs-usage"><a class="header" href="#-df--disk-free-ebs-usage">💾 <code>df</code> — Disk Free (EBS usage)</a></h3>
+<pre><code class="language-bash">df -h
+</code></pre>
+<p>What df means</p>
+<ul>
+<li>df → Disk Free</li>
+<li>shows disk space per filesystem</li>
+</ul>
+<p>-h flag</p>
+<ul>
+<li>-h → human-readable</li>
+<li>Shows sizes in GB / MB instead of bytes</li>
+</ul>
+<h3 id="-du--directory-size"><a class="header" href="#-du--directory-size">💾 <code>du</code> — Directory size</a></h3>
+<pre><code class="language-bash">du -sh /var/log # shows size of /var/log
+</code></pre>
+<p>What du means</p>
+<ul>
+<li>du → Disk Usage</li>
+<li>Shows how much space files/directories consume</li>
+</ul>
+<p>Flags explained</p>
+<ul>
+<li>-s → summary only (not every file)</li>
+<li>-h → human-readable</li>
+</ul>
+<h3 id="-free--ram-usage"><a class="header" href="#-free--ram-usage">💾 <code>free</code> — RAM usage</a></h3>
+<pre><code class="language-bash">free -m 
+</code></pre>
+<ul>
+<li>Shows memory (RAM) usage</li>
+<li><code>-m</code> flag:Displays values in MB</li>
+</ul>
+<hr>
+<h3 id="-lsblk--list-block-devices-ebs-volumes"><a class="header" href="#-lsblk--list-block-devices-ebs-volumes">💾 <code>lsblk</code> — List block devices (EBS volumes)</a></h3>
+<pre><code class="language-bash">lsblk   # lists all block devices
+</code></pre>
+<p>📌 Used when attaching EBS volume.</p>
+<hr>
+<h2 id="9-search--text-processing-logs"><a class="header" href="#9-search--text-processing-logs">9️⃣ Search &amp; Text Processing (Logs)</a></h2>
+<h3 id="-grep"><a class="header" href="#-grep">🔍 <code>grep</code></a></h3>
+<pre><code class="language-bash">grep error app.log
+grep -i error app.log
+</code></pre>
+<p>📌 MOST used for logs.</p>
+<hr>
+<h3 id="-find"><a class="header" href="#-find">🔍 <code>find</code></a></h3>
+<pre><code class="language-bash">find / -name app.log
+</code></pre>
+<hr>
+<h2 id="-ssh--remote-access"><a class="header" href="#-ssh--remote-access">🔟 SSH &amp; Remote Access</a></h2>
+<h3 id="-ssh"><a class="header" href="#-ssh">🔐 <code>ssh</code></a></h3>
+<pre><code class="language-bash">ssh -i key.pem ec2-user@IP
+</code></pre>
+<hr>
+<h3 id="-scp-1"><a class="header" href="#-scp-1">🔐 <code>scp</code></a></h3>
+<pre><code class="language-bash">scp file.txt ec2-user@IP:/home/ec2-user/
+</code></pre>
+<hr>
+<h2 id="11-environment--shell-basics"><a class="header" href="#11-environment--shell-basics">1️⃣1️⃣ Environment &amp; Shell Basics</a></h2>
+<h3 id="-env"><a class="header" href="#-env">🌱 <code>env</code></a></h3>
+<pre><code class="language-bash">env
+</code></pre>
+<hr>
+<h3 id="-export"><a class="header" href="#-export">🌱 <code>export</code></a></h3>
+<pre><code class="language-bash">export APP_ENV=prod
+</code></pre>
+<p>📌 Used in deployments.</p>
+<hr>
+<h3 id="-echo"><a class="header" href="#-echo">🌱 <code>echo</code></a></h3>
+<pre><code class="language-bash">echo $APP_ENV
+</code></pre>
+<hr>
+<h2 id="12-aws-user-data-script-essentials"><a class="header" href="#12-aws-user-data-script-essentials">1️⃣2️⃣ AWS User-Data Script Essentials</a></h2>
+<pre><code class="language-bash">#!/bin/bash
+yum update -y
+yum install httpd -y
+systemctl start httpd
+systemctl enable httpd
+</code></pre>
+<p>📌 Requires:</p>
+<ul>
+<li><code>chmod +x</code></li>
+<li>Correct commands</li>
+</ul>
 <hr><div style="break-before: page; page-break-before: always;"></div>
 <h1 id="linux-nano"><a href="#linux-nano" class="header">Linux Nano</a></h1>
 <style>

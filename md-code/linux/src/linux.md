@@ -2002,7 +2002,7 @@ sudo yum remove nginx
 Remove unused deps
 
 ```bash
-sudo apt autoremove
+sudo yum autoremove
 ```
 
 Removes software (not always config files).
@@ -2361,12 +2361,17 @@ systemctl start httpd
 
 ## 🧠 What is `systemd`?
 
-`systemd` is:
+`systemd` is the **service manager** in Linux.
 
 * The **init system** of modern Linux
 * The **first process** started by the kernel
 * Runs with **PID 1**
-
+  
+It:
+* Starts services
+* Stops services
+* Restarts services
+* Starts services automatically at boot
 Check:
 
 ```bash
@@ -2378,6 +2383,13 @@ Output:
 ```
 systemd
 ```
+---
+
+## 🔹 Main command: `systemctl`
+
+`systemctl` = **system control**
+
+This is the **only command you need to manage services**.
 
 ---
 
@@ -2412,71 +2424,135 @@ systemd manages **units**.
 
 ---
 
-## 🔍 Basic systemctl Commands (MOST IMPORTANT)
-
-### Check service status
+## 1️⃣ Start a Service
 
 ```bash
-systemctl status nginx
+sudo systemctl start httpd
 ```
 
-### Start service
+#### Meaning:
 
-```bash
-sudo systemctl start nginx
-```
+* `start` → start the service **now**
+* `httpd` → service name
 
-### Stop service
-
-```bash
-sudo systemctl stop nginx
-```
-
-### Restart service
-
-```bash
-sudo systemctl restart nginx
-```
-
-### Reload config (no restart)
-
-```bash
-sudo systemctl reload nginx
-```
+📌 After starting, service runs **until reboot** (unless enabled).
 
 ---
 
-## 🚀 Enable & Disable Services (Boot Control)
-
-### Enable at boot
+## 2️⃣ Stop a Service
 
 ```bash
-sudo systemctl enable nginx
+sudo systemctl stop httpd
 ```
 
-### Disable at boot
+Stops the service immediately.
 
-```bash
-sudo systemctl disable nginx
-```
-
-### Check enable status
-
-```bash
-systemctl is-enabled nginx
-```
+📌 Website goes down if web server stops.
 
 ---
 
-## 📋 List Services
+## 3️⃣ Restart a Service (VERY COMMON)
 
-### All services
+```bash
+sudo systemctl restart httpd
+```
+
+Used when:
+
+* Config file changes
+* App update
+* Debugging issues
+
+📌 Most used command in real AWS work.
+
+---
+
+## 4️⃣ Reload a Service
+
+```bash
+sudo systemctl reload httpd
+```
+
+#### Difference:
+
+| restart                | reload              |
+| ---------------------- | ------------------- |
+| Stops & starts service | Reloads config only |
+| Causes short downtime  | No downtime         |
+
+📌 Not all services support reload.
+
+---
+
+## 5️⃣ Check Service Status ⭐ (MOST IMPORTANT)
+
+```bash
+systemctl status httpd
+```
+
+Shows:
+
+* Is service running?
+* Error messages
+* Logs (last lines)
+* PID
+
+📌 **First command to run when something breaks**
+
+---
+
+## 6️⃣ Enable Service at Boot (AWS CRITICAL)
+
+```bash
+sudo systemctl enable httpd
+```
+
+#### Meaning:
+
+* Service **starts automatically when EC2 reboots**
+
+📌 Without this:
+
+* After EC2 restart → website DOWN ❌
+
+---
+
+## 7️⃣ Disable Service at Boot
+
+```bash
+sudo systemctl disable httpd
+```
+
+Service will **NOT start on reboot**.
+
+---
+
+## 8️⃣ Start + Enable Together
+
+```bash
+sudo systemctl enable --now httpd
+```
+
+Meaning:
+
+* Start service now
+* Enable it for boot
+
+📌 Clean & professional command.
+
+---
+
+## 9️⃣ List All Services
+
+#### 🔹 All running services
 
 ```bash
 systemctl list-units --type=service
 ```
 
-### All installed services
+---
+
+#### 🔹 All services (enabled + disabled)
 
 ```bash
 systemctl list-unit-files --type=service
@@ -2484,29 +2560,149 @@ systemctl list-unit-files --type=service
 
 ---
 
-## 📜 Service Logs (journalctl)
-
-systemd uses **journald** for logging.
-
-### View service logs
+## 🔟 Check if Service is Enabled
 
 ```bash
-journalctl -u nginx
+systemctl is-enabled httpd
 ```
 
-### Live logs
+Output:
+
+* `enabled`
+* `disabled`
+
+---
+
+## 1️⃣1️⃣ Check if Service is Active
 
 ```bash
-journalctl -u nginx -f
+systemctl is-active httpd
 ```
 
-### Logs from today
+Output:
+
+* `active`
+* `inactive`
+* `failed`
+
+---
+
+## 1️⃣2️⃣ View Service Logs (AWS Debugging)
 
 ```bash
-journalctl --since today
+journalctl -u httpd
+```
+
+#### Last logs only:
+
+```bash
+journalctl -u httpd -n 20
+```
+
+#### Live logs:
+
+```bash
+journalctl -u httpd -f
+```
+
+📌 Used when:
+
+* Service fails to start
+* Port issues
+* Permission issues
+
+---
+
+## 1️⃣3️⃣ Common AWS Services & Names
+
+| Service | Name     |
+| ------- | -------- |
+| Apache  | `httpd`  |
+| Nginx   | `nginx`  |
+| Docker  | `docker` |
+| SSH     | `sshd`   |
+| Cron    | `crond`  |
+
+📌 Service name ≠ package name sometimes.
+
+---
+
+## 1️⃣4️⃣ Real AWS EC2 Examples 🔥
+
+### ✅ Install & run Apache (Amazon Linux)
+
+```bash
+sudo yum install httpd -y
+sudo systemctl start httpd
+sudo systemctl enable httpd
 ```
 
 ---
+
+### ✅ After config change
+
+```bash
+sudo vi /etc/httpd/conf/httpd.conf
+sudo systemctl restart httpd
+```
+
+---
+
+### ✅ Debug service failure
+
+```bash
+systemctl status httpd
+journalctl -u httpd
+```
+
+---
+
+### 1️⃣5️⃣ User-Data Script Example (AWS)
+
+```bash
+#!/bin/bash
+yum install httpd -y
+systemctl start httpd
+systemctl enable httpd
+```
+
+📌 **systemctl works perfectly in user-data**
+
+---
+
+## 1️⃣6️⃣ systemd Files (High Level – Exam Only)
+
+Service files location:
+
+```bash
+/etc/systemd/system/
+/usr/lib/systemd/system/
+```
+
+Example file:
+
+```bash
+httpd.service
+```
+
+You usually **DON’T edit these in AWS**, just manage them.
+
+---
+
+## 1️⃣7️⃣ systemd vs init (Interview / Exam)
+
+| init               | systemd          |
+| ------------------ | ---------------- |
+| Old                | Modern           |
+| Slow               | Fast             |
+| No dependency mgmt | Dependency aware |
+
+---
+
+### 🧠 One-line Rule
+
+> **Install → Start → Enable → Check Status**
+
 
 ## 🧩 Service States
 
@@ -2615,32 +2811,6 @@ Debug:
 ```bash
 journalctl -xe
 ```
-
----
-
-## ☁️ Real-World Example (EC2)
-
-> Java app stops after logout
-
-Fix:
-
-```bash
-sudo systemctl create service
-sudo systemctl enable myapp
-```
-
-👉 systemd keeps app running even after SSH logout
-
----
-
-## 🔥 systemd vs init.d
-
-| systemd          | init.d     |
-| ---------------- | ---------- |
-| Parallel startup | Sequential |
-| Faster           | Slower     |
-| Logging included | External   |
-| Dependency aware | Limited    |
 
 ---
 

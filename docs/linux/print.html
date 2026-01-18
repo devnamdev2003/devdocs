@@ -59,7 +59,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-609d7980.js";
+            window.path_to_searchindex_js = "searchindex-62d95be4.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-c56c8163.js"></script>
@@ -367,24 +367,35 @@ h2{
 <ul>
 <li><a href="#-what-is-service-management">🔧 What is Service Management?</a></li>
 <li><a href="#-what-is-systemd">🧠 What is <code>systemd</code>?</a></li>
+<li><a href="#-main-command-systemctl">🔹 Main command: <code>systemctl</code></a></li>
 <li><a href="#-what-is-a-service--daemon">🔄 What is a Service / Daemon?</a></li>
 <li><a href="#-systemd-unit-types">🗂 systemd Unit Types</a></li>
-<li><a href="#-basic-systemctl-commands-most-important">🔍 Basic systemctl Commands (MOST IMPORTANT)</a></li>
-<li><a href="#-enable--disable-services-boot-control">🚀 Enable &amp; Disable Services (Boot Control)</a></li>
-<li><a href="#-list-services">📋 List Services</a></li>
-<li><a href="#-service-logs-journalctl">📜 Service Logs (journalctl)</a></li>
+<li><a href="#1️⃣-start-a-service">1️⃣ Start a Service</a></li>
+<li><a href="#2️⃣-stop-a-service">2️⃣ Stop a Service</a></li>
+<li><a href="#3️⃣-restart-a-service-very-common">3️⃣ Restart a Service (VERY COMMON)</a></li>
+<li><a href="#4️⃣-reload-a-service">4️⃣ Reload a Service</a></li>
+<li><a href="#5️⃣-check-service-status--most-important">5️⃣ Check Service Status ⭐ (MOST IMPORTANT)</a></li>
+<li><a href="#6️⃣-enable-service-at-boot-aws-critical">6️⃣ Enable Service at Boot (AWS CRITICAL)</a></li>
+<li><a href="#7️⃣-disable-service-at-boot">7️⃣ Disable Service at Boot</a></li>
+<li><a href="#8️⃣-start--enable-together">8️⃣ Start + Enable Together</a></li>
+<li><a href="#9️⃣-list-all-services">9️⃣ List All Services</a></li>
+<li><a href="#-check-if-service-is-enabled">🔟 Check if Service is Enabled</a></li>
+<li><a href="#1️⃣1️⃣-check-if-service-is-active">1️⃣1️⃣ Check if Service is Active</a></li>
+<li><a href="#1️⃣2️⃣-view-service-logs-aws-debugging">1️⃣2️⃣ View Service Logs (AWS Debugging)</a></li>
+<li><a href="#1️⃣3️⃣-common-aws-services--names">1️⃣3️⃣ Common AWS Services &amp; Names</a></li>
+<li><a href="#1️⃣4️⃣-real-aws-ec2-examples-">1️⃣4️⃣ Real AWS EC2 Examples 🔥</a></li>
+<li><a href="#1️⃣6️⃣-systemd-files-high-level--exam-only">1️⃣6️⃣ systemd Files (High Level – Exam Only)</a></li>
+<li><a href="#1️⃣7️⃣-systemd-vs-init-interview--exam">1️⃣7️⃣ systemd vs init (Interview / Exam)</a></li>
 <li><a href="#-service-states">🧩 Service States</a></li>
 <li><a href="#️-anatomy-of-a-service-file">⚙️ Anatomy of a Service File</a></li>
 <li><a href="#-key-sections-explained">🧠 Key Sections Explained</a></li>
 <li><a href="#-reload-systemd-important">🔁 Reload systemd (IMPORTANT)</a></li>
 <li><a href="#-systemd-timers-cron-replacement">⏱ systemd Timers (cron replacement)</a></li>
 <li><a href="#-common-systemd-problems">🧯 Common systemd Problems</a></li>
-<li><a href="#️-real-world-example-ec2">☁️ Real-World Example (EC2)</a></li>
-<li><a href="#-systemd-vs-initd">🔥 systemd vs init.d</a></li>
 <li><a href="#-common-admin-commands">🧪 Common Admin Commands</a></li>
 <li><a href="#-interview-ready-qa">🎯 Interview-Ready Q&amp;A</a></li>
-<li><a href="#-must-know-commands-cheat-sheet-2">🧾 Must-Know Commands Cheat Sheet</a></li>
-<li><a href="#-final-summary-1">🏁 Final Summary</a></li>
+<li><a href="#-must-know-commands-cheat-sheet">🧾 Must-Know Commands Cheat Sheet</a></li>
+<li><a href="#-final-summary">🏁 Final Summary</a></li>
 </ul>
 <h2 id="-topic-11-environment-variables--shell"><a class="header" href="#-topic-11-environment-variables--shell"><a href="#-topic-11-environment-variables--shell-1">🌱 Topic 11: Environment Variables &amp; Shell</a></a></h2>
 <ul>
@@ -2041,7 +2052,7 @@ sudo yum install git       # Git
 <pre><code class="language-bash">sudo yum remove nginx
 </code></pre>
 <p>Remove unused deps</p>
-<pre><code class="language-bash">sudo apt autoremove
+<pre><code class="language-bash">sudo yum autoremove
 </code></pre>
 <p>Removes software (not always config files).</p>
 <hr>
@@ -2255,18 +2266,29 @@ systemctl start httpd
 </blockquote>
 <hr>
 <h2 id="-what-is-systemd"><a class="header" href="#-what-is-systemd">🧠 What is <code>systemd</code>?</a></h2>
-<p><code>systemd</code> is:</p>
+<p><code>systemd</code> is the <strong>service manager</strong> in Linux.</p>
 <ul>
 <li>The <strong>init system</strong> of modern Linux</li>
 <li>The <strong>first process</strong> started by the kernel</li>
 <li>Runs with <strong>PID 1</strong></li>
 </ul>
-<p>Check:</p>
+<p>It:</p>
+<ul>
+<li>Starts services</li>
+<li>Stops services</li>
+<li>Restarts services</li>
+<li>Starts services automatically at boot
+Check:</li>
+</ul>
 <pre><code class="language-bash">ps -p 1
 </code></pre>
 <p>Output:</p>
 <pre><code>systemd
 </code></pre>
+<hr>
+<h2 id="-main-command-systemctl"><a class="header" href="#-main-command-systemctl">🔹 Main command: <code>systemctl</code></a></h2>
+<p><code>systemctl</code> = <strong>system control</strong></p>
+<p>This is the <strong>only command you need to manage services</strong>.</p>
 <hr>
 <h2 id="-what-is-a-service--daemon"><a class="header" href="#-what-is-a-service--daemon">🔄 What is a Service / Daemon?</a></h2>
 <p>A <strong>service (daemon)</strong> is a program that:</p>
@@ -2300,54 +2322,203 @@ systemctl start httpd
 </table>
 </div>
 <hr>
-<h2 id="-basic-systemctl-commands-most-important"><a class="header" href="#-basic-systemctl-commands-most-important">🔍 Basic systemctl Commands (MOST IMPORTANT)</a></h2>
-<h3 id="check-service-status"><a class="header" href="#check-service-status">Check service status</a></h3>
-<pre><code class="language-bash">systemctl status nginx
+<h2 id="1-start-a-service"><a class="header" href="#1-start-a-service">1️⃣ Start a Service</a></h2>
+<pre><code class="language-bash">sudo systemctl start httpd
 </code></pre>
-<h3 id="start-service"><a class="header" href="#start-service">Start service</a></h3>
-<pre><code class="language-bash">sudo systemctl start nginx
-</code></pre>
-<h3 id="stop-service"><a class="header" href="#stop-service">Stop service</a></h3>
-<pre><code class="language-bash">sudo systemctl stop nginx
-</code></pre>
-<h3 id="restart-service"><a class="header" href="#restart-service">Restart service</a></h3>
-<pre><code class="language-bash">sudo systemctl restart nginx
-</code></pre>
-<h3 id="reload-config-no-restart"><a class="header" href="#reload-config-no-restart">Reload config (no restart)</a></h3>
-<pre><code class="language-bash">sudo systemctl reload nginx
-</code></pre>
+<h4 id="meaning"><a class="header" href="#meaning">Meaning:</a></h4>
+<ul>
+<li><code>start</code> → start the service <strong>now</strong></li>
+<li><code>httpd</code> → service name</li>
+</ul>
+<p>📌 After starting, service runs <strong>until reboot</strong> (unless enabled).</p>
 <hr>
-<h2 id="-enable--disable-services-boot-control"><a class="header" href="#-enable--disable-services-boot-control">🚀 Enable &amp; Disable Services (Boot Control)</a></h2>
-<h3 id="enable-at-boot"><a class="header" href="#enable-at-boot">Enable at boot</a></h3>
-<pre><code class="language-bash">sudo systemctl enable nginx
+<h2 id="2-stop-a-service"><a class="header" href="#2-stop-a-service">2️⃣ Stop a Service</a></h2>
+<pre><code class="language-bash">sudo systemctl stop httpd
 </code></pre>
-<h3 id="disable-at-boot"><a class="header" href="#disable-at-boot">Disable at boot</a></h3>
-<pre><code class="language-bash">sudo systemctl disable nginx
-</code></pre>
-<h3 id="check-enable-status"><a class="header" href="#check-enable-status">Check enable status</a></h3>
-<pre><code class="language-bash">systemctl is-enabled nginx
-</code></pre>
+<p>Stops the service immediately.</p>
+<p>📌 Website goes down if web server stops.</p>
 <hr>
-<h2 id="-list-services"><a class="header" href="#-list-services">📋 List Services</a></h2>
-<h3 id="all-services"><a class="header" href="#all-services">All services</a></h3>
+<h2 id="3-restart-a-service-very-common"><a class="header" href="#3-restart-a-service-very-common">3️⃣ Restart a Service (VERY COMMON)</a></h2>
+<pre><code class="language-bash">sudo systemctl restart httpd
+</code></pre>
+<p>Used when:</p>
+<ul>
+<li>Config file changes</li>
+<li>App update</li>
+<li>Debugging issues</li>
+</ul>
+<p>📌 Most used command in real AWS work.</p>
+<hr>
+<h2 id="4-reload-a-service"><a class="header" href="#4-reload-a-service">4️⃣ Reload a Service</a></h2>
+<pre><code class="language-bash">sudo systemctl reload httpd
+</code></pre>
+<h4 id="difference"><a class="header" href="#difference">Difference:</a></h4>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>restart</th><th>reload</th></tr>
+</thead>
+<tbody>
+<tr><td>Stops &amp; starts service</td><td>Reloads config only</td></tr>
+<tr><td>Causes short downtime</td><td>No downtime</td></tr>
+</tbody>
+</table>
+</div>
+<p>📌 Not all services support reload.</p>
+<hr>
+<h2 id="5-check-service-status--most-important"><a class="header" href="#5-check-service-status--most-important">5️⃣ Check Service Status ⭐ (MOST IMPORTANT)</a></h2>
+<pre><code class="language-bash">systemctl status httpd
+</code></pre>
+<p>Shows:</p>
+<ul>
+<li>Is service running?</li>
+<li>Error messages</li>
+<li>Logs (last lines)</li>
+<li>PID</li>
+</ul>
+<p>📌 <strong>First command to run when something breaks</strong></p>
+<hr>
+<h2 id="6-enable-service-at-boot-aws-critical"><a class="header" href="#6-enable-service-at-boot-aws-critical">6️⃣ Enable Service at Boot (AWS CRITICAL)</a></h2>
+<pre><code class="language-bash">sudo systemctl enable httpd
+</code></pre>
+<h4 id="meaning-1"><a class="header" href="#meaning-1">Meaning:</a></h4>
+<ul>
+<li>Service <strong>starts automatically when EC2 reboots</strong></li>
+</ul>
+<p>📌 Without this:</p>
+<ul>
+<li>After EC2 restart → website DOWN ❌</li>
+</ul>
+<hr>
+<h2 id="7-disable-service-at-boot"><a class="header" href="#7-disable-service-at-boot">7️⃣ Disable Service at Boot</a></h2>
+<pre><code class="language-bash">sudo systemctl disable httpd
+</code></pre>
+<p>Service will <strong>NOT start on reboot</strong>.</p>
+<hr>
+<h2 id="8-start--enable-together"><a class="header" href="#8-start--enable-together">8️⃣ Start + Enable Together</a></h2>
+<pre><code class="language-bash">sudo systemctl enable --now httpd
+</code></pre>
+<p>Meaning:</p>
+<ul>
+<li>Start service now</li>
+<li>Enable it for boot</li>
+</ul>
+<p>📌 Clean &amp; professional command.</p>
+<hr>
+<h2 id="9-list-all-services"><a class="header" href="#9-list-all-services">9️⃣ List All Services</a></h2>
+<h4 id="-all-running-services"><a class="header" href="#-all-running-services">🔹 All running services</a></h4>
 <pre><code class="language-bash">systemctl list-units --type=service
 </code></pre>
-<h3 id="all-installed-services"><a class="header" href="#all-installed-services">All installed services</a></h3>
+<hr>
+<h4 id="-all-services-enabled--disabled"><a class="header" href="#-all-services-enabled--disabled">🔹 All services (enabled + disabled)</a></h4>
 <pre><code class="language-bash">systemctl list-unit-files --type=service
 </code></pre>
 <hr>
-<h2 id="-service-logs-journalctl"><a class="header" href="#-service-logs-journalctl">📜 Service Logs (journalctl)</a></h2>
-<p>systemd uses <strong>journald</strong> for logging.</p>
-<h3 id="view-service-logs"><a class="header" href="#view-service-logs">View service logs</a></h3>
-<pre><code class="language-bash">journalctl -u nginx
+<h2 id="-check-if-service-is-enabled"><a class="header" href="#-check-if-service-is-enabled">🔟 Check if Service is Enabled</a></h2>
+<pre><code class="language-bash">systemctl is-enabled httpd
 </code></pre>
-<h3 id="live-logs"><a class="header" href="#live-logs">Live logs</a></h3>
-<pre><code class="language-bash">journalctl -u nginx -f
+<p>Output:</p>
+<ul>
+<li><code>enabled</code></li>
+<li><code>disabled</code></li>
+</ul>
+<hr>
+<h2 id="11-check-if-service-is-active"><a class="header" href="#11-check-if-service-is-active">1️⃣1️⃣ Check if Service is Active</a></h2>
+<pre><code class="language-bash">systemctl is-active httpd
 </code></pre>
-<h3 id="logs-from-today"><a class="header" href="#logs-from-today">Logs from today</a></h3>
-<pre><code class="language-bash">journalctl --since today
+<p>Output:</p>
+<ul>
+<li><code>active</code></li>
+<li><code>inactive</code></li>
+<li><code>failed</code></li>
+</ul>
+<hr>
+<h2 id="12-view-service-logs-aws-debugging"><a class="header" href="#12-view-service-logs-aws-debugging">1️⃣2️⃣ View Service Logs (AWS Debugging)</a></h2>
+<pre><code class="language-bash">journalctl -u httpd
+</code></pre>
+<h4 id="last-logs-only"><a class="header" href="#last-logs-only">Last logs only:</a></h4>
+<pre><code class="language-bash">journalctl -u httpd -n 20
+</code></pre>
+<h4 id="live-logs"><a class="header" href="#live-logs">Live logs:</a></h4>
+<pre><code class="language-bash">journalctl -u httpd -f
+</code></pre>
+<p>📌 Used when:</p>
+<ul>
+<li>Service fails to start</li>
+<li>Port issues</li>
+<li>Permission issues</li>
+</ul>
+<hr>
+<h2 id="13-common-aws-services--names"><a class="header" href="#13-common-aws-services--names">1️⃣3️⃣ Common AWS Services &amp; Names</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Service</th><th>Name</th></tr>
+</thead>
+<tbody>
+<tr><td>Apache</td><td><code>httpd</code></td></tr>
+<tr><td>Nginx</td><td><code>nginx</code></td></tr>
+<tr><td>Docker</td><td><code>docker</code></td></tr>
+<tr><td>SSH</td><td><code>sshd</code></td></tr>
+<tr><td>Cron</td><td><code>crond</code></td></tr>
+</tbody>
+</table>
+</div>
+<p>📌 Service name ≠ package name sometimes.</p>
+<hr>
+<h2 id="14-real-aws-ec2-examples-"><a class="header" href="#14-real-aws-ec2-examples-">1️⃣4️⃣ Real AWS EC2 Examples 🔥</a></h2>
+<h3 id="-install--run-apache-amazon-linux"><a class="header" href="#-install--run-apache-amazon-linux">✅ Install &amp; run Apache (Amazon Linux)</a></h3>
+<pre><code class="language-bash">sudo yum install httpd -y
+sudo systemctl start httpd
+sudo systemctl enable httpd
 </code></pre>
 <hr>
+<h3 id="-after-config-change"><a class="header" href="#-after-config-change">✅ After config change</a></h3>
+<pre><code class="language-bash">sudo vi /etc/httpd/conf/httpd.conf
+sudo systemctl restart httpd
+</code></pre>
+<hr>
+<h3 id="-debug-service-failure"><a class="header" href="#-debug-service-failure">✅ Debug service failure</a></h3>
+<pre><code class="language-bash">systemctl status httpd
+journalctl -u httpd
+</code></pre>
+<hr>
+<h3 id="15-user-data-script-example-aws"><a class="header" href="#15-user-data-script-example-aws">1️⃣5️⃣ User-Data Script Example (AWS)</a></h3>
+<pre><code class="language-bash">#!/bin/bash
+yum install httpd -y
+systemctl start httpd
+systemctl enable httpd
+</code></pre>
+<p>📌 <strong>systemctl works perfectly in user-data</strong></p>
+<hr>
+<h2 id="16-systemd-files-high-level--exam-only"><a class="header" href="#16-systemd-files-high-level--exam-only">1️⃣6️⃣ systemd Files (High Level – Exam Only)</a></h2>
+<p>Service files location:</p>
+<pre><code class="language-bash">/etc/systemd/system/
+/usr/lib/systemd/system/
+</code></pre>
+<p>Example file:</p>
+<pre><code class="language-bash">httpd.service
+</code></pre>
+<p>You usually <strong>DON’T edit these in AWS</strong>, just manage them.</p>
+<hr>
+<h2 id="17-systemd-vs-init-interview--exam"><a class="header" href="#17-systemd-vs-init-interview--exam">1️⃣7️⃣ systemd vs init (Interview / Exam)</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>init</th><th>systemd</th></tr>
+</thead>
+<tbody>
+<tr><td>Old</td><td>Modern</td></tr>
+<tr><td>Slow</td><td>Fast</td></tr>
+<tr><td>No dependency mgmt</td><td>Dependency aware</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="-one-line-rule"><a class="header" href="#-one-line-rule">🧠 One-line Rule</a></h3>
+<blockquote>
+<p><strong>Install → Start → Enable → Check Status</strong></p>
+</blockquote>
 <h2 id="-service-states"><a class="header" href="#-service-states">🧩 Service States</a></h2>
 <div class="table-wrapper">
 <table>
@@ -2436,31 +2607,6 @@ sudo systemctl start backup.timer
 <p>Debug:</p>
 <pre><code class="language-bash">journalctl -xe
 </code></pre>
-<hr>
-<h2 id="-real-world-example-ec2"><a class="header" href="#-real-world-example-ec2">☁️ Real-World Example (EC2)</a></h2>
-<blockquote>
-<p>Java app stops after logout</p>
-</blockquote>
-<p>Fix:</p>
-<pre><code class="language-bash">sudo systemctl create service
-sudo systemctl enable myapp
-</code></pre>
-<p>👉 systemd keeps app running even after SSH logout</p>
-<hr>
-<h2 id="-systemd-vs-initd"><a class="header" href="#-systemd-vs-initd">🔥 systemd vs init.d</a></h2>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr><th>systemd</th><th>init.d</th></tr>
-</thead>
-<tbody>
-<tr><td>Parallel startup</td><td>Sequential</td></tr>
-<tr><td>Faster</td><td>Slower</td></tr>
-<tr><td>Logging included</td><td>External</td></tr>
-<tr><td>Dependency aware</td><td>Limited</td></tr>
-</tbody>
-</table>
-</div>
 <hr>
 <h2 id="-common-admin-commands"><a class="header" href="#-common-admin-commands">🧪 Common Admin Commands</a></h2>
 <pre><code class="language-bash">systemctl reboot

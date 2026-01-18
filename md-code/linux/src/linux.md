@@ -2816,10 +2816,133 @@ journalctl -xe
 
 ## 🧪 Common Admin Commands
 
+### 🔹 1️⃣ `systemctl reboot`
+
 ```bash
 systemctl reboot
+```
+
+#### What it does
+
+👉 **Reboots (restarts) the entire system**
+
+It is the same as:
+
+* Turning the server **OFF**
+* Then turning it **ON** again
+
+#### What happens internally
+
+* All running services are stopped safely
+* Files are synced to disk
+* Kernel restarts
+* System boots again
+
+#### When to use
+
+* After kernel updates
+* System stuck or unstable
+* Configuration changes that need reboot
+
+⚠️ **Warning**
+
+* SSH connection will be lost
+* On EC2 → instance restarts
+
+---
+
+### 🔹 2️⃣ `systemctl poweroff`
+
+```bash
 systemctl poweroff
+```
+
+#### What it does
+
+👉 **Shuts down the system completely**
+
+Think of it as:
+
+> “Turn off the server”
+
+#### What happens
+
+* Services stop
+* System shuts down
+* Power is off
+
+#### On AWS EC2
+
+⚠️ Important:
+
+* Instance goes to **stopped state**
+* You must **start it again manually**
+* Public IP may change (if not elastic IP)
+
+#### When to use
+
+* Maintenance
+* Cost saving (EC2)
+* Permanent shutdown
+
+---
+
+### 🔹 3️⃣ `systemctl daemon-reexec`
+
+```bash
 systemctl daemon-reexec
+```
+
+#### This one is special 🧠 (often confusing)
+
+#### What it does
+
+👉 **Restarts systemd itself**, NOT the system
+
+* Reloads the systemd binary
+* Keeps services running
+* Does NOT reboot
+
+#### Why is this needed?
+
+Used when:
+
+* systemd package is updated
+* systemd configuration changes
+* systemctl behaves strangely
+
+#### What does NOT happen
+
+❌ No reboot
+❌ No shutdown
+❌ No service stop
+
+---
+
+### 🧪 Simple Comparison Table
+
+| Command                   | Effect                |
+| ------------------------- | --------------------- |
+| `systemctl reboot`        | Restart entire system |
+| `systemctl poweroff`      | Shutdown system       |
+| `systemctl daemon-reexec` | Restart systemd only  |
+
+---
+
+### ⚠️ Permissions
+
+All these commands need **root access**:
+
+```bash
+sudo systemctl reboot
+```
+
+```bash
+sudo systemctl poweroff
+```
+
+```bash
+sudo systemctl daemon-reexec
 ```
 
 ---

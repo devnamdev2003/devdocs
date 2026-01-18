@@ -59,7 +59,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-62d95be4.js";
+            window.path_to_searchindex_js = "searchindex-e729bcbc.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-c56c8163.js"></script>
@@ -2609,9 +2609,108 @@ sudo systemctl start backup.timer
 </code></pre>
 <hr>
 <h2 id="-common-admin-commands"><a class="header" href="#-common-admin-commands">🧪 Common Admin Commands</a></h2>
+<h3 id="-1-systemctl-reboot"><a class="header" href="#-1-systemctl-reboot">🔹 1️⃣ <code>systemctl reboot</code></a></h3>
 <pre><code class="language-bash">systemctl reboot
-systemctl poweroff
-systemctl daemon-reexec
+</code></pre>
+<h4 id="what-it-does"><a class="header" href="#what-it-does">What it does</a></h4>
+<p>👉 <strong>Reboots (restarts) the entire system</strong></p>
+<p>It is the same as:</p>
+<ul>
+<li>Turning the server <strong>OFF</strong></li>
+<li>Then turning it <strong>ON</strong> again</li>
+</ul>
+<h4 id="what-happens-internally"><a class="header" href="#what-happens-internally">What happens internally</a></h4>
+<ul>
+<li>All running services are stopped safely</li>
+<li>Files are synced to disk</li>
+<li>Kernel restarts</li>
+<li>System boots again</li>
+</ul>
+<h4 id="when-to-use"><a class="header" href="#when-to-use">When to use</a></h4>
+<ul>
+<li>After kernel updates</li>
+<li>System stuck or unstable</li>
+<li>Configuration changes that need reboot</li>
+</ul>
+<p>⚠️ <strong>Warning</strong></p>
+<ul>
+<li>SSH connection will be lost</li>
+<li>On EC2 → instance restarts</li>
+</ul>
+<hr>
+<h3 id="-2-systemctl-poweroff"><a class="header" href="#-2-systemctl-poweroff">🔹 2️⃣ <code>systemctl poweroff</code></a></h3>
+<pre><code class="language-bash">systemctl poweroff
+</code></pre>
+<h4 id="what-it-does-1"><a class="header" href="#what-it-does-1">What it does</a></h4>
+<p>👉 <strong>Shuts down the system completely</strong></p>
+<p>Think of it as:</p>
+<blockquote>
+<p>“Turn off the server”</p>
+</blockquote>
+<h4 id="what-happens"><a class="header" href="#what-happens">What happens</a></h4>
+<ul>
+<li>Services stop</li>
+<li>System shuts down</li>
+<li>Power is off</li>
+</ul>
+<h4 id="on-aws-ec2"><a class="header" href="#on-aws-ec2">On AWS EC2</a></h4>
+<p>⚠️ Important:</p>
+<ul>
+<li>Instance goes to <strong>stopped state</strong></li>
+<li>You must <strong>start it again manually</strong></li>
+<li>Public IP may change (if not elastic IP)</li>
+</ul>
+<h4 id="when-to-use-1"><a class="header" href="#when-to-use-1">When to use</a></h4>
+<ul>
+<li>Maintenance</li>
+<li>Cost saving (EC2)</li>
+<li>Permanent shutdown</li>
+</ul>
+<hr>
+<h3 id="-3-systemctl-daemon-reexec"><a class="header" href="#-3-systemctl-daemon-reexec">🔹 3️⃣ <code>systemctl daemon-reexec</code></a></h3>
+<pre><code class="language-bash">systemctl daemon-reexec
+</code></pre>
+<h4 id="this-one-is-special--often-confusing"><a class="header" href="#this-one-is-special--often-confusing">This one is special 🧠 (often confusing)</a></h4>
+<h4 id="what-it-does-2"><a class="header" href="#what-it-does-2">What it does</a></h4>
+<p>👉 <strong>Restarts systemd itself</strong>, NOT the system</p>
+<ul>
+<li>Reloads the systemd binary</li>
+<li>Keeps services running</li>
+<li>Does NOT reboot</li>
+</ul>
+<h4 id="why-is-this-needed"><a class="header" href="#why-is-this-needed">Why is this needed?</a></h4>
+<p>Used when:</p>
+<ul>
+<li>systemd package is updated</li>
+<li>systemd configuration changes</li>
+<li>systemctl behaves strangely</li>
+</ul>
+<h4 id="what-does-not-happen"><a class="header" href="#what-does-not-happen">What does NOT happen</a></h4>
+<p>❌ No reboot
+❌ No shutdown
+❌ No service stop</p>
+<hr>
+<h3 id="-simple-comparison-table"><a class="header" href="#-simple-comparison-table">🧪 Simple Comparison Table</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Effect</th></tr>
+</thead>
+<tbody>
+<tr><td><code>systemctl reboot</code></td><td>Restart entire system</td></tr>
+<tr><td><code>systemctl poweroff</code></td><td>Shutdown system</td></tr>
+<tr><td><code>systemctl daemon-reexec</code></td><td>Restart systemd only</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="-permissions"><a class="header" href="#-permissions">⚠️ Permissions</a></h3>
+<p>All these commands need <strong>root access</strong>:</p>
+<pre><code class="language-bash">sudo systemctl reboot
+</code></pre>
+<pre><code class="language-bash">sudo systemctl poweroff
+</code></pre>
+<pre><code class="language-bash">sudo systemctl daemon-reexec
 </code></pre>
 <hr>
 <h2 id="-interview-ready-qa"><a class="header" href="#-interview-ready-qa">🎯 Interview-Ready Q&amp;A</a></h2>
@@ -3842,7 +3941,7 @@ df -h
 <li>Disable root login</li>
 <li>Change SSH port</li>
 </ul>
-<h3 id="-permissions"><a class="header" href="#-permissions">🔹 Permissions</a></h3>
+<h3 id="-permissions-1"><a class="header" href="#-permissions-1">🔹 Permissions</a></h3>
 <pre><code class="language-bash">chmod 600 key.pem
 chown ec2-user file
 </code></pre>

@@ -1895,14 +1895,6 @@ A **package** is:
 * With dependency information
 * With version details
 
-Example packages:
-
-* `nginx`
-* `curl`
-* `docker`
-* `python3`
-* `git`
-
 ---
 
 ## 🏗 Why Package Management Exists
@@ -1933,94 +1925,267 @@ With package management:
 ---
 
 ## 🧰 Common Linux Package Managers
+| Package Manager | Linux Distribution         |
+| --------------- | -------------------------- |
+| `yum` / `dnf`   | Amazon Linux, RHEL, CentOS |
+| `apt`           | Ubuntu, Debian             |
+| `pacman`        | Arch Linux                 |
+| `zypper`        | SUSE                       |
 
-| Distro          | Package Manager |
-| --------------- | --------------- |
-| Ubuntu / Debian | `apt`           |
-| RHEL / CentOS   | `yum` / `dnf`   |
-| Fedora          | `dnf`           |
-| Arch            | `pacman`        |
-| openSUSE        | `zypper`        |
+---
+👉 **Amazon Linux is most common in AWS**, so focus mainly on **`yum` / `dnf`**, but **know `apt` basics**.
 
 ---
 
-## 📥 Package Management on Ubuntu/Debian (`apt`)
+## 1️⃣ `yum` – (Amazon Linux, RHEL, CentOS)
 
-### Update package index
+### 🔹 What is `yum`?
 
-```bash
-sudo apt update
-```
-
-### Install package
-
-```bash
-sudo apt install nginx
-```
-
-### Remove package
-
-```bash
-sudo apt remove nginx
-```
-
-### Remove with config
-
-```bash
-sudo apt purge nginx
-```
-
-### Upgrade packages
-
-```bash
-sudo apt upgrade
-```
+`yum` = **Yellowdog Updater Modified**
+It downloads software from **repositories**, resolves dependencies, and installs packages.
 
 ---
 
-## 📦 Package Management on RHEL/CentOS (`yum` / `dnf`)
+### 🔹 Update package list
 
-### Install
+```bash
+sudo yum check-update
+```
+
+**What it does:**
+
+* Checks for available updates
+* Does NOT install anything
+
+📌 Use before upgrading servers in AWS.
+
+---
+
+### 🔹 Install a package
 
 ```bash
 sudo yum install nginx
 ```
 
-or
+**Meaning:**
+
+* `install` → install software
+* `nginx` → package name
+
+AWS examples:
 
 ```bash
-sudo dnf install nginx
-```
-
-### Update
-
-```bash
-sudo dnf update
-```
-
-### Remove
-
-```bash
-sudo dnf remove nginx
+sudo yum install httpd      # Apache web server
+sudo yum install docker    # Docker
+sudo yum install git       # Git
 ```
 
 ---
 
-## 🧾 Search & Inspect Packages
+### 🔹 Install without confirmation
 
-### Search
+```bash
+sudo yum install nginx -y
+```
+
+`-y` = **yes automatically**
+
+📌 Very common in **EC2 user-data scripts**
+
+---
+
+### 🔹 Remove a package
+
+```bash
+sudo yum remove nginx
+```
+Remove unused deps
+
+```bash
+sudo apt autoremove
+```
+
+Removes software (not always config files).
+
+---
+
+### 🔹 Update all packages
+
+```bash
+sudo yum update
+```
+
+or
+
+```bash
+sudo yum update -y
+```
+
+📌 Used during **EC2 patching & security updates**.
+
+---
+
+### 🔹 Search for a package
+
+```bash
+yum search docker
+```
+
+Finds package names from repositories.
+
+---
+
+### 🔹 Show package info
+
+```bash
+yum info nginx
+```
+
+Shows:
+
+* Version
+* Size
+* Repository
+* Description
+
+---
+
+### 🔹 List installed packages
+
+```bash
+yum list installed 
+```
+
+To check what you installed recently:
+
+```bash
+yum history
+```
+
+---
+
+### 🔹 Check if a package is installed
+
+```bash
+yum list installed nginx
+```
+
+---
+
+### 🔹 Clean cache
+
+```bash
+sudo yum clean all
+```
+
+Clears downloaded package cache.
+
+📌 Used when `yum` behaves incorrectly.
+
+---
+
+## 2️⃣ `dnf` – (Amazon Linux 2023)
+
+### 🔹 What is `dnf`?
+
+`dnf` = **Dandified YUM**
+It is the **modern replacement for yum**.
+
+👉 Commands are almost the same.
+
+```bash
+sudo dnf install nginx
+sudo dnf remove nginx
+sudo dnf update -y
+dnf search docker
+dnf info nginx
+```
+
+📌 If AWS exam mentions **Amazon Linux 2023 → think `dnf`**.
+
+---
+
+## 3️⃣ `apt` – (Ubuntu on EC2)
+
+### 🔹 Update package index (VERY IMPORTANT)
+
+```bash
+sudo apt update
+```
+
+📌 Always run this **before installing anything**.
+
+---
+
+### 🔹 Install a package
+
+```bash
+sudo apt install nginx
+```
+
+---
+
+### 🔹 Install with auto yes
+
+```bash
+sudo apt install nginx -y
+```
+
+---
+
+### 🔹 Remove a package
+
+```bash
+sudo apt remove nginx
+```
+
+Remove + config:
+
+```bash
+sudo apt purge nginx
+```
+
+---
+
+### 🔹 Upgrade installed packages
+
+```bash
+sudo apt upgrade
+```
+
+or
+
+```bash
+sudo apt upgrade -y
+```
+
+---
+
+### 🔹 Full upgrade (handles dependencies)
+
+```bash
+sudo apt full-upgrade
+```
+
+---
+
+### 🔹 Search package
 
 ```bash
 apt search docker
 ```
 
-### Show package info
+---
+
+### 🔹 Show package info
 
 ```bash
 apt show nginx
 ```
 
-### List installed packages
+---
+
+### 🔹 List installed packages
 
 ```bash
 apt list --installed
@@ -2028,162 +2193,129 @@ apt list --installed
 
 ---
 
-## 🔗 Dependencies (VERY IMPORTANT)
+## 4️⃣ Repository Management (AWS Important)
 
-A dependency is:
+### 🔹 What is a repository?
 
-> A package required by another package to work
+A **repo** is a server that stores packages.
 
-Example:
+AWS examples:
 
-* `nginx` depends on `libc`, `openssl`, etc.
-
-Package manager automatically installs dependencies.
+* Amazon Linux repos
+* EPEL (Extra Packages for Enterprise Linux)
 
 ---
 
-## 🗄 Repositories
-
-A **repository** is a storage location of packages.
-
-Check repo list:
+### 🔹 List yum repositories
 
 ```bash
-cat /etc/apt/sources.list
+yum repolist
 ```
 
-Add repo:
+or
 
 ```bash
-sudo add-apt-repository ppa:ondrej/php
+dnf repolist
 ```
 
 ---
 
-## 🔐 GPG Keys & Security
-
-Package managers verify packages using **GPG keys**.
-
-Purpose:
-
-* Ensure authenticity
-* Prevent tampering
-
-Example:
+### 🔹 Enable Amazon Linux extras
 
 ```bash
-sudo apt-key add key.gpg
+sudo amazon-linux-extras list
+```
+
+Install from extras:
+
+```bash
+sudo amazon-linux-extras install docker
+```
+
+📌 **VERY important for AWS EC2**
+
+---
+
+## 5️⃣ Package Files (`rpm` & `dpkg`)
+
+### 🔹 RPM (Amazon Linux / RHEL)
+
+```bash
+rpm -qa
+```
+
+List all installed rpm packages.
+
+```bash
+rpm -q nginx
+```
+
+Check if nginx installed.
+
+---
+
+### 🔹 DPKG (Ubuntu)
+
+```bash
+dpkg -l
+```
+
+```bash
+dpkg -l nginx
 ```
 
 ---
 
-## 📦 Package Formats
+## 6️⃣ Real AWS EC2 Examples 🔥
 
-| Distro | Format |
-| ------ | ------ |
-| Debian | `.deb` |
-| RHEL   | `.rpm` |
-
-Install `.deb`:
+### 🔹 Install web server on EC2 (Amazon Linux)
 
 ```bash
-sudo dpkg -i app.deb
-sudo apt -f install
-```
-
-Install `.rpm`:
-
-```bash
-sudo rpm -ivh app.rpm
+sudo yum update -y
+sudo yum install httpd -y
+sudo systemctl start httpd
+sudo systemctl enable httpd
 ```
 
 ---
 
-## 🔁 Snap, Flatpak, AppImage (Modern Systems)
-
-### Snap
+### 🔹 Install Docker on EC2
 
 ```bash
-snap install postman
-```
-
-### Flatpak
-
-```bash
-flatpak install flathub org.videolan.VLC
-```
-
-### AppImage
-
-```bash
-chmod +x app.AppImage
-./app.AppImage
-```
-
----
-
-## 🧯 Common Package Issues
-
-| Issue             | Cause                   |
-| ----------------- | ----------------------- |
-| Broken packages   | Interrupted install     |
-| Dependency errors | Conflicting versions    |
-| 404 errors        | Repo outdated           |
-| Lock errors       | Another process running |
-
-Fix:
-
-```bash
-sudo apt --fix-broken install
-```
-
----
-
-## ☁️ Real-World Example (Server)
-
-> Need to install Docker on EC2
-
-Steps:
-
-```bash
-sudo apt update
-sudo apt install docker.io
-sudo systemctl enable docker
+sudo yum install docker -y
 sudo systemctl start docker
+sudo systemctl enable docker
 ```
 
 ---
 
-## 🧪 Advanced Package Commands
-
-### Hold package version
+### 🔹 EC2 User-Data Script Example
 
 ```bash
-sudo apt-mark hold nginx
+#!/bin/bash
+yum update -y
+yum install httpd -y
+systemctl start httpd
 ```
 
-### Remove unused deps
-
-```bash
-sudo apt autoremove
-```
-
-### Clean cache
-
-```bash
-sudo apt clean
-```
+📌 Package commands are **heavily used in user-data**.
 
 ---
 
-## 🧠 Package Management vs Source Install
+## 7️⃣ AWS Exam Focus (Remember This)
 
-| Package Manager | Source Code    |
-| --------------- | -------------- |
-| Easy            | Complex        |
-| Auto updates    | Manual updates |
-| Stable          | Custom         |
-| Secure          | Risky          |
+* ✅ Know **which OS uses which package manager**
+* ✅ Understand `install`, `remove`, `update`, `search`
+* ✅ Know `-y` flag
+* ✅ Know `amazon-linux-extras`
+* ✅ Know difference between `yum` / `dnf` / `apt`
+
+---
+
+### 🧠 Simple Rule to Remember
+
+> **Amazon Linux → yum / dnf**
+> **Ubuntu → apt**
 
 ---
 
@@ -2201,21 +2333,6 @@ sudo apt clean
 ### Q: What is a repository?
 
 > A centralized storage location for packages.
-
----
-
-## 🧾 Must-Know Commands Cheat Sheet
-
-```bash
-apt update
-apt install
-apt remove
-apt purge
-apt upgrade
-apt search
-apt show
-```
-
 ---
 
 ## 🏁 Final Summary

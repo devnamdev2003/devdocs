@@ -58,7 +58,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-5d6789b8.js";
+            window.path_to_searchindex_js = "searchindex-609d7980.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-c56c8163.js"></script>
@@ -1639,14 +1639,6 @@ chown
 <li>With dependency information</li>
 <li>With version details</li>
 </ul>
-<p>Example packages:</p>
-<ul>
-<li><code>nginx</code></li>
-<li><code>curl</code></li>
-<li><code>docker</code></li>
-<li><code>python3</code></li>
-<li><code>git</code></li>
-</ul>
 <hr>
 <h2 id="-why-package-management-exists"><a class="header" href="#-why-package-management-exists">🏗 Why Package Management Exists</a></h2>
 <p>Without package management:</p>
@@ -1681,177 +1673,235 @@ chown
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th>Distro</th><th>Package Manager</th></tr>
+<tr><th>Package Manager</th><th>Linux Distribution</th></tr>
 </thead>
 <tbody>
-<tr><td>Ubuntu / Debian</td><td><code>apt</code></td></tr>
-<tr><td>RHEL / CentOS</td><td><code>yum</code> / <code>dnf</code></td></tr>
-<tr><td>Fedora</td><td><code>dnf</code></td></tr>
-<tr><td>Arch</td><td><code>pacman</code></td></tr>
-<tr><td>openSUSE</td><td><code>zypper</code></td></tr>
+<tr><td><code>yum</code> / <code>dnf</code></td><td>Amazon Linux, RHEL, CentOS</td></tr>
+<tr><td><code>apt</code></td><td>Ubuntu, Debian</td></tr>
+<tr><td><code>pacman</code></td><td>Arch Linux</td></tr>
+<tr><td><code>zypper</code></td><td>SUSE</td></tr>
 </tbody>
 </table>
 </div>
 <hr>
-<h2 id="-package-management-on-ubuntudebian-apt"><a class="header" href="#-package-management-on-ubuntudebian-apt">📥 Package Management on Ubuntu/Debian (<code>apt</code>)</a></h2>
-<h3 id="update-package-index"><a class="header" href="#update-package-index">Update package index</a></h3>
-<pre><code class="language-bash">sudo apt update
-</code></pre>
-<h3 id="install-package"><a class="header" href="#install-package">Install package</a></h3>
-<pre><code class="language-bash">sudo apt install nginx
-</code></pre>
-<h3 id="remove-package"><a class="header" href="#remove-package">Remove package</a></h3>
-<pre><code class="language-bash">sudo apt remove nginx
-</code></pre>
-<h3 id="remove-with-config"><a class="header" href="#remove-with-config">Remove with config</a></h3>
-<pre><code class="language-bash">sudo apt purge nginx
-</code></pre>
-<h3 id="upgrade-packages"><a class="header" href="#upgrade-packages">Upgrade packages</a></h3>
-<pre><code class="language-bash">sudo apt upgrade
-</code></pre>
+<p>👉 <strong>Amazon Linux is most common in AWS</strong>, so focus mainly on <strong><code>yum</code> / <code>dnf</code></strong>, but <strong>know <code>apt</code> basics</strong>.</p>
 <hr>
-<h2 id="-package-management-on-rhelcentos-yum--dnf"><a class="header" href="#-package-management-on-rhelcentos-yum--dnf">📦 Package Management on RHEL/CentOS (<code>yum</code> / <code>dnf</code>)</a></h2>
-<h3 id="install"><a class="header" href="#install">Install</a></h3>
+<h2 id="1-yum--amazon-linux-rhel-centos"><a class="header" href="#1-yum--amazon-linux-rhel-centos">1️⃣ <code>yum</code> – (Amazon Linux, RHEL, CentOS)</a></h2>
+<h3 id="-what-is-yum"><a class="header" href="#-what-is-yum">🔹 What is <code>yum</code>?</a></h3>
+<p><code>yum</code> = <strong>Yellowdog Updater Modified</strong>
+It downloads software from <strong>repositories</strong>, resolves dependencies, and installs packages.</p>
+<hr>
+<h3 id="-update-package-list"><a class="header" href="#-update-package-list">🔹 Update package list</a></h3>
+<pre><code class="language-bash">sudo yum check-update
+</code></pre>
+<p><strong>What it does:</strong></p>
+<ul>
+<li>Checks for available updates</li>
+<li>Does NOT install anything</li>
+</ul>
+<p>📌 Use before upgrading servers in AWS.</p>
+<hr>
+<h3 id="-install-a-package"><a class="header" href="#-install-a-package">🔹 Install a package</a></h3>
 <pre><code class="language-bash">sudo yum install nginx
 </code></pre>
-<p>or</p>
-<pre><code class="language-bash">sudo dnf install nginx
-</code></pre>
-<h3 id="update"><a class="header" href="#update">Update</a></h3>
-<pre><code class="language-bash">sudo dnf update
-</code></pre>
-<h3 id="remove"><a class="header" href="#remove">Remove</a></h3>
-<pre><code class="language-bash">sudo dnf remove nginx
+<p><strong>Meaning:</strong></p>
+<ul>
+<li><code>install</code> → install software</li>
+<li><code>nginx</code> → package name</li>
+</ul>
+<p>AWS examples:</p>
+<pre><code class="language-bash">sudo yum install httpd      # Apache web server
+sudo yum install docker    # Docker
+sudo yum install git       # Git
 </code></pre>
 <hr>
-<h2 id="-search--inspect-packages"><a class="header" href="#-search--inspect-packages">🧾 Search &amp; Inspect Packages</a></h2>
-<h3 id="search"><a class="header" href="#search">Search</a></h3>
+<h3 id="-install-without-confirmation"><a class="header" href="#-install-without-confirmation">🔹 Install without confirmation</a></h3>
+<pre><code class="language-bash">sudo yum install nginx -y
+</code></pre>
+<p><code>-y</code> = <strong>yes automatically</strong></p>
+<p>📌 Very common in <strong>EC2 user-data scripts</strong></p>
+<hr>
+<h3 id="-remove-a-package"><a class="header" href="#-remove-a-package">🔹 Remove a package</a></h3>
+<pre><code class="language-bash">sudo yum remove nginx
+</code></pre>
+<p>Remove unused deps</p>
+<pre><code class="language-bash">sudo apt autoremove
+</code></pre>
+<p>Removes software (not always config files).</p>
+<hr>
+<h3 id="-update-all-packages"><a class="header" href="#-update-all-packages">🔹 Update all packages</a></h3>
+<pre><code class="language-bash">sudo yum update
+</code></pre>
+<p>or</p>
+<pre><code class="language-bash">sudo yum update -y
+</code></pre>
+<p>📌 Used during <strong>EC2 patching &amp; security updates</strong>.</p>
+<hr>
+<h3 id="-search-for-a-package"><a class="header" href="#-search-for-a-package">🔹 Search for a package</a></h3>
+<pre><code class="language-bash">yum search docker
+</code></pre>
+<p>Finds package names from repositories.</p>
+<hr>
+<h3 id="-show-package-info"><a class="header" href="#-show-package-info">🔹 Show package info</a></h3>
+<pre><code class="language-bash">yum info nginx
+</code></pre>
+<p>Shows:</p>
+<ul>
+<li>Version</li>
+<li>Size</li>
+<li>Repository</li>
+<li>Description</li>
+</ul>
+<hr>
+<h3 id="-list-installed-packages"><a class="header" href="#-list-installed-packages">🔹 List installed packages</a></h3>
+<pre><code class="language-bash">yum list installed 
+</code></pre>
+<p>To check what you installed recently:</p>
+<pre><code class="language-bash">yum history
+</code></pre>
+<hr>
+<h3 id="-check-if-a-package-is-installed"><a class="header" href="#-check-if-a-package-is-installed">🔹 Check if a package is installed</a></h3>
+<pre><code class="language-bash">yum list installed nginx
+</code></pre>
+<hr>
+<h3 id="-clean-cache"><a class="header" href="#-clean-cache">🔹 Clean cache</a></h3>
+<pre><code class="language-bash">sudo yum clean all
+</code></pre>
+<p>Clears downloaded package cache.</p>
+<p>📌 Used when <code>yum</code> behaves incorrectly.</p>
+<hr>
+<h2 id="2-dnf--amazon-linux-2023"><a class="header" href="#2-dnf--amazon-linux-2023">2️⃣ <code>dnf</code> – (Amazon Linux 2023)</a></h2>
+<h3 id="-what-is-dnf"><a class="header" href="#-what-is-dnf">🔹 What is <code>dnf</code>?</a></h3>
+<p><code>dnf</code> = <strong>Dandified YUM</strong>
+It is the <strong>modern replacement for yum</strong>.</p>
+<p>👉 Commands are almost the same.</p>
+<pre><code class="language-bash">sudo dnf install nginx
+sudo dnf remove nginx
+sudo dnf update -y
+dnf search docker
+dnf info nginx
+</code></pre>
+<p>📌 If AWS exam mentions <strong>Amazon Linux 2023 → think <code>dnf</code></strong>.</p>
+<hr>
+<h2 id="3-apt--ubuntu-on-ec2"><a class="header" href="#3-apt--ubuntu-on-ec2">3️⃣ <code>apt</code> – (Ubuntu on EC2)</a></h2>
+<h3 id="-update-package-index-very-important"><a class="header" href="#-update-package-index-very-important">🔹 Update package index (VERY IMPORTANT)</a></h3>
+<pre><code class="language-bash">sudo apt update
+</code></pre>
+<p>📌 Always run this <strong>before installing anything</strong>.</p>
+<hr>
+<h3 id="-install-a-package-1"><a class="header" href="#-install-a-package-1">🔹 Install a package</a></h3>
+<pre><code class="language-bash">sudo apt install nginx
+</code></pre>
+<hr>
+<h3 id="-install-with-auto-yes"><a class="header" href="#-install-with-auto-yes">🔹 Install with auto yes</a></h3>
+<pre><code class="language-bash">sudo apt install nginx -y
+</code></pre>
+<hr>
+<h3 id="-remove-a-package-1"><a class="header" href="#-remove-a-package-1">🔹 Remove a package</a></h3>
+<pre><code class="language-bash">sudo apt remove nginx
+</code></pre>
+<p>Remove + config:</p>
+<pre><code class="language-bash">sudo apt purge nginx
+</code></pre>
+<hr>
+<h3 id="-upgrade-installed-packages"><a class="header" href="#-upgrade-installed-packages">🔹 Upgrade installed packages</a></h3>
+<pre><code class="language-bash">sudo apt upgrade
+</code></pre>
+<p>or</p>
+<pre><code class="language-bash">sudo apt upgrade -y
+</code></pre>
+<hr>
+<h3 id="-full-upgrade-handles-dependencies"><a class="header" href="#-full-upgrade-handles-dependencies">🔹 Full upgrade (handles dependencies)</a></h3>
+<pre><code class="language-bash">sudo apt full-upgrade
+</code></pre>
+<hr>
+<h3 id="-search-package"><a class="header" href="#-search-package">🔹 Search package</a></h3>
 <pre><code class="language-bash">apt search docker
 </code></pre>
-<h3 id="show-package-info"><a class="header" href="#show-package-info">Show package info</a></h3>
+<hr>
+<h3 id="-show-package-info-1"><a class="header" href="#-show-package-info-1">🔹 Show package info</a></h3>
 <pre><code class="language-bash">apt show nginx
 </code></pre>
-<h3 id="list-installed-packages"><a class="header" href="#list-installed-packages">List installed packages</a></h3>
+<hr>
+<h3 id="-list-installed-packages-1"><a class="header" href="#-list-installed-packages-1">🔹 List installed packages</a></h3>
 <pre><code class="language-bash">apt list --installed
 </code></pre>
 <hr>
-<h2 id="-dependencies-very-important"><a class="header" href="#-dependencies-very-important">🔗 Dependencies (VERY IMPORTANT)</a></h2>
-<p>A dependency is:</p>
-<blockquote>
-<p>A package required by another package to work</p>
-</blockquote>
-<p>Example:</p>
+<h2 id="4-repository-management-aws-important"><a class="header" href="#4-repository-management-aws-important">4️⃣ Repository Management (AWS Important)</a></h2>
+<h3 id="-what-is-a-repository"><a class="header" href="#-what-is-a-repository">🔹 What is a repository?</a></h3>
+<p>A <strong>repo</strong> is a server that stores packages.</p>
+<p>AWS examples:</p>
 <ul>
-<li><code>nginx</code> depends on <code>libc</code>, <code>openssl</code>, etc.</li>
+<li>Amazon Linux repos</li>
+<li>EPEL (Extra Packages for Enterprise Linux)</li>
 </ul>
-<p>Package manager automatically installs dependencies.</p>
 <hr>
-<h2 id="-repositories"><a class="header" href="#-repositories">🗄 Repositories</a></h2>
-<p>A <strong>repository</strong> is a storage location of packages.</p>
-<p>Check repo list:</p>
-<pre><code class="language-bash">cat /etc/apt/sources.list
+<h3 id="-list-yum-repositories"><a class="header" href="#-list-yum-repositories">🔹 List yum repositories</a></h3>
+<pre><code class="language-bash">yum repolist
 </code></pre>
-<p>Add repo:</p>
-<pre><code class="language-bash">sudo add-apt-repository ppa:ondrej/php
+<p>or</p>
+<pre><code class="language-bash">dnf repolist
 </code></pre>
 <hr>
-<h2 id="-gpg-keys--security"><a class="header" href="#-gpg-keys--security">🔐 GPG Keys &amp; Security</a></h2>
-<p>Package managers verify packages using <strong>GPG keys</strong>.</p>
-<p>Purpose:</p>
-<ul>
-<li>Ensure authenticity</li>
-<li>Prevent tampering</li>
-</ul>
-<p>Example:</p>
-<pre><code class="language-bash">sudo apt-key add key.gpg
+<h3 id="-enable-amazon-linux-extras"><a class="header" href="#-enable-amazon-linux-extras">🔹 Enable Amazon Linux extras</a></h3>
+<pre><code class="language-bash">sudo amazon-linux-extras list
+</code></pre>
+<p>Install from extras:</p>
+<pre><code class="language-bash">sudo amazon-linux-extras install docker
+</code></pre>
+<p>📌 <strong>VERY important for AWS EC2</strong></p>
+<hr>
+<h2 id="5-package-files-rpm--dpkg"><a class="header" href="#5-package-files-rpm--dpkg">5️⃣ Package Files (<code>rpm</code> &amp; <code>dpkg</code>)</a></h2>
+<h3 id="-rpm-amazon-linux--rhel"><a class="header" href="#-rpm-amazon-linux--rhel">🔹 RPM (Amazon Linux / RHEL)</a></h3>
+<pre><code class="language-bash">rpm -qa
+</code></pre>
+<p>List all installed rpm packages.</p>
+<pre><code class="language-bash">rpm -q nginx
+</code></pre>
+<p>Check if nginx installed.</p>
+<hr>
+<h3 id="-dpkg-ubuntu"><a class="header" href="#-dpkg-ubuntu">🔹 DPKG (Ubuntu)</a></h3>
+<pre><code class="language-bash">dpkg -l
+</code></pre>
+<pre><code class="language-bash">dpkg -l nginx
 </code></pre>
 <hr>
-<h2 id="-package-formats"><a class="header" href="#-package-formats">📦 Package Formats</a></h2>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr><th>Distro</th><th>Format</th></tr>
-</thead>
-<tbody>
-<tr><td>Debian</td><td><code>.deb</code></td></tr>
-<tr><td>RHEL</td><td><code>.rpm</code></td></tr>
-</tbody>
-</table>
-</div>
-<p>Install <code>.deb</code>:</p>
-<pre><code class="language-bash">sudo dpkg -i app.deb
-sudo apt -f install
-</code></pre>
-<p>Install <code>.rpm</code>:</p>
-<pre><code class="language-bash">sudo rpm -ivh app.rpm
+<h2 id="6-real-aws-ec2-examples-"><a class="header" href="#6-real-aws-ec2-examples-">6️⃣ Real AWS EC2 Examples 🔥</a></h2>
+<h3 id="-install-web-server-on-ec2-amazon-linux"><a class="header" href="#-install-web-server-on-ec2-amazon-linux">🔹 Install web server on EC2 (Amazon Linux)</a></h3>
+<pre><code class="language-bash">sudo yum update -y
+sudo yum install httpd -y
+sudo systemctl start httpd
+sudo systemctl enable httpd
 </code></pre>
 <hr>
-<h2 id="-snap-flatpak-appimage-modern-systems"><a class="header" href="#-snap-flatpak-appimage-modern-systems">🔁 Snap, Flatpak, AppImage (Modern Systems)</a></h2>
-<h3 id="snap"><a class="header" href="#snap">Snap</a></h3>
-<pre><code class="language-bash">snap install postman
-</code></pre>
-<h3 id="flatpak"><a class="header" href="#flatpak">Flatpak</a></h3>
-<pre><code class="language-bash">flatpak install flathub org.videolan.VLC
-</code></pre>
-<h3 id="appimage"><a class="header" href="#appimage">AppImage</a></h3>
-<pre><code class="language-bash">chmod +x app.AppImage
-./app.AppImage
-</code></pre>
-<hr>
-<h2 id="-common-package-issues"><a class="header" href="#-common-package-issues">🧯 Common Package Issues</a></h2>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr><th>Issue</th><th>Cause</th></tr>
-</thead>
-<tbody>
-<tr><td>Broken packages</td><td>Interrupted install</td></tr>
-<tr><td>Dependency errors</td><td>Conflicting versions</td></tr>
-<tr><td>404 errors</td><td>Repo outdated</td></tr>
-<tr><td>Lock errors</td><td>Another process running</td></tr>
-</tbody>
-</table>
-</div>
-<p>Fix:</p>
-<pre><code class="language-bash">sudo apt --fix-broken install
-</code></pre>
-<hr>
-<h2 id="-real-world-example-server"><a class="header" href="#-real-world-example-server">☁️ Real-World Example (Server)</a></h2>
-<blockquote>
-<p>Need to install Docker on EC2</p>
-</blockquote>
-<p>Steps:</p>
-<pre><code class="language-bash">sudo apt update
-sudo apt install docker.io
-sudo systemctl enable docker
+<h3 id="-install-docker-on-ec2"><a class="header" href="#-install-docker-on-ec2">🔹 Install Docker on EC2</a></h3>
+<pre><code class="language-bash">sudo yum install docker -y
 sudo systemctl start docker
+sudo systemctl enable docker
 </code></pre>
 <hr>
-<h2 id="-advanced-package-commands"><a class="header" href="#-advanced-package-commands">🧪 Advanced Package Commands</a></h2>
-<h3 id="hold-package-version"><a class="header" href="#hold-package-version">Hold package version</a></h3>
-<pre><code class="language-bash">sudo apt-mark hold nginx
+<h3 id="-ec2-user-data-script-example"><a class="header" href="#-ec2-user-data-script-example">🔹 EC2 User-Data Script Example</a></h3>
+<pre><code class="language-bash">#!/bin/bash
+yum update -y
+yum install httpd -y
+systemctl start httpd
 </code></pre>
-<h3 id="remove-unused-deps"><a class="header" href="#remove-unused-deps">Remove unused deps</a></h3>
-<pre><code class="language-bash">sudo apt autoremove
-</code></pre>
-<h3 id="clean-cache"><a class="header" href="#clean-cache">Clean cache</a></h3>
-<pre><code class="language-bash">sudo apt clean
-</code></pre>
+<p>📌 Package commands are <strong>heavily used in user-data</strong>.</p>
 <hr>
-<h2 id="-package-management-vs-source-install"><a class="header" href="#-package-management-vs-source-install">🧠 Package Management vs Source Install</a></h2>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr><th>Package Manager</th><th>Source Code</th></tr>
-</thead>
-<tbody>
-<tr><td>Easy</td><td>Complex</td></tr>
-<tr><td>Auto updates</td><td>Manual updates</td></tr>
-<tr><td>Stable</td><td>Custom</td></tr>
-<tr><td>Secure</td><td>Risky</td></tr>
-</tbody>
-</table>
-</div>
+<h2 id="7-aws-exam-focus-remember-this"><a class="header" href="#7-aws-exam-focus-remember-this">7️⃣ AWS Exam Focus (Remember This)</a></h2>
+<ul>
+<li>✅ Know <strong>which OS uses which package manager</strong></li>
+<li>✅ Understand <code>install</code>, <code>remove</code>, <code>update</code>, <code>search</code></li>
+<li>✅ Know <code>-y</code> flag</li>
+<li>✅ Know <code>amazon-linux-extras</code></li>
+<li>✅ Know difference between <code>yum</code> / <code>dnf</code> / <code>apt</code></li>
+</ul>
+<hr>
+<h3 id="-simple-rule-to-remember"><a class="header" href="#-simple-rule-to-remember">🧠 Simple Rule to Remember</a></h3>
+<blockquote>
+<p><strong>Amazon Linux → yum / dnf</strong>
+<strong>Ubuntu → apt</strong></p>
+</blockquote>
 <hr>
 <h2 id="-interview-ready-questions-1"><a class="header" href="#-interview-ready-questions-1">🎯 Interview-Ready Questions</a></h2>
 <h3 id="q-what-is-a-package-manager"><a class="header" href="#q-what-is-a-package-manager">Q: What is a package manager?</a></h3>
@@ -1867,16 +1917,6 @@ sudo systemctl start docker
 <blockquote>
 <p>A centralized storage location for packages.</p>
 </blockquote>
-<hr>
-<h2 id="-must-know-commands-cheat-sheet-1"><a class="header" href="#-must-know-commands-cheat-sheet-1">🧾 Must-Know Commands Cheat Sheet</a></h2>
-<pre><code class="language-bash">apt update
-apt install
-apt remove
-apt purge
-apt upgrade
-apt search
-apt show
-</code></pre>
 <hr>
 <h2 id="-final-summary"><a class="header" href="#-final-summary">🏁 Final Summary</a></h2>
 <blockquote>
@@ -2041,7 +2081,7 @@ WantedBy=multi-user.target
 <li>Restart policy</li>
 <li>User/group</li>
 </ul>
-<h3 id="install-1"><a class="header" href="#install-1">[Install]</a></h3>
+<h3 id="install"><a class="header" href="#install">[Install]</a></h3>
 <ul>
 <li>Boot target</li>
 </ul>
@@ -2127,7 +2167,7 @@ systemctl daemon-reexec
 <li>Restart: stop and start</li>
 </ul>
 <hr>
-<h2 id="-must-know-commands-cheat-sheet-2"><a class="header" href="#-must-know-commands-cheat-sheet-2">🧾 Must-Know Commands Cheat Sheet</a></h2>
+<h2 id="-must-know-commands-cheat-sheet-1"><a class="header" href="#-must-know-commands-cheat-sheet-1">🧾 Must-Know Commands Cheat Sheet</a></h2>
 <pre><code class="language-bash">systemctl status
 systemctl start
 systemctl stop
@@ -2443,7 +2483,7 @@ wc -l file.txt
 <li>Connects output of one command to input of another</li>
 </ul>
 <hr>
-<h2 id="-must-know-commands-cheat-sheet-3"><a class="header" href="#-must-know-commands-cheat-sheet-3">🧾 Must-Know Commands Cheat Sheet</a></h2>
+<h2 id="-must-know-commands-cheat-sheet-2"><a class="header" href="#-must-know-commands-cheat-sheet-2">🧾 Must-Know Commands Cheat Sheet</a></h2>
 <pre><code class="language-bash">find
 locate
 grep
@@ -2738,7 +2778,7 @@ Port 2222
 <p>Stores server public keys to prevent MITM attacks</p>
 </blockquote>
 <hr>
-<h2 id="-must-know-commands-cheat-sheet-4"><a class="header" href="#-must-know-commands-cheat-sheet-4">🧾 Must-Know Commands Cheat Sheet</a></h2>
+<h2 id="-must-know-commands-cheat-sheet-3"><a class="header" href="#-must-know-commands-cheat-sheet-3">🧾 Must-Know Commands Cheat Sheet</a></h2>
 <pre><code class="language-bash">ssh
 ssh-keygen
 ssh-copy-id

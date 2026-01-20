@@ -28,10 +28,12 @@ jobs:
         run: ./build.sh
 
       - name: Debug docs structure
-        run: ls 
-
+        run: ls
+      - name: Check docs size
+        run: du -sh docs
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: /
+          publish_dir: docs
+          force_orphan: true

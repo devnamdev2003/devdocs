@@ -24,3 +24,13 @@ jobs:
 
       - name: Run build
         run: ./build.sh
+
+      - name: Debug docs structure
+        run: ls -R docs | head -50
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: /
+

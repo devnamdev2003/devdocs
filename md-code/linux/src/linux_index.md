@@ -7,7 +7,7 @@ h2{
 
 ## [👈](../src)
 
-- [Linux Topics to Know Before AWS](#linux-topics-to-know-before-aws)
+- [Linux Topics](#linux-topics)
   - [Linux Basics](#linux-basics)
   - [File \& Directory Management (Linux)](#file--directory-management-linux)
   - [File Viewing \& Editing (Linux)](#file-viewing--editing-linux)
@@ -27,7 +27,7 @@ h2{
   - [Logs \& Troubleshooting (Linux)](#logs--troubleshooting-linux)
   - [Linux for Cloud (AWS Context)](#linux-for-cloud-aws-context)
 
-# Linux Topics to Know Before AWS
+# Linux Topics
 
 ## [Linux Basics](./linux.html#linux-basics)
   - [1️⃣ What is Linux?](./linux.html#1️⃣-what-is-linux)

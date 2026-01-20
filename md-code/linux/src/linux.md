@@ -8,7 +8,7 @@ h2{
 ## [👈](../src)
 
 
-# 🐧 Topic 1: Linux Basics
+# Linux Basics
 
 ## 1️⃣ What is Linux?
 
@@ -186,7 +186,7 @@ AWS = **Linux-first**
 
 ---
 
-# 📁 Topic 2: File & Directory Management (Linux)
+# File & Directory Management (Linux)
 
 ## 1️⃣ What is a File & Directory?
 
@@ -491,7 +491,7 @@ cd /     # root directory
 
 ---
 
-# 📄 Topic 3: File Viewing & Editing (Linux)
+# File Viewing & Editing (Linux)
 
 ## 1️⃣ Why this topic is important for AWS?
 
@@ -653,7 +653,7 @@ I’ll explain **slowly**, **clearly**, and with **real AWS examples**.
 
 ---
 
-# 🔐 Topic 4: File Permissions & Ownership (Linux)
+# File Permissions & Ownership (Linux)
 
 ## 1️⃣ Why permissions are important in AWS?
 
@@ -868,7 +868,7 @@ sudo chmod -R 755 /var/www/html
 
 ---
 
-# 👤 Topic 5: User & Group Management (Linux)
+# User & Group Management (Linux)
 
 ## 1️⃣ Why this topic is important for AWS?
 
@@ -1004,7 +1004,7 @@ sudo usermod -aG docker ec2-user
 
 ---
 
-# ⚙️ Topic 6: Process Management (Linux)
+# Process Management (Linux)
 
 ## 1️⃣ What is a Process?
 
@@ -1282,7 +1282,7 @@ nohup java -jar EWA-1.0.0.jar > app.log 2>&1 &
 
 ---
 
-# 🌐 Topic 7: Networking Basics (Linux)
+# Networking Basics (Linux)
 
 ## 1️⃣ IP Address & Hostname
 
@@ -1500,7 +1500,7 @@ If works locally but not from browser:
 
 ---
 
-# 💾 Topic 8: Disk & Storage Management (Linux)
+# Disk & Storage Management (Linux)
 
 ## 🧱 What is Disk & Storage Management in Linux?
 
@@ -1868,7 +1868,7 @@ chown
 
 ---
 
-# 📦 Topic 9: Package Management (Linux)
+# Package Management (Linux)
 
 ## 📦 What is Package Management?
 
@@ -2341,7 +2341,7 @@ systemctl start httpd
 
 ---
 
-# 🧩 Topic 10: Service Management (systemd)
+# Service Management (systemd)
 
 ## 🔧 What is Service Management?
 
@@ -2985,7 +2985,7 @@ journalctl
 ---
 
 
-# 🌱 Topic 11: Environment Variables & Shell
+# Environment Variables & Shell
 
 ## 1️⃣ What are Environment Variables?
 
@@ -3180,7 +3180,7 @@ App reads these values at runtime.
 
 ---
 
-# 🔍 Topic 1️2: Searching & Text Processing (Linux)
+# Searching & Text Processing (Linux)
 
 ## 🔍 What is Searching & Text Processing?
 
@@ -3490,7 +3490,7 @@ tail
 
 ---
 
-# 🗜️ Topic 13: Compression & Archiving (Linux)
+# Compression & Archiving (Linux)
 
 ## 1️⃣ What is Archiving vs Compression?
 
@@ -3642,7 +3642,7 @@ tar -czvf logs-backup.tar.gz /var/log
 
 ---
 
-# 🔐 Topic 14: SSH & Remote Access
+# SSH & Remote Access
 
 ## 🔐 What is SSH?
 
@@ -3942,7 +3942,7 @@ chmod
 
 ---
 
-# 🧠 Topic 15: Bash Scripting Basics
+# Bash Scripting Basics
 
 ## 🐚 What is Bash?
 
@@ -4252,7 +4252,7 @@ function
 ---
 
 
-# 🔒 Topic 16: Linux Security Basics
+# Linux Security Basics
 
 ## 1️⃣ Firewall Basics
 
@@ -4411,7 +4411,7 @@ sudo systemctl restart sshd
 
 ---
 
-# 🪵 Topic 17: Logs & Troubleshooting (Linux)
+# Logs & Troubleshooting (Linux)
 
 ## 1️⃣ What are Logs?
 
@@ -4595,7 +4595,7 @@ Checklist:
 
 ---
 
-# ☁️ Topic 18: Linux for Cloud (AWS Context)
+# Linux for Cloud (AWS Context)
 
 ## ☁️ What Does “Linux for Cloud (AWS)” Mean?
 

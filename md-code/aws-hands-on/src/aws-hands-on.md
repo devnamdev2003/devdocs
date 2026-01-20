@@ -3893,6 +3893,15 @@ alb-ec2-hands-on
 * Scheme → **Internet-facing**
 * IP address type → IPv4
 
+| Feature    | Internet-facing | Internal    |
+| ------ | --------------- | ---------------- |
+| Accessible from internet | ✅ Yes           | ❌ No      |
+| IP type    | Public IPs      | Private IPs      |
+| Subnet type| Public subnet   | Private subnet   |
+| Common use | Websites, APIs  | Backend services |
+| DNS resolves to | Public IPs | Private IPs |
+
+
 ---
 
 > Network Mapping (IMPORTANT)
@@ -4555,6 +4564,9 @@ stress --cpu 2
 📌 CPU goes high → ASG launches new EC2
 
 (We can skip actual stress to save free tier)
+
+you can also stop one EC2 to see ASG replace it.
+for that just terminate one of the ASG EC2s from console.
 
 ---
 

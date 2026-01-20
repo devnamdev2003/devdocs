@@ -7,29 +7,29 @@ h2{
 
 ## [👈](../src)
 
-- [🐧 Linux Topics to Know Before AWS](#-linux-topics-to-know-before-aws)
-  - [🐧 Topic 1: Linux Basics](#-topic-1-linux-basics)
-  - [📁 Topic 2: File \& Directory Management (Linux)](#-topic-2-file--directory-management-linux)
-  - [📄 Topic 3: File Viewing \& Editing (Linux)](#-topic-3-file-viewing--editing-linux)
-  - [🔐 Topic 4: File Permissions \& Ownership (Linux)](#-topic-4-file-permissions--ownership-linux)
-  - [👤 Topic 5: User \& Group Management (Linux)](#-topic-5-user--group-management-linux)
-  - [⚙️ Topic 6: Process Management (Linux)](#️-topic-6-process-management-linux)
-  - [🌐 Topic 7: Networking Basics (Linux)](#-topic-7-networking-basics-linux)
-  - [💾 Topic 8: Disk \& Storage Management (Linux)](#-topic-8-disk--storage-management-linux)
-  - [📦 Topic 9: Package Management (Linux)](#-topic-9-package-management-linux)
-  - [🧩 Topic 10: Service Management (systemd)](#-topic-10-service-management-systemd)
-  - [🌱 Topic 11: Environment Variables \& Shell](#-topic-11-environment-variables--shell)
-  - [🔍 Topic 1️2: Searching \& Text Processing (Linux)](#-topic-1️2-searching--text-processing-linux)
-  - [🗜️ Topic 13: Compression \& Archiving (Linux)](#️-topic-13-compression--archiving-linux)
-  - [🔐 Topic 14: SSH \& Remote Access](#-topic-14-ssh--remote-access)
-  - [🧠 Topic 15: Bash Scripting Basics](#-topic-15-bash-scripting-basics)
-  - [🔒 Topic 16: Linux Security Basics](#-topic-16-linux-security-basics)
-  - [🪵 Topic 17: Logs \& Troubleshooting (Linux)](#-topic-17-logs--troubleshooting-linux)
-  - [☁️ Topic 18: Linux for Cloud (AWS Context)](#️-topic-18-linux-for-cloud-aws-context)
+- [Linux Topics to Know Before AWS](#linux-topics-to-know-before-aws)
+  - [Linux Basics](#linux-basics)
+  - [File \& Directory Management (Linux)](#file--directory-management-linux)
+  - [File Viewing \& Editing (Linux)](#file-viewing--editing-linux)
+  - [File Permissions \& Ownership (Linux)](#file-permissions--ownership-linux)
+  - [User \& Group Management (Linux)](#user--group-management-linux)
+  - [Process Management (Linux)](#process-management-linux)
+  - [Networking Basics (Linux)](#networking-basics-linux)
+  - [Disk \& Storage Management (Linux)](#disk--storage-management-linux)
+  - [Package Management (Linux)](#package-management-linux)
+  - [Service Management (systemd)](#service-management-systemd)
+  - [Environment Variables \& Shell](#environment-variables--shell)
+  - [Searching \& Text Processing (Linux)](#searching--text-processing-linux)
+  - [Compression \& Archiving (Linux)](#compression--archiving-linux)
+  - [SSH \& Remote Access](#ssh--remote-access)
+  - [Bash Scripting Basics](#bash-scripting-basics)
+  - [Linux Security Basics](#linux-security-basics)
+  - [Logs \& Troubleshooting (Linux)](#logs--troubleshooting-linux)
+  - [Linux for Cloud (AWS Context)](#linux-for-cloud-aws-context)
 
-# 🐧 Linux Topics to Know Before AWS
+# Linux Topics to Know Before AWS
 
-## [🐧 Topic 1: Linux Basics](./linux.html#-topic-1-linux-basics)
+## [Linux Basics](./linux.html#linux-basics)
   - [1️⃣ What is Linux?](./linux.html#1️⃣-what-is-linux)
   - [2️⃣ Why Linux is important for AWS?](./linux.html#2️⃣-why-linux-is-important-for-aws)
   - [3️⃣ Linux Distributions (Very Important)](./linux.html#3️⃣-linux-distributions-very-important)
@@ -40,7 +40,7 @@ h2{
   - [8️⃣ Linux vs Windows (Simple Comparison)](./linux.html#8️⃣-linux-vs-windows-simple-comparison)
   - [9️⃣ What you should remember from Topic 1](./linux.html#9️⃣-what-you-should-remember-from-topic-1)
 
-## [📁 Topic 2: File \& Directory Management (Linux)](./linux.html#-topic-2-file--directory-management-linux)
+## [File \& Directory Management (Linux)](./linux.html#file--directory-management-linux)
   - [1️⃣ What is a File \& Directory?](./linux.html#1️⃣-what-is-a-file--directory)
   - [2️⃣ Current Working Directory](./linux.html#2️⃣-current-working-directory)
   - [3️⃣ Listing Files \& Folders](./linux.html#3️⃣-listing-files--folders)
@@ -53,7 +53,7 @@ h2{
   - [🔟 Useful Shortcuts](./linux.html#-useful-shortcuts)
   - [1️⃣1️⃣ What you must remember (Exam + Real AWS)](./linux.html#1️⃣1️⃣-what-you-must-remember-exam--real-aws)
 
-## [📄 Topic 3: File Viewing \& Editing (Linux)](./linux.html#-topic-3-file-viewing--editing-linux)
+## [File Viewing \& Editing (Linux)](./linux.html#file-viewing--editing-linux)
   - [1️⃣ Why this topic is important for AWS?](./linux.html#1️⃣-why-this-topic-is-important-for-aws)
   - [2️⃣ Viewing File Content (Basic)](./linux.html#2️⃣-viewing-file-content-basic)
   - [3️⃣ Viewing Part of a File](./linux.html#3️⃣-viewing-part-of-a-file)
@@ -62,7 +62,7 @@ h2{
   - [6️⃣ `vi` Editor (Basic Knowledge Enough)](./linux.html#6️⃣-vi-editor-basic-knowledge-enough)
   - [8️⃣ What you must remember](./linux.html#8️⃣-what-you-must-remember)
 
-## [🔐 Topic 4: File Permissions \& Ownership (Linux)](./linux.html#-topic-4-file-permissions--ownership-linux)
+## [File Permissions \& Ownership (Linux)](./linux.html#file-permissions--ownership-linux)
   - [1️⃣ Why permissions are important in AWS?](./linux.html#1️⃣-why-permissions-are-important-in-aws)
   - [2️⃣ Understanding File Permissions](./linux.html#2️⃣-understanding-file-permissions)
   - [3️⃣ Permission Structure (Very Important)](./linux.html#3️⃣-permission-structure-very-important)
@@ -76,7 +76,7 @@ h2{
   - [1️⃣1️⃣ Real AWS Example](./linux.html#1️⃣1️⃣-real-aws-example)
   - [1️⃣2️⃣ What you MUST remember](./linux.html#1️⃣2️⃣-what-you-must-remember)
 
-## [👤 Topic 5: User \& Group Management (Linux)](./linux.html#-topic-5-user--group-management-linux)
+## [User \& Group Management (Linux)](./linux.html#user--group-management-linux)
   - [1️⃣ Why this topic is important for AWS?](./linux.html#1️⃣-why-this-topic-is-important-for-aws-1)
   - [2️⃣ What is a User?](./linux.html#2️⃣-what-is-a-user)
   - [3️⃣ Root User vs Normal User](./linux.html#3️⃣-root-user-vs-normal-user)
@@ -88,7 +88,7 @@ h2{
   - [9️⃣ Group Management](./linux.html#9️⃣-group-management)
   - [🔟 AWS Real-Life Examples](./linux.html#-aws-real-life-examples)
 
-## [⚙️ Topic 6: Process Management (Linux)](./linux.html#️-topic-6-process-management-linux)
+## [Process Management (Linux)](./linux.html#️process-management-linux)
   - [1️⃣ What is a Process?](./linux.html#1️⃣-what-is-a-process)
   - [2️⃣ Process ID (PID)](./linux.html#2️⃣-process-id-pid)
   - [3️⃣ Foreground vs Background Process](./linux.html#3️⃣-foreground-vs-background-process)
@@ -103,7 +103,7 @@ h2{
   - [1️⃣3️⃣ Background Processes in AWS (nohup)](./linux.html#1️⃣3️⃣-background-processes-in-aws-nohup)
   - [1️⃣2️⃣ What you MUST remember](./linux.html#1️⃣2️⃣-what-you-must-remember-1)
 
-## [🌐 Topic 7: Networking Basics (Linux)](./linux.html#-topic-7-networking-basics-linux)
+## [Networking Basics (Linux)](./linux.html#networking-basics-linux)
   - [1️⃣ IP Address \& Hostname](./linux.html#1️⃣-ip-address--hostname)
   - [2️⃣ Network Interfaces](./linux.html#2️⃣-network-interfaces)
   - [3️⃣ Ports \& Services (VERY IMPORTANT)](./linux.html#3️⃣-ports--services-very-important)
@@ -112,7 +112,7 @@ h2{
   - [6️⃣ AWS Real-Life Debugging Scenario](./linux.html#6️⃣-aws-real-life-debugging-scenario)
   - [7️⃣ What you MUST remember](./linux.html#7️⃣-what-you-must-remember)
 
-## [💾 Topic 8: Disk \& Storage Management (Linux)](./linux.html#-topic-8-disk--storage-management-linux)
+## [Disk \& Storage Management (Linux)](./linux.html#disk--storage-management-linux)
   - [🧱 What is Disk \& Storage Management in Linux?](./linux.html#-what-is-disk--storage-management-in-linux)
   - [🖴 Types of Storage Devices in Linux](./linux.html#-types-of-storage-devices-in-linux)
   - [🧭 Disk Naming in Linux](./linux.html#-disk-naming-in-linux)
@@ -133,7 +133,7 @@ h2{
   - [🎯 Interview-Ready Questions](./linux.html#-interview-ready-questions)
   - [🧾 Must-Know Commands (Cheat Sheet)](./linux.html#-must-know-commands-cheat-sheet)
 
-## [📦 Topic 9: Package Management (Linux)](./linux.html#-topic-9-package-management-linux)
+## [Package Management (Linux)](./linux.html#package-management-linux)
   - [📦 What is Package Management?](./linux.html#-what-is-package-management)
   - [🧠 What is a Package?](./linux.html#-what-is-a-package)
   - [🏗 Why Package Management Exists](./linux.html#-why-package-management-exists)
@@ -149,7 +149,7 @@ h2{
   - [🎯 Interview-Ready Questions](./linux.html#-interview-ready-questions)
   - [🏁 Final Summary](./linux.html#-final-summary)
 
-## [🧩 Topic 10: Service Management (systemd)](./linux.html#-topic-10-service-management-systemd)
+## [Service Management (systemd)](./linux.html#-service-management-systemd)
   - [🔧 What is Service Management?](./linux.html#-what-is-service-management)
   - [🧠 What is `systemd`?](./linux.html#-what-is-systemd)
   - [🔹 Main command: `systemctl`](./linux.html#-main-command-systemctl)
@@ -182,7 +182,7 @@ h2{
   - [🧾 Must-Know Commands Cheat Sheet](./linux.html#-must-know-commands-cheat-sheet)
   - [🏁 Final Summary](./linux.html#-final-summary)
 
-## [🌱 Topic 11: Environment Variables \& Shell](./linux.html#-topic-11-environment-variables--shell)
+## [Environment Variables \& Shell](./linux.html#-environment-variables--shell)
   - [1️⃣ What are Environment Variables?](./linux.html#1️⃣-what-are-environment-variables)
   - [2️⃣ Why Environment Variables are Important in AWS?](./linux.html#2️⃣-why-environment-variables-are-important-in-aws)
   - [3️⃣ Viewing Environment Variables](./linux.html#3️⃣-viewing-environment-variables)
@@ -195,7 +195,7 @@ h2{
   - [🔟 Common AWS Problems](./linux.html#-common-aws-problems)
   - [1️⃣1️⃣ What you MUST remember](./linux.html#1️⃣1️⃣-what-you-must-remember)
 
-## [🔍 Topic 1️2: Searching \& Text Processing (Linux)](./linux.html#-topic-1️2-searching--text-processing-linux)
+## [Searching \& Text Processing (Linux)](./linux.html#-searching--text-processing-linux)
   - [🔍 What is Searching \& Text Processing?](./linux.html#-what-is-searching--text-processing)
   - [🧱 Core Philosophy (VERY IMPORTANT)](./linux.html#-core-philosophy-very-important)
   - [📁 Searching Files (find \& locate)](./linux.html#-searching-files-find--locate)
@@ -211,7 +211,7 @@ h2{
   - [🧾 Must-Know Commands Cheat Sheet](./linux.html#-must-know-commands-cheat-sheet-3)
   - [🏁 Final Summary](./linux.html#-final-summary-2)
 
-## [🗜️ Topic 13: Compression \& Archiving (Linux)](./linux.html#️-topic-13-compression--archiving-linux)
+## [Compression \& Archiving (Linux)](./linux.html#️compression--archiving-linux)
   - [1️⃣ What is Archiving vs Compression?](./linux.html#1️⃣-what-is-archiving-vs-compression)
   - [2️⃣ `tar` – Archiving Tool (MOST IMPORTANT)](./linux.html#2️⃣-tar--archiving-tool-most-important)
   - [3️⃣ Compressed Archives (`tar.gz`)](./linux.html#3️⃣-compressed-archives-targz)
@@ -222,7 +222,7 @@ h2{
   - [8️⃣ Common Mistakes](./linux.html#8️⃣-common-mistakes)
   - [9️⃣ What you MUST remember](./linux.html#9️⃣-what-you-must-remember)
 
-## [🔐 Topic 14: SSH \& Remote Access](./linux.html#-topic-14-ssh--remote-access)
+## [SSH \& Remote Access](./linux.html#-ssh--remote-access)
   - [🔐 What is SSH?](./linux.html#-what-is-ssh)
   - [🌍 Why SSH is Important](./linux.html#-why-ssh-is-important)
   - [🧠 How SSH Works (Concept)](./linux.html#-how-ssh-works-concept)
@@ -242,7 +242,7 @@ h2{
   - [🧾 Must-Know Commands Cheat Sheet](./linux.html#-must-know-commands-cheat-sheet-4)
   - [🏁 Final Summary](./linux.html#-final-summary-3)
 
-## [🧠 Topic 15: Bash Scripting Basics](./linux.html#-topic-15-bash-scripting-basics)
+## [Bash Scripting Basics](./linux.html#-bash-scripting-basics)
   - [🐚 What is Bash?](./linux.html#-what-is-bash)
   - [📜 What is a Bash Script?](./linux.html#-what-is-a-bash-script)
   - [🧱 Structure of a Bash Script](./linux.html#-structure-of-a-bash-script)
@@ -263,7 +263,7 @@ h2{
   - [🧾 Must-Know Bash Commands](./linux.html#-must-know-bash-commands)
   - [🏁 Final Summary](./linux.html#-final-summary-4)
 
-## [🔒 Topic 16: Linux Security Basics](./linux.html#-topic-16-linux-security-basics)
+## [Linux Security Basics](./linux.html#-linux-security-basics)
   - [1️⃣ Firewall Basics](./linux.html#1️⃣-firewall-basics)
   - [2️⃣ File Permission Security](./linux.html#2️⃣-file-permission-security)
   - [3️⃣ SSH Security (VERY IMPORTANT)](./linux.html#3️⃣-ssh-security-very-important)
@@ -274,7 +274,7 @@ h2{
   - [8️⃣ AWS Real-Life Example](./linux.html#8️⃣-aws-real-life-example)
   - [9️⃣ What you MUST remember](./linux.html#9️⃣-what-you-must-remember-1)
 
-## [🪵 Topic 17: Logs \& Troubleshooting (Linux)](./linux.html#-topic-17-logs--troubleshooting-linux)
+## [Logs \& Troubleshooting (Linux)](./linux.html#logs--troubleshooting-linux)
   - [1️⃣ What are Logs?](./linux.html#1️⃣-what-are-logs)
   - [2️⃣ System Logs](./linux.html#2️⃣-system-logs)
   - [3️⃣ Application Logs](./linux.html#3️⃣-application-logs)
@@ -285,7 +285,7 @@ h2{
   - [8️⃣ Common AWS Errors \& Logs](./linux.html#8️⃣-common-aws-errors--logs)
   - [9️⃣ What you MUST remember](./linux.html#9️⃣-what-you-must-remember-2)
 
-## [☁️ Topic 18: Linux for Cloud (AWS Context)](#./linux.html#-topic-18-linux-for-cloud-aws-context)
+## [Linux for Cloud (AWS Context)](#./linux.html#linux-for-cloud-aws-context)
   - [☁️ What Does “Linux for Cloud (AWS)” Mean?](./linux.html#-what-does-linux-for-cloud-aws-mean)
   - [🧠 Why Linux Is So Important in AWS?](./linux.html#-why-linux-is-so-important-in-aws)
   - [🖥 Linux in AWS = EC2](./linux.html#-linux-in-aws--ec2)

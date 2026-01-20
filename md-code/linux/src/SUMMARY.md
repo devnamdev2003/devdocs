@@ -10,3 +10,4 @@
   - [Linux delete user](user_management/linux_delete_user.md)
   - [Linux user types](user_management/linux_user_type.md)
 - [Linux Curl](linux_curl.md)
+- [Batch Scripting](batch_scripting.md)

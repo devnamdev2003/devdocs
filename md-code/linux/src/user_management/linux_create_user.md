@@ -5,7 +5,7 @@ h2{
 
 </style>
 
-## [👈](../src)
+## [👈](../../src)
 
 
 # How to create a new user and how to do proper setup for that user

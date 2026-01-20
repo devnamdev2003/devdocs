@@ -1,8 +1,10 @@
 name: Build mdBook Docs
 
+permissions:
+  contents: write
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
@@ -33,4 +35,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: /
-

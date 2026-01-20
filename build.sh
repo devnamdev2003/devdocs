@@ -39,6 +39,15 @@ else
     echo "No root index.html found, skipping"
 fi
 
+# Move static folder if exists
+if [ -d "static" ]; then
+    mv static docs/
+    echo "Moved static/ → docs/static/"
+else
+    echo "No static folder found, skipping"
+fi
+
+
 echo "==============================="
 echo "All mdBooks built successfully"
 echo "==============================="

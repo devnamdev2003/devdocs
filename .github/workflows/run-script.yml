@@ -28,7 +28,7 @@ jobs:
         run: ./build.sh
 
       - name: Debug docs structure
-        run: ls -R docs | head -50
+        run: ls 
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4

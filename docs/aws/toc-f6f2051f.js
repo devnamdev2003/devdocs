@@ -8,7 +8,7 @@ class MDBookSidebarScrollbox extends HTMLElement {
         super();
     }
     connectedCallback() {
-        this.innerHTML = '<ol class="chapter"><li class="chapter-item expanded "><span class="chapter-link-wrapper"><a href="aws_index.html"><strong aria-hidden="true">1.</strong> AWS index</a></span></li><li class="chapter-item expanded "><span class="chapter-link-wrapper"><a href="aws.html"><strong aria-hidden="true">2.</strong> AWS</a></span></li></ol>';
+        this.innerHTML = '<ol class="chapter"><li class="chapter-item expanded "><span class="chapter-link-wrapper"><a href="aws_index.html"><strong aria-hidden="true">1.</strong> AWS index</a></span></li><li class="chapter-item expanded "><span class="chapter-link-wrapper"><a href="aws.html"><strong aria-hidden="true">2.</strong> AWS</a></span></li><li class="chapter-item expanded "><span class="chapter-link-wrapper"><a href="aws_roadmap.html"><strong aria-hidden="true">3.</strong> AWS Roadmap</a></span></li><li class="chapter-item expanded "><span class="chapter-link-wrapper"><a href="aws_left.html"><strong aria-hidden="true">4.</strong> AWS left</a></span></li><li class="chapter-item expanded "><span class="chapter-link-wrapper"><a href="dev.html"><strong aria-hidden="true">5.</strong> dev</a></span></li></ol>';
         // Set the current, active page, and reveal it if it's hidden
         let current_page = document.location.href.toString().split('#')[0].split('?')[0];
         if (current_page.endsWith('/')) {

@@ -60,10 +60,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-9d759411.js";
+            window.path_to_searchindex_js = "searchindex-4d34d39b.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-b2d25a99.js"></script>
+        <script src="toc-f6f2051f.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -21486,6 +21486,1505 @@ These whitepapers provide the strategic foundation and architectural guidance ne
 <li><strong>CloudWatch:</strong> Set up alarms for EC2 CPU utilization, ALB latency, and RDS connection counts. Create a basic dashboard.</li>
 </ol>
 <p>This architecture serves as an excellent foundation for understanding how core AWS services integrate to form a resilient and scalable application, which is a crucial learning experience for any AWS beginner.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="aws-roadmap"><a href="#aws-roadmap" class="header">AWS Roadmap</a></h1>
+<style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+<h2 id="-2"><a class="header" href="#-2"><a href="../src">👈</a></a></h2>
+<h1 id="-complete-aws-master-roadmap"><a class="header" href="#-complete-aws-master-roadmap">☁️ COMPLETE AWS MASTER ROADMAP</a></h1>
+<p><strong>(Beginner → Advanced → Professional Level)</strong></p>
+<h2 id="-purpose-of-this-roadmap"><a class="header" href="#-purpose-of-this-roadmap">📌 Purpose of This Roadmap</a></h2>
+<p>This roadmap is designed to help you:</p>
+<ul>
+<li>
+<p>Learn AWS <strong>from absolute basics</strong></p>
+</li>
+<li>
+<p>Build <strong>strong fundamentals</strong></p>
+</li>
+<li>
+<p>Gain <strong>hands-on practical experience</strong></p>
+</li>
+<li>
+<p>Clear the following certifications <strong>in order</strong>:</p>
+<ol>
+<li>AWS Certified Cloud Practitioner</li>
+<li>AWS Certified Developer – Associate</li>
+<li>AWS Certified Solutions Architect – Associate</li>
+<li>AWS Certified Solutions Architect – Professional</li>
+</ol>
+</li>
+</ul>
+<p>This roadmap is <strong>technology-complete</strong>, meaning:</p>
+<ul>
+<li>No important topic is missing</li>
+<li>Concepts are ordered logically</li>
+<li>You can use it as a <strong>permanent AWS notes index</strong></li>
+</ul>
+<hr>
+<h2 id="-phase-1-cloud--it-foundations-pre-aws"><a class="header" href="#-phase-1-cloud--it-foundations-pre-aws">🟢 PHASE 1: CLOUD &amp; IT FOUNDATIONS (PRE-AWS)</a></h2>
+<p>Before touching AWS services, you must understand <strong>what AWS is built on</strong>.
+Many people fail AWS exams because they skip this phase.</p>
+<hr>
+<h3 id="11-what-is-cloud-computing"><a class="header" href="#11-what-is-cloud-computing">1.1 What is Cloud Computing?</a></h3>
+<p>Cloud computing is the <strong>on-demand delivery of computing resources</strong> over the internet.</p>
+<p>Key concepts:</p>
+<ul>
+<li>On-demand self-service</li>
+<li>Broad network access</li>
+<li>Resource pooling</li>
+<li>Rapid elasticity</li>
+<li>Measured service</li>
+</ul>
+<p>Types of cloud:</p>
+<ul>
+<li>Public cloud</li>
+<li>Private cloud</li>
+<li>Hybrid cloud</li>
+<li>Multi-cloud</li>
+</ul>
+<p>Service models:</p>
+<ul>
+<li><strong>IaaS</strong> (EC2, EBS, VPC)</li>
+<li><strong>PaaS</strong> (Elastic Beanstalk, RDS)</li>
+<li><strong>SaaS</strong> (Amazon WorkMail, QuickSight)</li>
+</ul>
+<p>Benefits:</p>
+<ul>
+<li>No upfront hardware cost</li>
+<li>Pay-as-you-go</li>
+<li>Scalability</li>
+<li>Global availability</li>
+<li>High reliability</li>
+</ul>
+<hr>
+<h3 id="12-core-networking-fundamentals"><a class="header" href="#12-core-networking-fundamentals">1.2 Core Networking Fundamentals</a></h3>
+<p>AWS networking makes sense <strong>only if basics are clear</strong>.</p>
+<p>Learn and understand:</p>
+<ul>
+<li>IPv4 address structure</li>
+<li>Private IP ranges</li>
+<li>Public IP addresses</li>
+<li>CIDR notation (e.g. 10.0.0.0/16)</li>
+<li>Subnetting basics</li>
+<li>Ports (22, 80, 443, 3306, etc.)</li>
+<li>TCP vs UDP</li>
+<li>HTTP vs HTTPS</li>
+<li>DNS resolution flow</li>
+<li>NAT (Network Address Translation)</li>
+<li>Firewalls and security concepts</li>
+</ul>
+<hr>
+<h3 id="13-linux-fundamentals-for-aws"><a class="header" href="#13-linux-fundamentals-for-aws">1.3 Linux Fundamentals for AWS</a></h3>
+<p>AWS heavily relies on Linux. You must be comfortable with:</p>
+<ul>
+<li>Linux directory structure</li>
+<li>Files and directories</li>
+<li>Permissions (<code>rwx</code>)</li>
+<li>Users and groups</li>
+<li>SSH access</li>
+<li>Package managers (<code>yum</code>, <code>apt</code>)</li>
+<li>Services (<code>systemctl</code>)</li>
+<li>Environment variables</li>
+<li>Logs (<code>/var/log</code>)</li>
+<li>Bash scripting basics</li>
+</ul>
+<p>This knowledge is <strong>mandatory</strong> for EC2, containers, and automation.</p>
+<hr>
+<h2 id="-phase-2-aws-core-concepts--global-infrastructure"><a class="header" href="#-phase-2-aws-core-concepts--global-infrastructure">🟦 PHASE 2: AWS CORE CONCEPTS &amp; GLOBAL INFRASTRUCTURE</a></h2>
+<p>This phase builds your <strong>AWS mindset</strong>.</p>
+<hr>
+<h3 id="21-aws-global-infrastructure"><a class="header" href="#21-aws-global-infrastructure">2.1 AWS Global Infrastructure</a></h3>
+<p>Understand:</p>
+<ul>
+<li>AWS Regions</li>
+<li>Availability Zones (AZs)</li>
+<li>Edge Locations</li>
+<li>Regional vs global services</li>
+</ul>
+<p>Why AWS uses AZs:</p>
+<ul>
+<li>Fault tolerance</li>
+<li>High availability</li>
+<li>Disaster recovery</li>
+</ul>
+<hr>
+<h3 id="22-aws-shared-responsibility-model"><a class="header" href="#22-aws-shared-responsibility-model">2.2 AWS Shared Responsibility Model</a></h3>
+<p>Very important for exams.</p>
+<p>AWS is responsible for:</p>
+<ul>
+<li>Physical data centers</li>
+<li>Network infrastructure</li>
+<li>Hardware</li>
+</ul>
+<p>You are responsible for:</p>
+<ul>
+<li>OS security</li>
+<li>Application security</li>
+<li>Data encryption</li>
+<li>IAM configuration</li>
+</ul>
+<hr>
+<h3 id="23-aws-well-architected-framework"><a class="header" href="#23-aws-well-architected-framework">2.3 AWS Well-Architected Framework</a></h3>
+<p>Five pillars:</p>
+<ol>
+<li>Operational Excellence</li>
+<li>Security</li>
+<li>Reliability</li>
+<li>Performance Efficiency</li>
+<li>Cost Optimization</li>
+</ol>
+<p>Every AWS architecture question is based on these pillars.</p>
+<hr>
+<h3 id="24-aws-access-methods"><a class="header" href="#24-aws-access-methods">2.4 AWS Access Methods</a></h3>
+<ul>
+<li>AWS Management Console</li>
+<li>AWS CLI</li>
+<li>AWS SDKs</li>
+<li>Infrastructure as Code (CloudFormation / CDK)</li>
+</ul>
+<hr>
+<h2 id="-phase-3-identity--access-management-iam"><a class="header" href="#-phase-3-identity--access-management-iam">🟩 PHASE 3: IDENTITY &amp; ACCESS MANAGEMENT (IAM)</a></h2>
+<p>IAM is <strong>the backbone of AWS security</strong>.</p>
+<hr>
+<h3 id="31-iam-concepts"><a class="header" href="#31-iam-concepts">3.1 IAM Concepts</a></h3>
+<ul>
+<li>Authentication vs Authorization</li>
+<li>IAM Users</li>
+<li>IAM Groups</li>
+<li>IAM Roles</li>
+<li>Temporary credentials</li>
+<li>Root user risks</li>
+</ul>
+<hr>
+<h3 id="32-iam-policies"><a class="header" href="#32-iam-policies">3.2 IAM Policies</a></h3>
+<ul>
+<li>JSON policy structure</li>
+<li>Effect</li>
+<li>Action</li>
+<li>Resource</li>
+<li>Conditions</li>
+<li>Managed vs inline policies</li>
+</ul>
+<hr>
+<h3 id="33-security-best-practices"><a class="header" href="#33-security-best-practices">3.3 Security Best Practices</a></h3>
+<ul>
+<li>Least privilege</li>
+<li>MFA everywhere</li>
+<li>Never use root user</li>
+<li>Role-based access</li>
+<li>Access Analyzer</li>
+</ul>
+<hr>
+<h2 id="-phase-4-compute-services"><a class="header" href="#-phase-4-compute-services">🟦 PHASE 4: COMPUTE SERVICES</a></h2>
+<p>Compute is how your applications <strong>run on AWS</strong>.</p>
+<hr>
+<h3 id="41-amazon-ec2-deep-dive"><a class="header" href="#41-amazon-ec2-deep-dive">4.1 Amazon EC2 (DEEP DIVE)</a></h3>
+<p>Topics to master:</p>
+<ul>
+<li>
+<p>EC2 instance lifecycle</p>
+</li>
+<li>
+<p>Instance types</p>
+</li>
+<li>
+<p>AMIs</p>
+</li>
+<li>
+<p>Key pairs</p>
+</li>
+<li>
+<p>Security groups</p>
+</li>
+<li>
+<p>Elastic IP</p>
+</li>
+<li>
+<p>User data scripts</p>
+</li>
+<li>
+<p>Placement groups</p>
+</li>
+<li>
+<p>EC2 pricing models:</p>
+<ul>
+<li>On-Demand</li>
+<li>Reserved Instances</li>
+<li>Spot Instances</li>
+</ul>
+</li>
+<li>
+<p>Auto Scaling Groups</p>
+</li>
+<li>
+<p>Launch Templates</p>
+</li>
+</ul>
+<p>Hands-on:</p>
+<ul>
+<li>Launch EC2</li>
+<li>SSH access</li>
+<li>Host a web app</li>
+<li>Auto scale instances</li>
+</ul>
+<hr>
+<h3 id="42-containers"><a class="header" href="#42-containers">4.2 Containers</a></h3>
+<ul>
+<li>ECS</li>
+<li>EKS (Kubernetes basics)</li>
+<li>Fargate</li>
+<li>Container networking</li>
+<li>Container security</li>
+</ul>
+<hr>
+<h3 id="43-serverless-compute"><a class="header" href="#43-serverless-compute">4.3 Serverless Compute</a></h3>
+<ul>
+<li>AWS Lambda</li>
+<li>Event sources</li>
+<li>Cold start</li>
+<li>Limits</li>
+<li>Lambda pricing</li>
+<li>Lambda with API Gateway</li>
+</ul>
+<hr>
+<h3 id="44-platform-services"><a class="header" href="#44-platform-services">4.4 Platform Services</a></h3>
+<ul>
+<li>Elastic Beanstalk</li>
+<li>App Runner</li>
+<li>Lightsail</li>
+</ul>
+<hr>
+<h2 id="-phase-5-storage-services"><a class="header" href="#-phase-5-storage-services">🟨 PHASE 5: STORAGE SERVICES</a></h2>
+<p>Storage is <strong>one of the most tested AWS topics</strong>.</p>
+<hr>
+<h3 id="51-amazon-s3-very-deep"><a class="header" href="#51-amazon-s3-very-deep">5.1 Amazon S3 (VERY DEEP)</a></h3>
+<p>Understand:</p>
+<ul>
+<li>Buckets &amp; objects</li>
+<li>Storage classes</li>
+<li>Versioning</li>
+<li>Encryption</li>
+<li>Lifecycle rules</li>
+<li>Bucket policies</li>
+<li>ACLs</li>
+<li>Static website hosting</li>
+<li>Cross-region replication</li>
+<li>S3 events</li>
+</ul>
+<hr>
+<h3 id="52-block--file-storage"><a class="header" href="#52-block--file-storage">5.2 Block &amp; File Storage</a></h3>
+<ul>
+<li>EBS</li>
+<li>EFS</li>
+<li>FSx</li>
+<li>AWS Backup</li>
+<li>Storage Gateway</li>
+</ul>
+<hr>
+<h3 id="53-data-transfer-services"><a class="header" href="#53-data-transfer-services">5.3 Data Transfer Services</a></h3>
+<ul>
+<li>Snowball</li>
+<li>Snowmobile</li>
+<li>DataSync</li>
+</ul>
+<hr>
+<h2 id="-phase-6-database-services"><a class="header" href="#-phase-6-database-services">🟧 PHASE 6: DATABASE SERVICES</a></h2>
+<hr>
+<h3 id="61-relational-databases"><a class="header" href="#61-relational-databases">6.1 Relational Databases</a></h3>
+<ul>
+<li>Amazon RDS</li>
+<li>Multi-AZ deployments</li>
+<li>Read replicas</li>
+<li>Backups and snapshots</li>
+<li>Aurora architecture</li>
+</ul>
+<hr>
+<h3 id="62-nosql--analytics-databases"><a class="header" href="#62-nosql--analytics-databases">6.2 NoSQL &amp; Analytics Databases</a></h3>
+<ul>
+<li>DynamoDB</li>
+<li>Partition keys</li>
+<li>Global secondary indexes</li>
+<li>ElastiCache</li>
+<li>Redshift</li>
+<li>Athena</li>
+<li>OpenSearch</li>
+</ul>
+<hr>
+<h2 id="-phase-7-networking--content-delivery"><a class="header" href="#-phase-7-networking--content-delivery">🟥 PHASE 7: NETWORKING &amp; CONTENT DELIVERY</a></h2>
+<p>This is <strong>core for Solutions Architect exams</strong>.</p>
+<hr>
+<h3 id="71-amazon-vpc-very-deep"><a class="header" href="#71-amazon-vpc-very-deep">7.1 Amazon VPC (VERY DEEP)</a></h3>
+<p>Topics:</p>
+<ul>
+<li>VPC creation</li>
+<li>CIDR planning</li>
+<li>Subnets</li>
+<li>Route tables</li>
+<li>Internet Gateway</li>
+<li>NAT Gateway</li>
+<li>Security Groups</li>
+<li>NACLs</li>
+<li>VPC Endpoints</li>
+<li>VPC Peering</li>
+<li>Transit Gateway</li>
+<li>VPN</li>
+<li>Direct Connect</li>
+</ul>
+<hr>
+<h3 id="72-load-balancing--dns"><a class="header" href="#72-load-balancing--dns">7.2 Load Balancing &amp; DNS</a></h3>
+<ul>
+<li>
+<p>Application Load Balancer</p>
+</li>
+<li>
+<p>Network Load Balancer</p>
+</li>
+<li>
+<p>Gateway Load Balancer</p>
+</li>
+<li>
+<p>Route 53</p>
+<ul>
+<li>Routing policies</li>
+</ul>
+</li>
+<li>
+<p>CloudFront CDN</p>
+</li>
+</ul>
+<hr>
+<h2 id="-phase-8-application-integration"><a class="header" href="#-phase-8-application-integration">🟪 PHASE 8: APPLICATION INTEGRATION</a></h2>
+<ul>
+<li>API Gateway</li>
+<li>SQS</li>
+<li>SNS</li>
+<li>EventBridge</li>
+<li>Step Functions</li>
+<li>AppSync</li>
+</ul>
+<p>Used heavily in <strong>event-driven architectures</strong>.</p>
+<hr>
+<h2 id="-phase-9-monitoring-logging--governance"><a class="header" href="#-phase-9-monitoring-logging--governance">🟫 PHASE 9: MONITORING, LOGGING &amp; GOVERNANCE</a></h2>
+<ul>
+<li>CloudWatch</li>
+<li>CloudTrail</li>
+<li>AWS Config</li>
+<li>X-Ray</li>
+<li>Trusted Advisor</li>
+</ul>
+<hr>
+<h2 id="-phase-10-devops--automation"><a class="header" href="#-phase-10-devops--automation">🟦 PHASE 10: DEVOPS &amp; AUTOMATION</a></h2>
+<ul>
+<li>
+<p>AWS CLI</p>
+</li>
+<li>
+<p>CloudFormation</p>
+</li>
+<li>
+<p>CDK</p>
+</li>
+<li>
+<p>CI/CD services:</p>
+<ul>
+<li>CodeCommit</li>
+<li>CodeBuild</li>
+<li>CodeDeploy</li>
+<li>CodePipeline</li>
+</ul>
+</li>
+<li>
+<p>Deployment strategies:</p>
+<ul>
+<li>Rolling</li>
+<li>Blue-Green</li>
+<li>Canary</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="-phase-11-security--compliance"><a class="header" href="#-phase-11-security--compliance">🟥 PHASE 11: SECURITY &amp; COMPLIANCE</a></h2>
+<ul>
+<li>KMS</li>
+<li>Secrets Manager</li>
+<li>Parameter Store</li>
+<li>WAF</li>
+<li>Shield</li>
+<li>GuardDuty</li>
+<li>Inspector</li>
+<li>Macie</li>
+<li>Encryption at rest &amp; in transit</li>
+</ul>
+<hr>
+<h2 id="-phase-12-cost-management"><a class="header" href="#-phase-12-cost-management">🟨 PHASE 12: COST MANAGEMENT</a></h2>
+<ul>
+<li>AWS pricing models</li>
+<li>Cost Explorer</li>
+<li>Budgets</li>
+<li>Savings Plans</li>
+<li>Reserved Instances</li>
+<li>Cost allocation tags</li>
+</ul>
+<hr>
+<h2 id="-phase-13-migration--hybrid-cloud"><a class="header" href="#-phase-13-migration--hybrid-cloud">🟩 PHASE 13: MIGRATION &amp; HYBRID CLOUD</a></h2>
+<ul>
+<li>Migration Hub</li>
+<li>DMS</li>
+<li>Application Migration Service</li>
+<li>Hybrid cloud design</li>
+<li>On-prem to AWS strategies</li>
+</ul>
+<hr>
+<h2 id="-phase-14-advanced-architecture-pro-level"><a class="header" href="#-phase-14-advanced-architecture-pro-level">🟪 PHASE 14: ADVANCED ARCHITECTURE (PRO LEVEL)</a></h2>
+<ul>
+<li>Multi-account architecture</li>
+<li>AWS Organizations</li>
+<li>Control Tower</li>
+<li>Cross-region DR</li>
+<li>Event-driven microservices</li>
+<li>Large-scale system design</li>
+<li>Failure handling</li>
+<li>Chaos engineering concepts</li>
+</ul>
+<hr>
+<h2 id="-certification-alignment"><a class="header" href="#-certification-alignment">🎓 CERTIFICATION ALIGNMENT</a></h2>
+<ul>
+<li>Cloud Practitioner → Phases 1–3</li>
+<li>Developer Associate → Phases 4–8</li>
+<li>SA Associate → Phases 4–9</li>
+<li>SA Professional → All phases</li>
+</ul>
+<hr>
+<h2 id="-how-to-use-this-document"><a class="header" href="#-how-to-use-this-document">🧠 HOW TO USE THIS DOCUMENT</a></h2>
+<ol>
+<li>Copy into your notes</li>
+<li>Convert bullet points into checklists</li>
+<li>Add diagrams for each service</li>
+<li>Add screenshots from AWS Console</li>
+<li>Practice after every topic</li>
+</ol>
+<hr>
+<h2 id="-final-word"><a class="header" href="#-final-word">✅ FINAL WORD</a></h2>
+<p>This roadmap is <strong>complete, realistic, and industry-aligned</strong>.
+If you follow this <strong>line by line</strong>, you will not only clear certifications, but <strong>actually master AWS</strong>.</p>
+<hr>
+<h1 id="-aws-hands-on-projects--practice-roadmap"><a class="header" href="#-aws-hands-on-projects--practice-roadmap">🛠️ AWS HANDS-ON, PROJECTS &amp; PRACTICE ROADMAP</a></h1>
+<p><em>(Beginner → Associate → Professional Level)</em></p>
+<blockquote>
+<p><strong>Rule:</strong>
+❌ Reading without practice = no real learning
+✅ Every AWS service → at least one hands-on task</p>
+</blockquote>
+<hr>
+<h2 id="-phase-1-foundational-hands-on-pre-aws--basics"><a class="header" href="#-phase-1-foundational-hands-on-pre-aws--basics">🟢 PHASE 1: FOUNDATIONAL HANDS-ON (PRE-AWS + BASICS)</a></h2>
+<h3 id="-goal"><a class="header" href="#-goal">🔹 Goal</a></h3>
+<p>Become comfortable with <strong>cloud environments, Linux, and networking</strong> before deep AWS services.</p>
+<hr>
+<h3 id="1-linux-hands-on-practice-aws-context"><a class="header" href="#1-linux-hands-on-practice-aws-context">1️⃣ Linux Hands-On Practice (AWS Context)</a></h3>
+<p>Practice on:</p>
+<ul>
+<li>Local VM (VirtualBox)</li>
+<li>OR EC2 Free Tier</li>
+</ul>
+<h4 id="tasks"><a class="header" href="#tasks">Tasks</a></h4>
+<ul>
+<li>Create users and groups</li>
+<li>Practice file permissions (<code>chmod</code>, <code>chown</code>)</li>
+<li>Install packages (<code>yum</code>, <code>apt</code>)</li>
+<li>Run and manage services (<code>systemctl</code>)</li>
+<li>Read logs (<code>/var/log</code>)</li>
+<li>Write simple bash scripts</li>
+<li>SSH into machines using key pairs</li>
+</ul>
+<p>📌 <strong>Outcome:</strong>
+You should feel comfortable managing a Linux server without fear.</p>
+<hr>
+<h3 id="2-networking-hands-on-conceptual--practical"><a class="header" href="#2-networking-hands-on-conceptual--practical">2️⃣ Networking Hands-On (Conceptual + Practical)</a></h3>
+<ul>
+<li>Calculate CIDR blocks manually</li>
+<li>Identify public vs private IPs</li>
+<li>Test ports using <code>curl</code>, <code>telnet</code>, <code>nc</code></li>
+<li>Observe DNS resolution using <code>nslookup</code>, <code>dig</code></li>
+</ul>
+<p>📌 <strong>Outcome:</strong>
+You understand how traffic flows from browser → server.</p>
+<hr>
+<h2 id="-phase-2-aws-account--core-practice"><a class="header" href="#-phase-2-aws-account--core-practice">🟦 PHASE 2: AWS ACCOUNT &amp; CORE PRACTICE</a></h2>
+<h3 id="-goal-1"><a class="header" href="#-goal-1">🔹 Goal</a></h3>
+<p>Understand <strong>AWS environment setup</strong> and navigation.</p>
+<hr>
+<h3 id="3-aws-account-setup--safety"><a class="header" href="#3-aws-account-setup--safety">3️⃣ AWS Account Setup &amp; Safety</a></h3>
+<p>Hands-on tasks:</p>
+<ul>
+<li>Create AWS Free Tier account</li>
+<li>Enable MFA on root account</li>
+<li>Create IAM admin user</li>
+<li>Log in using IAM user</li>
+<li>Set billing alerts</li>
+<li>Explore AWS Console sections</li>
+</ul>
+<p>📌 <strong>Outcome:</strong>
+You can safely use AWS without risk of accidental billing.</p>
+<hr>
+<h3 id="4-aws-cli-hands-on"><a class="header" href="#4-aws-cli-hands-on">4️⃣ AWS CLI Hands-On</a></h3>
+<p>Tasks:</p>
+<ul>
+<li>Install AWS CLI</li>
+<li>Configure CLI using access keys</li>
+<li>List S3 buckets</li>
+<li>Describe EC2 instances</li>
+<li>Upload file to S3 via CLI</li>
+</ul>
+<p>📌 <strong>Outcome:</strong>
+You can interact with AWS without UI.</p>
+<hr>
+<h2 id="-phase-3-iam--security-hands-on"><a class="header" href="#-phase-3-iam--security-hands-on">🟩 PHASE 3: IAM – SECURITY HANDS-ON</a></h2>
+<h3 id="-goal-2"><a class="header" href="#-goal-2">🔹 Goal</a></h3>
+<p>Master <strong>access control</strong>, which is critical for real systems.</p>
+<hr>
+<h3 id="5-iam-practical-labs"><a class="header" href="#5-iam-practical-labs">5️⃣ IAM Practical Labs</a></h3>
+<p>Tasks:</p>
+<ul>
+<li>Create IAM users</li>
+<li>Create IAM groups</li>
+<li>Attach policies</li>
+<li>Create IAM roles for EC2</li>
+<li>Test permission boundaries</li>
+<li>Enable MFA</li>
+<li>Use least privilege policies</li>
+</ul>
+<p>Real practice:</p>
+<ul>
+<li>Create a user who can only read S3</li>
+<li>Create a role EC2 can assume to access S3</li>
+</ul>
+<p>📌 <strong>Outcome:</strong>
+You understand <strong>who can do what and why</strong>.</p>
+<hr>
+<h2 id="-phase-4-compute-hands-on-ec2--scaling"><a class="header" href="#-phase-4-compute-hands-on-ec2--scaling">🟦 PHASE 4: COMPUTE HANDS-ON (EC2 + SCALING)</a></h2>
+<h3 id="-goal-3"><a class="header" href="#-goal-3">🔹 Goal</a></h3>
+<p>Run real applications on AWS compute.</p>
+<hr>
+<h3 id="6-ec2-core-labs"><a class="header" href="#6-ec2-core-labs">6️⃣ EC2 Core Labs</a></h3>
+<p>Hands-on tasks:</p>
+<ul>
+<li>Launch EC2 (Amazon Linux)</li>
+<li>Configure security groups</li>
+<li>SSH into instance</li>
+<li>Install Nginx / Apache</li>
+<li>Host a static website</li>
+<li>Use user-data scripts</li>
+<li>Allocate Elastic IP</li>
+</ul>
+<p>📌 <strong>Outcome:</strong>
+You can launch and manage servers independently.</p>
+<hr>
+<h3 id="7-ec2--storage-integration"><a class="header" href="#7-ec2--storage-integration">7️⃣ EC2 + Storage Integration</a></h3>
+<ul>
+<li>Attach EBS volume</li>
+<li>Mount EBS</li>
+<li>Take snapshots</li>
+<li>Resize volume</li>
+<li>Detach &amp; attach to another EC2</li>
+</ul>
+<hr>
+<h3 id="8-auto-scaling--load-balancing"><a class="header" href="#8-auto-scaling--load-balancing">8️⃣ Auto Scaling &amp; Load Balancing</a></h3>
+<p>Hands-on:</p>
+<ul>
+<li>Create Launch Template</li>
+<li>Create Auto Scaling Group</li>
+<li>Attach Application Load Balancer</li>
+<li>Test auto-scaling by CPU load</li>
+</ul>
+<p>📌 <strong>Outcome:</strong>
+You understand high availability and scalability.</p>
+<hr>
+<h2 id="-phase-5-storage-hands-on-s3--file-systems"><a class="header" href="#-phase-5-storage-hands-on-s3--file-systems">🟨 PHASE 5: STORAGE HANDS-ON (S3 &amp; FILE SYSTEMS)</a></h2>
+<h3 id="-goal-4"><a class="header" href="#-goal-4">🔹 Goal</a></h3>
+<p>Store and manage data properly.</p>
+<hr>
+<h3 id="9-amazon-s3-deep-practice"><a class="header" href="#9-amazon-s3-deep-practice">9️⃣ Amazon S3 Deep Practice</a></h3>
+<p>Hands-on tasks:</p>
+<ul>
+<li>Create S3 buckets</li>
+<li>Upload/download objects</li>
+<li>Enable versioning</li>
+<li>Configure lifecycle rules</li>
+<li>Apply bucket policies</li>
+<li>Enable encryption</li>
+<li>Static website hosting</li>
+<li>Cross-region replication</li>
+<li>Trigger Lambda from S3 event</li>
+</ul>
+<p>📌 <strong>Outcome:</strong>
+You fully understand object storage.</p>
+<hr>
+<h3 id="10-file--block-storage-labs"><a class="header" href="#10-file--block-storage-labs">1️⃣0️⃣ File &amp; Block Storage Labs</a></h3>
+<ul>
+<li>Create EFS</li>
+<li>Mount EFS to multiple EC2s</li>
+<li>Compare EBS vs EFS</li>
+<li>Test FSx</li>
+<li>Use AWS Backup</li>
+</ul>
+<hr>
+<h2 id="-phase-6-database-hands-on"><a class="header" href="#-phase-6-database-hands-on">🟧 PHASE 6: DATABASE HANDS-ON</a></h2>
+<h3 id="-goal-5"><a class="header" href="#-goal-5">🔹 Goal</a></h3>
+<p>Run production-ready databases.</p>
+<hr>
+<h3 id="11-rds-labs"><a class="header" href="#11-rds-labs">1️⃣1️⃣ RDS Labs</a></h3>
+<p>Hands-on tasks:</p>
+<ul>
+<li>Create RDS instance</li>
+<li>Connect from EC2</li>
+<li>Enable Multi-AZ</li>
+<li>Create read replica</li>
+<li>Backup &amp; restore</li>
+<li>Monitor performance</li>
+</ul>
+<hr>
+<h3 id="12-dynamodb-labs"><a class="header" href="#12-dynamodb-labs">1️⃣2️⃣ DynamoDB Labs</a></h3>
+<p>Hands-on:</p>
+<ul>
+<li>Create DynamoDB table</li>
+<li>Insert items</li>
+<li>Query &amp; scan</li>
+<li>Add secondary index</li>
+<li>Connect DynamoDB with Lambda</li>
+</ul>
+<p>📌 <strong>Outcome:</strong>
+You understand SQL vs NoSQL use cases.</p>
+<hr>
+<h2 id="-phase-7-networking-hands-on-vpc-deep-dive"><a class="header" href="#-phase-7-networking-hands-on-vpc-deep-dive">🟥 PHASE 7: NETWORKING HANDS-ON (VPC DEEP DIVE)</a></h2>
+<h3 id="-goal-6"><a class="header" href="#-goal-6">🔹 Goal</a></h3>
+<p>Design secure cloud networks.</p>
+<hr>
+<h3 id="13-vpc-core-labs"><a class="header" href="#13-vpc-core-labs">1️⃣3️⃣ VPC Core Labs</a></h3>
+<p>Hands-on:</p>
+<ul>
+<li>Create custom VPC</li>
+<li>Create public &amp; private subnets</li>
+<li>Configure route tables</li>
+<li>Setup Internet Gateway</li>
+<li>Setup NAT Gateway</li>
+<li>Security Groups vs NACLs</li>
+</ul>
+<p>📌 <strong>Outcome:</strong>
+You can design secure VPCs from scratch.</p>
+<hr>
+<h3 id="14-advanced-vpc-labs"><a class="header" href="#14-advanced-vpc-labs">1️⃣4️⃣ Advanced VPC Labs</a></h3>
+<ul>
+<li>VPC peering</li>
+<li>VPC endpoints</li>
+<li>Site-to-site VPN (conceptual lab)</li>
+<li>Transit Gateway (theory + diagrams)</li>
+</ul>
+<hr>
+<h2 id="-phase-8-application-integration--serverless"><a class="header" href="#-phase-8-application-integration--serverless">🟪 PHASE 8: APPLICATION INTEGRATION &amp; SERVERLESS</a></h2>
+<h3 id="-goal-7"><a class="header" href="#-goal-7">🔹 Goal</a></h3>
+<p>Build event-driven architectures.</p>
+<hr>
+<h3 id="15-lambda--api-gateway-project"><a class="header" href="#15-lambda--api-gateway-project">1️⃣5️⃣ Lambda &amp; API Gateway Project</a></h3>
+<p>Project:</p>
+<ul>
+<li>Create REST API using Lambda</li>
+<li>Use API Gateway</li>
+<li>Store data in DynamoDB</li>
+<li>Secure with IAM</li>
+</ul>
+<p>📌 <strong>Outcome:</strong>
+You can build serverless backends.</p>
+<hr>
+<h3 id="16-messaging--events"><a class="header" href="#16-messaging--events">1️⃣6️⃣ Messaging &amp; Events</a></h3>
+<p>Hands-on:</p>
+<ul>
+<li>SQS producer-consumer</li>
+<li>SNS notifications</li>
+<li>EventBridge rules</li>
+<li>Step Functions workflows</li>
+</ul>
+<hr>
+<h2 id="-phase-9-monitoring--governance"><a class="header" href="#-phase-9-monitoring--governance">🟫 PHASE 9: MONITORING &amp; GOVERNANCE</a></h2>
+<h3 id="-goal-8"><a class="header" href="#-goal-8">🔹 Goal</a></h3>
+<p>Observe and audit systems.</p>
+<hr>
+<h3 id="17-monitoring-labs"><a class="header" href="#17-monitoring-labs">1️⃣7️⃣ Monitoring Labs</a></h3>
+<ul>
+<li>CloudWatch metrics</li>
+<li>Custom metrics</li>
+<li>CloudWatch alarms</li>
+<li>Centralized logging</li>
+<li>X-Ray tracing</li>
+</ul>
+<hr>
+<h3 id="18-auditing-labs"><a class="header" href="#18-auditing-labs">1️⃣8️⃣ Auditing Labs</a></h3>
+<ul>
+<li>Enable CloudTrail</li>
+<li>Track API calls</li>
+<li>Use AWS Config</li>
+<li>Security insights</li>
+</ul>
+<hr>
+<h2 id="-phase-10-devops--automation-hands-on"><a class="header" href="#-phase-10-devops--automation-hands-on">🟦 PHASE 10: DEVOPS &amp; AUTOMATION HANDS-ON</a></h2>
+<h3 id="-goal-9"><a class="header" href="#-goal-9">🔹 Goal</a></h3>
+<p>Automate infrastructure and deployments.</p>
+<hr>
+<h3 id="19-infrastructure-as-code"><a class="header" href="#19-infrastructure-as-code">1️⃣9️⃣ Infrastructure as Code</a></h3>
+<p>Hands-on:</p>
+<ul>
+<li>Write CloudFormation templates</li>
+<li>Deploy EC2 &amp; VPC using IaC</li>
+<li>Modify stacks safely</li>
+<li>Use CDK (optional)</li>
+</ul>
+<hr>
+<h3 id="20-cicd-pipeline-project"><a class="header" href="#20-cicd-pipeline-project">2️⃣0️⃣ CI/CD Pipeline Project</a></h3>
+<p>Project:</p>
+<ul>
+<li>Source code in CodeCommit</li>
+<li>Build using CodeBuild</li>
+<li>Deploy via CodeDeploy</li>
+<li>Automate using CodePipeline</li>
+</ul>
+<p>📌 <strong>Outcome:</strong>
+You understand DevOps on AWS.</p>
+<hr>
+<h2 id="-phase-11-security--compliance-practice"><a class="header" href="#-phase-11-security--compliance-practice">🟥 PHASE 11: SECURITY &amp; COMPLIANCE PRACTICE</a></h2>
+<h3 id="-goal-10"><a class="header" href="#-goal-10">🔹 Goal</a></h3>
+<p>Protect data and applications.</p>
+<hr>
+<h3 id="21-security-labs"><a class="header" href="#21-security-labs">2️⃣1️⃣ Security Labs</a></h3>
+<ul>
+<li>Encrypt data using KMS</li>
+<li>Store secrets securely</li>
+<li>Setup WAF rules</li>
+<li>Enable GuardDuty</li>
+<li>Inspect vulnerabilities</li>
+</ul>
+<hr>
+<h2 id="-phase-12-cost-optimization-practice"><a class="header" href="#-phase-12-cost-optimization-practice">🟨 PHASE 12: COST OPTIMIZATION PRACTICE</a></h2>
+<h3 id="-goal-11"><a class="header" href="#-goal-11">🔹 Goal</a></h3>
+<p>Control AWS billing.</p>
+<hr>
+<h3 id="22-cost-labs"><a class="header" href="#22-cost-labs">2️⃣2️⃣ Cost Labs</a></h3>
+<ul>
+<li>Use Cost Explorer</li>
+<li>Create budgets</li>
+<li>Analyze service costs</li>
+<li>Optimize EC2 pricing</li>
+<li>Use Savings Plans</li>
+</ul>
+<hr>
+<h2 id="-phase-13-migration--hybrid-practice"><a class="header" href="#-phase-13-migration--hybrid-practice">🟩 PHASE 13: MIGRATION &amp; HYBRID PRACTICE</a></h2>
+<h3 id="-goal-12"><a class="header" href="#-goal-12">🔹 Goal</a></h3>
+<p>Move real workloads to AWS.</p>
+<hr>
+<h3 id="23-migration-project"><a class="header" href="#23-migration-project">2️⃣3️⃣ Migration Project</a></h3>
+<p>Project:</p>
+<ul>
+<li>Migrate on-prem app to AWS</li>
+<li>Use DMS</li>
+<li>Use Application Migration Service</li>
+<li>Validate post-migration</li>
+</ul>
+<hr>
+<h2 id="-phase-14-professional-level-projects"><a class="header" href="#-phase-14-professional-level-projects">🟪 PHASE 14: PROFESSIONAL-LEVEL PROJECTS</a></h2>
+<h3 id="-goal-13"><a class="header" href="#-goal-13">🔹 Goal</a></h3>
+<p>Think like a Solutions Architect.</p>
+<hr>
+<h3 id="24-capstone-projects-very-important"><a class="header" href="#24-capstone-projects-very-important">2️⃣4️⃣ CAPSTONE PROJECTS (VERY IMPORTANT)</a></h3>
+<h4 id="project-1-production-web-application"><a class="header" href="#project-1-production-web-application">Project 1: Production Web Application</a></h4>
+<ul>
+<li>Multi-AZ architecture</li>
+<li>ALB + ASG</li>
+<li>RDS + Read Replicas</li>
+<li>S3 for static content</li>
+<li>CloudFront CDN</li>
+<li>Secure with IAM &amp; WAF</li>
+</ul>
+<hr>
+<h4 id="project-2-event-driven-system"><a class="header" href="#project-2-event-driven-system">Project 2: Event-Driven System</a></h4>
+<ul>
+<li>API Gateway</li>
+<li>Lambda</li>
+<li>DynamoDB</li>
+<li>EventBridge</li>
+<li>SQS</li>
+<li>Monitoring</li>
+</ul>
+<hr>
+<h4 id="project-3-disaster-recovery-design"><a class="header" href="#project-3-disaster-recovery-design">Project 3: Disaster Recovery Design</a></h4>
+<ul>
+<li>Multi-region setup</li>
+<li>Failover strategy</li>
+<li>Backup automation</li>
+<li>Cost vs availability analysis</li>
+</ul>
+<p>📌 <strong>Outcome:</strong>
+You are <strong>job-ready</strong> and <strong>professional-level</strong>.</p>
+<hr>
+<h2 id="-how-to-practice-effectively"><a class="header" href="#-how-to-practice-effectively">🧠 HOW TO PRACTICE EFFECTIVELY</a></h2>
+<ul>
+<li>Always draw architecture diagrams</li>
+<li>Break things intentionally</li>
+<li>Read AWS docs after labs</li>
+<li>Write post-mortems</li>
+<li>Track costs daily</li>
+</ul>
+<hr>
+<h2 id="-final-advice"><a class="header" href="#-final-advice">✅ FINAL ADVICE</a></h2>
+<p>If you <strong>complete these hands-on labs and projects</strong>, you will:</p>
+<ul>
+<li>Clear <strong>all AWS certifications</strong></li>
+<li>Be confident in <strong>real interviews</strong></li>
+<li>Understand AWS <strong>deeply</strong>, not superficially</li>
+</ul>
+<hr><div style="break-before: page; page-break-before: always;"></div>
+<h1 id="aws-left"><a href="#aws-left" class="header">AWS left</a></h1>
+<style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+<h2 id="-3"><a class="header" href="#-3"><a href="../src">👈</a></a></h2>
+<h1 id="-aws-cloud-practitioner--personal-checklist-dev"><a class="header" href="#-aws-cloud-practitioner--personal-checklist-dev">✅ AWS Cloud Practitioner – Personal Checklist (Dev)</a></h1>
+<hr>
+<h2 id="-1-aws-basics"><a class="header" href="#-1-aws-basics">🧱 1️⃣ AWS BASICS</a></h2>
+<ul>
+<li>✅ AWS account &amp; Free Tier</li>
+<li>✅ AWS Management Console navigation</li>
+<li>✅ Regions &amp; Availability Zones (basic)</li>
+<li>🔲 Edge locations (CloudFront context)</li>
+</ul>
+<hr>
+<h2 id="-2-iam--security-completed-"><a class="header" href="#-2-iam--security-completed-">🔐 2️⃣ IAM &amp; SECURITY (COMPLETED ✅)</a></h2>
+<ul>
+<li>✅ Root user best practices</li>
+<li>✅ MFA importance</li>
+<li>✅ IAM Users</li>
+<li>✅ IAM Groups</li>
+<li>✅ IAM Roles</li>
+<li>✅ User vs Role</li>
+<li>✅ Role vs Policy</li>
+<li>✅ AWS Managed vs Customer Managed Policies</li>
+<li>✅ Security Groups (Inbound / Outbound rules)</li>
+</ul>
+<p>🎯 <strong>STATUS: COMPLETE</strong></p>
+<hr>
+<h2 id="-3-ec2--compute-completed-"><a class="header" href="#-3-ec2--compute-completed-">🖥️ 3️⃣ EC2 &amp; COMPUTE (COMPLETED ✅)</a></h2>
+<h3 id="ec2-core"><a class="header" href="#ec2-core">EC2 Core</a></h3>
+<ul>
+<li>✅ Launch EC2 instance</li>
+<li>✅ Connect via SSH</li>
+<li>✅ Key pairs (create, delete, recover access)</li>
+<li>✅ EC2 instance lifecycle</li>
+<li>✅ Instance types</li>
+<li>✅ Purchasing options (On-Demand, Reserved, Spot)</li>
+</ul>
+<h3 id="storage--images"><a class="header" href="#storage--images">Storage &amp; Images</a></h3>
+<ul>
+<li>✅ EBS attach / detach / resize</li>
+<li>✅ Snapshots (backup &amp; restore)</li>
+<li>✅ AMI creation (custom image)</li>
+</ul>
+<h3 id="automation-1"><a class="header" href="#automation-1">Automation</a></h3>
+<ul>
+<li>✅ EC2 User Data (boot-time automation)</li>
+</ul>
+<p>🎯 <strong>STATUS: COMPLETE</strong></p>
+<hr>
+<h2 id="-4-load-balancing--auto-scaling-completed-"><a class="header" href="#-4-load-balancing--auto-scaling-completed-">⚖️ 4️⃣ LOAD BALANCING &amp; AUTO SCALING (COMPLETED ✅)</a></h2>
+<ul>
+<li>✅ Application Load Balancer (ALB)</li>
+<li>✅ Target Groups</li>
+<li>✅ Health Checks</li>
+<li>✅ Auto Scaling Group (ASG)</li>
+<li>✅ Scaling concepts (high availability)</li>
+</ul>
+<p>🎯 <strong>STATUS: COMPLETE</strong></p>
+<hr>
+<h2 id="-5-networking-mostly-done-"><a class="header" href="#-5-networking-mostly-done-">🌐 5️⃣ NETWORKING (MOSTLY DONE ✅)</a></h2>
+<ul>
+<li>✅ Elastic IP</li>
+<li>✅ Route 53 (Domain mapping)</li>
+<li>🔲 Public vs Private subnet (concept)</li>
+<li>🔲 NAT Gateway (concept only)</li>
+<li>🔲 Security Group vs NACL (theory)</li>
+</ul>
+<p>🎯 <strong>STATUS: 80% DONE</strong></p>
+<hr>
+<h2 id="-6-s3--object-storage-critical-"><a class="header" href="#-6-s3--object-storage-critical-">🪣 6️⃣ S3 – OBJECT STORAGE (CRITICAL ❌)</a></h2>
+<ul>
+<li>
+<p>🔲 What is S3</p>
+</li>
+<li>
+<p>🔲 Buckets &amp; Objects</p>
+</li>
+<li>
+<p>🔲 Storage classes</p>
+<ul>
+<li>Standard</li>
+<li>Standard-IA</li>
+<li>One Zone-IA</li>
+<li>Glacier</li>
+</ul>
+</li>
+<li>
+<p>🔲 Versioning</p>
+</li>
+<li>
+<p>🔲 Encryption (SSE-S3 / SSE-KMS – concept)</p>
+</li>
+<li>
+<p>🔲 S3 vs EBS vs EFS</p>
+</li>
+</ul>
+<p>🎯 <strong>STATUS: NOT DONE (HIGH PRIORITY)</strong></p>
+<hr>
+<h2 id="-7-databases-theory-only-"><a class="header" href="#-7-databases-theory-only-">🗄️ 7️⃣ DATABASES (THEORY ONLY 🔲)</a></h2>
+<ul>
+<li>🔲 RDS (what it is)</li>
+<li>🔲 Multi-AZ meaning</li>
+<li>🔲 Read replicas</li>
+<li>🔲 DynamoDB (NoSQL, serverless)</li>
+<li>🔲 RDS vs DynamoDB</li>
+<li>🔲 Aurora (why it’s special)</li>
+</ul>
+<p>🎯 <strong>STATUS: NOT DONE (THEORY)</strong></p>
+<hr>
+<h2 id="-8-monitoring--logging-light-"><a class="header" href="#-8-monitoring--logging-light-">📊 8️⃣ MONITORING &amp; LOGGING (LIGHT 🔲)</a></h2>
+<ul>
+<li>🔲 CloudWatch (metrics &amp; alarms)</li>
+<li>🔲 CloudTrail (API activity tracking)</li>
+<li>🔲 Trusted Advisor (cost, security, performance)</li>
+</ul>
+<p>🎯 <strong>STATUS: NOT DONE</strong></p>
+<hr>
+<h2 id="-9-billing--pricing-very-important-"><a class="header" href="#-9-billing--pricing-very-important-">💰 9️⃣ BILLING &amp; PRICING (VERY IMPORTANT ❌)</a></h2>
+<ul>
+<li>
+<p>🔲 AWS Free Tier types</p>
+</li>
+<li>
+<p>🔲 Pricing models comparison</p>
+<ul>
+<li>On-Demand</li>
+<li>Reserved</li>
+<li>Spot</li>
+</ul>
+</li>
+<li>
+<p>🔲 AWS Budgets</p>
+</li>
+<li>
+<p>🔲 Cost Explorer</p>
+</li>
+<li>
+<p>🔲 TCO Calculator</p>
+</li>
+<li>
+<p>🔲 Consolidated billing (concept)</p>
+</li>
+</ul>
+<p>🎯 <strong>STATUS: NOT DONE (EASY MARKS)</strong></p>
+<hr>
+<h2 id="--global-infrastructure-quick-win-"><a class="header" href="#--global-infrastructure-quick-win-">🌍 🔟 GLOBAL INFRASTRUCTURE (QUICK WIN 🔲)</a></h2>
+<ul>
+<li>🔲 Region vs AZ vs Edge Location</li>
+<li>🔲 CloudFront use cases</li>
+<li>🔲 High availability concept</li>
+</ul>
+<p>🎯 <strong>STATUS: NOT DONE</strong></p>
+<hr>
+<h2 id="-11-cloud-concepts-partial-"><a class="header" href="#-11-cloud-concepts-partial-">🧠 1️⃣1️⃣ CLOUD CONCEPTS (PARTIAL 🔲)</a></h2>
+<ul>
+<li>🔲 Shared Responsibility Model</li>
+<li>🔲 IaaS vs PaaS vs SaaS</li>
+<li>🔲 Elasticity vs Scalability</li>
+<li>🔲 Fault tolerance vs High availability</li>
+</ul>
+<p>🎯 <strong>STATUS: PARTIAL</strong></p>
+<hr>
+<h2 id="-final-summary"><a class="header" href="#-final-summary">🎯 FINAL SUMMARY</a></h2>
+<h3 id="-completed-strongly"><a class="header" href="#-completed-strongly">✅ Completed Strongly</a></h3>
+<ul>
+<li>IAM &amp; Security</li>
+<li>EC2 &amp; Compute</li>
+<li>Load Balancing &amp; Auto Scaling</li>
+<li>Real application deployment</li>
+</ul>
+<h3 id="-still-required-for-exam"><a class="header" href="#-still-required-for-exam">⚠️ Still Required for Exam</a></h3>
+<p>1️⃣ <strong>S3 (Top priority)</strong>
+2️⃣ <strong>Billing &amp; Pricing</strong>
+3️⃣ <strong>Databases (theory)</strong>
+4️⃣ <strong>Monitoring &amp; Logging</strong>
+5️⃣ <strong>Global Infrastructure &amp; Cloud concepts</strong></p>
+<hr>
+<h2 id="-current-status"><a class="header" href="#-current-status">📈 CURRENT STATUS</a></h2>
+<ul>
+<li><strong>Completion:</strong> ~80%</li>
+<li><strong>Exam-safe level:</strong> 90%+</li>
+<li><strong>Effort needed:</strong> ~3–4 focused days</li>
+</ul>
+<hr>
+<h1 id="-aws-cloud-practitioner--hands-on-labs-left"><a class="header" href="#-aws-cloud-practitioner--hands-on-labs-left">🧪 AWS Cloud Practitioner – HANDS-ON LABS LEFT</a></h1>
+<hr>
+<h2 id="-1-amazon-s3-top-priority-"><a class="header" href="#-1-amazon-s3-top-priority-">🪣 1️⃣ Amazon S3 (TOP PRIORITY 🔥)</a></h2>
+<h3 id="-lab-1--create-s3-bucket"><a class="header" href="#-lab-1--create-s3-bucket">🔲 LAB 1 – Create S3 Bucket</a></h3>
+<ul>
+<li>Create a bucket</li>
+<li>Understand bucket naming &amp; region</li>
+</ul>
+<h3 id="-lab-2--upload--manage-objects"><a class="header" href="#-lab-2--upload--manage-objects">🔲 LAB 2 – Upload &amp; Manage Objects</a></h3>
+<ul>
+<li>Upload files</li>
+<li>Download</li>
+<li>Delete objects</li>
+</ul>
+<h3 id="-lab-3--public-access--bucket-policy"><a class="header" href="#-lab-3--public-access--bucket-policy">🔲 LAB 3 – Public Access &amp; Bucket Policy</a></h3>
+<ul>
+<li>Block / unblock public access</li>
+<li>Make an object public</li>
+<li>Understand bucket policy vs ACL</li>
+</ul>
+<h3 id="-lab-4--enable-versioning"><a class="header" href="#-lab-4--enable-versioning">🔲 LAB 4 – Enable Versioning</a></h3>
+<ul>
+<li>Enable versioning</li>
+<li>Upload multiple versions</li>
+<li>Restore old version</li>
+</ul>
+<h3 id="-lab-5--storage-classes"><a class="header" href="#-lab-5--storage-classes">🔲 LAB 5 – Storage Classes</a></h3>
+<ul>
+<li>
+<p>Move object between:</p>
+<ul>
+<li>Standard</li>
+<li>Standard-IA</li>
+<li>Glacier (lifecycle rule)</li>
+</ul>
+</li>
+</ul>
+<h3 id="-lab-6--static-website-hosting"><a class="header" href="#-lab-6--static-website-hosting">🔲 LAB 6 – Static Website Hosting</a></h3>
+<ul>
+<li>Host a static website on S3</li>
+</ul>
+<h3 id="-lab-7--s3-vs-ebs-comparison-demo"><a class="header" href="#-lab-7--s3-vs-ebs-comparison-demo">🔲 LAB 7 – S3 vs EBS Comparison (Demo)</a></h3>
+<ul>
+<li>Compare S3 object access vs EBS block storage</li>
+</ul>
+<hr>
+<h2 id="-2-billing--cost-management-easy-marks-"><a class="header" href="#-2-billing--cost-management-easy-marks-">💰 2️⃣ Billing &amp; Cost Management (EASY MARKS 🟢)</a></h2>
+<h3 id="-lab-8--billing-dashboard"><a class="header" href="#-lab-8--billing-dashboard">🔲 LAB 8 – Billing Dashboard</a></h3>
+<ul>
+<li>Open billing console</li>
+<li>Check Free Tier usage</li>
+</ul>
+<h3 id="-lab-9--cost-explorer"><a class="header" href="#-lab-9--cost-explorer">🔲 LAB 9 – Cost Explorer</a></h3>
+<ul>
+<li>Enable Cost Explorer</li>
+<li>View monthly service-wise cost</li>
+</ul>
+<h3 id="-lab---aws-budgets"><a class="header" href="#-lab---aws-budgets">🔲 LAB 🔟 – AWS Budgets</a></h3>
+<ul>
+<li>Create a budget alert</li>
+<li>Set email notification</li>
+</ul>
+<h3 id="-lab-11--trusted-advisor-free-tier"><a class="header" href="#-lab-11--trusted-advisor-free-tier">🔲 LAB 11 – Trusted Advisor (Free Tier)</a></h3>
+<ul>
+<li>View cost &amp; security checks</li>
+</ul>
+<hr>
+<h2 id="-3-databases-basic-hands-on"><a class="header" href="#-3-databases-basic-hands-on">🗄️ 3️⃣ Databases (BASIC HANDS-ON)</a></h2>
+<h3 id="-lab-12--create-rds-instance"><a class="header" href="#-lab-12--create-rds-instance">🔲 LAB 12 – Create RDS Instance</a></h3>
+<ul>
+<li>Launch RDS (MySQL/PostgreSQL)</li>
+<li>Understand Multi-AZ option</li>
+<li>Stop / Delete DB</li>
+</ul>
+<h3 id="-lab-13--create-dynamodb-table"><a class="header" href="#-lab-13--create-dynamodb-table">🔲 LAB 13 – Create DynamoDB Table</a></h3>
+<ul>
+<li>Create table</li>
+<li>Add item</li>
+<li>Query item</li>
+</ul>
+<hr>
+<h2 id="-4-monitoring--auditing"><a class="header" href="#-4-monitoring--auditing">📊 4️⃣ Monitoring &amp; Auditing</a></h2>
+<h3 id="-lab-14--cloudwatch-metrics"><a class="header" href="#-lab-14--cloudwatch-metrics">🔲 LAB 14 – CloudWatch Metrics</a></h3>
+<ul>
+<li>View EC2 CPU metrics</li>
+<li>Network In/Out</li>
+</ul>
+<h3 id="-lab-15--cloudwatch-alarm"><a class="header" href="#-lab-15--cloudwatch-alarm">🔲 LAB 15 – CloudWatch Alarm</a></h3>
+<ul>
+<li>Create CPU utilization alarm</li>
+</ul>
+<h3 id="-lab-16--cloudtrail"><a class="header" href="#-lab-16--cloudtrail">🔲 LAB 16 – CloudTrail</a></h3>
+<ul>
+<li>Enable CloudTrail</li>
+<li>View API activity logs</li>
+</ul>
+<hr>
+<h2 id="-5-global-infrastructure-quick-labs"><a class="header" href="#-5-global-infrastructure-quick-labs">🌍 5️⃣ Global Infrastructure (Quick Labs)</a></h2>
+<h3 id="-lab-17--explore-regions--azs"><a class="header" href="#-lab-17--explore-regions--azs">🔲 LAB 17 – Explore Regions &amp; AZs</a></h3>
+<ul>
+<li>Switch regions</li>
+<li>View AZ mapping</li>
+</ul>
+<h3 id="-lab-18--cloudfront-demo"><a class="header" href="#-lab-18--cloudfront-demo">🔲 LAB 18 – CloudFront Demo</a></h3>
+<ul>
+<li>Create CloudFront distribution</li>
+<li>Use S3 as origin</li>
+</ul>
+<hr>
+<h2 id="-6-cloud-concepts-demo-level"><a class="header" href="#-6-cloud-concepts-demo-level">🧠 6️⃣ Cloud Concepts (DEMO-LEVEL)</a></h2>
+<h3 id="-lab-19--shared-responsibility-model"><a class="header" href="#-lab-19--shared-responsibility-model">🔲 LAB 19 – Shared Responsibility Model</a></h3>
+<ul>
+<li>Map AWS vs customer responsibilities (diagram)</li>
+</ul>
+<h3 id="-lab-20--service-models-demo"><a class="header" href="#-lab-20--service-models-demo">🔲 LAB 20 – Service Models Demo</a></h3>
+<ul>
+<li>Identify IaaS, PaaS, SaaS services in console</li>
+</ul>
+<hr>
+<h1 id="-minimum-required-if-short-on-time"><a class="header" href="#-minimum-required-if-short-on-time">✅ MINIMUM REQUIRED (If Short on Time)</a></h1>
+<p>If you want <strong>maximum score with minimum effort</strong>, do these 👇</p>
+<p>✔ S3 Labs (1–6)
+✔ Billing Labs (8–10)
+✔ CloudWatch Labs (14–15)</p>
+<hr>
+<h2 id="-after-completing-these"><a class="header" href="#-after-completing-these">📌 After Completing These</a></h2>
+<p>You will be at:</p>
+<ul>
+<li><strong>Hands-on coverage:</strong> ~95%</li>
+<li><strong>Exam readiness:</strong> 90–95%</li>
+<li><strong>Confidence level:</strong> HIGH 🔥</li>
+</ul>
+<p>–</p>
+<h2 id="-realistic-time-calculation"><a class="header" href="#-realistic-time-calculation">🧮 Realistic Time Calculation</a></h2>
+<h3 id="-daily-study-time"><a class="header" href="#-daily-study-time">⏰ Daily study time</a></h3>
+<ul>
+<li>Minimum: <strong>2 hours</strong></li>
+<li>Maximum: <strong>3 hours</strong></li>
+</ul>
+<p>I’ll calculate using <strong>2 hours</strong> (safer assumption).</p>
+<hr>
+<h2 id="-hands-on--revision-time-needed"><a class="header" href="#-hands-on--revision-time-needed">🧪 Hands-on + Revision Time Needed</a></h2>
+<h3 id="-remaining-work-from-checklist"><a class="header" href="#-remaining-work-from-checklist">🔴 Remaining work (from checklist)</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Area</th><th>Time Needed</th></tr>
+</thead>
+<tbody>
+<tr><td>S3 (most important)</td><td>4–5 hours</td></tr>
+<tr><td>Billing &amp; Pricing</td><td>3–4 hours</td></tr>
+<tr><td>Databases (RDS + DynamoDB)</td><td>2 hours</td></tr>
+<tr><td>CloudWatch + CloudTrail</td><td>2 hours</td></tr>
+<tr><td>Global infra + cloud concepts</td><td>1–1.5 hours</td></tr>
+<tr><td>Revision</td><td>2 hours</td></tr>
+<tr><td>Mock tests (2–3 tests)</td><td>4–5 hours</td></tr>
+</tbody>
+</table>
+</div>
+<p>👉 <strong>Total = ~18–21 hours</strong></p>
+<hr>
+<h2 id="-days-required-with-23-hrsday"><a class="header" href="#-days-required-with-23-hrsday">📅 Days Required (With 2–3 hrs/day)</a></h2>
+<h3 id="-best-case-3-hrsday"><a class="header" href="#-best-case-3-hrsday">✅ Best-case (3 hrs/day)</a></h3>
+<ul>
+<li><strong>6–7 days</strong></li>
+</ul>
+<h3 id="-safe--relaxed-pace-2-hrsday"><a class="header" href="#-safe--relaxed-pace-2-hrsday">✅ Safe &amp; relaxed pace (2 hrs/day)</a></h3>
+<ul>
+<li><strong>8–10 days</strong></li>
+</ul>
+<p>👉 <strong>This is realistic, not rushed</strong></p>
+<hr>
+<h2 id="-final-answer-max-date-you-should-book"><a class="header" href="#-final-answer-max-date-you-should-book">🎯 FINAL ANSWER (Max Date You Should Book)</a></h2>
+<h3 id="-recommended-exam-booking-window"><a class="header" href="#-recommended-exam-booking-window">🟢 Recommended exam booking window:</a></h3>
+<blockquote>
+<p><strong>10–12 days from today</strong></p>
+</blockquote>
+<p>This gives you:</p>
+<ul>
+<li>Buffer for revision</li>
+<li>Time to re-attempt weak areas</li>
+<li>Confidence (very important in exam)</li>
+</ul>
+<hr>
+<h2 id="-simple-day-by-day-plan-optional"><a class="header" href="#-simple-day-by-day-plan-optional">📌 Simple Day-by-Day Plan (Optional)</a></h2>
+<h3 id="day-12"><a class="header" href="#day-12">Day 1–2</a></h3>
+<ul>
+<li>S3 (all labs + theory)</li>
+</ul>
+<h3 id="day-3"><a class="header" href="#day-3">Day 3</a></h3>
+<ul>
+<li>Billing &amp; Pricing</li>
+</ul>
+<h3 id="day-4"><a class="header" href="#day-4">Day 4</a></h3>
+<ul>
+<li>RDS + DynamoDB</li>
+</ul>
+<h3 id="day-5"><a class="header" href="#day-5">Day 5</a></h3>
+<ul>
+<li>CloudWatch + CloudTrail</li>
+</ul>
+<h3 id="day-6"><a class="header" href="#day-6">Day 6</a></h3>
+<ul>
+<li>Global infra + cloud concepts</li>
+</ul>
+<h3 id="day-78"><a class="header" href="#day-78">Day 7–8</a></h3>
+<ul>
+<li>Mock tests + revision</li>
+</ul>
+<h3 id="day-910"><a class="header" href="#day-910">Day 9–10</a></h3>
+<ul>
+<li>Final revision + weak areas</li>
+</ul>
+<h3 id="day-1112"><a class="header" href="#day-1112">Day 11–12</a></h3>
+<ul>
+<li>🧠 Light revision</li>
+<li>🧘 Rest</li>
+<li>✅ <strong>EXAM DAY</strong></li>
+</ul>
+<hr>
+<h2 id="-honest-mentor-advice"><a class="header" href="#-honest-mentor-advice">🧠 Honest Mentor Advice</a></h2>
+<ul>
+<li>You are <strong>already ahead of many candidates</strong></li>
+<li>Do <strong>not delay more than 2 weeks</strong></li>
+<li>Momentum matters</li>
+</ul>
+<hr>
+<h3 id="-my-clear-recommendation"><a class="header" href="#-my-clear-recommendation">✅ My clear recommendation:</a></h3>
+<p>👉 <strong>Schedule your exam for ~10 days from now (max 12 days)</strong></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="-aws-master-github-project-structure"><a class="header" href="#-aws-master-github-project-structure">🗂️ AWS MASTER GITHUB PROJECT STRUCTURE</a></h1>
+<blockquote>
+<p><strong>Repository name (recommended):</strong>
+<code>aws-cloud-mastery</code></p>
+</blockquote>
+<hr>
+<h2 id="-root-structure"><a class="header" href="#-root-structure">📁 ROOT STRUCTURE</a></h2>
+<pre><code class="language-text">aws-cloud-mastery/
+│
+├── README.md
+├── .gitignore
+│
+├── 00-cloud-foundations/
+├── 01-iam-security/
+├── 02-compute/
+├── 03-storage/
+├── 04-databases/
+├── 05-networking/
+├── 06-serverless/
+├── 07-application-integration/
+├── 08-monitoring-logging/
+├── 09-devops-automation/
+├── 10-security-compliance/
+├── 11-cost-optimization/
+├── 12-migration-hybrid/
+├── 13-architecture-design/
+│
+├── projects/
+└── diagrams/
+</code></pre>
+<h1 id="-detailed-folder-breakdown"><a class="header" href="#-detailed-folder-breakdown">📁 DETAILED FOLDER BREAKDOWN</a></h1>
+<hr>
+<h2 id="-00-cloud-foundations"><a class="header" href="#-00-cloud-foundations">📁 <code>00-cloud-foundations/</code></a></h2>
+<p><strong>Purpose:</strong> Core cloud + Linux + networking basics</p>
+<pre><code class="language-text">00-cloud-foundations/
+├── linux-basics.md
+├── networking-basics.md
+├── cloud-computing-notes.md
+└── hands-on/
+    ├── linux-practice.md
+    └── networking-practice.md
+</code></pre>
+<hr>
+<h2 id="-01-iam-security"><a class="header" href="#-01-iam-security">📁 <code>01-iam-security/</code></a></h2>
+<p><strong>Purpose:</strong> AWS IAM mastery</p>
+<pre><code class="language-text">01-iam-security/
+├── iam-concepts.md
+├── iam-policies.md
+├── best-practices.md
+└── hands-on/
+    ├── create-users.md
+    ├── roles-for-ec2.md
+    └── least-privilege-lab.md
+</code></pre>
+<hr>
+<h2 id="-02-compute"><a class="header" href="#-02-compute">📁 <code>02-compute/</code></a></h2>
+<p><strong>Purpose:</strong> EC2, Auto Scaling, Load Balancing</p>
+<pre><code class="language-text">02-compute/
+├── ec2/
+│   ├── ec2-basics.md
+│   ├── ec2-pricing.md
+│   └── hands-on/
+│       ├── launch-ec2.md
+│       ├── user-data.md
+│       └── ebs-attach.md
+│
+├── auto-scaling/
+│   ├── asg-concepts.md
+│   └── hands-on/
+│       └── asg-with-alb.md
+│
+└── elastic-beanstalk/
+    └── deploy-springboot.md
+</code></pre>
+<hr>
+<h2 id="-03-storage"><a class="header" href="#-03-storage">📁 <code>03-storage/</code></a></h2>
+<p><strong>Purpose:</strong> S3, EBS, EFS</p>
+<pre><code class="language-text">03-storage/
+├── s3/
+│   ├── s3-concepts.md
+│   ├── s3-security.md
+│   └── hands-on/
+│       ├── bucket-policy.md
+│       ├── lifecycle-rule.md
+│       └── static-website.md
+│
+├── ebs/
+│   └── ebs-hands-on.md
+│
+└── efs/
+    └── efs-multi-ec2.md
+</code></pre>
+<hr>
+<h2 id="-04-databases"><a class="header" href="#-04-databases">📁 <code>04-databases/</code></a></h2>
+<p><strong>Purpose:</strong> RDS, DynamoDB, Aurora</p>
+<pre><code class="language-text">04-databases/
+├── rds/
+│   ├── rds-basics.md
+│   └── hands-on/
+│       ├── create-rds.md
+│       ├── multi-az.md
+│       └── read-replica.md
+│
+└── dynamodb/
+    ├── dynamodb-concepts.md
+    └── hands-on/
+        ├── crud-operations.md
+        └── lambda-integration.md
+</code></pre>
+<hr>
+<h2 id="-05-networking"><a class="header" href="#-05-networking">📁 <code>05-networking/</code></a></h2>
+<p><strong>Purpose:</strong> VPC deep dive</p>
+<pre><code class="language-text">05-networking/
+├── vpc/
+│   ├── vpc-basics.md
+│   └── hands-on/
+│       ├── custom-vpc.md
+│       ├── public-private-subnet.md
+│       └── nat-gateway.md
+│
+├── route53/
+│   └── routing-policies.md
+│
+└── cloudfront/
+    └── cdn-setup.md
+</code></pre>
+<hr>
+<h2 id="-06-serverless"><a class="header" href="#-06-serverless">📁 <code>06-serverless/</code></a></h2>
+<p><strong>Purpose:</strong> Lambda, API Gateway</p>
+<pre><code class="language-text">06-serverless/
+├── lambda/
+│   ├── lambda-basics.md
+│   └── hands-on/
+│       ├── s3-trigger.md
+│       └── api-gateway.md
+</code></pre>
+<hr>
+<h2 id="-07-application-integration"><a class="header" href="#-07-application-integration">📁 <code>07-application-integration/</code></a></h2>
+<p><strong>Purpose:</strong> Messaging &amp; events</p>
+<pre><code class="language-text">07-application-integration/
+├── sqs/
+│   └── producer-consumer.md
+├── sns/
+│   └── notifications.md
+└── step-functions/
+    └── workflow.md
+</code></pre>
+<hr>
+<h2 id="-08-monitoring-logging"><a class="header" href="#-08-monitoring-logging">📁 <code>08-monitoring-logging/</code></a></h2>
+<pre><code class="language-text">08-monitoring-logging/
+├── cloudwatch/
+│   ├── metrics.md
+│   └── alarms.md
+├── cloudtrail.md
+└── xray.md
+</code></pre>
+<hr>
+<h2 id="-09-devops-automation"><a class="header" href="#-09-devops-automation">📁 <code>09-devops-automation/</code></a></h2>
+<p><strong>Purpose:</strong> CI/CD &amp; IaC</p>
+<pre><code class="language-text">09-devops-automation/
+├── cloudformation/
+│   ├── ec2-stack.yaml
+│   └── vpc-stack.yaml
+├── cicd/
+│   └── codepipeline.md
+</code></pre>
+<hr>
+<h2 id="-10-security-compliance"><a class="header" href="#-10-security-compliance">📁 <code>10-security-compliance/</code></a></h2>
+<pre><code class="language-text">10-security-compliance/
+├── kms.md
+├── secrets-manager.md
+├── waf.md
+└── guardduty.md
+</code></pre>
+<hr>
+<h2 id="-11-cost-optimization"><a class="header" href="#-11-cost-optimization">📁 <code>11-cost-optimization/</code></a></h2>
+<pre><code class="language-text">11-cost-optimization/
+├── pricing-models.md
+├── cost-explorer.md
+└── budgets.md
+</code></pre>
+<hr>
+<h2 id="-12-migration-hybrid"><a class="header" href="#-12-migration-hybrid">📁 <code>12-migration-hybrid/</code></a></h2>
+<pre><code class="language-text">12-migration-hybrid/
+├── migration-strategy.md
+└── dms-lab.md
+</code></pre>
+<hr>
+<h2 id="-13-architecture-design"><a class="header" href="#-13-architecture-design">📁 <code>13-architecture-design/</code></a></h2>
+<p><strong>Purpose:</strong> Professional-level thinking</p>
+<pre><code class="language-text">13-architecture-design/
+├── high-availability.md
+├── disaster-recovery.md
+├── microservices.md
+└── case-studies/
+</code></pre>
+<hr>
+<h2 id="-projects--most-important"><a class="header" href="#-projects--most-important">📁 <code>projects/</code> ⭐ MOST IMPORTANT</a></h2>
+<pre><code class="language-text">projects/
+├── project-1-web-application/
+│   ├── README.md
+│   ├── architecture.png
+│   └── setup-steps.md
+│
+├── project-2-serverless-api/
+│   ├── README.md
+│   ├── lambda-code/
+│   └── api-gateway.md
+│
+└── project-3-disaster-recovery/
+    ├── README.md
+    └── failover-design.md
+</code></pre>
+<hr>
+<h2 id="-diagrams"><a class="header" href="#-diagrams">📁 <code>diagrams/</code></a></h2>
+<p>Store all architecture diagrams:</p>
+<pre><code class="language-text">diagrams/
+├── vpc-architecture.drawio
+├── serverless-flow.drawio
+└── multi-region-dr.png
+</code></pre>
 
                     </main>
 

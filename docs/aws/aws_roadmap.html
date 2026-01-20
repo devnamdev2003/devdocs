@@ -1,0 +1,1120 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>AWS Roadmap</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- PWA -->
+        <link rel="icon" type="image/x-icon" href="https://devnamdev2003.github.io/devdocs/static/icons/favicon.ico">
+        <link rel="manifest" href="https://devnamdev2003.github.io/devdocs/static/manifest.webmanifest">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="theme-color" content="#0d1117">
+        
+        <meta name="title" content="AWS">
+        <meta name="description" content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="og:image" content="https://devnamdev2003.github.io/devdocs/static/img/aws/aws_c.png">
+        <meta property="og:title" content="AWS">
+        <meta property="og:description"
+            content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="twitter:image" content="https://devnamdev2003.github.io/devdocs/static/img/aws/aws_c.png">
+        <meta property="twitter:title" content="AWS">
+        <meta property="twitter:description"
+            content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        <meta name="description" content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-4d34d39b.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-f6f2051f.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs/edit/main/md-code/aws/src/aws_roadmap.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+<h2 id=""><a class="header" href="#"><a href="../src">👈</a></a></h2>
+<h1 id="-complete-aws-master-roadmap"><a class="header" href="#-complete-aws-master-roadmap">☁️ COMPLETE AWS MASTER ROADMAP</a></h1>
+<p><strong>(Beginner → Advanced → Professional Level)</strong></p>
+<h2 id="-purpose-of-this-roadmap"><a class="header" href="#-purpose-of-this-roadmap">📌 Purpose of This Roadmap</a></h2>
+<p>This roadmap is designed to help you:</p>
+<ul>
+<li>
+<p>Learn AWS <strong>from absolute basics</strong></p>
+</li>
+<li>
+<p>Build <strong>strong fundamentals</strong></p>
+</li>
+<li>
+<p>Gain <strong>hands-on practical experience</strong></p>
+</li>
+<li>
+<p>Clear the following certifications <strong>in order</strong>:</p>
+<ol>
+<li>AWS Certified Cloud Practitioner</li>
+<li>AWS Certified Developer – Associate</li>
+<li>AWS Certified Solutions Architect – Associate</li>
+<li>AWS Certified Solutions Architect – Professional</li>
+</ol>
+</li>
+</ul>
+<p>This roadmap is <strong>technology-complete</strong>, meaning:</p>
+<ul>
+<li>No important topic is missing</li>
+<li>Concepts are ordered logically</li>
+<li>You can use it as a <strong>permanent AWS notes index</strong></li>
+</ul>
+<hr>
+<h2 id="-phase-1-cloud--it-foundations-pre-aws"><a class="header" href="#-phase-1-cloud--it-foundations-pre-aws">🟢 PHASE 1: CLOUD &amp; IT FOUNDATIONS (PRE-AWS)</a></h2>
+<p>Before touching AWS services, you must understand <strong>what AWS is built on</strong>.
+Many people fail AWS exams because they skip this phase.</p>
+<hr>
+<h3 id="11-what-is-cloud-computing"><a class="header" href="#11-what-is-cloud-computing">1.1 What is Cloud Computing?</a></h3>
+<p>Cloud computing is the <strong>on-demand delivery of computing resources</strong> over the internet.</p>
+<p>Key concepts:</p>
+<ul>
+<li>On-demand self-service</li>
+<li>Broad network access</li>
+<li>Resource pooling</li>
+<li>Rapid elasticity</li>
+<li>Measured service</li>
+</ul>
+<p>Types of cloud:</p>
+<ul>
+<li>Public cloud</li>
+<li>Private cloud</li>
+<li>Hybrid cloud</li>
+<li>Multi-cloud</li>
+</ul>
+<p>Service models:</p>
+<ul>
+<li><strong>IaaS</strong> (EC2, EBS, VPC)</li>
+<li><strong>PaaS</strong> (Elastic Beanstalk, RDS)</li>
+<li><strong>SaaS</strong> (Amazon WorkMail, QuickSight)</li>
+</ul>
+<p>Benefits:</p>
+<ul>
+<li>No upfront hardware cost</li>
+<li>Pay-as-you-go</li>
+<li>Scalability</li>
+<li>Global availability</li>
+<li>High reliability</li>
+</ul>
+<hr>
+<h3 id="12-core-networking-fundamentals"><a class="header" href="#12-core-networking-fundamentals">1.2 Core Networking Fundamentals</a></h3>
+<p>AWS networking makes sense <strong>only if basics are clear</strong>.</p>
+<p>Learn and understand:</p>
+<ul>
+<li>IPv4 address structure</li>
+<li>Private IP ranges</li>
+<li>Public IP addresses</li>
+<li>CIDR notation (e.g. 10.0.0.0/16)</li>
+<li>Subnetting basics</li>
+<li>Ports (22, 80, 443, 3306, etc.)</li>
+<li>TCP vs UDP</li>
+<li>HTTP vs HTTPS</li>
+<li>DNS resolution flow</li>
+<li>NAT (Network Address Translation)</li>
+<li>Firewalls and security concepts</li>
+</ul>
+<hr>
+<h3 id="13-linux-fundamentals-for-aws"><a class="header" href="#13-linux-fundamentals-for-aws">1.3 Linux Fundamentals for AWS</a></h3>
+<p>AWS heavily relies on Linux. You must be comfortable with:</p>
+<ul>
+<li>Linux directory structure</li>
+<li>Files and directories</li>
+<li>Permissions (<code>rwx</code>)</li>
+<li>Users and groups</li>
+<li>SSH access</li>
+<li>Package managers (<code>yum</code>, <code>apt</code>)</li>
+<li>Services (<code>systemctl</code>)</li>
+<li>Environment variables</li>
+<li>Logs (<code>/var/log</code>)</li>
+<li>Bash scripting basics</li>
+</ul>
+<p>This knowledge is <strong>mandatory</strong> for EC2, containers, and automation.</p>
+<hr>
+<h2 id="-phase-2-aws-core-concepts--global-infrastructure"><a class="header" href="#-phase-2-aws-core-concepts--global-infrastructure">🟦 PHASE 2: AWS CORE CONCEPTS &amp; GLOBAL INFRASTRUCTURE</a></h2>
+<p>This phase builds your <strong>AWS mindset</strong>.</p>
+<hr>
+<h3 id="21-aws-global-infrastructure"><a class="header" href="#21-aws-global-infrastructure">2.1 AWS Global Infrastructure</a></h3>
+<p>Understand:</p>
+<ul>
+<li>AWS Regions</li>
+<li>Availability Zones (AZs)</li>
+<li>Edge Locations</li>
+<li>Regional vs global services</li>
+</ul>
+<p>Why AWS uses AZs:</p>
+<ul>
+<li>Fault tolerance</li>
+<li>High availability</li>
+<li>Disaster recovery</li>
+</ul>
+<hr>
+<h3 id="22-aws-shared-responsibility-model"><a class="header" href="#22-aws-shared-responsibility-model">2.2 AWS Shared Responsibility Model</a></h3>
+<p>Very important for exams.</p>
+<p>AWS is responsible for:</p>
+<ul>
+<li>Physical data centers</li>
+<li>Network infrastructure</li>
+<li>Hardware</li>
+</ul>
+<p>You are responsible for:</p>
+<ul>
+<li>OS security</li>
+<li>Application security</li>
+<li>Data encryption</li>
+<li>IAM configuration</li>
+</ul>
+<hr>
+<h3 id="23-aws-well-architected-framework"><a class="header" href="#23-aws-well-architected-framework">2.3 AWS Well-Architected Framework</a></h3>
+<p>Five pillars:</p>
+<ol>
+<li>Operational Excellence</li>
+<li>Security</li>
+<li>Reliability</li>
+<li>Performance Efficiency</li>
+<li>Cost Optimization</li>
+</ol>
+<p>Every AWS architecture question is based on these pillars.</p>
+<hr>
+<h3 id="24-aws-access-methods"><a class="header" href="#24-aws-access-methods">2.4 AWS Access Methods</a></h3>
+<ul>
+<li>AWS Management Console</li>
+<li>AWS CLI</li>
+<li>AWS SDKs</li>
+<li>Infrastructure as Code (CloudFormation / CDK)</li>
+</ul>
+<hr>
+<h2 id="-phase-3-identity--access-management-iam"><a class="header" href="#-phase-3-identity--access-management-iam">🟩 PHASE 3: IDENTITY &amp; ACCESS MANAGEMENT (IAM)</a></h2>
+<p>IAM is <strong>the backbone of AWS security</strong>.</p>
+<hr>
+<h3 id="31-iam-concepts"><a class="header" href="#31-iam-concepts">3.1 IAM Concepts</a></h3>
+<ul>
+<li>Authentication vs Authorization</li>
+<li>IAM Users</li>
+<li>IAM Groups</li>
+<li>IAM Roles</li>
+<li>Temporary credentials</li>
+<li>Root user risks</li>
+</ul>
+<hr>
+<h3 id="32-iam-policies"><a class="header" href="#32-iam-policies">3.2 IAM Policies</a></h3>
+<ul>
+<li>JSON policy structure</li>
+<li>Effect</li>
+<li>Action</li>
+<li>Resource</li>
+<li>Conditions</li>
+<li>Managed vs inline policies</li>
+</ul>
+<hr>
+<h3 id="33-security-best-practices"><a class="header" href="#33-security-best-practices">3.3 Security Best Practices</a></h3>
+<ul>
+<li>Least privilege</li>
+<li>MFA everywhere</li>
+<li>Never use root user</li>
+<li>Role-based access</li>
+<li>Access Analyzer</li>
+</ul>
+<hr>
+<h2 id="-phase-4-compute-services"><a class="header" href="#-phase-4-compute-services">🟦 PHASE 4: COMPUTE SERVICES</a></h2>
+<p>Compute is how your applications <strong>run on AWS</strong>.</p>
+<hr>
+<h3 id="41-amazon-ec2-deep-dive"><a class="header" href="#41-amazon-ec2-deep-dive">4.1 Amazon EC2 (DEEP DIVE)</a></h3>
+<p>Topics to master:</p>
+<ul>
+<li>
+<p>EC2 instance lifecycle</p>
+</li>
+<li>
+<p>Instance types</p>
+</li>
+<li>
+<p>AMIs</p>
+</li>
+<li>
+<p>Key pairs</p>
+</li>
+<li>
+<p>Security groups</p>
+</li>
+<li>
+<p>Elastic IP</p>
+</li>
+<li>
+<p>User data scripts</p>
+</li>
+<li>
+<p>Placement groups</p>
+</li>
+<li>
+<p>EC2 pricing models:</p>
+<ul>
+<li>On-Demand</li>
+<li>Reserved Instances</li>
+<li>Spot Instances</li>
+</ul>
+</li>
+<li>
+<p>Auto Scaling Groups</p>
+</li>
+<li>
+<p>Launch Templates</p>
+</li>
+</ul>
+<p>Hands-on:</p>
+<ul>
+<li>Launch EC2</li>
+<li>SSH access</li>
+<li>Host a web app</li>
+<li>Auto scale instances</li>
+</ul>
+<hr>
+<h3 id="42-containers"><a class="header" href="#42-containers">4.2 Containers</a></h3>
+<ul>
+<li>ECS</li>
+<li>EKS (Kubernetes basics)</li>
+<li>Fargate</li>
+<li>Container networking</li>
+<li>Container security</li>
+</ul>
+<hr>
+<h3 id="43-serverless-compute"><a class="header" href="#43-serverless-compute">4.3 Serverless Compute</a></h3>
+<ul>
+<li>AWS Lambda</li>
+<li>Event sources</li>
+<li>Cold start</li>
+<li>Limits</li>
+<li>Lambda pricing</li>
+<li>Lambda with API Gateway</li>
+</ul>
+<hr>
+<h3 id="44-platform-services"><a class="header" href="#44-platform-services">4.4 Platform Services</a></h3>
+<ul>
+<li>Elastic Beanstalk</li>
+<li>App Runner</li>
+<li>Lightsail</li>
+</ul>
+<hr>
+<h2 id="-phase-5-storage-services"><a class="header" href="#-phase-5-storage-services">🟨 PHASE 5: STORAGE SERVICES</a></h2>
+<p>Storage is <strong>one of the most tested AWS topics</strong>.</p>
+<hr>
+<h3 id="51-amazon-s3-very-deep"><a class="header" href="#51-amazon-s3-very-deep">5.1 Amazon S3 (VERY DEEP)</a></h3>
+<p>Understand:</p>
+<ul>
+<li>Buckets &amp; objects</li>
+<li>Storage classes</li>
+<li>Versioning</li>
+<li>Encryption</li>
+<li>Lifecycle rules</li>
+<li>Bucket policies</li>
+<li>ACLs</li>
+<li>Static website hosting</li>
+<li>Cross-region replication</li>
+<li>S3 events</li>
+</ul>
+<hr>
+<h3 id="52-block--file-storage"><a class="header" href="#52-block--file-storage">5.2 Block &amp; File Storage</a></h3>
+<ul>
+<li>EBS</li>
+<li>EFS</li>
+<li>FSx</li>
+<li>AWS Backup</li>
+<li>Storage Gateway</li>
+</ul>
+<hr>
+<h3 id="53-data-transfer-services"><a class="header" href="#53-data-transfer-services">5.3 Data Transfer Services</a></h3>
+<ul>
+<li>Snowball</li>
+<li>Snowmobile</li>
+<li>DataSync</li>
+</ul>
+<hr>
+<h2 id="-phase-6-database-services"><a class="header" href="#-phase-6-database-services">🟧 PHASE 6: DATABASE SERVICES</a></h2>
+<hr>
+<h3 id="61-relational-databases"><a class="header" href="#61-relational-databases">6.1 Relational Databases</a></h3>
+<ul>
+<li>Amazon RDS</li>
+<li>Multi-AZ deployments</li>
+<li>Read replicas</li>
+<li>Backups and snapshots</li>
+<li>Aurora architecture</li>
+</ul>
+<hr>
+<h3 id="62-nosql--analytics-databases"><a class="header" href="#62-nosql--analytics-databases">6.2 NoSQL &amp; Analytics Databases</a></h3>
+<ul>
+<li>DynamoDB</li>
+<li>Partition keys</li>
+<li>Global secondary indexes</li>
+<li>ElastiCache</li>
+<li>Redshift</li>
+<li>Athena</li>
+<li>OpenSearch</li>
+</ul>
+<hr>
+<h2 id="-phase-7-networking--content-delivery"><a class="header" href="#-phase-7-networking--content-delivery">🟥 PHASE 7: NETWORKING &amp; CONTENT DELIVERY</a></h2>
+<p>This is <strong>core for Solutions Architect exams</strong>.</p>
+<hr>
+<h3 id="71-amazon-vpc-very-deep"><a class="header" href="#71-amazon-vpc-very-deep">7.1 Amazon VPC (VERY DEEP)</a></h3>
+<p>Topics:</p>
+<ul>
+<li>VPC creation</li>
+<li>CIDR planning</li>
+<li>Subnets</li>
+<li>Route tables</li>
+<li>Internet Gateway</li>
+<li>NAT Gateway</li>
+<li>Security Groups</li>
+<li>NACLs</li>
+<li>VPC Endpoints</li>
+<li>VPC Peering</li>
+<li>Transit Gateway</li>
+<li>VPN</li>
+<li>Direct Connect</li>
+</ul>
+<hr>
+<h3 id="72-load-balancing--dns"><a class="header" href="#72-load-balancing--dns">7.2 Load Balancing &amp; DNS</a></h3>
+<ul>
+<li>
+<p>Application Load Balancer</p>
+</li>
+<li>
+<p>Network Load Balancer</p>
+</li>
+<li>
+<p>Gateway Load Balancer</p>
+</li>
+<li>
+<p>Route 53</p>
+<ul>
+<li>Routing policies</li>
+</ul>
+</li>
+<li>
+<p>CloudFront CDN</p>
+</li>
+</ul>
+<hr>
+<h2 id="-phase-8-application-integration"><a class="header" href="#-phase-8-application-integration">🟪 PHASE 8: APPLICATION INTEGRATION</a></h2>
+<ul>
+<li>API Gateway</li>
+<li>SQS</li>
+<li>SNS</li>
+<li>EventBridge</li>
+<li>Step Functions</li>
+<li>AppSync</li>
+</ul>
+<p>Used heavily in <strong>event-driven architectures</strong>.</p>
+<hr>
+<h2 id="-phase-9-monitoring-logging--governance"><a class="header" href="#-phase-9-monitoring-logging--governance">🟫 PHASE 9: MONITORING, LOGGING &amp; GOVERNANCE</a></h2>
+<ul>
+<li>CloudWatch</li>
+<li>CloudTrail</li>
+<li>AWS Config</li>
+<li>X-Ray</li>
+<li>Trusted Advisor</li>
+</ul>
+<hr>
+<h2 id="-phase-10-devops--automation"><a class="header" href="#-phase-10-devops--automation">🟦 PHASE 10: DEVOPS &amp; AUTOMATION</a></h2>
+<ul>
+<li>
+<p>AWS CLI</p>
+</li>
+<li>
+<p>CloudFormation</p>
+</li>
+<li>
+<p>CDK</p>
+</li>
+<li>
+<p>CI/CD services:</p>
+<ul>
+<li>CodeCommit</li>
+<li>CodeBuild</li>
+<li>CodeDeploy</li>
+<li>CodePipeline</li>
+</ul>
+</li>
+<li>
+<p>Deployment strategies:</p>
+<ul>
+<li>Rolling</li>
+<li>Blue-Green</li>
+<li>Canary</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="-phase-11-security--compliance"><a class="header" href="#-phase-11-security--compliance">🟥 PHASE 11: SECURITY &amp; COMPLIANCE</a></h2>
+<ul>
+<li>KMS</li>
+<li>Secrets Manager</li>
+<li>Parameter Store</li>
+<li>WAF</li>
+<li>Shield</li>
+<li>GuardDuty</li>
+<li>Inspector</li>
+<li>Macie</li>
+<li>Encryption at rest &amp; in transit</li>
+</ul>
+<hr>
+<h2 id="-phase-12-cost-management"><a class="header" href="#-phase-12-cost-management">🟨 PHASE 12: COST MANAGEMENT</a></h2>
+<ul>
+<li>AWS pricing models</li>
+<li>Cost Explorer</li>
+<li>Budgets</li>
+<li>Savings Plans</li>
+<li>Reserved Instances</li>
+<li>Cost allocation tags</li>
+</ul>
+<hr>
+<h2 id="-phase-13-migration--hybrid-cloud"><a class="header" href="#-phase-13-migration--hybrid-cloud">🟩 PHASE 13: MIGRATION &amp; HYBRID CLOUD</a></h2>
+<ul>
+<li>Migration Hub</li>
+<li>DMS</li>
+<li>Application Migration Service</li>
+<li>Hybrid cloud design</li>
+<li>On-prem to AWS strategies</li>
+</ul>
+<hr>
+<h2 id="-phase-14-advanced-architecture-pro-level"><a class="header" href="#-phase-14-advanced-architecture-pro-level">🟪 PHASE 14: ADVANCED ARCHITECTURE (PRO LEVEL)</a></h2>
+<ul>
+<li>Multi-account architecture</li>
+<li>AWS Organizations</li>
+<li>Control Tower</li>
+<li>Cross-region DR</li>
+<li>Event-driven microservices</li>
+<li>Large-scale system design</li>
+<li>Failure handling</li>
+<li>Chaos engineering concepts</li>
+</ul>
+<hr>
+<h2 id="-certification-alignment"><a class="header" href="#-certification-alignment">🎓 CERTIFICATION ALIGNMENT</a></h2>
+<ul>
+<li>Cloud Practitioner → Phases 1–3</li>
+<li>Developer Associate → Phases 4–8</li>
+<li>SA Associate → Phases 4–9</li>
+<li>SA Professional → All phases</li>
+</ul>
+<hr>
+<h2 id="-how-to-use-this-document"><a class="header" href="#-how-to-use-this-document">🧠 HOW TO USE THIS DOCUMENT</a></h2>
+<ol>
+<li>Copy into your notes</li>
+<li>Convert bullet points into checklists</li>
+<li>Add diagrams for each service</li>
+<li>Add screenshots from AWS Console</li>
+<li>Practice after every topic</li>
+</ol>
+<hr>
+<h2 id="-final-word"><a class="header" href="#-final-word">✅ FINAL WORD</a></h2>
+<p>This roadmap is <strong>complete, realistic, and industry-aligned</strong>.
+If you follow this <strong>line by line</strong>, you will not only clear certifications, but <strong>actually master AWS</strong>.</p>
+<hr>
+<h1 id="-aws-hands-on-projects--practice-roadmap"><a class="header" href="#-aws-hands-on-projects--practice-roadmap">🛠️ AWS HANDS-ON, PROJECTS &amp; PRACTICE ROADMAP</a></h1>
+<p><em>(Beginner → Associate → Professional Level)</em></p>
+<blockquote>
+<p><strong>Rule:</strong>
+❌ Reading without practice = no real learning
+✅ Every AWS service → at least one hands-on task</p>
+</blockquote>
+<hr>
+<h2 id="-phase-1-foundational-hands-on-pre-aws--basics"><a class="header" href="#-phase-1-foundational-hands-on-pre-aws--basics">🟢 PHASE 1: FOUNDATIONAL HANDS-ON (PRE-AWS + BASICS)</a></h2>
+<h3 id="-goal"><a class="header" href="#-goal">🔹 Goal</a></h3>
+<p>Become comfortable with <strong>cloud environments, Linux, and networking</strong> before deep AWS services.</p>
+<hr>
+<h3 id="1-linux-hands-on-practice-aws-context"><a class="header" href="#1-linux-hands-on-practice-aws-context">1️⃣ Linux Hands-On Practice (AWS Context)</a></h3>
+<p>Practice on:</p>
+<ul>
+<li>Local VM (VirtualBox)</li>
+<li>OR EC2 Free Tier</li>
+</ul>
+<h4 id="tasks"><a class="header" href="#tasks">Tasks</a></h4>
+<ul>
+<li>Create users and groups</li>
+<li>Practice file permissions (<code>chmod</code>, <code>chown</code>)</li>
+<li>Install packages (<code>yum</code>, <code>apt</code>)</li>
+<li>Run and manage services (<code>systemctl</code>)</li>
+<li>Read logs (<code>/var/log</code>)</li>
+<li>Write simple bash scripts</li>
+<li>SSH into machines using key pairs</li>
+</ul>
+<p>📌 <strong>Outcome:</strong>
+You should feel comfortable managing a Linux server without fear.</p>
+<hr>
+<h3 id="2-networking-hands-on-conceptual--practical"><a class="header" href="#2-networking-hands-on-conceptual--practical">2️⃣ Networking Hands-On (Conceptual + Practical)</a></h3>
+<ul>
+<li>Calculate CIDR blocks manually</li>
+<li>Identify public vs private IPs</li>
+<li>Test ports using <code>curl</code>, <code>telnet</code>, <code>nc</code></li>
+<li>Observe DNS resolution using <code>nslookup</code>, <code>dig</code></li>
+</ul>
+<p>📌 <strong>Outcome:</strong>
+You understand how traffic flows from browser → server.</p>
+<hr>
+<h2 id="-phase-2-aws-account--core-practice"><a class="header" href="#-phase-2-aws-account--core-practice">🟦 PHASE 2: AWS ACCOUNT &amp; CORE PRACTICE</a></h2>
+<h3 id="-goal-1"><a class="header" href="#-goal-1">🔹 Goal</a></h3>
+<p>Understand <strong>AWS environment setup</strong> and navigation.</p>
+<hr>
+<h3 id="3-aws-account-setup--safety"><a class="header" href="#3-aws-account-setup--safety">3️⃣ AWS Account Setup &amp; Safety</a></h3>
+<p>Hands-on tasks:</p>
+<ul>
+<li>Create AWS Free Tier account</li>
+<li>Enable MFA on root account</li>
+<li>Create IAM admin user</li>
+<li>Log in using IAM user</li>
+<li>Set billing alerts</li>
+<li>Explore AWS Console sections</li>
+</ul>
+<p>📌 <strong>Outcome:</strong>
+You can safely use AWS without risk of accidental billing.</p>
+<hr>
+<h3 id="4-aws-cli-hands-on"><a class="header" href="#4-aws-cli-hands-on">4️⃣ AWS CLI Hands-On</a></h3>
+<p>Tasks:</p>
+<ul>
+<li>Install AWS CLI</li>
+<li>Configure CLI using access keys</li>
+<li>List S3 buckets</li>
+<li>Describe EC2 instances</li>
+<li>Upload file to S3 via CLI</li>
+</ul>
+<p>📌 <strong>Outcome:</strong>
+You can interact with AWS without UI.</p>
+<hr>
+<h2 id="-phase-3-iam--security-hands-on"><a class="header" href="#-phase-3-iam--security-hands-on">🟩 PHASE 3: IAM – SECURITY HANDS-ON</a></h2>
+<h3 id="-goal-2"><a class="header" href="#-goal-2">🔹 Goal</a></h3>
+<p>Master <strong>access control</strong>, which is critical for real systems.</p>
+<hr>
+<h3 id="5-iam-practical-labs"><a class="header" href="#5-iam-practical-labs">5️⃣ IAM Practical Labs</a></h3>
+<p>Tasks:</p>
+<ul>
+<li>Create IAM users</li>
+<li>Create IAM groups</li>
+<li>Attach policies</li>
+<li>Create IAM roles for EC2</li>
+<li>Test permission boundaries</li>
+<li>Enable MFA</li>
+<li>Use least privilege policies</li>
+</ul>
+<p>Real practice:</p>
+<ul>
+<li>Create a user who can only read S3</li>
+<li>Create a role EC2 can assume to access S3</li>
+</ul>
+<p>📌 <strong>Outcome:</strong>
+You understand <strong>who can do what and why</strong>.</p>
+<hr>
+<h2 id="-phase-4-compute-hands-on-ec2--scaling"><a class="header" href="#-phase-4-compute-hands-on-ec2--scaling">🟦 PHASE 4: COMPUTE HANDS-ON (EC2 + SCALING)</a></h2>
+<h3 id="-goal-3"><a class="header" href="#-goal-3">🔹 Goal</a></h3>
+<p>Run real applications on AWS compute.</p>
+<hr>
+<h3 id="6-ec2-core-labs"><a class="header" href="#6-ec2-core-labs">6️⃣ EC2 Core Labs</a></h3>
+<p>Hands-on tasks:</p>
+<ul>
+<li>Launch EC2 (Amazon Linux)</li>
+<li>Configure security groups</li>
+<li>SSH into instance</li>
+<li>Install Nginx / Apache</li>
+<li>Host a static website</li>
+<li>Use user-data scripts</li>
+<li>Allocate Elastic IP</li>
+</ul>
+<p>📌 <strong>Outcome:</strong>
+You can launch and manage servers independently.</p>
+<hr>
+<h3 id="7-ec2--storage-integration"><a class="header" href="#7-ec2--storage-integration">7️⃣ EC2 + Storage Integration</a></h3>
+<ul>
+<li>Attach EBS volume</li>
+<li>Mount EBS</li>
+<li>Take snapshots</li>
+<li>Resize volume</li>
+<li>Detach &amp; attach to another EC2</li>
+</ul>
+<hr>
+<h3 id="8-auto-scaling--load-balancing"><a class="header" href="#8-auto-scaling--load-balancing">8️⃣ Auto Scaling &amp; Load Balancing</a></h3>
+<p>Hands-on:</p>
+<ul>
+<li>Create Launch Template</li>
+<li>Create Auto Scaling Group</li>
+<li>Attach Application Load Balancer</li>
+<li>Test auto-scaling by CPU load</li>
+</ul>
+<p>📌 <strong>Outcome:</strong>
+You understand high availability and scalability.</p>
+<hr>
+<h2 id="-phase-5-storage-hands-on-s3--file-systems"><a class="header" href="#-phase-5-storage-hands-on-s3--file-systems">🟨 PHASE 5: STORAGE HANDS-ON (S3 &amp; FILE SYSTEMS)</a></h2>
+<h3 id="-goal-4"><a class="header" href="#-goal-4">🔹 Goal</a></h3>
+<p>Store and manage data properly.</p>
+<hr>
+<h3 id="9-amazon-s3-deep-practice"><a class="header" href="#9-amazon-s3-deep-practice">9️⃣ Amazon S3 Deep Practice</a></h3>
+<p>Hands-on tasks:</p>
+<ul>
+<li>Create S3 buckets</li>
+<li>Upload/download objects</li>
+<li>Enable versioning</li>
+<li>Configure lifecycle rules</li>
+<li>Apply bucket policies</li>
+<li>Enable encryption</li>
+<li>Static website hosting</li>
+<li>Cross-region replication</li>
+<li>Trigger Lambda from S3 event</li>
+</ul>
+<p>📌 <strong>Outcome:</strong>
+You fully understand object storage.</p>
+<hr>
+<h3 id="10-file--block-storage-labs"><a class="header" href="#10-file--block-storage-labs">1️⃣0️⃣ File &amp; Block Storage Labs</a></h3>
+<ul>
+<li>Create EFS</li>
+<li>Mount EFS to multiple EC2s</li>
+<li>Compare EBS vs EFS</li>
+<li>Test FSx</li>
+<li>Use AWS Backup</li>
+</ul>
+<hr>
+<h2 id="-phase-6-database-hands-on"><a class="header" href="#-phase-6-database-hands-on">🟧 PHASE 6: DATABASE HANDS-ON</a></h2>
+<h3 id="-goal-5"><a class="header" href="#-goal-5">🔹 Goal</a></h3>
+<p>Run production-ready databases.</p>
+<hr>
+<h3 id="11-rds-labs"><a class="header" href="#11-rds-labs">1️⃣1️⃣ RDS Labs</a></h3>
+<p>Hands-on tasks:</p>
+<ul>
+<li>Create RDS instance</li>
+<li>Connect from EC2</li>
+<li>Enable Multi-AZ</li>
+<li>Create read replica</li>
+<li>Backup &amp; restore</li>
+<li>Monitor performance</li>
+</ul>
+<hr>
+<h3 id="12-dynamodb-labs"><a class="header" href="#12-dynamodb-labs">1️⃣2️⃣ DynamoDB Labs</a></h3>
+<p>Hands-on:</p>
+<ul>
+<li>Create DynamoDB table</li>
+<li>Insert items</li>
+<li>Query &amp; scan</li>
+<li>Add secondary index</li>
+<li>Connect DynamoDB with Lambda</li>
+</ul>
+<p>📌 <strong>Outcome:</strong>
+You understand SQL vs NoSQL use cases.</p>
+<hr>
+<h2 id="-phase-7-networking-hands-on-vpc-deep-dive"><a class="header" href="#-phase-7-networking-hands-on-vpc-deep-dive">🟥 PHASE 7: NETWORKING HANDS-ON (VPC DEEP DIVE)</a></h2>
+<h3 id="-goal-6"><a class="header" href="#-goal-6">🔹 Goal</a></h3>
+<p>Design secure cloud networks.</p>
+<hr>
+<h3 id="13-vpc-core-labs"><a class="header" href="#13-vpc-core-labs">1️⃣3️⃣ VPC Core Labs</a></h3>
+<p>Hands-on:</p>
+<ul>
+<li>Create custom VPC</li>
+<li>Create public &amp; private subnets</li>
+<li>Configure route tables</li>
+<li>Setup Internet Gateway</li>
+<li>Setup NAT Gateway</li>
+<li>Security Groups vs NACLs</li>
+</ul>
+<p>📌 <strong>Outcome:</strong>
+You can design secure VPCs from scratch.</p>
+<hr>
+<h3 id="14-advanced-vpc-labs"><a class="header" href="#14-advanced-vpc-labs">1️⃣4️⃣ Advanced VPC Labs</a></h3>
+<ul>
+<li>VPC peering</li>
+<li>VPC endpoints</li>
+<li>Site-to-site VPN (conceptual lab)</li>
+<li>Transit Gateway (theory + diagrams)</li>
+</ul>
+<hr>
+<h2 id="-phase-8-application-integration--serverless"><a class="header" href="#-phase-8-application-integration--serverless">🟪 PHASE 8: APPLICATION INTEGRATION &amp; SERVERLESS</a></h2>
+<h3 id="-goal-7"><a class="header" href="#-goal-7">🔹 Goal</a></h3>
+<p>Build event-driven architectures.</p>
+<hr>
+<h3 id="15-lambda--api-gateway-project"><a class="header" href="#15-lambda--api-gateway-project">1️⃣5️⃣ Lambda &amp; API Gateway Project</a></h3>
+<p>Project:</p>
+<ul>
+<li>Create REST API using Lambda</li>
+<li>Use API Gateway</li>
+<li>Store data in DynamoDB</li>
+<li>Secure with IAM</li>
+</ul>
+<p>📌 <strong>Outcome:</strong>
+You can build serverless backends.</p>
+<hr>
+<h3 id="16-messaging--events"><a class="header" href="#16-messaging--events">1️⃣6️⃣ Messaging &amp; Events</a></h3>
+<p>Hands-on:</p>
+<ul>
+<li>SQS producer-consumer</li>
+<li>SNS notifications</li>
+<li>EventBridge rules</li>
+<li>Step Functions workflows</li>
+</ul>
+<hr>
+<h2 id="-phase-9-monitoring--governance"><a class="header" href="#-phase-9-monitoring--governance">🟫 PHASE 9: MONITORING &amp; GOVERNANCE</a></h2>
+<h3 id="-goal-8"><a class="header" href="#-goal-8">🔹 Goal</a></h3>
+<p>Observe and audit systems.</p>
+<hr>
+<h3 id="17-monitoring-labs"><a class="header" href="#17-monitoring-labs">1️⃣7️⃣ Monitoring Labs</a></h3>
+<ul>
+<li>CloudWatch metrics</li>
+<li>Custom metrics</li>
+<li>CloudWatch alarms</li>
+<li>Centralized logging</li>
+<li>X-Ray tracing</li>
+</ul>
+<hr>
+<h3 id="18-auditing-labs"><a class="header" href="#18-auditing-labs">1️⃣8️⃣ Auditing Labs</a></h3>
+<ul>
+<li>Enable CloudTrail</li>
+<li>Track API calls</li>
+<li>Use AWS Config</li>
+<li>Security insights</li>
+</ul>
+<hr>
+<h2 id="-phase-10-devops--automation-hands-on"><a class="header" href="#-phase-10-devops--automation-hands-on">🟦 PHASE 10: DEVOPS &amp; AUTOMATION HANDS-ON</a></h2>
+<h3 id="-goal-9"><a class="header" href="#-goal-9">🔹 Goal</a></h3>
+<p>Automate infrastructure and deployments.</p>
+<hr>
+<h3 id="19-infrastructure-as-code"><a class="header" href="#19-infrastructure-as-code">1️⃣9️⃣ Infrastructure as Code</a></h3>
+<p>Hands-on:</p>
+<ul>
+<li>Write CloudFormation templates</li>
+<li>Deploy EC2 &amp; VPC using IaC</li>
+<li>Modify stacks safely</li>
+<li>Use CDK (optional)</li>
+</ul>
+<hr>
+<h3 id="20-cicd-pipeline-project"><a class="header" href="#20-cicd-pipeline-project">2️⃣0️⃣ CI/CD Pipeline Project</a></h3>
+<p>Project:</p>
+<ul>
+<li>Source code in CodeCommit</li>
+<li>Build using CodeBuild</li>
+<li>Deploy via CodeDeploy</li>
+<li>Automate using CodePipeline</li>
+</ul>
+<p>📌 <strong>Outcome:</strong>
+You understand DevOps on AWS.</p>
+<hr>
+<h2 id="-phase-11-security--compliance-practice"><a class="header" href="#-phase-11-security--compliance-practice">🟥 PHASE 11: SECURITY &amp; COMPLIANCE PRACTICE</a></h2>
+<h3 id="-goal-10"><a class="header" href="#-goal-10">🔹 Goal</a></h3>
+<p>Protect data and applications.</p>
+<hr>
+<h3 id="21-security-labs"><a class="header" href="#21-security-labs">2️⃣1️⃣ Security Labs</a></h3>
+<ul>
+<li>Encrypt data using KMS</li>
+<li>Store secrets securely</li>
+<li>Setup WAF rules</li>
+<li>Enable GuardDuty</li>
+<li>Inspect vulnerabilities</li>
+</ul>
+<hr>
+<h2 id="-phase-12-cost-optimization-practice"><a class="header" href="#-phase-12-cost-optimization-practice">🟨 PHASE 12: COST OPTIMIZATION PRACTICE</a></h2>
+<h3 id="-goal-11"><a class="header" href="#-goal-11">🔹 Goal</a></h3>
+<p>Control AWS billing.</p>
+<hr>
+<h3 id="22-cost-labs"><a class="header" href="#22-cost-labs">2️⃣2️⃣ Cost Labs</a></h3>
+<ul>
+<li>Use Cost Explorer</li>
+<li>Create budgets</li>
+<li>Analyze service costs</li>
+<li>Optimize EC2 pricing</li>
+<li>Use Savings Plans</li>
+</ul>
+<hr>
+<h2 id="-phase-13-migration--hybrid-practice"><a class="header" href="#-phase-13-migration--hybrid-practice">🟩 PHASE 13: MIGRATION &amp; HYBRID PRACTICE</a></h2>
+<h3 id="-goal-12"><a class="header" href="#-goal-12">🔹 Goal</a></h3>
+<p>Move real workloads to AWS.</p>
+<hr>
+<h3 id="23-migration-project"><a class="header" href="#23-migration-project">2️⃣3️⃣ Migration Project</a></h3>
+<p>Project:</p>
+<ul>
+<li>Migrate on-prem app to AWS</li>
+<li>Use DMS</li>
+<li>Use Application Migration Service</li>
+<li>Validate post-migration</li>
+</ul>
+<hr>
+<h2 id="-phase-14-professional-level-projects"><a class="header" href="#-phase-14-professional-level-projects">🟪 PHASE 14: PROFESSIONAL-LEVEL PROJECTS</a></h2>
+<h3 id="-goal-13"><a class="header" href="#-goal-13">🔹 Goal</a></h3>
+<p>Think like a Solutions Architect.</p>
+<hr>
+<h3 id="24-capstone-projects-very-important"><a class="header" href="#24-capstone-projects-very-important">2️⃣4️⃣ CAPSTONE PROJECTS (VERY IMPORTANT)</a></h3>
+<h4 id="project-1-production-web-application"><a class="header" href="#project-1-production-web-application">Project 1: Production Web Application</a></h4>
+<ul>
+<li>Multi-AZ architecture</li>
+<li>ALB + ASG</li>
+<li>RDS + Read Replicas</li>
+<li>S3 for static content</li>
+<li>CloudFront CDN</li>
+<li>Secure with IAM &amp; WAF</li>
+</ul>
+<hr>
+<h4 id="project-2-event-driven-system"><a class="header" href="#project-2-event-driven-system">Project 2: Event-Driven System</a></h4>
+<ul>
+<li>API Gateway</li>
+<li>Lambda</li>
+<li>DynamoDB</li>
+<li>EventBridge</li>
+<li>SQS</li>
+<li>Monitoring</li>
+</ul>
+<hr>
+<h4 id="project-3-disaster-recovery-design"><a class="header" href="#project-3-disaster-recovery-design">Project 3: Disaster Recovery Design</a></h4>
+<ul>
+<li>Multi-region setup</li>
+<li>Failover strategy</li>
+<li>Backup automation</li>
+<li>Cost vs availability analysis</li>
+</ul>
+<p>📌 <strong>Outcome:</strong>
+You are <strong>job-ready</strong> and <strong>professional-level</strong>.</p>
+<hr>
+<h2 id="-how-to-practice-effectively"><a class="header" href="#-how-to-practice-effectively">🧠 HOW TO PRACTICE EFFECTIVELY</a></h2>
+<ul>
+<li>Always draw architecture diagrams</li>
+<li>Break things intentionally</li>
+<li>Read AWS docs after labs</li>
+<li>Write post-mortems</li>
+<li>Track costs daily</li>
+</ul>
+<hr>
+<h2 id="-final-advice"><a class="header" href="#-final-advice">✅ FINAL ADVICE</a></h2>
+<p>If you <strong>complete these hands-on labs and projects</strong>, you will:</p>
+<ul>
+<li>Clear <strong>all AWS certifications</strong></li>
+<li>Be confident in <strong>real interviews</strong></li>
+<li>Understand AWS <strong>deeply</strong>, not superficially</li>
+</ul>
+<hr>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="aws.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="aws_left.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="aws.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="aws_left.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

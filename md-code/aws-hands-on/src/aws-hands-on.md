@@ -6362,7 +6362,7 @@ Used by **Amazon Web Services best practices**
 
 ---
 
-### 🧪 EC2 HANDS-ON – LAB 28
+## 🧪 EC2 HANDS-ON – LAB 28
 
 ### 👉 Patch Management for EC2 (Automatic OS Updates – Secure & Scalable)
 

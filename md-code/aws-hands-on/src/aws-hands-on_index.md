@@ -73,11 +73,11 @@ h2{
 
 ## 🟣 PHASE 6: SECURITY & BEST PRACTICES (REAL WORLD)
 
-* 🔲 **LAB 26** – [Bastion Host Architecture](./aws-hands-on.html#-ec2-hands-on--lab-26)
-* 🔲 **LAB 27** – [Private EC2 (No Internet Access)](./aws-hands-on.html#-ec2-hands-on--lab-27)
-* 🔲 **LAB 28** – [EC2 in Public vs Private Subnet](./aws-hands-on.html#-ec2-hands-on--lab-28)
-* 🔲 **LAB 29** – [Patch Management](./aws-hands-on.html#-ec2-hands-on--lab-29)
-* 🔲 **LAB 30** – [EC2 Backup Strategy](./aws-hands-on.html#-ec2-hands-on--lab-30)
+* 🔲 **LAB 26** – [Private EC2 + Bastion Host](./aws-hands-on.html#-ec2-hands-on--lab-26)
+* 🔲 **LAB 27** – [EC2 in Public vs Private Subnet](./aws-hands-on.html#-ec2-hands-on--lab-27)
+* 🔲 **LAB 28** – [Patch Management for EC2](./aws-hands-on.html#-ec2-hands-on--lab-28)
+* 🔲 **LAB 29** – [EC2 Backup Strategy](./aws-hands-on.html#-ec2-hands-on--lab-29)
+* 🔲 **LAB 30** – [EC2 Security Best Practices](./aws-hands-on.html#-ec2-hands-on--lab-30)
 
 ---
 

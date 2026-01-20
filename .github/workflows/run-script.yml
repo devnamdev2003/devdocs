@@ -15,9 +15,9 @@ jobs:
 
       - name: Install mdBook
         run: |
-          curl -sSL https://github.com/rust-lang/mdBook/releases/latest/download/mdbook-linux-amd64.tar.gz \
-          | tar -xz
-          sudo mv mdbook /usr/local/bin/
+          curl -L https://github.com/rust-lang/mdBook/releases/latest/download/mdbook-linux-amd64 -o mdbook
+          chmod +x mdbook
+          sudo mv mdbook /usr/local/bin/`
 
       - name: Make script executable
         run: chmod +x build.sh

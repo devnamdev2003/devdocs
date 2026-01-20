@@ -2,25 +2,24 @@ name: Build mdBook Docs
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Install mdBook
         run: |
-          curl -L https://github.com/rust-lang/mdBook/releases/latest/download/mdbook-linux-amd64 -o mdbook
+          curl -fL https://github.com/rust-lang/mdBook/releases/latest/download/mdbook-linux-amd64 -o mdbook
           chmod +x mdbook
-          sudo mv mdbook /usr/local/bin/`
+          sudo mv mdbook /usr/local/bin/
+          mdbook --version
 
-      - name: Make script executable
+      - name: Make build script executable
         run: chmod +x build.sh
 
-      - name: Run build script
+      - name: Run build
         run: ./build.sh

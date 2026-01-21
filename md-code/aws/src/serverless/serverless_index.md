@@ -8,8 +8,8 @@ h2{
 ## [👈](../)
 
 
-- [Serverless](serverless/serverless.md)
-- [AWS Lambda](serverless/lambda.md)
-- [AWS API Gateway](serverless/lambda_api_gatway.md)
-- [AWS Pricing](serverless/pricing.md)
-- [Labs](serverless/labs/labs_index.md)
+- [Serverless](serverless.md)
+- [AWS Lambda](lambda.md)
+- [AWS API Gateway](lambda_api_gatway.md)
+- [AWS Pricing](pricing.md)
+- [Labs](labs/labs_index.md)

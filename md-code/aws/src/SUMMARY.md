@@ -9,7 +9,7 @@
 - [AWS left](aws_left.md)
 
 - [AWS Networking](networking/networking_index.md)
-    - [AWS Networking](networking.md)
+    - [AWS Networking](networking/networking.md)
     - [IPv4 Address Structure, Private IPs, and Public IPs](networking/networking_ip.md)
     - [What is Subnetting?](networking/networking_subnet.md)
     - [What are TCP and UDP?](networking/networking_tcp_udp.md)

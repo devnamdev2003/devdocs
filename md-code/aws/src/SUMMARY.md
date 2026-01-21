@@ -2,7 +2,7 @@
 
 - [AWS index](aws_index.md)
 
-- [AWS](AWS.md)
+- [AWS](aws.md)
 
 - [AWS Roadmap](aws_roadmap.md)
 

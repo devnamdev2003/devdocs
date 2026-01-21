@@ -8,29 +8,29 @@ h2{
 ## [👈](../)
 
 - [🌐 AWS Networking – Complete Summary (Notes)](#-aws-networking--complete-summary-notes)
-  - [1️ What is an IP address?](#1️-what-is-an-ip-address)
-  - [2️ Why EC2 gets both Private IP and Public IP?](#2️-why-ec2-gets-both-private-ip-and-public-ip)
+  - [1️. What is an IP address?](#1️-what-is-an-ip-address)
+  - [2️. Why EC2 gets both Private IP and Public IP?](#2️-why-ec2-gets-both-private-ip-and-public-ip)
     - [✅ Private IP](#-private-ip)
     - [✅ Public IP](#-public-ip)
-  - [3️ What makes an IP “private” or “public”?](#3️-what-makes-an-ip-private-or-public)
+  - [3️. What makes an IP “private” or “public”?](#3️-what-makes-an-ip-private-or-public)
     - [✅ Private IP](#-private-ip-1)
     - [✅ Public IP](#-public-ip-1)
-  - [4 Why private IP is more secure than public IP?](#4-why-private-ip-is-more-secure-than-public-ip)
-  - [5 Can routers forward private IP traffic?](#5-can-routers-forward-private-ip-traffic)
-  - [6 What happens if I try to connect to EC2 using Private IP?](#6-what-happens-if-i-try-to-connect-to-ec2-using-private-ip)
+  - [4. Why private IP is more secure than public IP?](#4-why-private-ip-is-more-secure-than-public-ip)
+  - [5. Can routers forward private IP traffic?](#5-can-routers-forward-private-ip-traffic)
+  - [6. What happens if I try to connect to EC2 using Private IP?](#6-what-happens-if-i-try-to-connect-to-ec2-using-private-ip)
     - [❌ From internet (your laptop without VPN)](#-from-internet-your-laptop-without-vpn)
     - [✅ From same VPC or connected network (VPN)](#-from-same-vpc-or-connected-network-vpn)
-  - [7 Complete flow when connecting to EC2 using Public IP](#7-complete-flow-when-connecting-to-ec2-using-public-ip)
-  - [8 What is CIDR?](#8-what-is-cidr)
-  - [9 Is CIDR used while creating EC2?](#9-is-cidr-used-while-creating-ec2)
-  - [10 Why do we need a VPC?](#10-why-do-we-need-a-vpc)
-  - [11 Do we already have a VPC by default?](#11-do-we-already-have-a-vpc-by-default)
-  - [12 Does a VPC require a CIDR?](#12-does-a-vpc-require-a-cidr)
-  - [13 Can two VPCs have the same IP range?](#13-can-two-vpcs-have-the-same-ip-range)
-  - [14 Can EC2s in different VPCs have the same private IP?](#14-can-ec2s-in-different-vpcs-have-the-same-private-ip)
-  - [15 Can two EC2s have the same public IP?](#15-can-two-ec2s-have-the-same-public-ip)
-  - [16 Where do private IP and public IP come from?](#16-where-do-private-ip-and-public-ip-come-from)
-  - [17 What happens if IPs run out in a VPC or subnet?](#17-what-happens-if-ips-run-out-in-a-vpc-or-subnet)
+  - [7. Complete flow when connecting to EC2 using Public IP](#7-complete-flow-when-connecting-to-ec2-using-public-ip)
+  - [8. What is CIDR?](#8-what-is-cidr)
+  - [9. Is CIDR used while creating EC2?](#9-is-cidr-used-while-creating-ec2)
+  - [10. Why do we need a VPC?](#10-why-do-we-need-a-vpc)
+  - [11. Do we already have a VPC by default?](#11-do-we-already-have-a-vpc-by-default)
+  - [12. Does a VPC require a CIDR?](#12-does-a-vpc-require-a-cidr)
+  - [13. Can two VPCs have the same IP range?](#13-can-two-vpcs-have-the-same-ip-range)
+  - [14. Can EC2s in different VPCs have the same private IP?](#14-can-ec2s-in-different-vpcs-have-the-same-private-ip)
+  - [15. Can two EC2s have the same public IP?](#15-can-two-ec2s-have-the-same-public-ip)
+  - [16. Where do private IP and public IP come from?](#16-where-do-private-ip-and-public-ip-come-from)
+  - [17. What happens if IPs run out in a VPC or subnet?](#17-what-happens-if-ips-run-out-in-a-vpc-or-subnet)
   - [✅ FINAL GOLDEN RULES (Very Important)](#-final-golden-rules-very-important)
 
 
@@ -38,7 +38,7 @@ h2{
 
 ***
 
-## 1️ What is an IP address?
+## 1️. What is an IP address?
 
 An **IP address** is a unique number used to **identify and communicate with a device** in a network.
 
@@ -49,7 +49,7 @@ There are **two types** used in AWS EC2:
 
 ***
 
-## 2️ Why EC2 gets both Private IP and Public IP?
+## 2️. Why EC2 gets both Private IP and Public IP?
 
 ### ✅ Private IP
 
@@ -70,7 +70,7 @@ There are **two types** used in AWS EC2:
 
 ***
 
-## 3️ What makes an IP “private” or “public”?
+## 3️. What makes an IP “private” or “public”?
 
 ### ✅ Private IP
 
@@ -89,7 +89,7 @@ There are **two types** used in AWS EC2:
 
 ***
 
-## 4 Why private IP is more secure than public IP?
+## 4. Why private IP is more secure than public IP?
 
 *   Private IP is **not reachable from the internet**
 *   Internet routers **drop private IP traffic**
@@ -103,7 +103,7 @@ Public IP:
 
 ***
 
-## 5 Can routers forward private IP traffic?
+## 5. Can routers forward private IP traffic?
 
 *   ✅ **Inside your own network** (VPC, VPN, office)
 *   ❌ **Across the public internet**
@@ -117,7 +117,7 @@ Reason:
 
 ***
 
-## 6 What happens if I try to connect to EC2 using Private IP?
+## 6. What happens if I try to connect to EC2 using Private IP?
 
 ### ❌ From internet (your laptop without VPN)
 
@@ -132,7 +132,7 @@ Reason:
 
 ***
 
-## 7 Complete flow when connecting to EC2 using Public IP
+## 7. Complete flow when connecting to EC2 using Public IP
 
 1.  Laptop sends packet to **Public IP**
 2.  Packet travels through internet
@@ -150,7 +150,7 @@ Reason:
 
 ***
 
-## 8 What is CIDR?
+## 8. What is CIDR?
 
 **CIDR (Classless Inter‑Domain Routing)** defines a **range of IP addresses**.
 
@@ -170,7 +170,7 @@ Used in:
 
 ***
 
-## 9 Is CIDR used while creating EC2?
+## 9. Is CIDR used while creating EC2?
 
 *   ❌ Not directly
 *   ✅ Indirectly
@@ -200,7 +200,7 @@ It provides:
 
 ***
 
-## 10 Why do we need a VPC?
+## 10. Why do we need a VPC?
 
 We need VPC to:
 
@@ -217,7 +217,7 @@ Without VPC:
 
 ***
 
-## 11 Do we already have a VPC by default?
+## 11. Do we already have a VPC by default?
 
 ✅ Yes
 
@@ -232,7 +232,7 @@ AWS automatically creates a **default VPC**:
 
 ***
 
-## 12 Does a VPC require a CIDR?
+## 12. Does a VPC require a CIDR?
 
 ✅ Yes, always.
 
@@ -241,7 +241,7 @@ AWS automatically creates a **default VPC**:
 
 ***
 
-## 13 Can two VPCs have the same IP range?
+## 13. Can two VPCs have the same IP range?
 
 ✅ Yes, **as long as they are not connected**
 
@@ -259,7 +259,7 @@ Allowed because:
 
 ***
 
-## 14 Can EC2s in different VPCs have the same private IP?
+## 14. Can EC2s in different VPCs have the same private IP?
 
 ✅ Yes
 
@@ -275,7 +275,7 @@ No issue because:
 
 ***
 
-## 15 Can two EC2s have the same public IP?
+## 15. Can two EC2s have the same public IP?
 
 ❌ No, never.
 
@@ -292,7 +292,7 @@ Elastic IP:
 
 ***
 
-## 16 Where do private IP and public IP come from?
+## 16. Where do private IP and public IP come from?
 
 *   **Private IP** → Comes from **VPC CIDR**
 *   **Public IP** → Comes from **AWS’s public internet IP pool**
@@ -304,7 +304,7 @@ Public IP:
 
 ***
 
-## 17 What happens if IPs run out in a VPC or subnet?
+## 17. What happens if IPs run out in a VPC or subnet?
 
 *   IP exhaustion is **local to that VPC / subnet**
 *   Other VPCs (even with same CIDR) are NOT affected

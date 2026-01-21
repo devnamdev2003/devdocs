@@ -5,7 +5,7 @@ h2{
 
 </style>
 
-## [👈](../)
+## [👈](../../)
 
 
 1. [Serverless REST API](lab1.md)

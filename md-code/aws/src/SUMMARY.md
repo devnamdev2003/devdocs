@@ -8,8 +8,8 @@
 
 - [AWS left](aws_left.md)
 
-- [AWS Networking](networking/networking.md)
-    - [AWS Networking](networking/networking_aws.md)
+- [AWS Networking](networking/networking_index.md)
+    - [AWS Networking](networking.md)
     - [IPv4 Address Structure, Private IPs, and Public IPs](networking/networking_ip.md)
     - [What is Subnetting?](networking/networking_subnet.md)
     - [What are TCP and UDP?](networking/networking_tcp_udp.md)
@@ -24,8 +24,10 @@
     - [Security Groups in AWS](networking/networking_sg.md)
     - [Network Access Control Lists (NACLs) in AWS](networking/networking_nacl.md)
     - [NACL vs Security Group (SG)](networking/networking_nacl_sg.md)
+    - [Networking doubt](networking/networking_doubt.md)
 
-- [Serverless](serverless/serverless.md)
+- [Serverless](serverless/serverless_index.md)
+    - [Serverless](serverless/serverless.md)
     - [AWS Lambda](serverless/lambda.md)
     - [AWS API Gateway](serverless/lambda_api_gatway.md)
     - [AWS Pricing](serverless/pricing.md)

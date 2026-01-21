@@ -5,6 +5,27 @@
 
 ---
 
+- [🗂️ AWS MASTER GITHUB PROJECT STRUCTURE](#️-aws-master-github-project-structure)
+  - [📁 ROOT STRUCTURE](#-root-structure)
+- [📁 DETAILED FOLDER BREAKDOWN](#-detailed-folder-breakdown)
+  - [📁 `00-cloud-foundations/`](#-00-cloud-foundations)
+  - [📁 `01-iam-security/`](#-01-iam-security)
+  - [📁 `02-compute/`](#-02-compute)
+  - [📁 `03-storage/`](#-03-storage)
+  - [📁 `04-databases/`](#-04-databases)
+  - [📁 `05-networking/`](#-05-networking)
+  - [📁 `06-serverless/`](#-06-serverless)
+  - [📁 `07-application-integration/`](#-07-application-integration)
+  - [📁 `08-monitoring-logging/`](#-08-monitoring-logging)
+  - [📁 `09-devops-automation/`](#-09-devops-automation)
+  - [📁 `10-security-compliance/`](#-10-security-compliance)
+  - [📁 `11-cost-optimization/`](#-11-cost-optimization)
+  - [📁 `12-migration-hybrid/`](#-12-migration-hybrid)
+  - [📁 `13-architecture-design/`](#-13-architecture-design)
+  - [📁 `projects/` ⭐ MOST IMPORTANT](#-projects--most-important)
+  - [📁 `diagrams/`](#-diagrams)
+
+
 ## 📁 ROOT STRUCTURE
 
 ```text

@@ -5,7 +5,7 @@ h2{
 
 </style>
 
-## [👈](../../src)
+## [👈](../)
 
 # 🔑 Big Picture: EC2 Access + Linux Users (ONE CLEAR MODEL)
 

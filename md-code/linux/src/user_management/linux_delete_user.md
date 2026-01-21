@@ -5,7 +5,7 @@ h2{
 
 </style>
 
-## [👈](../../src)
+## [👈](../)
 
 # 🗑️ How to Safely Delete a User in Linux
 

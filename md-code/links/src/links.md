@@ -52,7 +52,7 @@ Live backend services, REST APIs, and server-side applications hosted on Render.
   [https://rentify-decode.onrender.com/](https://rentify-decode.onrender.com/)
 
 3. **DevNoms Backend** – Real-time chat backend
-  [https://devnoms.onrender.com/](https://devnoms.onrender.com/)
+  [https://coders813-django-chat-application.hf.space/](https://coders813-django-chat-application.hf.space/)
 
 4. **Contact API** – Contact management REST API  
   [https://contactapi-1uvn.onrender.com/](https://contactapi-1uvn.onrender.com/)

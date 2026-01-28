@@ -70,7 +70,7 @@ Live backend services, REST APIs, and server-side applications hosted on Render.
 Production-grade frontend deployments.
 
 1. **ExpenseWise (Production)**  
-  [https://exwise.vercel.app/](https://exwise.vercel.app/)
+  [https://devnamdev2003.github.io/angular-expense-tracker/](https://devnamdev2003.github.io/angular-expense-tracker/)
 
 2. **ExpenseWise (APK / Dev Build)**  
   [https://exwisedev.vercel.app/](https://exwisedev.vercel.app/)

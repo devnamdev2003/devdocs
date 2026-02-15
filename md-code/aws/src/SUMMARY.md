@@ -39,3 +39,5 @@
         - [Secure Serverless Compute](serverless/labs/lab5.md)
 
 - [dev](dev.md)
+
+- [aws_quiz_topic](aws_quiz_topic.md)

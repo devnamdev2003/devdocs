@@ -1,0 +1,576 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>DNS Resolution Flow</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- PWA -->
+        <link rel="icon" type="image/x-icon" href="https://devnamdev2003.github.io/devdocs/static/icons/favicon.ico">
+        <link rel="manifest" href="https://devnamdev2003.github.io/devdocs/static/manifest.webmanifest">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="theme-color" content="#0d1117">
+        
+        <meta name="title" content="AWS">
+        <meta name="description" content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="og:image" content="https://devnamdev2003.github.io/devdocs/static/img/aws/aws_c.png">
+        <meta property="og:title" content="AWS">
+        <meta property="og:description"
+            content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="twitter:image" content="https://devnamdev2003.github.io/devdocs/static/img/aws/aws_c.png">
+        <meta property="twitter:title" content="AWS">
+        <meta property="twitter:description"
+            content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        <meta name="description" content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../aws_index.html"><strong aria-hidden="true">1.</strong> AWS index</a></li><li class="chapter-item expanded "><a href="../aws.html"><strong aria-hidden="true">2.</strong> AWS</a></li><li class="chapter-item expanded "><a href="../aws_roadmap.html"><strong aria-hidden="true">3.</strong> AWS Roadmap</a></li><li class="chapter-item expanded "><a href="../aws_left.html"><strong aria-hidden="true">4.</strong> AWS left</a></li><li class="chapter-item expanded "><a href="../networking/networking_index.html"><strong aria-hidden="true">5.</strong> AWS Networking</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../networking/networking.html"><strong aria-hidden="true">5.1.</strong> AWS Networking</a></li><li class="chapter-item expanded "><a href="../networking/networking_ip.html"><strong aria-hidden="true">5.2.</strong> IPv4 Address Structure, Private IPs, and Public IPs</a></li><li class="chapter-item expanded "><a href="../networking/networking_subnet.html"><strong aria-hidden="true">5.3.</strong> What is Subnetting?</a></li><li class="chapter-item expanded "><a href="../networking/networking_tcp_udp.html"><strong aria-hidden="true">5.4.</strong> What are TCP and UDP?</a></li><li class="chapter-item expanded "><a href="../networking/networking_route_table.html"><strong aria-hidden="true">5.5.</strong> Route Tables</a></li><li class="chapter-item expanded "><a href="../networking/networking_port.html"><strong aria-hidden="true">5.6.</strong> Port</a></li><li class="chapter-item expanded "><a href="../networking/networking_firewall.html"><strong aria-hidden="true">5.7.</strong> Firewalls and Security Concepts</a></li><li class="chapter-item expanded "><a href="../networking/networking_cidr.html"><strong aria-hidden="true">5.8.</strong> CIDR Notation</a></li><li class="chapter-item expanded "><a href="../networking/networking_dns.html" class="active"><strong aria-hidden="true">5.9.</strong> DNS Resolution Flow</a></li><li class="chapter-item expanded "><a href="../networking/networking_igw.html"><strong aria-hidden="true">5.10.</strong> Internet Gateway (IGW) in AWS</a></li><li class="chapter-item expanded "><a href="../networking/networking_nat.html"><strong aria-hidden="true">5.11.</strong> Network Address Translation (NAT)</a></li><li class="chapter-item expanded "><a href="../networking/networking_nat_igw.html"><strong aria-hidden="true">5.12.</strong> NAT Gateway vs Internet Gateway (IGW)</a></li><li class="chapter-item expanded "><a href="../networking/networking_sg.html"><strong aria-hidden="true">5.13.</strong> Security Groups in AWS</a></li><li class="chapter-item expanded "><a href="../networking/networking_nacl.html"><strong aria-hidden="true">5.14.</strong> Network Access Control Lists (NACLs) in AWS</a></li><li class="chapter-item expanded "><a href="../networking/networking_nacl_sg.html"><strong aria-hidden="true">5.15.</strong> NACL vs Security Group (SG)</a></li><li class="chapter-item expanded "><a href="../networking/networking_doubt.html"><strong aria-hidden="true">5.16.</strong> Networking doubt</a></li></ol></li><li class="chapter-item expanded "><a href="../serverless/serverless_index.html"><strong aria-hidden="true">6.</strong> Serverless</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverless/serverless.html"><strong aria-hidden="true">6.1.</strong> Serverless</a></li><li class="chapter-item expanded "><a href="../serverless/lambda.html"><strong aria-hidden="true">6.2.</strong> AWS Lambda</a></li><li class="chapter-item expanded "><a href="../serverless/lambda_api_gatway.html"><strong aria-hidden="true">6.3.</strong> AWS API Gateway</a></li><li class="chapter-item expanded "><a href="../serverless/pricing.html"><strong aria-hidden="true">6.4.</strong> AWS Pricing</a></li><li class="chapter-item expanded "><a href="../serverless/labs/labs_index.html"><strong aria-hidden="true">6.5.</strong> Labs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverless/labs/lab1.html"><strong aria-hidden="true">6.5.1.</strong> Serverless REST API</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab2.html"><strong aria-hidden="true">6.5.2.</strong> Event-Driven Processing</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab3.html"><strong aria-hidden="true">6.5.3.</strong> Asynchronous Messaging</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab4.html"><strong aria-hidden="true">6.5.4.</strong> Scheduled & Rule-Based Serverless Jobs</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab5.html"><strong aria-hidden="true">6.5.5.</strong> Secure Serverless Compute</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../dev.html"><strong aria-hidden="true">7.</strong> dev</a></li><li class="chapter-item expanded "><a href="../aws_quiz_topic.html"><strong aria-hidden="true">8.</strong> aws_quiz_topic</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs/edit/main/md-code/aws/src/networking/networking_dns.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+<h2 id=""><a class="header" href="#"><a href="../">👈</a></a></h2>
+<ul>
+<li><a href="#-dns-resolution-flow-complete-explanation">🌐 DNS Resolution Flow (Complete Explanation)</a>
+<ul>
+<li><a href="#1%EF%B8%8F%E2%83%A3-what-is-dns-resolution">1️⃣ What is DNS Resolution?</a>
+<ul>
+<li><a href="#example">Example:</a></li>
+</ul>
+</li>
+<li><a href="#2%EF%B8%8F%E2%83%A3-why-dns-resolution-is-required">2️⃣ Why DNS Resolution is Required</a></li>
+<li><a href="#3%EF%B8%8F%E2%83%A3-high-level-dns-resolution-flow">3️⃣ High-Level DNS Resolution Flow</a></li>
+<li><a href="#4%EF%B8%8F%E2%83%A3-step-by-step-dns-resolution-flow-detailed">4️⃣ Step-by-Step DNS Resolution Flow (Detailed)</a>
+<ul>
+<li><a href="#-step-1-browser-cache-check">🔵 Step 1: Browser Cache Check</a></li>
+<li><a href="#-step-2-operating-system-os-cache">🔵 Step 2: Operating System (OS) Cache</a></li>
+<li><a href="#-step-3-hosts-file-check">🔵 Step 3: Hosts File Check</a></li>
+<li><a href="#-step-4-recursive-dns-resolver">🔵 Step 4: Recursive DNS Resolver</a></li>
+</ul>
+</li>
+<li><a href="#5%EF%B8%8F%E2%83%A3-recursive-resolver-detailed-flow">5️⃣ Recursive Resolver Detailed Flow</a>
+<ul>
+<li><a href="#-step-51-query-root-name-server">🟠 Step 5.1: Query Root Name Server</a></li>
+<li><a href="#-step-52-query-tld-name-server-com">🟠 Step 5.2: Query TLD Name Server (.com)</a></li>
+<li><a href="#-step-53-query-authoritative-name-server">🟠 Step 5.3: Query Authoritative Name Server</a></li>
+</ul>
+</li>
+<li><a href="#6%EF%B8%8F%E2%83%A3-step-6-response-sent-back">6️⃣ Step 6: Response Sent Back</a></li>
+<li><a href="#7%EF%B8%8F%E2%83%A3-step-7-caching-very-important">7️⃣ Step 7: Caching (Very Important)</a></li>
+<li><a href="#8%EF%B8%8F%E2%83%A3-protocols-used-in-dns-resolution">8️⃣ Protocols Used in DNS Resolution</a>
+<ul>
+<li><a href="#-transport-protocol">🔹 Transport Protocol</a></li>
+<li><a href="#-application-protocol">🔹 Application Protocol</a></li>
+</ul>
+</li>
+<li><a href="#9%EF%B8%8F%E2%83%A3-types-of-dns-queries">9️⃣ Types of DNS Queries</a>
+<ul>
+<li><a href="#1%EF%B8%8F%E2%83%A3-recursive-query">1️⃣ Recursive Query</a></li>
+<li><a href="#2%EF%B8%8F%E2%83%A3-iterative-query">2️⃣ Iterative Query</a></li>
+<li><a href="#3%EF%B8%8F%E2%83%A3-non-recursive-query">3️⃣ Non-Recursive Query</a></li>
+</ul>
+</li>
+<li><a href="#-common-dns-record-types-exam-important">🔟 Common DNS Record Types (Exam Important)</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A31%EF%B8%8F%E2%83%A3-dns-resolution-in-aws-route-53">1️⃣1️⃣ DNS Resolution in AWS (Route 53)</a>
+<ul>
+<li><a href="#example-1">Example:</a></li>
+</ul>
+</li>
+<li><a href="#1%EF%B8%8F%E2%83%A32%EF%B8%8F%E2%83%A3-what-happens-after-dns-resolution">1️⃣2️⃣ What Happens After DNS Resolution?</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A33%EF%B8%8F%E2%83%A3-common-dns-failures-troubleshooting">1️⃣3️⃣ Common DNS Failures (Troubleshooting)</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A34%EF%B8%8F%E2%83%A3-real-world-analogy">1️⃣4️⃣ Real-World Analogy</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A35%EF%B8%8F%E2%83%A3-one-line-exam-definition">1️⃣5️⃣ One-Line Exam Definition</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A36%EF%B8%8F%E2%83%A3-super-short-summary">1️⃣6️⃣ Super Short Summary</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="-dns-resolution-flow-complete-explanation"><a class="header" href="#-dns-resolution-flow-complete-explanation">🌐 DNS Resolution Flow (Complete Explanation)</a></h1>
+<hr />
+<h2 id="1-what-is-dns-resolution"><a class="header" href="#1-what-is-dns-resolution">1️⃣ What is DNS Resolution?</a></h2>
+<p><strong>DNS resolution</strong> is the process of converting a <strong>human-readable domain name</strong> into an <strong>IP address</strong>.</p>
+<h3 id="example"><a class="header" href="#example">Example:</a></h3>
+<pre><code>www.google.com → 142.250.195.14
+</code></pre>
+<p>Computers understand <strong>IP addresses</strong>, not domain names.</p>
+<hr />
+<h2 id="2-why-dns-resolution-is-required"><a class="header" href="#2-why-dns-resolution-is-required">2️⃣ Why DNS Resolution is Required</a></h2>
+<ul>
+<li>Humans remember names</li>
+<li>Computers route using IPs</li>
+<li>DNS acts like the <strong>internet’s phonebook</strong></li>
+</ul>
+<p>Without DNS:</p>
+<ul>
+<li>You would need to remember IPs for every website</li>
+</ul>
+<hr />
+<h2 id="3-high-level-dns-resolution-flow"><a class="header" href="#3-high-level-dns-resolution-flow">3️⃣ High-Level DNS Resolution Flow</a></h2>
+<pre><code>Browser
+ ↓
+OS Cache
+ ↓
+Recursive Resolver (ISP / Public DNS)
+ ↓
+Root Name Server
+ ↓
+TLD Name Server (.com)
+ ↓
+Authoritative Name Server
+ ↓
+IP Address returned
+</code></pre>
+<hr />
+<h2 id="4-step-by-step-dns-resolution-flow-detailed"><a class="header" href="#4-step-by-step-dns-resolution-flow-detailed">4️⃣ Step-by-Step DNS Resolution Flow (Detailed)</a></h2>
+<p>Let’s assume you type:</p>
+<pre><code>www.example.com
+</code></pre>
+<hr />
+<h3 id="-step-1-browser-cache-check"><a class="header" href="#-step-1-browser-cache-check">🔵 Step 1: Browser Cache Check</a></h3>
+<p>Your browser first checks:</p>
+<ul>
+<li>Has this domain been resolved recently?</li>
+</ul>
+<p>If <strong>yes</strong>:
+✔ IP returned immediately
+✔ DNS process stops</p>
+<p>If <strong>no</strong>:
+➡ Move to next step</p>
+<hr />
+<h3 id="-step-2-operating-system-os-cache"><a class="header" href="#-step-2-operating-system-os-cache">🔵 Step 2: Operating System (OS) Cache</a></h3>
+<p>The OS checks:</p>
+<ul>
+<li>Local DNS cache</li>
+</ul>
+<p>Command example (Linux):</p>
+<pre><code class="language-bash">nscd
+</code></pre>
+<p>If IP found:
+✔ Returned to browser</p>
+<p>If not:
+➡ Next step</p>
+<hr />
+<h3 id="-step-3-hosts-file-check"><a class="header" href="#-step-3-hosts-file-check">🔵 Step 3: Hosts File Check</a></h3>
+<p>The OS checks:</p>
+<ul>
+<li><code>/etc/hosts</code> (Linux/macOS)</li>
+<li><code>C:\Windows\System32\drivers\etc\hosts</code> (Windows)</li>
+</ul>
+<p>Example entry:</p>
+<pre><code>127.0.0.1 mysite.local
+</code></pre>
+<p>If match found:
+✔ IP returned</p>
+<hr />
+<h3 id="-step-4-recursive-dns-resolver"><a class="header" href="#-step-4-recursive-dns-resolver">🔵 Step 4: Recursive DNS Resolver</a></h3>
+<p>If still unresolved:</p>
+<ul>
+<li>Request goes to <strong>Recursive Resolver</strong></li>
+</ul>
+<p>Usually:</p>
+<ul>
+<li>
+<p>ISP DNS</p>
+</li>
+<li>
+<p>Or public DNS like:</p>
+<ul>
+<li>Google (8.8.8.8)</li>
+<li>Cloudflare (1.1.1.1)</li>
+</ul>
+</li>
+</ul>
+<p>The resolver now takes responsibility to <strong>find the IP</strong>.</p>
+<hr />
+<h2 id="5-recursive-resolver-detailed-flow"><a class="header" href="#5-recursive-resolver-detailed-flow">5️⃣ Recursive Resolver Detailed Flow</a></h2>
+<p>The recursive resolver performs <strong>iterative queries</strong>.</p>
+<hr />
+<h3 id="-step-51-query-root-name-server"><a class="header" href="#-step-51-query-root-name-server">🟠 Step 5.1: Query Root Name Server</a></h3>
+<p>Resolver asks:</p>
+<pre><code>Who knows about .com?
+</code></pre>
+<p>Root server replies:</p>
+<pre><code>Ask .com TLD servers
+</code></pre>
+<p>📌 Root servers do NOT know IP addresses
+They only direct to TLD servers</p>
+<hr />
+<h3 id="-step-52-query-tld-name-server-com"><a class="header" href="#-step-52-query-tld-name-server-com">🟠 Step 5.2: Query TLD Name Server (.com)</a></h3>
+<p>Resolver asks:</p>
+<pre><code>Who knows example.com?
+</code></pre>
+<p>TLD server replies:</p>
+<pre><code>Ask example.com authoritative server
+</code></pre>
+<hr />
+<h3 id="-step-53-query-authoritative-name-server"><a class="header" href="#-step-53-query-authoritative-name-server">🟠 Step 5.3: Query Authoritative Name Server</a></h3>
+<p>Resolver asks:</p>
+<pre><code>What is IP of www.example.com?
+</code></pre>
+<p>Authoritative server replies:</p>
+<pre><code>142.250.195.14
+</code></pre>
+<p>✔ This server is the <strong>final authority</strong></p>
+<hr />
+<h2 id="6-step-6-response-sent-back"><a class="header" href="#6-step-6-response-sent-back">6️⃣ Step 6: Response Sent Back</a></h2>
+<p>The IP address flows back:</p>
+<pre><code>Authoritative → TLD → Resolver → OS → Browser
+</code></pre>
+<hr />
+<h2 id="7-step-7-caching-very-important"><a class="header" href="#7-step-7-caching-very-important">7️⃣ Step 7: Caching (Very Important)</a></h2>
+<p>At multiple levels:</p>
+<ul>
+<li>Recursive resolver</li>
+<li>OS</li>
+<li>Browser</li>
+</ul>
+<p>Caching is based on:</p>
+<pre><code>TTL (Time To Live)
+</code></pre>
+<p>Example:</p>
+<pre><code>TTL = 300 seconds
+</code></pre>
+<p>After TTL expires:</p>
+<ul>
+<li>DNS resolution happens again</li>
+</ul>
+<hr />
+<h2 id="8-protocols-used-in-dns-resolution"><a class="header" href="#8-protocols-used-in-dns-resolution">8️⃣ Protocols Used in DNS Resolution</a></h2>
+<h3 id="-transport-protocol"><a class="header" href="#-transport-protocol">🔹 Transport Protocol</a></h3>
+<ul>
+<li><strong>UDP 53</strong> (default)</li>
+<li><strong>TCP 53</strong> (large responses / DNSSEC)</li>
+</ul>
+<h3 id="-application-protocol"><a class="header" href="#-application-protocol">🔹 Application Protocol</a></h3>
+<ul>
+<li>DNS</li>
+</ul>
+<hr />
+<h2 id="9-types-of-dns-queries"><a class="header" href="#9-types-of-dns-queries">9️⃣ Types of DNS Queries</a></h2>
+<h3 id="1-recursive-query"><a class="header" href="#1-recursive-query">1️⃣ Recursive Query</a></h3>
+<ul>
+<li>Client → Resolver</li>
+<li>Resolver does all the work</li>
+</ul>
+<h3 id="2-iterative-query"><a class="header" href="#2-iterative-query">2️⃣ Iterative Query</a></h3>
+<ul>
+<li>Resolver → Root / TLD / Authoritative</li>
+</ul>
+<h3 id="3-non-recursive-query"><a class="header" href="#3-non-recursive-query">3️⃣ Non-Recursive Query</a></h3>
+<ul>
+<li>Cached response</li>
+</ul>
+<hr />
+<h2 id="-common-dns-record-types-exam-important"><a class="header" href="#-common-dns-record-types-exam-important">🔟 Common DNS Record Types (Exam Important)</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Record</th><th>Purpose</th></tr></thead><tbody>
+<tr><td>A</td><td>Domain → IPv4</td></tr>
+<tr><td>AAAA</td><td>Domain → IPv6</td></tr>
+<tr><td>CNAME</td><td>Alias</td></tr>
+<tr><td>MX</td><td>Mail server</td></tr>
+<tr><td>NS</td><td>Name server</td></tr>
+<tr><td>TXT</td><td>Verification</td></tr>
+<tr><td>SOA</td><td>Zone info</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="11-dns-resolution-in-aws-route-53"><a class="header" href="#11-dns-resolution-in-aws-route-53">1️⃣1️⃣ DNS Resolution in AWS (Route 53)</a></h2>
+<h3 id="example-1"><a class="header" href="#example-1">Example:</a></h3>
+<pre><code>example.com hosted in Route 53
+</code></pre>
+<p>Flow:</p>
+<ul>
+<li>Resolver queries Route 53 authoritative servers</li>
+<li>Route 53 returns IP (EC2 / ALB / CloudFront)</li>
+</ul>
+<p>Special features:</p>
+<ul>
+<li>Latency-based routing</li>
+<li>Health checks</li>
+<li>Failover</li>
+</ul>
+<hr />
+<h2 id="12-what-happens-after-dns-resolution"><a class="header" href="#12-what-happens-after-dns-resolution">1️⃣2️⃣ What Happens After DNS Resolution?</a></h2>
+<p>Once IP is obtained:</p>
+<ol>
+<li>Browser opens <strong>TCP connection</strong></li>
+<li>HTTP / HTTPS request starts</li>
+<li>Website loads</li>
+</ol>
+<p>DNS is <strong>only the first step</strong>.</p>
+<hr />
+<h2 id="13-common-dns-failures-troubleshooting"><a class="header" href="#13-common-dns-failures-troubleshooting">1️⃣3️⃣ Common DNS Failures (Troubleshooting)</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Issue</th><th>Cause</th></tr></thead><tbody>
+<tr><td>Website not loading</td><td>DNS not resolved</td></tr>
+<tr><td>NXDOMAIN</td><td>Domain does not exist</td></tr>
+<tr><td>Slow website</td><td>High DNS latency</td></tr>
+<tr><td>Works sometimes</td><td>TTL caching issue</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="14-real-world-analogy"><a class="header" href="#14-real-world-analogy">1️⃣4️⃣ Real-World Analogy</a></h2>
+<p>DNS is like:</p>
+<ul>
+<li>
+<p>Asking a receptionist:</p>
+<blockquote>
+<p>“Where does John sit?”</p>
+</blockquote>
+</li>
+<li>
+<p>She checks:</p>
+<ul>
+<li>Internal list</li>
+<li>Department</li>
+<li>Manager</li>
+</ul>
+</li>
+<li>
+<p>Finally gives desk number</p>
+</li>
+</ul>
+<hr />
+<h2 id="15-one-line-exam-definition"><a class="header" href="#15-one-line-exam-definition">1️⃣5️⃣ One-Line Exam Definition</a></h2>
+<blockquote>
+<p><strong>DNS resolution is the process of translating a domain name into an IP address using a hierarchical, distributed name server system.</strong></p>
+</blockquote>
+<hr />
+<h2 id="16-super-short-summary"><a class="header" href="#16-super-short-summary">1️⃣6️⃣ Super Short Summary</a></h2>
+<ul>
+<li>Browser checks cache</li>
+<li>Resolver does lookup</li>
+<li>Root → TLD → Authoritative</li>
+<li>IP returned</li>
+<li>Cached for speed</li>
+</ul>
+<hr />
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../networking/networking_cidr.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../networking/networking_igw.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../networking/networking_cidr.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../networking/networking_igw.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

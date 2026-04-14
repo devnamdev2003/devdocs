@@ -1,0 +1,560 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Spring Security Roadmap</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- PWA -->
+        <link rel="icon" type="image/x-icon" href="https://devnamdev2003.github.io/devdocs/static/icons/favicon.ico">
+        <link rel="manifest" href="https://devnamdev2003.github.io/devdocs/static/manifest.webmanifest">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="theme-color" content="#0d1117">
+        
+        <meta name="title" content="spring-boot">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://devnamdev2003.github.io/devdocs">
+        
+        <meta property="og:title" content="spring-boot">
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="twitter:title" content="spring-boot">
+
+        <meta name="description" content="Concise and practical Spring boot notes ">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="spring-boot_index.html"><strong aria-hidden="true">1.</strong> Spring Boot Index</a></li><li class="chapter-item expanded "><a href="spring-boot-exception-handling-roadmap.html"><strong aria-hidden="true">2.</strong> Spring Boot Exception Handling Roadmap</a></li><li class="chapter-item expanded "><a href="spring-security-roadmap.html" class="active"><strong aria-hidden="true">3.</strong> Spring Security Roadmap</a></li><li class="chapter-item expanded "><a href="json-code.html"><strong aria-hidden="true">4.</strong> json-code</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs/edit/main/md-code/spring-boot/src/spring-security-roadmap.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+<h2 id=""><a class="header" href="#"><a href="../src">👈</a></a></h2>
+<h1 id="-spring-boot-exception-handling-roadmap-basic--expert"><a class="header" href="#-spring-boot-exception-handling-roadmap-basic--expert">🚀 Spring Boot Exception Handling Roadmap (Basic → Expert)</a></h1>
+<hr />
+<h2 id="-1-basics-of-exception-handling"><a class="header" href="#-1-basics-of-exception-handling">🟢 1. Basics of Exception Handling</a></h2>
+<h3 id="topics"><a class="header" href="#topics">Topics</a></h3>
+<ul>
+<li>What is an Exception in Java</li>
+<li>Checked vs Unchecked exceptions</li>
+<li>Default Spring Boot error response</li>
+<li>HTTP status codes (200, 400, 404, 500, etc.)</li>
+</ul>
+<h3 id="labs-"><a class="header" href="#labs-">Labs 🧪</a></h3>
+<ul>
+<li>
+<p>Create API: <code>/test/{id}</code></p>
+</li>
+<li>
+<p>Throw:</p>
+<ul>
+<li><code>RuntimeException</code></li>
+<li><code>NullPointerException</code></li>
+</ul>
+</li>
+<li>
+<p>Observe default response</p>
+</li>
+</ul>
+<hr />
+<h2 id="-2-basic-controller-level-handling"><a class="header" href="#-2-basic-controller-level-handling">🟡 2. Basic Controller-Level Handling</a></h2>
+<h3 id="topics-1"><a class="header" href="#topics-1">Topics</a></h3>
+<ul>
+<li><code>@ExceptionHandler</code></li>
+<li>Handling exceptions inside a controller</li>
+<li>Returning custom responses</li>
+</ul>
+<h3 id="labs--1"><a class="header" href="#labs--1">Labs 🧪</a></h3>
+<ul>
+<li>Handle <code>RuntimeException</code> in controller</li>
+<li>Return:</li>
+</ul>
+<pre><code class="language-json">{
+  "message": "Something went wrong"
+}
+</code></pre>
+<hr />
+<h2 id="-3-global-exception-handling-very-important-"><a class="header" href="#-3-global-exception-handling-very-important-">🟠 3. Global Exception Handling (VERY IMPORTANT 🔥)</a></h2>
+<h3 id="topics-2"><a class="header" href="#topics-2">Topics</a></h3>
+<ul>
+<li><code>@ControllerAdvice</code></li>
+<li><code>@RestControllerAdvice</code></li>
+<li>Centralized exception handling</li>
+</ul>
+<h3 id="labs--2"><a class="header" href="#labs--2">Labs 🧪</a></h3>
+<ul>
+<li>
+<p>Create <code>GlobalExceptionHandler</code> class</p>
+</li>
+<li>
+<p>Handle:</p>
+<ul>
+<li>Generic Exception</li>
+<li>Custom Exception</li>
+</ul>
+</li>
+<li>
+<p>Apply across all controllers</p>
+</li>
+</ul>
+<hr />
+<h2 id="-4-custom-exceptions-real-world-usage"><a class="header" href="#-4-custom-exceptions-real-world-usage">🔵 4. Custom Exceptions (Real-world usage)</a></h2>
+<h3 id="topics-3"><a class="header" href="#topics-3">Topics</a></h3>
+<ul>
+<li>Creating custom exceptions</li>
+<li>Business exceptions (e.g., <code>UserNotFoundException</code>)</li>
+<li>When to use custom exceptions</li>
+</ul>
+<h3 id="labs--3"><a class="header" href="#labs--3">Labs 🧪</a></h3>
+<ul>
+<li>
+<p>Create:</p>
+<ul>
+<li><code>UserNotFoundException</code></li>
+</ul>
+</li>
+<li>
+<p>Throw it when user not found</p>
+</li>
+<li>
+<p>Handle it globally</p>
+</li>
+</ul>
+<hr />
+<h2 id="-5-custom-error-response-structure-very-important"><a class="header" href="#-5-custom-error-response-structure-very-important">🟣 5. Custom Error Response Structure (VERY IMPORTANT)</a></h2>
+<h3 id="topics-4"><a class="header" href="#topics-4">Topics</a></h3>
+<ul>
+<li>
+<p>Designing standard API response</p>
+</li>
+<li>
+<p>Fields:</p>
+<ul>
+<li>timestamp</li>
+<li>status</li>
+<li>message</li>
+<li>path</li>
+</ul>
+</li>
+<li>
+<p>Consistent API error format</p>
+</li>
+</ul>
+<h3 id="labs--4"><a class="header" href="#labs--4">Labs 🧪</a></h3>
+<ul>
+<li>Create <code>ErrorResponse</code> class</li>
+<li>Return structured JSON like:</li>
+</ul>
+<pre><code class="language-json">{
+  "timestamp": "...",
+  "status": 404,
+  "message": "User not found",
+  "path": "/api/users/1"
+}
+</code></pre>
+<hr />
+<h2 id="-6-handling-specific-exceptions"><a class="header" href="#-6-handling-specific-exceptions">🔴 6. Handling Specific Exceptions</a></h2>
+<h3 id="topics-5"><a class="header" href="#topics-5">Topics</a></h3>
+<ul>
+<li><code>MethodArgumentNotValidException</code></li>
+<li><code>HttpMessageNotReadableException</code></li>
+<li><code>ConstraintViolationException</code></li>
+</ul>
+<h3 id="labs--5"><a class="header" href="#labs--5">Labs 🧪</a></h3>
+<ul>
+<li>
+<p>Add validation using:</p>
+<ul>
+<li><code>@NotNull</code></li>
+<li><code>@Size</code></li>
+</ul>
+</li>
+<li>
+<p>Send invalid request → handle validation errors</p>
+</li>
+</ul>
+<hr />
+<h2 id="-7-validation-error-handling-important-for-apis"><a class="header" href="#-7-validation-error-handling-important-for-apis">🟤 7. Validation Error Handling (Important for APIs)</a></h2>
+<h3 id="topics-6"><a class="header" href="#topics-6">Topics</a></h3>
+<ul>
+<li>Bean Validation (JSR-380)</li>
+<li>Field-level error messages</li>
+<li>Aggregating validation errors</li>
+</ul>
+<h3 id="labs--6"><a class="header" href="#labs--6">Labs 🧪</a></h3>
+<ul>
+<li>Return multiple field errors:</li>
+</ul>
+<pre><code class="language-json">{
+  "errors": {
+    "name": "must not be empty",
+    "email": "invalid format"
+  }
+}
+</code></pre>
+<hr />
+<h2 id="-8-responsestatus--annotations"><a class="header" href="#-8-responsestatus--annotations">⚫ 8. ResponseStatus &amp; Annotations</a></h2>
+<h3 id="topics-7"><a class="header" href="#topics-7">Topics</a></h3>
+<ul>
+<li><code>@ResponseStatus</code></li>
+<li>Using it with exceptions</li>
+<li>Pros &amp; limitations</li>
+</ul>
+<h3 id="labs--7"><a class="header" href="#labs--7">Labs 🧪</a></h3>
+<ul>
+<li>Annotate custom exception:</li>
+</ul>
+<pre><code class="language-java">@ResponseStatus(HttpStatus.NOT_FOUND)
+</code></pre>
+<ul>
+<li>Compare with global handler</li>
+</ul>
+<hr />
+<h2 id="-9-handling-404--nohandlerfoundexception"><a class="header" href="#-9-handling-404--nohandlerfoundexception">🟠 9. Handling 404 &amp; NoHandlerFoundException</a></h2>
+<h3 id="topics-8"><a class="header" href="#topics-8">Topics</a></h3>
+<ul>
+<li>Customizing 404 errors</li>
+<li>Enabling <code>throw-exception-if-no-handler-found</code></li>
+</ul>
+<h3 id="labs--8"><a class="header" href="#labs--8">Labs 🧪</a></h3>
+<ul>
+<li>Configure application.properties:</li>
+</ul>
+<pre><code class="language-properties">spring.mvc.throw-exception-if-no-handler-found=true
+</code></pre>
+<ul>
+<li>Handle 404 globally</li>
+</ul>
+<hr />
+<h2 id="-10-spring-boot-default-error-handling-internals"><a class="header" href="#-10-spring-boot-default-error-handling-internals">🔵 10. Spring Boot Default Error Handling Internals</a></h2>
+<h3 id="topics-9"><a class="header" href="#topics-9">Topics</a></h3>
+<ul>
+<li><code>BasicErrorController</code></li>
+<li><code>ErrorAttributes</code></li>
+<li>How Spring generates error response</li>
+</ul>
+<h3 id="labs--9"><a class="header" href="#labs--9">Labs 🧪</a></h3>
+<ul>
+<li>Override default error attributes</li>
+<li>Customize error output</li>
+</ul>
+<hr />
+<h2 id="-11-logging--monitoring-exceptions-production-level"><a class="header" href="#-11-logging--monitoring-exceptions-production-level">🟣 11. Logging &amp; Monitoring Exceptions (Production Level)</a></h2>
+<h3 id="topics-10"><a class="header" href="#topics-10">Topics</a></h3>
+<ul>
+<li>Logging exceptions properly</li>
+<li>Log levels (ERROR, WARN)</li>
+<li>Avoid exposing sensitive info</li>
+</ul>
+<h3 id="labs--10"><a class="header" href="#labs--10">Labs 🧪</a></h3>
+<ul>
+<li>Log exceptions using logger</li>
+<li>Mask sensitive data (passwords, tokens)</li>
+</ul>
+<hr />
+<h2 id="-12-security--exception-handling-integration"><a class="header" href="#-12-security--exception-handling-integration">🔴 12. Security + Exception Handling Integration</a></h2>
+<h3 id="topics-11"><a class="header" href="#topics-11">Topics</a></h3>
+<ul>
+<li>Handling exceptions in Spring Security</li>
+<li><code>AuthenticationEntryPoint</code></li>
+<li><code>AccessDeniedHandler</code></li>
+</ul>
+<h3 id="labs--11"><a class="header" href="#labs--11">Labs 🧪</a></h3>
+<ul>
+<li>
+<p>Return custom JSON for:</p>
+<ul>
+<li>Unauthorized (401)</li>
+<li>Forbidden (403)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="-13-global-api-response-wrapper-advanced"><a class="header" href="#-13-global-api-response-wrapper-advanced">⚫ 13. Global API Response Wrapper (Advanced)</a></h2>
+<h3 id="topics-12"><a class="header" href="#topics-12">Topics</a></h3>
+<ul>
+<li>Standard success + error wrapper</li>
+<li>Consistent API design</li>
+</ul>
+<h3 id="labs--12"><a class="header" href="#labs--12">Labs 🧪</a></h3>
+<ul>
+<li>Create:</li>
+</ul>
+<pre><code class="language-json">{
+  "success": false,
+  "data": null,
+  "error": { ... }
+}
+</code></pre>
+<hr />
+<h2 id="-14-microservices-exception-handling-advanced"><a class="header" href="#-14-microservices-exception-handling-advanced">🟤 14. Microservices Exception Handling (Advanced+)</a></h2>
+<h3 id="topics-13"><a class="header" href="#topics-13">Topics</a></h3>
+<ul>
+<li>Propagating errors between services</li>
+<li>Feign/WebClient error handling</li>
+<li>Standard error contracts</li>
+</ul>
+<h3 id="labs--13"><a class="header" href="#labs--13">Labs 🧪</a></h3>
+<ul>
+<li>Handle downstream API errors</li>
+<li>Map external errors to internal format</li>
+</ul>
+<hr />
+<h1 id="-final-project-must-build"><a class="header" href="#-final-project-must-build">🎯 Final Project (Must Build)</a></h1>
+<h3 id="-production-ready-error-handling-system"><a class="header" href="#-production-ready-error-handling-system">💼 "Production-Ready Error Handling System"</a></h3>
+<p>Include:</p>
+<ul>
+<li>Global exception handler</li>
+<li>Custom exceptions</li>
+<li>Validation handling</li>
+<li>JWT + security errors</li>
+<li>Standard response format</li>
+<li>Logging</li>
+</ul>
+<hr />
+<h1 id="-pro-tips-from-industry"><a class="header" href="#-pro-tips-from-industry">🧠 Pro Tips (From Industry)</a></h1>
+<ul>
+<li>
+<p>Never return raw exceptions ❌</p>
+</li>
+<li>
+<p>Always use structured responses ✅</p>
+</li>
+<li>
+<p>Separate:</p>
+<ul>
+<li>Business exceptions</li>
+<li>Technical exceptions</li>
+</ul>
+</li>
+<li>
+<p>Keep messages user-friendly</p>
+</li>
+</ul>
+<hr />
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="spring-boot-exception-handling-roadmap.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="json-code.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="spring-boot-exception-handling-roadmap.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="json-code.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

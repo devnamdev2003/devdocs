@@ -1,0 +1,801 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>What are TCP and UDP?</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- PWA -->
+        <link rel="icon" type="image/x-icon" href="https://devnamdev2003.github.io/devdocs/static/icons/favicon.ico">
+        <link rel="manifest" href="https://devnamdev2003.github.io/devdocs/static/manifest.webmanifest">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="theme-color" content="#0d1117">
+        
+        <meta name="title" content="AWS">
+        <meta name="description" content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="og:image" content="https://devnamdev2003.github.io/devdocs/static/img/aws/aws_c.png">
+        <meta property="og:title" content="AWS">
+        <meta property="og:description"
+            content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="twitter:image" content="https://devnamdev2003.github.io/devdocs/static/img/aws/aws_c.png">
+        <meta property="twitter:title" content="AWS">
+        <meta property="twitter:description"
+            content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        <meta name="description" content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../aws_index.html"><strong aria-hidden="true">1.</strong> AWS index</a></li><li class="chapter-item expanded "><a href="../aws.html"><strong aria-hidden="true">2.</strong> AWS</a></li><li class="chapter-item expanded "><a href="../aws_roadmap.html"><strong aria-hidden="true">3.</strong> AWS Roadmap</a></li><li class="chapter-item expanded "><a href="../aws_left.html"><strong aria-hidden="true">4.</strong> AWS left</a></li><li class="chapter-item expanded "><a href="../networking/networking_index.html"><strong aria-hidden="true">5.</strong> AWS Networking</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../networking/networking.html"><strong aria-hidden="true">5.1.</strong> AWS Networking</a></li><li class="chapter-item expanded "><a href="../networking/networking_ip.html"><strong aria-hidden="true">5.2.</strong> IPv4 Address Structure, Private IPs, and Public IPs</a></li><li class="chapter-item expanded "><a href="../networking/networking_subnet.html"><strong aria-hidden="true">5.3.</strong> What is Subnetting?</a></li><li class="chapter-item expanded "><a href="../networking/networking_tcp_udp.html" class="active"><strong aria-hidden="true">5.4.</strong> What are TCP and UDP?</a></li><li class="chapter-item expanded "><a href="../networking/networking_route_table.html"><strong aria-hidden="true">5.5.</strong> Route Tables</a></li><li class="chapter-item expanded "><a href="../networking/networking_port.html"><strong aria-hidden="true">5.6.</strong> Port</a></li><li class="chapter-item expanded "><a href="../networking/networking_firewall.html"><strong aria-hidden="true">5.7.</strong> Firewalls and Security Concepts</a></li><li class="chapter-item expanded "><a href="../networking/networking_cidr.html"><strong aria-hidden="true">5.8.</strong> CIDR Notation</a></li><li class="chapter-item expanded "><a href="../networking/networking_dns.html"><strong aria-hidden="true">5.9.</strong> DNS Resolution Flow</a></li><li class="chapter-item expanded "><a href="../networking/networking_igw.html"><strong aria-hidden="true">5.10.</strong> Internet Gateway (IGW) in AWS</a></li><li class="chapter-item expanded "><a href="../networking/networking_nat.html"><strong aria-hidden="true">5.11.</strong> Network Address Translation (NAT)</a></li><li class="chapter-item expanded "><a href="../networking/networking_nat_igw.html"><strong aria-hidden="true">5.12.</strong> NAT Gateway vs Internet Gateway (IGW)</a></li><li class="chapter-item expanded "><a href="../networking/networking_sg.html"><strong aria-hidden="true">5.13.</strong> Security Groups in AWS</a></li><li class="chapter-item expanded "><a href="../networking/networking_nacl.html"><strong aria-hidden="true">5.14.</strong> Network Access Control Lists (NACLs) in AWS</a></li><li class="chapter-item expanded "><a href="../networking/networking_nacl_sg.html"><strong aria-hidden="true">5.15.</strong> NACL vs Security Group (SG)</a></li><li class="chapter-item expanded "><a href="../networking/networking_doubt.html"><strong aria-hidden="true">5.16.</strong> Networking doubt</a></li></ol></li><li class="chapter-item expanded "><a href="../serverless/serverless_index.html"><strong aria-hidden="true">6.</strong> Serverless</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverless/serverless.html"><strong aria-hidden="true">6.1.</strong> Serverless</a></li><li class="chapter-item expanded "><a href="../serverless/lambda.html"><strong aria-hidden="true">6.2.</strong> AWS Lambda</a></li><li class="chapter-item expanded "><a href="../serverless/lambda_api_gatway.html"><strong aria-hidden="true">6.3.</strong> AWS API Gateway</a></li><li class="chapter-item expanded "><a href="../serverless/pricing.html"><strong aria-hidden="true">6.4.</strong> AWS Pricing</a></li><li class="chapter-item expanded "><a href="../serverless/labs/labs_index.html"><strong aria-hidden="true">6.5.</strong> Labs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverless/labs/lab1.html"><strong aria-hidden="true">6.5.1.</strong> Serverless REST API</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab2.html"><strong aria-hidden="true">6.5.2.</strong> Event-Driven Processing</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab3.html"><strong aria-hidden="true">6.5.3.</strong> Asynchronous Messaging</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab4.html"><strong aria-hidden="true">6.5.4.</strong> Scheduled & Rule-Based Serverless Jobs</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab5.html"><strong aria-hidden="true">6.5.5.</strong> Secure Serverless Compute</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../dev.html"><strong aria-hidden="true">7.</strong> dev</a></li><li class="chapter-item expanded "><a href="../aws_quiz_topic.html"><strong aria-hidden="true">8.</strong> aws_quiz_topic</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs/edit/main/md-code/aws/src/networking/networking_tcp_udp.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+<h2 id=""><a class="header" href="#"><a href="../">👈</a></a></h2>
+<ul>
+<li><a href="#-what-are-tcp-and-udp">🌐 What are TCP and UDP?</a>
+<ul>
+<li><a href="#-where-tcpudp-sit-very-important">🧱 Where TCP/UDP Sit (Very Important)</a></li>
+</ul>
+</li>
+<li><a href="#-tcp-transmission-control-protocol">🔵 TCP (Transmission Control Protocol)</a>
+<ul>
+<li><a href="#what-is-tcp">What is TCP?</a></li>
+<li><a href="#-key-characteristics-of-tcp">🧠 Key Characteristics of TCP</a>
+<ul>
+<li><a href="#1%EF%B8%8F%E2%83%A3-connection-oriented">1️⃣ Connection-Oriented</a></li>
+<li><a href="#-3-way-handshake">🤝 3-Way Handshake</a></li>
+<li><a href="#2%EF%B8%8F%E2%83%A3-reliable-delivery">2️⃣ Reliable Delivery</a></li>
+<li><a href="#3%EF%B8%8F%E2%83%A3-ordered-data">3️⃣ Ordered Data</a></li>
+<li><a href="#4%EF%B8%8F%E2%83%A3-flow-control">4️⃣ Flow Control</a></li>
+<li><a href="#5%EF%B8%8F%E2%83%A3-congestion-control">5️⃣ Congestion Control</a></li>
+<li><a href="#6%EF%B8%8F%E2%83%A3-error-checking">6️⃣ Error Checking</a></li>
+</ul>
+</li>
+<li><a href="#-tcp-header-high-level">📌 TCP Header (High Level)</a></li>
+<li><a href="#-common-tcp-use-cases">🛠 Common TCP Use Cases</a></li>
+<li><a href="#-real-life-example-tcp">📦 Real-Life Example (TCP)</a>
+<ul>
+<li><a href="#downloading-a-file">Downloading a file</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#-udp-user-datagram-protocol">🟠 UDP (User Datagram Protocol)</a>
+<ul>
+<li><a href="#what-is-udp">What is UDP?</a></li>
+<li><a href="#-key-characteristics-of-udp">🧠 Key Characteristics of UDP</a>
+<ul>
+<li><a href="#1%EF%B8%8F%E2%83%A3-connectionless">1️⃣ Connectionless</a></li>
+<li><a href="#2%EF%B8%8F%E2%83%A3-no-reliability">2️⃣ No Reliability</a></li>
+<li><a href="#3%EF%B8%8F%E2%83%A3-no-ordering">3️⃣ No Ordering</a></li>
+<li><a href="#4%EF%B8%8F%E2%83%A3-no-flow-control">4️⃣ No Flow Control</a></li>
+<li><a href="#5%EF%B8%8F%E2%83%A3-no-congestion-control">5️⃣ No Congestion Control</a></li>
+<li><a href="#6%EF%B8%8F%E2%83%A3-very-small-header">6️⃣ Very Small Header</a></li>
+</ul>
+</li>
+<li><a href="#-udp-header">📌 UDP Header</a></li>
+<li><a href="#-common-udp-use-cases">🛠 Common UDP Use Cases</a></li>
+<li><a href="#-real-life-example-udp">📦 Real-Life Example (UDP)</a>
+<ul>
+<li><a href="#video-call">Video Call</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%EF%B8%8F-tcp-vs-udp-side-by-side-comparison">⚔️ TCP vs UDP (Side-by-Side Comparison)</a></li>
+<li><a href="#%EF%B8%8F-tcp-vs-udp-in-aws-exam-important">☁️ TCP vs UDP in AWS (Exam Important)</a>
+<ul>
+<li><a href="#security-groups">Security Groups</a></li>
+<li><a href="#load-balancers">Load Balancers</a></li>
+</ul>
+</li>
+<li><a href="#-common-exam-traps">🧪 Common Exam Traps</a></li>
+<li><a href="#-one-line-definitions-exam-ready">🧠 One-Line Definitions (Exam Ready)</a>
+<ul>
+<li><a href="#tcp">TCP</a></li>
+<li><a href="#udp">UDP</a></li>
+</ul>
+</li>
+<li><a href="#-easy-memory-trick">🧩 Easy Memory Trick</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A3-what-problem-existed-before-tcp--udp">1️⃣ What problem existed BEFORE TCP &amp; UDP?</a>
+<ul>
+<li><a href="#-early-networks-very-simple-idea">🧠 Early networks (very simple idea)</a></li>
+<li><a href="#-ip-alone-was-not-enough">🚨 IP Alone Was Not Enough</a></li>
+</ul>
+</li>
+<li><a href="#2%EF%B8%8F%E2%83%A3-what-was-used-before-tcp--udp">2️⃣ What was used BEFORE TCP &amp; UDP?</a>
+<ul>
+<li><a href="#-only-ip-and-very-primitive-protocols">📦 Only IP (and very primitive protocols)</a></li>
+</ul>
+</li>
+<li><a href="#3%EF%B8%8F%E2%83%A3-why-tcp--udp-were-introduced">3️⃣ Why TCP &amp; UDP Were Introduced</a></li>
+<li><a href="#4%EF%B8%8F%E2%83%A3-what-tcp--udp-actually-solve">4️⃣ What TCP &amp; UDP Actually Solve</a></li>
+<li><a href="#5%EF%B8%8F%E2%83%A3-why-we-need-ports-very-important">5️⃣ Why We Need <strong>Ports</strong> (Very Important)</a>
+<ul>
+<li><a href="#solution-ports">Solution: PORTS</a></li>
+</ul>
+</li>
+<li><a href="#6%EF%B8%8F%E2%83%A3-why-two-protocols-why-not-only-one">6️⃣ Why Two Protocols? Why Not Only One?</a>
+<ul>
+<li><a href="#-why-tcp-is-needed">🟦 Why TCP is Needed</a>
+<ul>
+<li><a href="#tcp-guarantees">TCP guarantees:</a></li>
+</ul>
+</li>
+<li><a href="#-why-udp-is-needed">🟧 Why UDP is Needed</a></li>
+</ul>
+</li>
+<li><a href="#7%EF%B8%8F%E2%83%A3-real-life-analogy-very-clear">7️⃣ Real-Life Analogy (Very Clear)</a>
+<ul>
+<li><a href="#-tcp--courier-service">📦 TCP = Courier Service</a></li>
+<li><a href="#-udp--live-announcement">📢 UDP = Live Announcement</a></li>
+<li><a href="#8%EF%B8%8F%E2%83%A3-what-happens-if-we-use-only-tcp">8️⃣ What Happens If We Use Only TCP?</a></li>
+<li><a href="#9%EF%B8%8F%E2%83%A3-what-happens-if-we-use-only-udp">9️⃣ What Happens If We Use Only UDP?</a></li>
+<li><a href="#-final-architecture-big-picture">🔟 Final Architecture (Big Picture)</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A31%EF%B8%8F%E2%83%A3-one-line-exam-answer">1️⃣1️⃣ One-Line Exam Answer</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A32%EF%B8%8F%E2%83%A3-super-simple-summary">1️⃣2️⃣ Super Simple Summary</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="-what-are-tcp-and-udp"><a class="header" href="#-what-are-tcp-and-udp">🌐 What are TCP and UDP?</a></h1>
+<p><strong>TCP</strong> and <strong>UDP</strong> are <strong>transport layer protocols</strong>.</p>
+<p>📌 They work at <strong>Layer 4</strong> of the <strong>OSI model</strong>.</p>
+<p>Their job is:</p>
+<blockquote>
+<p><strong>To send data from one application to another application over the network.</strong></p>
+</blockquote>
+<hr />
+<h2 id="-where-tcpudp-sit-very-important"><a class="header" href="#-where-tcpudp-sit-very-important">🧱 Where TCP/UDP Sit (Very Important)</a></h2>
+<pre><code>Application (HTTP, HTTPS, FTP, DNS)
+Transport   → TCP / UDP
+Network     → IP
+Data Link
+Physical
+</code></pre>
+<ul>
+<li>Applications use <strong>ports</strong></li>
+<li>TCP/UDP use <strong>ports + rules</strong></li>
+<li>IP handles <strong>addressing</strong></li>
+</ul>
+<hr />
+<h1 id="-tcp-transmission-control-protocol"><a class="header" href="#-tcp-transmission-control-protocol">🔵 TCP (Transmission Control Protocol)</a></h1>
+<h2 id="what-is-tcp"><a class="header" href="#what-is-tcp">What is TCP?</a></h2>
+<blockquote>
+<p><strong>TCP is a connection-oriented, reliable protocol that guarantees data delivery in the correct order.</strong></p>
+</blockquote>
+<hr />
+<h2 id="-key-characteristics-of-tcp"><a class="header" href="#-key-characteristics-of-tcp">🧠 Key Characteristics of TCP</a></h2>
+<h3 id="1-connection-oriented"><a class="header" href="#1-connection-oriented">1️⃣ Connection-Oriented</a></h3>
+<p>TCP <strong>creates a connection</strong> before sending data.</p>
+<p>This is done using:</p>
+<h3 id="-3-way-handshake"><a class="header" href="#-3-way-handshake">🤝 3-Way Handshake</a></h3>
+<pre><code>Client → SYN
+Server → SYN-ACK
+Client → ACK
+</code></pre>
+<p>Only after this → data transfer starts.</p>
+<hr />
+<h3 id="2-reliable-delivery"><a class="header" href="#2-reliable-delivery">2️⃣ Reliable Delivery</a></h3>
+<p>TCP <strong>guarantees</strong>:</p>
+<ul>
+<li>Data arrives</li>
+<li>No data loss</li>
+</ul>
+<p>How?</p>
+<ul>
+<li><strong>Acknowledgements (ACK)</strong></li>
+<li><strong>Retransmission</strong> if data is lost</li>
+</ul>
+<hr />
+<h3 id="3-ordered-data"><a class="header" href="#3-ordered-data">3️⃣ Ordered Data</a></h3>
+<ul>
+<li>Data arrives in <strong>same order</strong> as sent</li>
+<li>Uses <strong>sequence numbers</strong></li>
+</ul>
+<hr />
+<h3 id="4-flow-control"><a class="header" href="#4-flow-control">4️⃣ Flow Control</a></h3>
+<p>Prevents sender from <strong>overwhelming receiver</strong>.</p>
+<p>Uses:</p>
+<ul>
+<li><strong>Window size</strong></li>
+<li>Receiver tells sender how much data it can accept</li>
+</ul>
+<hr />
+<h3 id="5-congestion-control"><a class="header" href="#5-congestion-control">5️⃣ Congestion Control</a></h3>
+<p>Prevents <strong>network congestion</strong>.</p>
+<p>Mechanisms:</p>
+<ul>
+<li>Slow Start</li>
+<li>Congestion Avoidance</li>
+<li>Fast Retransmit</li>
+</ul>
+<p>(Exam tip: TCP handles congestion)</p>
+<hr />
+<h3 id="6-error-checking"><a class="header" href="#6-error-checking">6️⃣ Error Checking</a></h3>
+<ul>
+<li>TCP checks for <strong>errors</strong></li>
+<li>Corrupted packets are <strong>re-sent</strong></li>
+</ul>
+<hr />
+<h2 id="-tcp-header-high-level"><a class="header" href="#-tcp-header-high-level">📌 TCP Header (High Level)</a></h2>
+<p>TCP header contains:</p>
+<ul>
+<li>Source port</li>
+<li>Destination port</li>
+<li>Sequence number</li>
+<li>Acknowledgment number</li>
+<li>Flags (SYN, ACK, FIN)</li>
+<li>Window size</li>
+</ul>
+<p>👉 This makes TCP <strong>heavy but reliable</strong></p>
+<hr />
+<h2 id="-common-tcp-use-cases"><a class="header" href="#-common-tcp-use-cases">🛠 Common TCP Use Cases</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Service</th><th>Port</th></tr></thead><tbody>
+<tr><td>HTTP</td><td>80</td></tr>
+<tr><td>HTTPS</td><td>443</td></tr>
+<tr><td>SSH</td><td>22</td></tr>
+<tr><td>FTP</td><td>21</td></tr>
+<tr><td>SMTP</td><td>25</td></tr>
+<tr><td>MySQL</td><td>3306</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-real-life-example-tcp"><a class="header" href="#-real-life-example-tcp">📦 Real-Life Example (TCP)</a></h2>
+<h3 id="downloading-a-file"><a class="header" href="#downloading-a-file">Downloading a file</a></h3>
+<ul>
+<li>Missing data = ❌ bad file</li>
+<li>Order matters</li>
+<li>Accuracy is critical</li>
+</ul>
+<p>👉 <strong>TCP is used</strong></p>
+<hr />
+<h1 id="-udp-user-datagram-protocol"><a class="header" href="#-udp-user-datagram-protocol">🟠 UDP (User Datagram Protocol)</a></h1>
+<h2 id="what-is-udp"><a class="header" href="#what-is-udp">What is UDP?</a></h2>
+<blockquote>
+<p><strong>UDP is a connectionless, fast protocol that does not guarantee delivery or order.</strong></p>
+</blockquote>
+<hr />
+<h2 id="-key-characteristics-of-udp"><a class="header" href="#-key-characteristics-of-udp">🧠 Key Characteristics of UDP</a></h2>
+<h3 id="1-connectionless"><a class="header" href="#1-connectionless">1️⃣ Connectionless</a></h3>
+<ul>
+<li>No handshake</li>
+<li>No connection setup</li>
+<li>Data sent immediately</li>
+</ul>
+<hr />
+<h3 id="2-no-reliability"><a class="header" href="#2-no-reliability">2️⃣ No Reliability</a></h3>
+<ul>
+<li>No ACK</li>
+<li>No retransmission</li>
+<li>Data may be lost</li>
+</ul>
+<hr />
+<h3 id="3-no-ordering"><a class="header" href="#3-no-ordering">3️⃣ No Ordering</a></h3>
+<ul>
+<li>Packets may arrive out of order</li>
+<li>Application must handle it</li>
+</ul>
+<hr />
+<h3 id="4-no-flow-control"><a class="header" href="#4-no-flow-control">4️⃣ No Flow Control</a></h3>
+<ul>
+<li>Sender sends at full speed</li>
+</ul>
+<hr />
+<h3 id="5-no-congestion-control"><a class="header" href="#5-no-congestion-control">5️⃣ No Congestion Control</a></h3>
+<ul>
+<li>UDP does <strong>not</strong> slow down for network congestion</li>
+</ul>
+<hr />
+<h3 id="6-very-small-header"><a class="header" href="#6-very-small-header">6️⃣ Very Small Header</a></h3>
+<ul>
+<li>Less overhead</li>
+<li>Faster transmission</li>
+</ul>
+<hr />
+<h2 id="-udp-header"><a class="header" href="#-udp-header">📌 UDP Header</a></h2>
+<p>Contains only:</p>
+<ul>
+<li>Source port</li>
+<li>Destination port</li>
+<li>Length</li>
+<li>Checksum</li>
+</ul>
+<p>👉 Very <strong>lightweight</strong></p>
+<hr />
+<h2 id="-common-udp-use-cases"><a class="header" href="#-common-udp-use-cases">🛠 Common UDP Use Cases</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Service</th><th>Port</th></tr></thead><tbody>
+<tr><td>DNS</td><td>53</td></tr>
+<tr><td>DHCP</td><td>67/68</td></tr>
+<tr><td>Video Streaming</td><td>—</td></tr>
+<tr><td>Online Gaming</td><td>—</td></tr>
+<tr><td>VoIP (calls)</td><td>—</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-real-life-example-udp"><a class="header" href="#-real-life-example-udp">📦 Real-Life Example (UDP)</a></h2>
+<h3 id="video-call"><a class="header" href="#video-call">Video Call</a></h3>
+<ul>
+<li>Missing 1 frame = acceptable</li>
+<li>Speed matters more than accuracy</li>
+<li>Retransmission causes delay</li>
+</ul>
+<p>👉 <strong>UDP is used</strong></p>
+<hr />
+<h1 id="-tcp-vs-udp-side-by-side-comparison"><a class="header" href="#-tcp-vs-udp-side-by-side-comparison">⚔️ TCP vs UDP (Side-by-Side Comparison)</a></h1>
+<div class="table-wrapper"><table><thead><tr><th>Feature</th><th>TCP</th><th>UDP</th></tr></thead><tbody>
+<tr><td>Connection</td><td>Connection-oriented</td><td>Connectionless</td></tr>
+<tr><td>Reliability</td><td>Guaranteed</td><td>Not guaranteed</td></tr>
+<tr><td>Order</td><td>Maintained</td><td>Not maintained</td></tr>
+<tr><td>Speed</td><td>Slower</td><td>Faster</td></tr>
+<tr><td>Header Size</td><td>Large</td><td>Small</td></tr>
+<tr><td>Error Recovery</td><td>Yes</td><td>No</td></tr>
+<tr><td>Flow Control</td><td>Yes</td><td>No</td></tr>
+<tr><td>Congestion Control</td><td>Yes</td><td>No</td></tr>
+<tr><td>Use Case</td><td>Web, DB, File transfer</td><td>Streaming, Gaming</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h1 id="-tcp-vs-udp-in-aws-exam-important"><a class="header" href="#-tcp-vs-udp-in-aws-exam-important">☁️ TCP vs UDP in AWS (Exam Important)</a></h1>
+<h3 id="security-groups"><a class="header" href="#security-groups">Security Groups</a></h3>
+<p>You must specify:</p>
+<ul>
+<li><strong>Protocol</strong> (TCP / UDP)</li>
+<li><strong>Port number</strong></li>
+</ul>
+<p>Example:</p>
+<pre><code>Allow TCP 22 from My IP
+Allow UDP 53 from VPC
+</code></pre>
+<p>❗ Opening TCP does NOT open UDP automatically.</p>
+<hr />
+<h3 id="load-balancers"><a class="header" href="#load-balancers">Load Balancers</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Load Balancer</th><th>Protocol</th></tr></thead><tbody>
+<tr><td>Application LB</td><td>HTTP / HTTPS (TCP based)</td></tr>
+<tr><td>Network LB</td><td>TCP / UDP</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h1 id="-common-exam-traps"><a class="header" href="#-common-exam-traps">🧪 Common Exam Traps</a></h1>
+<p>❗ Website slow?</p>
+<ul>
+<li>TCP retransmission</li>
+<li>Network congestion</li>
+</ul>
+<p>❗ Video buffering?</p>
+<ul>
+<li>UDP packet loss</li>
+<li>Bandwidth issue</li>
+</ul>
+<p>❗ DNS uses UDP because:</p>
+<ul>
+<li>Small requests</li>
+<li>Fast response</li>
+<li>Retries handled by application</li>
+</ul>
+<hr />
+<h1 id="-one-line-definitions-exam-ready"><a class="header" href="#-one-line-definitions-exam-ready">🧠 One-Line Definitions (Exam Ready)</a></h1>
+<h3 id="tcp"><a class="header" href="#tcp">TCP</a></h3>
+<blockquote>
+<p><strong>TCP is a reliable, connection-oriented protocol that ensures ordered and error-free data transmission.</strong></p>
+</blockquote>
+<h3 id="udp"><a class="header" href="#udp">UDP</a></h3>
+<blockquote>
+<p><strong>UDP is a fast, connectionless protocol that sends data without delivery guarantees.</strong></p>
+</blockquote>
+<hr />
+<h1 id="-easy-memory-trick"><a class="header" href="#-easy-memory-trick">🧩 Easy Memory Trick</a></h1>
+<ul>
+<li><strong>TCP = “Trust &amp; Care Protocol”</strong></li>
+<li><strong>UDP = “Unreliable but Fast Protocol”</strong></li>
+</ul>
+<hr />
+<p>Good question, Dev 👍
+This is a <strong>very fundamental networking doubt</strong>, and I’ll explain it <strong>slowly</strong>, <strong>clearly</strong>, and <strong>from history → problem → solution</strong>, so everything connects in your mind.</p>
+<p>I think you meant <strong>TCP and UDP</strong> (not <em>tcs</em>).
+I’ll explain assuming <strong>TCP vs UDP</strong>.</p>
+<hr />
+<h1 id="1-what-problem-existed-before-tcp--udp"><a class="header" href="#1-what-problem-existed-before-tcp--udp">1️⃣ What problem existed BEFORE TCP &amp; UDP?</a></h1>
+<h3 id="-early-networks-very-simple-idea"><a class="header" href="#-early-networks-very-simple-idea">🧠 Early networks (very simple idea)</a></h3>
+<p>Initially, computers only knew:</p>
+<ul>
+<li><strong>Who to send data to</strong> → using <strong>IP address</strong></li>
+</ul>
+<p>That’s it.</p>
+<p>Example:</p>
+<pre><code>Send data to 192.168.1.10
+</code></pre>
+<p>❌ Problems:</p>
+<ul>
+<li>How does the computer know <strong>which application</strong>?</li>
+<li>What if data is <strong>lost</strong>?</li>
+<li>What if data comes <strong>out of order</strong>?</li>
+<li>What if too much data is sent at once?</li>
+</ul>
+<hr />
+<h2 id="-ip-alone-was-not-enough"><a class="header" href="#-ip-alone-was-not-enough">🚨 IP Alone Was Not Enough</a></h2>
+<p><strong>IP (Internet Protocol)</strong> only does:</p>
+<ul>
+<li>Addressing</li>
+<li>Routing</li>
+</ul>
+<p>IP does <strong>NOT</strong>:</p>
+<ul>
+<li>Guarantee delivery</li>
+<li>Maintain order</li>
+<li>Control speed</li>
+<li>Identify applications</li>
+</ul>
+<p>👉 IP just says:</p>
+<blockquote>
+<p>“I’ll try my best to deliver packets”</p>
+</blockquote>
+<p>This is called <strong>best-effort delivery</strong>.</p>
+<hr />
+<h1 id="2-what-was-used-before-tcp--udp"><a class="header" href="#2-what-was-used-before-tcp--udp">2️⃣ What was used BEFORE TCP &amp; UDP?</a></h1>
+<h3 id="-only-ip-and-very-primitive-protocols"><a class="header" href="#-only-ip-and-very-primitive-protocols">📦 Only IP (and very primitive protocols)</a></h3>
+<ul>
+<li>Data was sent as <strong>raw packets</strong></li>
+<li>No ports</li>
+<li>No reliability</li>
+<li>No control</li>
+</ul>
+<p>Result:
+❌ Applications broke
+❌ Data corruption
+❌ No scalability</p>
+<hr />
+<h1 id="3-why-tcp--udp-were-introduced"><a class="header" href="#3-why-tcp--udp-were-introduced">3️⃣ Why TCP &amp; UDP Were Introduced</a></h1>
+<p>The internet needed:</p>
+<ul>
+<li>Multiple applications on one machine</li>
+<li>Reliable communication</li>
+<li>Fast communication (sometimes reliability not needed)</li>
+</ul>
+<p>So <strong>Transport Layer protocols</strong> were created.</p>
+<hr />
+<h1 id="4-what-tcp--udp-actually-solve"><a class="header" href="#4-what-tcp--udp-actually-solve">4️⃣ What TCP &amp; UDP Actually Solve</a></h1>
+<div class="table-wrapper"><table><thead><tr><th>Problem</th><th>TCP</th><th>UDP</th></tr></thead><tbody>
+<tr><td>Identify application</td><td>✅ Ports</td><td>✅ Ports</td></tr>
+<tr><td>Reliable delivery</td><td>✅ Yes</td><td>❌ No</td></tr>
+<tr><td>Order of data</td><td>✅ Yes</td><td>❌ No</td></tr>
+<tr><td>Speed</td><td>❌ Slower</td><td>✅ Faster</td></tr>
+<tr><td>Error handling</td><td>✅ Yes</td><td>❌ No</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h1 id="5-why-we-need-ports-very-important"><a class="header" href="#5-why-we-need-ports-very-important">5️⃣ Why We Need <strong>Ports</strong> (Very Important)</a></h1>
+<p>Imagine this:</p>
+<p>Your computer is running:</p>
+<ul>
+<li>Browser</li>
+<li>Email</li>
+<li>Video call</li>
+</ul>
+<p>All using the <strong>same IP</strong>.</p>
+<p>👉 How to differentiate?</p>
+<h3 id="solution-ports"><a class="header" href="#solution-ports">Solution: PORTS</a></h3>
+<pre><code>IP = machine
+Port = application
+</code></pre>
+<p>Example:</p>
+<pre><code>192.168.1.10:443 → Website
+192.168.1.10:22  → SSH
+</code></pre>
+<p>This concept came with <strong>TCP &amp; UDP</strong>.</p>
+<hr />
+<h1 id="6-why-two-protocols-why-not-only-one"><a class="header" href="#6-why-two-protocols-why-not-only-one">6️⃣ Why Two Protocols? Why Not Only One?</a></h1>
+<p>Because <strong>all data is NOT the same</strong>.</p>
+<hr />
+<h2 id="-why-tcp-is-needed"><a class="header" href="#-why-tcp-is-needed">🟦 Why TCP is Needed</a></h2>
+<p>Some data <strong>MUST be perfect</strong>.</p>
+<p>Examples:</p>
+<ul>
+<li>Login credentials</li>
+<li>Bank transactions</li>
+<li>File download</li>
+<li>Website data</li>
+</ul>
+<p>If even <strong>1 byte is missing</strong> → problem.</p>
+<p>👉 So TCP was created.</p>
+<h3 id="tcp-guarantees"><a class="header" href="#tcp-guarantees">TCP guarantees:</a></h3>
+<ul>
+<li>Data reaches</li>
+<li>Data is correct</li>
+<li>Data is in order</li>
+</ul>
+<hr />
+<h2 id="-why-udp-is-needed"><a class="header" href="#-why-udp-is-needed">🟧 Why UDP is Needed</a></h2>
+<p>Some data needs <strong>speed</strong>, not perfection.</p>
+<p>Examples:</p>
+<ul>
+<li>Video calls</li>
+<li>Online gaming</li>
+<li>Live streaming</li>
+<li>DNS queries</li>
+</ul>
+<p>If 1 packet is lost:</p>
+<ul>
+<li>It’s okay</li>
+<li>Don’t delay the stream</li>
+</ul>
+<p>👉 So UDP was created.</p>
+<hr />
+<h1 id="7-real-life-analogy-very-clear"><a class="header" href="#7-real-life-analogy-very-clear">7️⃣ Real-Life Analogy (Very Clear)</a></h1>
+<h3 id="-tcp--courier-service"><a class="header" href="#-tcp--courier-service">📦 TCP = Courier Service</a></h3>
+<ul>
+<li>Order is tracked</li>
+<li>Signature required</li>
+<li>If lost → resend</li>
+</ul>
+<h3 id="-udp--live-announcement"><a class="header" href="#-udp--live-announcement">📢 UDP = Live Announcement</a></h3>
+<ul>
+<li>No confirmation</li>
+<li>Missed words = fine</li>
+<li>Speed matters</li>
+</ul>
+<hr />
+<h2 id="8-what-happens-if-we-use-only-tcp"><a class="header" href="#8-what-happens-if-we-use-only-tcp">8️⃣ What Happens If We Use Only TCP?</a></h2>
+<p>❌ Video calls lag
+❌ Gaming becomes slow
+❌ DNS becomes slow</p>
+<hr />
+<h2 id="9-what-happens-if-we-use-only-udp"><a class="header" href="#9-what-happens-if-we-use-only-udp">9️⃣ What Happens If We Use Only UDP?</a></h2>
+<p>❌ File downloads corrupted
+❌ Login failures
+❌ Data inconsistency</p>
+<hr />
+<h2 id="-final-architecture-big-picture"><a class="header" href="#-final-architecture-big-picture">🔟 Final Architecture (Big Picture)</a></h2>
+<pre><code>Application (HTTP, DNS, FTP)
+↓
+TCP or UDP  ← (this is where reliability/speed is decided)
+↓
+IP         ← addressing &amp; routing
+↓
+Network
+</code></pre>
+<hr />
+<h2 id="11-one-line-exam-answer"><a class="header" href="#11-one-line-exam-answer">1️⃣1️⃣ One-Line Exam Answer</a></h2>
+<blockquote>
+<p><strong>TCP and UDP were introduced to provide application-level communication using ports, reliability, and performance control on top of IP, which alone is unreliable.</strong></p>
+</blockquote>
+<hr />
+<h2 id="12-super-simple-summary"><a class="header" href="#12-super-simple-summary">1️⃣2️⃣ Super Simple Summary</a></h2>
+<ul>
+<li><strong>Before</strong> → Only IP → unreliable</li>
+<li><strong>Need</strong> → Application identification + control</li>
+<li><strong>Solution</strong> → TCP &amp; UDP</li>
+<li><strong>TCP</strong> → Accuracy</li>
+<li><strong>UDP</strong> → Speed</li>
+</ul>
+<hr />
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../networking/networking_subnet.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../networking/networking_route_table.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../networking/networking_subnet.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../networking/networking_route_table.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

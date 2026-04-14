@@ -1,0 +1,585 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>AWS Pricing</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- PWA -->
+        <link rel="icon" type="image/x-icon" href="https://devnamdev2003.github.io/devdocs/static/icons/favicon.ico">
+        <link rel="manifest" href="https://devnamdev2003.github.io/devdocs/static/manifest.webmanifest">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="theme-color" content="#0d1117">
+        
+        <meta name="title" content="AWS">
+        <meta name="description" content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="og:image" content="https://devnamdev2003.github.io/devdocs/static/img/aws/aws_c.png">
+        <meta property="og:title" content="AWS">
+        <meta property="og:description"
+            content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="twitter:image" content="https://devnamdev2003.github.io/devdocs/static/img/aws/aws_c.png">
+        <meta property="twitter:title" content="AWS">
+        <meta property="twitter:description"
+            content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        <meta name="description" content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../aws_index.html"><strong aria-hidden="true">1.</strong> AWS index</a></li><li class="chapter-item expanded "><a href="../aws.html"><strong aria-hidden="true">2.</strong> AWS</a></li><li class="chapter-item expanded "><a href="../aws_roadmap.html"><strong aria-hidden="true">3.</strong> AWS Roadmap</a></li><li class="chapter-item expanded "><a href="../aws_left.html"><strong aria-hidden="true">4.</strong> AWS left</a></li><li class="chapter-item expanded "><a href="../networking/networking_index.html"><strong aria-hidden="true">5.</strong> AWS Networking</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../networking/networking.html"><strong aria-hidden="true">5.1.</strong> AWS Networking</a></li><li class="chapter-item expanded "><a href="../networking/networking_ip.html"><strong aria-hidden="true">5.2.</strong> IPv4 Address Structure, Private IPs, and Public IPs</a></li><li class="chapter-item expanded "><a href="../networking/networking_subnet.html"><strong aria-hidden="true">5.3.</strong> What is Subnetting?</a></li><li class="chapter-item expanded "><a href="../networking/networking_tcp_udp.html"><strong aria-hidden="true">5.4.</strong> What are TCP and UDP?</a></li><li class="chapter-item expanded "><a href="../networking/networking_route_table.html"><strong aria-hidden="true">5.5.</strong> Route Tables</a></li><li class="chapter-item expanded "><a href="../networking/networking_port.html"><strong aria-hidden="true">5.6.</strong> Port</a></li><li class="chapter-item expanded "><a href="../networking/networking_firewall.html"><strong aria-hidden="true">5.7.</strong> Firewalls and Security Concepts</a></li><li class="chapter-item expanded "><a href="../networking/networking_cidr.html"><strong aria-hidden="true">5.8.</strong> CIDR Notation</a></li><li class="chapter-item expanded "><a href="../networking/networking_dns.html"><strong aria-hidden="true">5.9.</strong> DNS Resolution Flow</a></li><li class="chapter-item expanded "><a href="../networking/networking_igw.html"><strong aria-hidden="true">5.10.</strong> Internet Gateway (IGW) in AWS</a></li><li class="chapter-item expanded "><a href="../networking/networking_nat.html"><strong aria-hidden="true">5.11.</strong> Network Address Translation (NAT)</a></li><li class="chapter-item expanded "><a href="../networking/networking_nat_igw.html"><strong aria-hidden="true">5.12.</strong> NAT Gateway vs Internet Gateway (IGW)</a></li><li class="chapter-item expanded "><a href="../networking/networking_sg.html"><strong aria-hidden="true">5.13.</strong> Security Groups in AWS</a></li><li class="chapter-item expanded "><a href="../networking/networking_nacl.html"><strong aria-hidden="true">5.14.</strong> Network Access Control Lists (NACLs) in AWS</a></li><li class="chapter-item expanded "><a href="../networking/networking_nacl_sg.html"><strong aria-hidden="true">5.15.</strong> NACL vs Security Group (SG)</a></li><li class="chapter-item expanded "><a href="../networking/networking_doubt.html"><strong aria-hidden="true">5.16.</strong> Networking doubt</a></li></ol></li><li class="chapter-item expanded "><a href="../serverless/serverless_index.html"><strong aria-hidden="true">6.</strong> Serverless</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverless/serverless.html"><strong aria-hidden="true">6.1.</strong> Serverless</a></li><li class="chapter-item expanded "><a href="../serverless/lambda.html"><strong aria-hidden="true">6.2.</strong> AWS Lambda</a></li><li class="chapter-item expanded "><a href="../serverless/lambda_api_gatway.html"><strong aria-hidden="true">6.3.</strong> AWS API Gateway</a></li><li class="chapter-item expanded "><a href="../serverless/pricing.html" class="active"><strong aria-hidden="true">6.4.</strong> AWS Pricing</a></li><li class="chapter-item expanded "><a href="../serverless/labs/labs_index.html"><strong aria-hidden="true">6.5.</strong> Labs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverless/labs/lab1.html"><strong aria-hidden="true">6.5.1.</strong> Serverless REST API</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab2.html"><strong aria-hidden="true">6.5.2.</strong> Event-Driven Processing</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab3.html"><strong aria-hidden="true">6.5.3.</strong> Asynchronous Messaging</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab4.html"><strong aria-hidden="true">6.5.4.</strong> Scheduled & Rule-Based Serverless Jobs</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab5.html"><strong aria-hidden="true">6.5.5.</strong> Secure Serverless Compute</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../dev.html"><strong aria-hidden="true">7.</strong> dev</a></li><li class="chapter-item expanded "><a href="../aws_quiz_topic.html"><strong aria-hidden="true">8.</strong> aws_quiz_topic</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs/edit/main/md-code/aws/src/serverless/pricing.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+<h2 id=""><a class="header" href="#"><a href="../">👈</a></a></h2>
+<ul>
+<li><a href="#-aws-lambda-pricing--complete-explanation">💰 AWS Lambda Pricing – Complete Explanation</a>
+<ul>
+<li><a href="#1%EF%B8%8F%E2%83%A3-big-picture-how-aws-lambda-charges-you">1️⃣ Big Picture: How AWS Lambda Charges You</a></li>
+<li><a href="#2%EF%B8%8F%E2%83%A3-what-exactly-do-you-pay-for">2️⃣ What Exactly Do You Pay For?</a></li>
+<li><a href="#3%EF%B8%8F%E2%83%A3-request-pricing-invocation-cost">3️⃣ Request Pricing (Invocation Cost)</a>
+<ul>
+<li><a href="#what-is-a-request">What is a request?</a></li>
+<li><a href="#free-tier-very-important">Free Tier (Very Important)</a></li>
+<li><a href="#example">Example</a></li>
+</ul>
+</li>
+<li><a href="#4%EF%B8%8F%E2%83%A3-duration-pricing-execution-time">4️⃣ Duration Pricing (Execution Time)</a>
+<ul>
+<li><a href="#how-duration-is-measured">How Duration Is Measured</a></li>
+<li><a href="#what-affects-duration">What Affects Duration?</a></li>
+</ul>
+</li>
+<li><a href="#5%EF%B8%8F%E2%83%A3-memory-based-pricing-key-concept">5️⃣ Memory-Based Pricing (Key Concept)</a></li>
+<li><a href="#6%EF%B8%8F%E2%83%A3-how-aws-calculates-duration-cost">6️⃣ How AWS Calculates Duration Cost</a>
+<ul>
+<li><a href="#example-1%EF%B8%8F%E2%83%A3">Example 1️⃣</a></li>
+<li><a href="#aws-price-approx">AWS Price (approx)</a></li>
+</ul>
+</li>
+<li><a href="#7%EF%B8%8F%E2%83%A3-free-tier-for-duration">7️⃣ Free Tier for Duration</a></li>
+<li><a href="#8%EF%B8%8F%E2%83%A3-full-cost-example-very-important">8️⃣ Full Cost Example (Very Important)</a>
+<ul>
+<li><a href="#scenario">Scenario</a></li>
+<li><a href="#step-1-request-cost">Step 1: Request Cost</a></li>
+<li><a href="#step-2-duration-cost">Step 2: Duration Cost</a></li>
+<li><a href="#-total-monthly-cost">💵 Total Monthly Cost</a></li>
+</ul>
+</li>
+<li><a href="#9%EF%B8%8F%E2%83%A3-why-increasing-memory-can-reduce-cost-exam-favorite">9️⃣ Why Increasing Memory Can REDUCE Cost (Exam Favorite)</a>
+<ul>
+<li><a href="#example-1">Example</a></li>
+</ul>
+</li>
+<li><a href="#-lambda-pricing-vs-ec2-pricing">🔟 Lambda Pricing vs EC2 Pricing</a>
+<ul>
+<li><a href="#ec2">EC2</a></li>
+<li><a href="#lambda">Lambda</a></li>
+</ul>
+</li>
+<li><a href="#1%EF%B8%8F%E2%83%A31%EF%B8%8F%E2%83%A3-additional-lambda-related-costs-important">1️⃣1️⃣ Additional Lambda-Related Costs (Important)</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A32%EF%B8%8F%E2%83%A3-lambda-pricing-with-vpc-hidden-cost">1️⃣2️⃣ Lambda Pricing with VPC (Hidden Cost)</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A33%EF%B8%8F%E2%83%A3-cost-optimization-best-practices">1️⃣3️⃣ Cost Optimization Best Practices</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A34%EF%B8%8F%E2%83%A3-lambda-pricing-in-exams-key-points">1️⃣4️⃣ Lambda Pricing in Exams (Key Points)</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A35%EF%B8%8F%E2%83%A3-one-line-exam-definition">1️⃣5️⃣ One-Line Exam Definition</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A36%EF%B8%8F%E2%83%A3-mental-model-to-remember-forever">1️⃣6️⃣ Mental Model to Remember Forever</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A37%EF%B8%8F%E2%83%A3-final-summary-must-remember">1️⃣7️⃣ Final Summary (Must Remember)</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="-aws-lambda-pricing--complete-explanation"><a class="header" href="#-aws-lambda-pricing--complete-explanation">💰 AWS Lambda Pricing – Complete Explanation</a></h1>
+<hr />
+<h2 id="1-big-picture-how-aws-lambda-charges-you"><a class="header" href="#1-big-picture-how-aws-lambda-charges-you">1️⃣ Big Picture: How AWS Lambda Charges You</a></h2>
+<p>AWS Lambda follows a <strong>pay-per-use model</strong>.</p>
+<blockquote>
+<p><strong>You pay only when your code runs.</strong></p>
+</blockquote>
+<p>You do <strong>NOT</strong> pay for:</p>
+<ul>
+<li>Idle time</li>
+<li>Servers</li>
+<li>OS</li>
+<li>Scaling</li>
+<li>Availability</li>
+</ul>
+<p>This is the <strong>core advantage of serverless</strong>.</p>
+<hr />
+<h2 id="2-what-exactly-do-you-pay-for"><a class="header" href="#2-what-exactly-do-you-pay-for">2️⃣ What Exactly Do You Pay For?</a></h2>
+<p>Lambda pricing has <strong>3 main components</strong>:</p>
+<p>1️⃣ <strong>Number of requests</strong>
+2️⃣ <strong>Execution duration (time)</strong>
+3️⃣ <strong>Memory allocated (which also controls CPU)</strong></p>
+<p>Let’s break each one slowly.</p>
+<hr />
+<h2 id="3-request-pricing-invocation-cost"><a class="header" href="#3-request-pricing-invocation-cost">3️⃣ Request Pricing (Invocation Cost)</a></h2>
+<h3 id="what-is-a-request"><a class="header" href="#what-is-a-request">What is a request?</a></h3>
+<p>Every time your Lambda function is triggered → <strong>1 request</strong>.</p>
+<p>Triggers include:</p>
+<ul>
+<li>API Gateway call</li>
+<li>S3 upload</li>
+<li>Scheduled event</li>
+<li>SQS message</li>
+</ul>
+<hr />
+<h3 id="free-tier-very-important"><a class="header" href="#free-tier-very-important">Free Tier (Very Important)</a></h3>
+<p>AWS Free Tier includes:</p>
+<ul>
+<li><strong>1 million free requests per month</strong></li>
+</ul>
+<p>After free tier:</p>
+<ul>
+<li><strong>$0.20 per 1 million requests</strong></li>
+</ul>
+<p>📌 This is extremely cheap.</p>
+<hr />
+<h3 id="example"><a class="header" href="#example">Example</a></h3>
+<p>If your Lambda is invoked:</p>
+<ul>
+<li>5 million times per month</li>
+</ul>
+<p>Cost:</p>
+<pre><code>First 1 million → Free
+Remaining 4 million → 4 × $0.20 = $0.80
+</code></pre>
+<p>✔ Less than 1 dollar</p>
+<hr />
+<h2 id="4-duration-pricing-execution-time"><a class="header" href="#4-duration-pricing-execution-time">4️⃣ Duration Pricing (Execution Time)</a></h2>
+<p>This is the <strong>most important part</strong> of Lambda pricing.</p>
+<hr />
+<h3 id="how-duration-is-measured"><a class="header" href="#how-duration-is-measured">How Duration Is Measured</a></h3>
+<p>Lambda charges based on:</p>
+<ul>
+<li><strong>Execution time</strong></li>
+<li>Rounded to the <strong>nearest millisecond</strong></li>
+<li>From function start → function end</li>
+</ul>
+<hr />
+<h3 id="what-affects-duration"><a class="header" href="#what-affects-duration">What Affects Duration?</a></h3>
+<ul>
+<li>Code efficiency</li>
+<li>Memory allocated</li>
+<li>Cold starts</li>
+<li>External service calls</li>
+</ul>
+<hr />
+<h2 id="5-memory-based-pricing-key-concept"><a class="header" href="#5-memory-based-pricing-key-concept">5️⃣ Memory-Based Pricing (Key Concept)</a></h2>
+<p>When you configure a Lambda function, you choose:</p>
+<ul>
+<li>Memory size (128 MB → 10,240 MB)</li>
+</ul>
+<p>📌 <strong>CPU power scales proportionally with memory</strong></p>
+<p>So:</p>
+<ul>
+<li>More memory = more CPU = faster execution</li>
+<li>Faster execution can <strong>reduce total cost</strong></li>
+</ul>
+<hr />
+<h2 id="6-how-aws-calculates-duration-cost"><a class="header" href="#6-how-aws-calculates-duration-cost">6️⃣ How AWS Calculates Duration Cost</a></h2>
+<p>Lambda pricing unit:</p>
+<blockquote>
+<p><strong>GB-seconds</strong></p>
+</blockquote>
+<p>Formula:</p>
+<pre><code>Memory (GB) × Execution time (seconds)
+</code></pre>
+<hr />
+<h3 id="example-1"><a class="header" href="#example-1">Example 1️⃣</a></h3>
+<ul>
+<li>Memory: 512 MB = 0.5 GB</li>
+<li>Execution time: 2 seconds</li>
+</ul>
+<p>Cost unit:</p>
+<pre><code>0.5 × 2 = 1 GB-second
+</code></pre>
+<hr />
+<h3 id="aws-price-approx"><a class="header" href="#aws-price-approx">AWS Price (approx)</a></h3>
+<ul>
+<li><strong>$0.0000166667 per GB-second</strong></li>
+</ul>
+<p>So:</p>
+<pre><code>1 GB-second × $0.0000166667
+</code></pre>
+<p>Very small cost.</p>
+<hr />
+<h2 id="7-free-tier-for-duration"><a class="header" href="#7-free-tier-for-duration">7️⃣ Free Tier for Duration</a></h2>
+<p>AWS Free Tier also includes:</p>
+<ul>
+<li><strong>400,000 GB-seconds per month</strong></li>
+</ul>
+<p>This is <strong>a lot</strong>.</p>
+<p>Meaning:</p>
+<ul>
+<li>Small workloads often cost <strong>$0</strong></li>
+</ul>
+<hr />
+<h2 id="8-full-cost-example-very-important"><a class="header" href="#8-full-cost-example-very-important">8️⃣ Full Cost Example (Very Important)</a></h2>
+<p>Let’s calculate a <strong>realistic Lambda cost</strong>.</p>
+<hr />
+<h3 id="scenario"><a class="header" href="#scenario">Scenario</a></h3>
+<ul>
+<li>Requests: 2 million/month</li>
+<li>Memory: 1024 MB (1 GB)</li>
+<li>Execution time: 500 ms (0.5 sec)</li>
+</ul>
+<hr />
+<h3 id="step-1-request-cost"><a class="header" href="#step-1-request-cost">Step 1: Request Cost</a></h3>
+<pre><code>2M requests
+1M free
+1M paid → $0.20
+</code></pre>
+<hr />
+<h3 id="step-2-duration-cost"><a class="header" href="#step-2-duration-cost">Step 2: Duration Cost</a></h3>
+<p>Per request:</p>
+<pre><code>1 GB × 0.5 sec = 0.5 GB-seconds
+</code></pre>
+<p>Total:</p>
+<pre><code>0.5 × 2,000,000 = 1,000,000 GB-seconds
+</code></pre>
+<p>Free tier:</p>
+<pre><code>400,000 GB-seconds free
+</code></pre>
+<p>Paid:</p>
+<pre><code>600,000 GB-seconds × $0.0000166667 ≈ $10
+</code></pre>
+<hr />
+<h3 id="-total-monthly-cost"><a class="header" href="#-total-monthly-cost">💵 Total Monthly Cost</a></h3>
+<pre><code>$0.20 + $10 = ~$10.20
+</code></pre>
+<p>✔ For 2 million executions
+✔ No servers
+✔ Auto scaling</p>
+<hr />
+<h2 id="9-why-increasing-memory-can-reduce-cost-exam-favorite"><a class="header" href="#9-why-increasing-memory-can-reduce-cost-exam-favorite">9️⃣ Why Increasing Memory Can REDUCE Cost (Exam Favorite)</a></h2>
+<p>This feels confusing at first.</p>
+<h3 id="example-1"><a class="header" href="#example-1">Example</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Memory</th><th>Time</th><th>Cost</th></tr></thead><tbody>
+<tr><td>512 MB</td><td>2 sec</td><td>Higher</td></tr>
+<tr><td>1024 MB</td><td>0.7 sec</td><td>Lower</td></tr>
+</tbody></table>
+</div>
+<p>Even though memory cost is higher:</p>
+<ul>
+<li>Execution is much faster</li>
+<li>Total GB-seconds reduced</li>
+</ul>
+<p>📌 <strong>Always benchmark memory vs duration</strong></p>
+<hr />
+<h2 id="-lambda-pricing-vs-ec2-pricing"><a class="header" href="#-lambda-pricing-vs-ec2-pricing">🔟 Lambda Pricing vs EC2 Pricing</a></h2>
+<h3 id="ec2"><a class="header" href="#ec2">EC2</a></h3>
+<ul>
+<li>Pay per hour</li>
+<li>Pay even when idle</li>
+<li>Manual scaling</li>
+</ul>
+<h3 id="lambda"><a class="header" href="#lambda">Lambda</a></h3>
+<ul>
+<li>Pay per execution</li>
+<li>Zero idle cost</li>
+<li>Automatic scaling</li>
+</ul>
+<p>👉 Lambda is cheaper for:</p>
+<ul>
+<li>Spiky traffic</li>
+<li>Low/medium workloads</li>
+<li>Event-driven apps</li>
+</ul>
+<hr />
+<h2 id="11-additional-lambda-related-costs-important"><a class="header" href="#11-additional-lambda-related-costs-important">1️⃣1️⃣ Additional Lambda-Related Costs (Important)</a></h2>
+<p>Lambda itself is cheap, but <strong>other services may add cost</strong>:</p>
+<ul>
+<li>API Gateway</li>
+<li>CloudWatch Logs</li>
+<li>NAT Gateway (if Lambda in VPC)</li>
+<li>Data transfer</li>
+</ul>
+<p>📌 Exams often ask:</p>
+<blockquote>
+<p>“Why is Lambda suddenly expensive?”</p>
+</blockquote>
+<p>Answer:
+➡ <strong>NAT Gateway data charges</strong></p>
+<hr />
+<h2 id="12-lambda-pricing-with-vpc-hidden-cost"><a class="header" href="#12-lambda-pricing-with-vpc-hidden-cost">1️⃣2️⃣ Lambda Pricing with VPC (Hidden Cost)</a></h2>
+<p>If Lambda runs inside a VPC:</p>
+<ul>
+<li>Internet access requires NAT Gateway</li>
+<li>NAT Gateway is <strong>expensive</strong></li>
+</ul>
+<p>Best practice:</p>
+<ul>
+<li>Avoid VPC unless required</li>
+<li>Use VPC endpoints where possible</li>
+</ul>
+<hr />
+<h2 id="13-cost-optimization-best-practices"><a class="header" href="#13-cost-optimization-best-practices">1️⃣3️⃣ Cost Optimization Best Practices</a></h2>
+<p>✔ Optimize memory size
+✔ Reduce execution time
+✔ Avoid unnecessary logs
+✔ Use async processing
+✔ Avoid NAT Gateway if possible
+✔ Use caching (DynamoDB / Redis)</p>
+<hr />
+<h2 id="14-lambda-pricing-in-exams-key-points"><a class="header" href="#14-lambda-pricing-in-exams-key-points">1️⃣4️⃣ Lambda Pricing in Exams (Key Points)</a></h2>
+<p>You must remember:</p>
+<ul>
+<li>Pay per request</li>
+<li>Pay per duration</li>
+<li>Memory affects CPU</li>
+<li>Free tier exists</li>
+<li>No cost when idle</li>
+</ul>
+<hr />
+<h2 id="15-one-line-exam-definition"><a class="header" href="#15-one-line-exam-definition">1️⃣5️⃣ One-Line Exam Definition</a></h2>
+<blockquote>
+<p><strong>AWS Lambda pricing is based on the number of requests and the execution duration measured in GB-seconds, with a generous free tier.</strong></p>
+</blockquote>
+<hr />
+<h2 id="16-mental-model-to-remember-forever"><a class="header" href="#16-mental-model-to-remember-forever">1️⃣6️⃣ Mental Model to Remember Forever</a></h2>
+<pre><code>Cost = How often × How long × How big
+</code></pre>
+<ul>
+<li>How often → Requests</li>
+<li>How long → Duration</li>
+<li>How big → Memory</li>
+</ul>
+<hr />
+<h2 id="17-final-summary-must-remember"><a class="header" href="#17-final-summary-must-remember">1️⃣7️⃣ Final Summary (Must Remember)</a></h2>
+<ul>
+<li>Lambda is extremely cost-effective</li>
+<li>Pay only when code runs</li>
+<li>Memory and time decide cost</li>
+<li>Free tier covers most small apps</li>
+<li>NAT Gateway is the biggest hidden cost</li>
+</ul>
+<hr />
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../serverless/lambda_api_gatway.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../serverless/labs/labs_index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../serverless/lambda_api_gatway.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../serverless/labs/labs_index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

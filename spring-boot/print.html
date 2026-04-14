@@ -1,0 +1,1626 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title></title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+        <!-- PWA -->
+        <link rel="icon" type="image/x-icon" href="https://devnamdev2003.github.io/devdocs/static/icons/favicon.ico">
+        <link rel="manifest" href="https://devnamdev2003.github.io/devdocs/static/manifest.webmanifest">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="theme-color" content="#0d1117">
+        
+        <meta name="title" content="spring-boot">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://devnamdev2003.github.io/devdocs">
+        
+        <meta property="og:title" content="spring-boot">
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="twitter:title" content="spring-boot">
+
+        <meta name="description" content="Concise and practical Spring boot notes ">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="spring-boot_index.html"><strong aria-hidden="true">1.</strong> Spring Boot Index</a></li><li class="chapter-item expanded "><a href="spring-boot-exception-handling-roadmap.html"><strong aria-hidden="true">2.</strong> Spring Boot Exception Handling Roadmap</a></li><li class="chapter-item expanded "><a href="spring-security-roadmap.html"><strong aria-hidden="true">3.</strong> Spring Security Roadmap</a></li><li class="chapter-item expanded "><a href="json-code.html"><strong aria-hidden="true">4.</strong> json-code</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+<h2 id=""><a class="header" href="#"><a href="../src">👈</a></a></h2>
+<ul>
+<li>Spring Boot Roadmap
+<ul>
+<li><a href="./spring-security-roadmap.html">Spring Security Complete Roadmap (Beginner → Expert)</a></li>
+<li><a href="./spring-boot-exception-handling-roadmap.html">Spring Boot Exception Handling Roadmap (Basic → Expert)</a></li>
+<li><a href="./json-code.html">Json-code</a></li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+<h2 id="-1"><a class="header" href="#-1"><a href="../src">👈</a></a></h2>
+<h1 id="-spring-security-complete-roadmap-beginner--expert"><a class="header" href="#-spring-security-complete-roadmap-beginner--expert">🚀 Spring Security Complete Roadmap (Beginner → Expert)</a></h1>
+<hr />
+<h2 id="-1-fundamentals-must-be-crystal-clear"><a class="header" href="#-1-fundamentals-must-be-crystal-clear">🟢 1. Fundamentals (MUST be crystal clear)</a></h2>
+<h3 id="topics"><a class="header" href="#topics">Topics</a></h3>
+<ul>
+<li>What is Spring Security &amp; why we use it</li>
+<li>Authentication vs Authorization</li>
+<li>Security architecture overview</li>
+<li>Filters &amp; Filter Chain</li>
+<li>Spring Boot auto-configuration basics</li>
+<li>Default login mechanism</li>
+</ul>
+<h3 id="labs-"><a class="header" href="#labs-">Labs 🧪</a></h3>
+<ul>
+<li>Create a simple Spring Boot app</li>
+<li>Add Spring Security dependency → observe default login</li>
+<li>Customize username/password</li>
+<li>Disable security temporarily</li>
+</ul>
+<hr />
+<h2 id="-2-core-concepts-deep-dive"><a class="header" href="#-2-core-concepts-deep-dive">🟡 2. Core Concepts Deep Dive</a></h2>
+<h3 id="topics-1"><a class="header" href="#topics-1">Topics</a></h3>
+<ul>
+<li><code>SecurityFilterChain</code></li>
+<li><code>AuthenticationManager</code></li>
+<li><code>UserDetailsService</code></li>
+<li><code>UserDetails</code></li>
+<li><code>PasswordEncoder</code> (BCrypt etc.)</li>
+<li><code>GrantedAuthority</code> &amp; Roles</li>
+</ul>
+<h3 id="labs--1"><a class="header" href="#labs--1">Labs 🧪</a></h3>
+<ul>
+<li>Create in-memory users</li>
+<li>Implement custom <code>UserDetailsService</code></li>
+<li>Store users in DB (PostgreSQL)</li>
+<li>Encrypt passwords using BCrypt</li>
+<li>Add roles (ADMIN, USER)</li>
+</ul>
+<hr />
+<h2 id="-3-configuration-styles-very-important"><a class="header" href="#-3-configuration-styles-very-important">🟠 3. Configuration Styles (VERY IMPORTANT)</a></h2>
+<h3 id="topics-2"><a class="header" href="#topics-2">Topics</a></h3>
+<ul>
+<li>Java-based configuration (modern approach)</li>
+<li><code>SecurityFilterChain</code> bean</li>
+<li>Lambda DSL (Spring Security 6+)</li>
+<li>Deprecated WebSecurityConfigurerAdapter (just understand)</li>
+</ul>
+<h3 id="labs--2"><a class="header" href="#labs--2">Labs 🧪</a></h3>
+<ul>
+<li>
+<p>Configure endpoints:</p>
+<ul>
+<li><code>/public</code> → open</li>
+<li><code>/user</code> → authenticated</li>
+<li><code>/admin</code> → role-based</li>
+</ul>
+</li>
+<li>
+<p>Customize login page</p>
+</li>
+</ul>
+<hr />
+<h2 id="-4-authentication-mechanisms"><a class="header" href="#-4-authentication-mechanisms">🔵 4. Authentication Mechanisms</a></h2>
+<h3 id="topics-3"><a class="header" href="#topics-3">Topics</a></h3>
+<ul>
+<li>Form-based authentication</li>
+<li>HTTP Basic authentication</li>
+<li>Custom login logic</li>
+<li>Remember-me authentication</li>
+</ul>
+<h3 id="labs--3"><a class="header" href="#labs--3">Labs 🧪</a></h3>
+<ul>
+<li>Create custom login API</li>
+<li>Implement remember-me feature</li>
+<li>Add logout functionality</li>
+</ul>
+<hr />
+<h2 id="-5-authorization-access-control"><a class="header" href="#-5-authorization-access-control">🟣 5. Authorization (Access Control)</a></h2>
+<h3 id="topics-4"><a class="header" href="#topics-4">Topics</a></h3>
+<ul>
+<li>
+<p>Role-based access control</p>
+</li>
+<li>
+<p>Method-level security:</p>
+<ul>
+<li><code>@PreAuthorize</code></li>
+<li><code>@PostAuthorize</code></li>
+</ul>
+</li>
+<li>
+<p>Expression-based access control</p>
+</li>
+</ul>
+<h3 id="labs--4"><a class="header" href="#labs--4">Labs 🧪</a></h3>
+<ul>
+<li>Restrict APIs using roles</li>
+<li>Use <code>@PreAuthorize("hasRole('ADMIN')")</code></li>
+<li>Secure service layer methods</li>
+</ul>
+<hr />
+<h2 id="-6-database-integration-real-world"><a class="header" href="#-6-database-integration-real-world">🔴 6. Database Integration (Real-world)</a></h2>
+<h3 id="topics-5"><a class="header" href="#topics-5">Topics</a></h3>
+<ul>
+<li>JPA + Spring Security integration</li>
+<li>User &amp; Role entities</li>
+<li>Many-to-many mapping</li>
+<li>Custom queries for authentication</li>
+</ul>
+<h3 id="labs--5"><a class="header" href="#labs--5">Labs 🧪</a></h3>
+<ul>
+<li>
+<p>Build full auth system:</p>
+<ul>
+<li>Register API</li>
+<li>Login API</li>
+<li>Store users in DB</li>
+</ul>
+</li>
+<li>
+<p>Add role-based permissions</p>
+</li>
+</ul>
+<hr />
+<h2 id="-7-jwt-authentication-very-important-"><a class="header" href="#-7-jwt-authentication-very-important-">🟤 7. JWT Authentication (VERY IMPORTANT 🔥)</a></h2>
+<h3 id="topics-6"><a class="header" href="#topics-6">Topics</a></h3>
+<ul>
+<li>What is JWT</li>
+<li>Stateless authentication</li>
+<li>Token generation &amp; validation</li>
+<li>Filters for JWT</li>
+</ul>
+<h3 id="labs--6"><a class="header" href="#labs--6">Labs 🧪</a></h3>
+<ul>
+<li>Create JWT login API</li>
+<li>Generate token after login</li>
+<li>Create JWT filter</li>
+<li>Protect APIs using token</li>
+<li>Test using Postman</li>
+</ul>
+<hr />
+<h2 id="-8-oauth2--social-login"><a class="header" href="#-8-oauth2--social-login">⚫ 8. OAuth2 &amp; Social Login</a></h2>
+<h3 id="topics-7"><a class="header" href="#topics-7">Topics</a></h3>
+<ul>
+<li>OAuth2 basics</li>
+<li>Google/GitHub login</li>
+<li>Authorization server vs resource server</li>
+</ul>
+<h3 id="labs--7"><a class="header" href="#labs--7">Labs 🧪</a></h3>
+<ul>
+<li>Add Google login</li>
+<li>Fetch user profile</li>
+<li>Combine with your DB</li>
+</ul>
+<hr />
+<h2 id="-9-advanced-security-features"><a class="header" href="#-9-advanced-security-features">🟠 9. Advanced Security Features</a></h2>
+<h3 id="topics-8"><a class="header" href="#topics-8">Topics</a></h3>
+<ul>
+<li>CSRF protection</li>
+<li>CORS configuration</li>
+<li>Session management</li>
+<li>Stateless vs Stateful</li>
+<li>Security headers</li>
+</ul>
+<h3 id="labs--8"><a class="header" href="#labs--8">Labs 🧪</a></h3>
+<ul>
+<li>Enable/disable CSRF</li>
+<li>Configure CORS for frontend (Angular/React)</li>
+<li>Limit concurrent sessions</li>
+</ul>
+<hr />
+<h2 id="-10-exception-handling--custom-responses"><a class="header" href="#-10-exception-handling--custom-responses">🔵 10. Exception Handling &amp; Custom Responses</a></h2>
+<h3 id="topics-9"><a class="header" href="#topics-9">Topics</a></h3>
+<ul>
+<li>AuthenticationEntryPoint</li>
+<li>AccessDeniedHandler</li>
+<li>Custom error responses</li>
+</ul>
+<h3 id="labs--9"><a class="header" href="#labs--9">Labs 🧪</a></h3>
+<ul>
+<li>
+<p>Return custom JSON error for:</p>
+<ul>
+<li>Unauthorized</li>
+<li>Forbidden</li>
+</ul>
+</li>
+<li>
+<p>Handle exceptions globally</p>
+</li>
+</ul>
+<hr />
+<h2 id="-11-custom-filters--internal-flow-advanced"><a class="header" href="#-11-custom-filters--internal-flow-advanced">🟣 11. Custom Filters &amp; Internal Flow (ADVANCED)</a></h2>
+<h3 id="topics-10"><a class="header" href="#topics-10">Topics</a></h3>
+<ul>
+<li>Filter chain execution</li>
+<li>OncePerRequestFilter</li>
+<li>Adding custom filters</li>
+</ul>
+<h3 id="labs--10"><a class="header" href="#labs--10">Labs 🧪</a></h3>
+<ul>
+<li>Create custom JWT filter</li>
+<li>Log request before authentication</li>
+<li>Add filter before/after default filters</li>
+</ul>
+<hr />
+<h2 id="-12-method-security-enterprise-level"><a class="header" href="#-12-method-security-enterprise-level">🔴 12. Method Security (Enterprise Level)</a></h2>
+<h3 id="topics-11"><a class="header" href="#topics-11">Topics</a></h3>
+<ul>
+<li><code>@EnableMethodSecurity</code></li>
+<li>Securing service layer</li>
+<li>SpEL expressions</li>
+</ul>
+<h3 id="labs--11"><a class="header" href="#labs--11">Labs 🧪</a></h3>
+<ul>
+<li>Secure business logic methods</li>
+<li>Role + condition-based access</li>
+</ul>
+<hr />
+<h2 id="-13-testing-spring-security"><a class="header" href="#-13-testing-spring-security">⚫ 13. Testing Spring Security</a></h2>
+<h3 id="topics-12"><a class="header" href="#topics-12">Topics</a></h3>
+<ul>
+<li>Unit testing secured APIs</li>
+<li>Mock users</li>
+<li>Security test utilities</li>
+</ul>
+<h3 id="labs--12"><a class="header" href="#labs--12">Labs 🧪</a></h3>
+<ul>
+<li>Write test cases using MockMvc</li>
+<li>Test role-based APIs</li>
+</ul>
+<hr />
+<h2 id="-14-production-best-practices"><a class="header" href="#-14-production-best-practices">🟤 14. Production Best Practices</a></h2>
+<h3 id="topics-13"><a class="header" href="#topics-13">Topics</a></h3>
+<ul>
+<li>Password hashing strategies</li>
+<li>Token expiration &amp; refresh tokens</li>
+<li>Logging &amp; monitoring</li>
+<li>Secure API design</li>
+</ul>
+<h3 id="labs--13"><a class="header" href="#labs--13">Labs 🧪</a></h3>
+<ul>
+<li>Implement refresh token flow</li>
+<li>Add audit logging</li>
+<li>Secure sensitive endpoints</li>
+</ul>
+<hr />
+<h2 id="-15-microservices-security-advanced"><a class="header" href="#-15-microservices-security-advanced">🧠 15. Microservices Security (ADVANCED+)</a></h2>
+<h3 id="topics-14"><a class="header" href="#topics-14">Topics</a></h3>
+<ul>
+<li>API Gateway security</li>
+<li>JWT across services</li>
+<li>OAuth2 Resource Server</li>
+<li>Keycloak / Identity Providers</li>
+</ul>
+<h3 id="labs--14"><a class="header" href="#labs--14">Labs 🧪</a></h3>
+<ul>
+<li>Secure microservices using JWT</li>
+<li>Use API Gateway (Spring Cloud Gateway)</li>
+<li>Integrate with Keycloak</li>
+</ul>
+<hr />
+<h1 id="-final-goal-project-very-important"><a class="header" href="#-final-goal-project-very-important">🎯 Final Goal Project (VERY IMPORTANT)</a></h1>
+<p>Build this end-to-end:</p>
+<h3 id="-production-level-auth-system"><a class="header" href="#-production-level-auth-system">💼 "Production-Level Auth System"</a></h3>
+<ul>
+<li>Register/Login (JWT)</li>
+<li>Role-based access</li>
+<li>Refresh tokens</li>
+<li>Google login</li>
+<li>PostgreSQL DB</li>
+<li>Angular frontend (optional)</li>
+</ul>
+<hr />
+<h1 id="-how-you-should-study-important"><a class="header" href="#-how-you-should-study-important">📌 How You Should Study (IMPORTANT)</a></h1>
+<p>Since you're a <strong>System Engineer working with Spring Boot</strong>, do this:</p>
+<ol>
+<li>Learn 1 topic</li>
+<li>Immediately do the lab</li>
+<li>Build one growing project (don’t create new projects each time)</li>
+</ol>
+<hr />
+<div style="break-before: page; page-break-before: always;"></div><style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+<h2 id="-2"><a class="header" href="#-2"><a href="../src">👈</a></a></h2>
+<h1 id="-spring-boot-exception-handling-roadmap-basic--expert"><a class="header" href="#-spring-boot-exception-handling-roadmap-basic--expert">🚀 Spring Boot Exception Handling Roadmap (Basic → Expert)</a></h1>
+<hr />
+<h2 id="-1-basics-of-exception-handling"><a class="header" href="#-1-basics-of-exception-handling">🟢 1. Basics of Exception Handling</a></h2>
+<h3 id="topics-15"><a class="header" href="#topics-15">Topics</a></h3>
+<ul>
+<li>What is an Exception in Java</li>
+<li>Checked vs Unchecked exceptions</li>
+<li>Default Spring Boot error response</li>
+<li>HTTP status codes (200, 400, 404, 500, etc.)</li>
+</ul>
+<h3 id="labs--15"><a class="header" href="#labs--15">Labs 🧪</a></h3>
+<ul>
+<li>
+<p>Create API: <code>/test/{id}</code></p>
+</li>
+<li>
+<p>Throw:</p>
+<ul>
+<li><code>RuntimeException</code></li>
+<li><code>NullPointerException</code></li>
+</ul>
+</li>
+<li>
+<p>Observe default response</p>
+</li>
+</ul>
+<hr />
+<h2 id="-2-basic-controller-level-handling"><a class="header" href="#-2-basic-controller-level-handling">🟡 2. Basic Controller-Level Handling</a></h2>
+<h3 id="topics-16"><a class="header" href="#topics-16">Topics</a></h3>
+<ul>
+<li><code>@ExceptionHandler</code></li>
+<li>Handling exceptions inside a controller</li>
+<li>Returning custom responses</li>
+</ul>
+<h3 id="labs--16"><a class="header" href="#labs--16">Labs 🧪</a></h3>
+<ul>
+<li>Handle <code>RuntimeException</code> in controller</li>
+<li>Return:</li>
+</ul>
+<pre><code class="language-json">{
+  "message": "Something went wrong"
+}
+</code></pre>
+<hr />
+<h2 id="-3-global-exception-handling-very-important-"><a class="header" href="#-3-global-exception-handling-very-important-">🟠 3. Global Exception Handling (VERY IMPORTANT 🔥)</a></h2>
+<h3 id="topics-17"><a class="header" href="#topics-17">Topics</a></h3>
+<ul>
+<li><code>@ControllerAdvice</code></li>
+<li><code>@RestControllerAdvice</code></li>
+<li>Centralized exception handling</li>
+</ul>
+<h3 id="labs--17"><a class="header" href="#labs--17">Labs 🧪</a></h3>
+<ul>
+<li>
+<p>Create <code>GlobalExceptionHandler</code> class</p>
+</li>
+<li>
+<p>Handle:</p>
+<ul>
+<li>Generic Exception</li>
+<li>Custom Exception</li>
+</ul>
+</li>
+<li>
+<p>Apply across all controllers</p>
+</li>
+</ul>
+<hr />
+<h2 id="-4-custom-exceptions-real-world-usage"><a class="header" href="#-4-custom-exceptions-real-world-usage">🔵 4. Custom Exceptions (Real-world usage)</a></h2>
+<h3 id="topics-18"><a class="header" href="#topics-18">Topics</a></h3>
+<ul>
+<li>Creating custom exceptions</li>
+<li>Business exceptions (e.g., <code>UserNotFoundException</code>)</li>
+<li>When to use custom exceptions</li>
+</ul>
+<h3 id="labs--18"><a class="header" href="#labs--18">Labs 🧪</a></h3>
+<ul>
+<li>
+<p>Create:</p>
+<ul>
+<li><code>UserNotFoundException</code></li>
+</ul>
+</li>
+<li>
+<p>Throw it when user not found</p>
+</li>
+<li>
+<p>Handle it globally</p>
+</li>
+</ul>
+<hr />
+<h2 id="-5-custom-error-response-structure-very-important"><a class="header" href="#-5-custom-error-response-structure-very-important">🟣 5. Custom Error Response Structure (VERY IMPORTANT)</a></h2>
+<h3 id="topics-19"><a class="header" href="#topics-19">Topics</a></h3>
+<ul>
+<li>
+<p>Designing standard API response</p>
+</li>
+<li>
+<p>Fields:</p>
+<ul>
+<li>timestamp</li>
+<li>status</li>
+<li>message</li>
+<li>path</li>
+</ul>
+</li>
+<li>
+<p>Consistent API error format</p>
+</li>
+</ul>
+<h3 id="labs--19"><a class="header" href="#labs--19">Labs 🧪</a></h3>
+<ul>
+<li>Create <code>ErrorResponse</code> class</li>
+<li>Return structured JSON like:</li>
+</ul>
+<pre><code class="language-json">{
+  "timestamp": "...",
+  "status": 404,
+  "message": "User not found",
+  "path": "/api/users/1"
+}
+</code></pre>
+<hr />
+<h2 id="-6-handling-specific-exceptions"><a class="header" href="#-6-handling-specific-exceptions">🔴 6. Handling Specific Exceptions</a></h2>
+<h3 id="topics-20"><a class="header" href="#topics-20">Topics</a></h3>
+<ul>
+<li><code>MethodArgumentNotValidException</code></li>
+<li><code>HttpMessageNotReadableException</code></li>
+<li><code>ConstraintViolationException</code></li>
+</ul>
+<h3 id="labs--20"><a class="header" href="#labs--20">Labs 🧪</a></h3>
+<ul>
+<li>
+<p>Add validation using:</p>
+<ul>
+<li><code>@NotNull</code></li>
+<li><code>@Size</code></li>
+</ul>
+</li>
+<li>
+<p>Send invalid request → handle validation errors</p>
+</li>
+</ul>
+<hr />
+<h2 id="-7-validation-error-handling-important-for-apis"><a class="header" href="#-7-validation-error-handling-important-for-apis">🟤 7. Validation Error Handling (Important for APIs)</a></h2>
+<h3 id="topics-21"><a class="header" href="#topics-21">Topics</a></h3>
+<ul>
+<li>Bean Validation (JSR-380)</li>
+<li>Field-level error messages</li>
+<li>Aggregating validation errors</li>
+</ul>
+<h3 id="labs--21"><a class="header" href="#labs--21">Labs 🧪</a></h3>
+<ul>
+<li>Return multiple field errors:</li>
+</ul>
+<pre><code class="language-json">{
+  "errors": {
+    "name": "must not be empty",
+    "email": "invalid format"
+  }
+}
+</code></pre>
+<hr />
+<h2 id="-8-responsestatus--annotations"><a class="header" href="#-8-responsestatus--annotations">⚫ 8. ResponseStatus &amp; Annotations</a></h2>
+<h3 id="topics-22"><a class="header" href="#topics-22">Topics</a></h3>
+<ul>
+<li><code>@ResponseStatus</code></li>
+<li>Using it with exceptions</li>
+<li>Pros &amp; limitations</li>
+</ul>
+<h3 id="labs--22"><a class="header" href="#labs--22">Labs 🧪</a></h3>
+<ul>
+<li>Annotate custom exception:</li>
+</ul>
+<pre><code class="language-java">@ResponseStatus(HttpStatus.NOT_FOUND)
+</code></pre>
+<ul>
+<li>Compare with global handler</li>
+</ul>
+<hr />
+<h2 id="-9-handling-404--nohandlerfoundexception"><a class="header" href="#-9-handling-404--nohandlerfoundexception">🟠 9. Handling 404 &amp; NoHandlerFoundException</a></h2>
+<h3 id="topics-23"><a class="header" href="#topics-23">Topics</a></h3>
+<ul>
+<li>Customizing 404 errors</li>
+<li>Enabling <code>throw-exception-if-no-handler-found</code></li>
+</ul>
+<h3 id="labs--23"><a class="header" href="#labs--23">Labs 🧪</a></h3>
+<ul>
+<li>Configure application.properties:</li>
+</ul>
+<pre><code class="language-properties">spring.mvc.throw-exception-if-no-handler-found=true
+</code></pre>
+<ul>
+<li>Handle 404 globally</li>
+</ul>
+<hr />
+<h2 id="-10-spring-boot-default-error-handling-internals"><a class="header" href="#-10-spring-boot-default-error-handling-internals">🔵 10. Spring Boot Default Error Handling Internals</a></h2>
+<h3 id="topics-24"><a class="header" href="#topics-24">Topics</a></h3>
+<ul>
+<li><code>BasicErrorController</code></li>
+<li><code>ErrorAttributes</code></li>
+<li>How Spring generates error response</li>
+</ul>
+<h3 id="labs--24"><a class="header" href="#labs--24">Labs 🧪</a></h3>
+<ul>
+<li>Override default error attributes</li>
+<li>Customize error output</li>
+</ul>
+<hr />
+<h2 id="-11-logging--monitoring-exceptions-production-level"><a class="header" href="#-11-logging--monitoring-exceptions-production-level">🟣 11. Logging &amp; Monitoring Exceptions (Production Level)</a></h2>
+<h3 id="topics-25"><a class="header" href="#topics-25">Topics</a></h3>
+<ul>
+<li>Logging exceptions properly</li>
+<li>Log levels (ERROR, WARN)</li>
+<li>Avoid exposing sensitive info</li>
+</ul>
+<h3 id="labs--25"><a class="header" href="#labs--25">Labs 🧪</a></h3>
+<ul>
+<li>Log exceptions using logger</li>
+<li>Mask sensitive data (passwords, tokens)</li>
+</ul>
+<hr />
+<h2 id="-12-security--exception-handling-integration"><a class="header" href="#-12-security--exception-handling-integration">🔴 12. Security + Exception Handling Integration</a></h2>
+<h3 id="topics-26"><a class="header" href="#topics-26">Topics</a></h3>
+<ul>
+<li>Handling exceptions in Spring Security</li>
+<li><code>AuthenticationEntryPoint</code></li>
+<li><code>AccessDeniedHandler</code></li>
+</ul>
+<h3 id="labs--26"><a class="header" href="#labs--26">Labs 🧪</a></h3>
+<ul>
+<li>
+<p>Return custom JSON for:</p>
+<ul>
+<li>Unauthorized (401)</li>
+<li>Forbidden (403)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="-13-global-api-response-wrapper-advanced"><a class="header" href="#-13-global-api-response-wrapper-advanced">⚫ 13. Global API Response Wrapper (Advanced)</a></h2>
+<h3 id="topics-27"><a class="header" href="#topics-27">Topics</a></h3>
+<ul>
+<li>Standard success + error wrapper</li>
+<li>Consistent API design</li>
+</ul>
+<h3 id="labs--27"><a class="header" href="#labs--27">Labs 🧪</a></h3>
+<ul>
+<li>Create:</li>
+</ul>
+<pre><code class="language-json">{
+  "success": false,
+  "data": null,
+  "error": { ... }
+}
+</code></pre>
+<hr />
+<h2 id="-14-microservices-exception-handling-advanced"><a class="header" href="#-14-microservices-exception-handling-advanced">🟤 14. Microservices Exception Handling (Advanced+)</a></h2>
+<h3 id="topics-28"><a class="header" href="#topics-28">Topics</a></h3>
+<ul>
+<li>Propagating errors between services</li>
+<li>Feign/WebClient error handling</li>
+<li>Standard error contracts</li>
+</ul>
+<h3 id="labs--28"><a class="header" href="#labs--28">Labs 🧪</a></h3>
+<ul>
+<li>Handle downstream API errors</li>
+<li>Map external errors to internal format</li>
+</ul>
+<hr />
+<h1 id="-final-project-must-build"><a class="header" href="#-final-project-must-build">🎯 Final Project (Must Build)</a></h1>
+<h3 id="-production-ready-error-handling-system"><a class="header" href="#-production-ready-error-handling-system">💼 "Production-Ready Error Handling System"</a></h3>
+<p>Include:</p>
+<ul>
+<li>Global exception handler</li>
+<li>Custom exceptions</li>
+<li>Validation handling</li>
+<li>JWT + security errors</li>
+<li>Standard response format</li>
+<li>Logging</li>
+</ul>
+<hr />
+<h1 id="-pro-tips-from-industry"><a class="header" href="#-pro-tips-from-industry">🧠 Pro Tips (From Industry)</a></h1>
+<ul>
+<li>
+<p>Never return raw exceptions ❌</p>
+</li>
+<li>
+<p>Always use structured responses ✅</p>
+</li>
+<li>
+<p>Separate:</p>
+<ul>
+<li>Business exceptions</li>
+<li>Technical exceptions</li>
+</ul>
+</li>
+<li>
+<p>Keep messages user-friendly</p>
+</li>
+</ul>
+<hr />
+<div style="break-before: page; page-break-before: always;"></div><style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+<h2 id="-3"><a class="header" href="#-3"><a href="../src">👈</a></a></h2>
+<pre><code class="language-json">[
+  {
+    "category": "Spring Boot Exception Handling",
+    "labs": [
+      {
+        "id": "lab-import-1776190588145-l8h6m05e0",
+        "title": "Basics of Exception Handling",
+        "icon": "fa-solid fa-circle-info",
+        "description": "Understand how exceptions work in Java and default Spring Boot behavior.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-l8h6m05e0-0",
+            "text": "Checked vs Unchecked Exceptions",
+            "description": "Difference between compile-time and runtime exceptions."
+          },
+          {
+            "id": "step-lab-import-1776190588145-l8h6m05e0-1",
+            "text": "Default Spring Boot Error Response",
+            "description": "Observe default JSON error structure returned by Spring Boot."
+          },
+          {
+            "id": "step-lab-import-1776190588145-l8h6m05e0-2",
+            "text": "HTTP Status Codes",
+            "description": "Learn 200, 400, 404, 500 and their API meanings."
+          },
+          {
+            "id": "step-lab-import-1776190588145-l8h6m05e0-3",
+            "text": "Lab: Basic Exception Testing",
+            "description": "Create `/test/{id}` API and throw RuntimeException and NullPointerException to observe default response."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-e8klppt3f",
+        "title": "Controller Level Exception Handling",
+        "icon": "fa-solid fa-layer-group",
+        "description": "Handle exceptions locally in controllers.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-e8klppt3f-0",
+            "text": "@ExceptionHandler",
+            "description": "Handle specific exceptions inside a controller."
+          },
+          {
+            "id": "step-lab-import-1776190588145-e8klppt3f-1",
+            "text": "Custom Error Response",
+            "description": "Return meaningful messages instead of default error."
+          },
+          {
+            "id": "step-lab-import-1776190588145-e8klppt3f-2",
+            "text": "Lab: Controller-Level Handling",
+            "description": "Handle RuntimeException using @ExceptionHandler and return custom JSON response."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-qkineqg2v",
+        "title": "Global Exception Handling",
+        "icon": "fa-solid fa-globe",
+        "description": "Centralized exception handling across application.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-qkineqg2v-0",
+            "text": "@ControllerAdvice",
+            "description": "Apply exception handling globally."
+          },
+          {
+            "id": "step-lab-import-1776190588145-qkineqg2v-1",
+            "text": "@RestControllerAdvice",
+            "description": "Return JSON responses globally."
+          },
+          {
+            "id": "step-lab-import-1776190588145-qkineqg2v-2",
+            "text": "Generic Exception Handling",
+            "description": "Catch all exceptions in one place."
+          },
+          {
+            "id": "step-lab-import-1776190588145-qkineqg2v-3",
+            "text": "Lab: Global Handler",
+            "description": "Create GlobalExceptionHandler class and handle all exceptions."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-belnztho6",
+        "title": "Custom Exceptions",
+        "icon": "fa-solid fa-user-xmark",
+        "description": "Define business-specific exceptions.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-belnztho6-0",
+            "text": "Create Custom Exception",
+            "description": "Example: UserNotFoundException extends RuntimeException."
+          },
+          {
+            "id": "step-lab-import-1776190588145-belnztho6-1",
+            "text": "Business vs System Exceptions",
+            "description": "Separate business logic errors from technical errors."
+          },
+          {
+            "id": "step-lab-import-1776190588145-belnztho6-2",
+            "text": "Lab: Custom Exception",
+            "description": "Throw UserNotFoundException when user not found and handle globally."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-34qphvlk4",
+        "title": "Custom Error Response Structure",
+        "icon": "fa-solid fa-code",
+        "description": "Design consistent API error format.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-34qphvlk4-0",
+            "text": "ErrorResponse DTO",
+            "description": "Include timestamp, status, message, path."
+          },
+          {
+            "id": "step-lab-import-1776190588145-34qphvlk4-1",
+            "text": "Standard API Format",
+            "description": "Maintain uniform structure across APIs."
+          },
+          {
+            "id": "step-lab-import-1776190588145-34qphvlk4-2",
+            "text": "Lab: Structured Response",
+            "description": "Create ErrorResponse class and return structured JSON for all errors."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-kj09hixiu",
+        "title": "Handling Specific Exceptions",
+        "icon": "fa-solid fa-bug",
+        "description": "Handle common Spring exceptions.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-kj09hixiu-0",
+            "text": "MethodArgumentNotValidException",
+            "description": "Occurs during validation failure."
+          },
+          {
+            "id": "step-lab-import-1776190588145-kj09hixiu-1",
+            "text": "HttpMessageNotReadableException",
+            "description": "Occurs when request body is invalid."
+          },
+          {
+            "id": "step-lab-import-1776190588145-kj09hixiu-2",
+            "text": "ConstraintViolationException",
+            "description": "Occurs in query/path validation."
+          },
+          {
+            "id": "step-lab-import-1776190588145-kj09hixiu-3",
+            "text": "Lab: Specific Exception Handling",
+            "description": "Trigger and handle each exception with custom messages."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-frq23bccs",
+        "title": "Validation Error Handling",
+        "icon": "fa-solid fa-check-circle",
+        "description": "Handle validation errors in request data.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-frq23bccs-0",
+            "text": "Bean Validation",
+            "description": "Use @NotNull, @Size, @Email."
+          },
+          {
+            "id": "step-lab-import-1776190588145-frq23bccs-1",
+            "text": "Field-Level Error Mapping",
+            "description": "Return errors per field."
+          },
+          {
+            "id": "step-lab-import-1776190588145-frq23bccs-2",
+            "text": "Multiple Error Aggregation",
+            "description": "Return all validation errors in one response."
+          },
+          {
+            "id": "step-lab-import-1776190588145-frq23bccs-3",
+            "text": "Lab: Validation Handling",
+            "description": "Send invalid request and return structured validation errors."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-trkiizd3c",
+        "title": "ResponseStatus Annotation",
+        "icon": "fa-solid fa-tag",
+        "description": "Set HTTP status directly on exceptions.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-trkiizd3c-0",
+            "text": "@ResponseStatus",
+            "description": "Annotate exception with HTTP status."
+          },
+          {
+            "id": "step-lab-import-1776190588145-trkiizd3c-1",
+            "text": "Comparison with Global Handler",
+            "description": "Understand flexibility differences."
+          },
+          {
+            "id": "step-lab-import-1776190588145-trkiizd3c-2",
+            "text": "Lab: ResponseStatus Usage",
+            "description": "Annotate custom exception and compare with global handler output."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-1plb4hv7y",
+        "title": "Handling 404 Errors",
+        "icon": "fa-solid fa-triangle-exclamation",
+        "description": "Customize not found errors.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-1plb4hv7y-0",
+            "text": "NoHandlerFoundException",
+            "description": "Enable exception for missing endpoints."
+          },
+          {
+            "id": "step-lab-import-1776190588145-1plb4hv7y-1",
+            "text": "Configuration Setup",
+            "description": "Use spring.mvc.throw-exception-if-no-handler-found=true."
+          },
+          {
+            "id": "step-lab-import-1776190588145-1plb4hv7y-2",
+            "text": "Lab: Custom 404 Handling",
+            "description": "Handle 404 globally with custom message."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-zzm8hxj75",
+        "title": "Spring Boot Error Internals",
+        "icon": "fa-solid fa-gears",
+        "description": "Understand internal error flow.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-zzm8hxj75-0",
+            "text": "BasicErrorController",
+            "description": "Default error controller in Spring Boot."
+          },
+          {
+            "id": "step-lab-import-1776190588145-zzm8hxj75-1",
+            "text": "ErrorAttributes",
+            "description": "Customize error fields."
+          },
+          {
+            "id": "step-lab-import-1776190588145-zzm8hxj75-2",
+            "text": "Lab: Override ErrorAttributes",
+            "description": "Customize default error response fields."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-c88gfctyk",
+        "title": "Logging &amp; Monitoring",
+        "icon": "fa-solid fa-file-lines",
+        "description": "Handle logging for production systems.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-c88gfctyk-0",
+            "text": "Logging Exceptions",
+            "description": "Use logger for error tracking."
+          },
+          {
+            "id": "step-lab-import-1776190588145-c88gfctyk-1",
+            "text": "Log Levels",
+            "description": "ERROR, WARN usage."
+          },
+          {
+            "id": "step-lab-import-1776190588145-c88gfctyk-2",
+            "text": "Sensitive Data Protection",
+            "description": "Avoid logging passwords/tokens."
+          },
+          {
+            "id": "step-lab-import-1776190588145-c88gfctyk-3",
+            "text": "Lab: Logging Setup",
+            "description": "Log all exceptions using SLF4J logger."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-ukarj41p8",
+        "title": "Security Exception Handling",
+        "icon": "fa-solid fa-shield-halved",
+        "description": "Handle security-related exceptions.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-ukarj41p8-0",
+            "text": "AuthenticationEntryPoint",
+            "description": "Handle 401 Unauthorized."
+          },
+          {
+            "id": "step-lab-import-1776190588145-ukarj41p8-1",
+            "text": "AccessDeniedHandler",
+            "description": "Handle 403 Forbidden."
+          },
+          {
+            "id": "step-lab-import-1776190588145-ukarj41p8-2",
+            "text": "Lab: Security Errors",
+            "description": "Return custom JSON for 401 and 403 errors."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-j7lpnzt36",
+        "title": "Global API Response Wrapper",
+        "icon": "fa-solid fa-box",
+        "description": "Standardize API responses.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-j7lpnzt36-0",
+            "text": "Success &amp; Error Wrapper",
+            "description": "Include success flag, data, error."
+          },
+          {
+            "id": "step-lab-import-1776190588145-j7lpnzt36-1",
+            "text": "Consistent API Design",
+            "description": "Apply same structure everywhere."
+          },
+          {
+            "id": "step-lab-import-1776190588145-j7lpnzt36-2",
+            "text": "Lab: Response Wrapper",
+            "description": "Wrap all API responses into common format."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-vfjc5ucfa",
+        "title": "Microservices Exception Handling",
+        "icon": "fa-solid fa-network-wired",
+        "description": "Handle errors across services.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-vfjc5ucfa-0",
+            "text": "Feign/WebClient Handling",
+            "description": "Handle external service errors."
+          },
+          {
+            "id": "step-lab-import-1776190588145-vfjc5ucfa-1",
+            "text": "Error Mapping",
+            "description": "Convert external errors into internal format."
+          },
+          {
+            "id": "step-lab-import-1776190588145-vfjc5ucfa-2",
+            "text": "Lab: Microservice Error Handling",
+            "description": "Handle downstream API errors and map responses."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-e6nr8gs0y",
+        "title": "Production Best Practices",
+        "icon": "fa-solid fa-star",
+        "description": "Industry-level practices for exception handling.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-e6nr8gs0y-0",
+            "text": "Never Expose Raw Exceptions",
+            "description": "Always hide internal stack traces."
+          },
+          {
+            "id": "step-lab-import-1776190588145-e6nr8gs0y-1",
+            "text": "Use Meaningful Messages",
+            "description": "Provide user-friendly error responses."
+          },
+          {
+            "id": "step-lab-import-1776190588145-e6nr8gs0y-2",
+            "text": "Separate Exception Types",
+            "description": "Business vs Technical exceptions."
+          },
+          {
+            "id": "step-lab-import-1776190588145-e6nr8gs0y-3",
+            "text": "Lab: Production Setup",
+            "description": "Implement complete production-ready exception handling system."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "category": "Spring Security Complete Roadmap",
+    "labs": [
+      {
+        "id": "lab-import-1776190384649-amcl33at1",
+        "title": "Fundamentals",
+        "icon": "fa-solid fa-book",
+        "description": "Understand core concepts of Spring Security and how it works internally.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-amcl33at1-0",
+            "text": "Introduction to Spring Security",
+            "description": "What is Spring Security, why it is used, and its role in securing applications."
+          },
+          {
+            "id": "step-lab-import-1776190384649-amcl33at1-1",
+            "text": "Authentication vs Authorization",
+            "description": "Authentication = who you are, Authorization = what you can access."
+          },
+          {
+            "id": "step-lab-import-1776190384649-amcl33at1-2",
+            "text": "Security Architecture",
+            "description": "Understand filter chain, security context, and flow of request.\n\n[Medium blog](https://medium.com/@iiizmkarim/spring-security-6-architecture-real-world-implementation-and-best-practices-75c0a514c65e)"
+          },
+          {
+            "id": "step-lab-import-1776190384649-amcl33at1-3",
+            "text": "Default Configuration",
+            "description": "**Lab:** Create Spring Boot app → add dependency → observe default login page."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-gougmwpni",
+        "title": "Core Components",
+        "icon": "fa-solid fa-cogs",
+        "description": "Deep dive into important internal classes used in authentication.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-gougmwpni-0",
+            "text": "SecurityFilterChain",
+            "description": "Main component that defines security rules."
+          },
+          {
+            "id": "step-lab-import-1776190384649-gougmwpni-1",
+            "text": "AuthenticationManager",
+            "description": "Handles authentication process."
+          },
+          {
+            "id": "step-lab-import-1776190384649-gougmwpni-2",
+            "text": "UserDetailsService",
+            "description": "**Lab:** Create custom UserDetailsService and load user from memory/DB."
+          },
+          {
+            "id": "step-lab-import-1776190384649-gougmwpni-3",
+            "text": "PasswordEncoder",
+            "description": "**Lab:** Use BCryptPasswordEncoder to hash passwords."
+          },
+          {
+            "id": "step-lab-import-1776190384649-gougmwpni-4",
+            "text": "Roles and Authorities",
+            "description": "Difference between ROLE_USER and authorities."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-amm595zj8",
+        "title": "Configuration",
+        "icon": "fa-solid fa-sliders",
+        "description": "Modern configuration using Spring Security 6.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-amm595zj8-0",
+            "text": "SecurityFilterChain Bean",
+            "description": "Define security rules using Java configuration."
+          },
+          {
+            "id": "step-lab-import-1776190384649-amm595zj8-1",
+            "text": "Lambda DSL",
+            "description": "Modern way to configure security in Spring Boot."
+          },
+          {
+            "id": "step-lab-import-1776190384649-amm595zj8-2",
+            "text": "Endpoint Security",
+            "description": "**Lab:** /public (open), /user (auth), /admin (role-based)."
+          },
+          {
+            "id": "step-lab-import-1776190384649-amm595zj8-3",
+            "text": "Custom Login Page",
+            "description": "**Lab:** Replace default login with custom UI."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-y1liivict",
+        "title": "Authentication Methods",
+        "icon": "fa-solid fa-lock",
+        "description": "Different ways to authenticate users.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-y1liivict-0",
+            "text": "Form Login",
+            "description": "Default login form handling."
+          },
+          {
+            "id": "step-lab-import-1776190384649-y1liivict-1",
+            "text": "HTTP Basic Auth",
+            "description": "Used for APIs and testing."
+          },
+          {
+            "id": "step-lab-import-1776190384649-y1liivict-2",
+            "text": "Custom Authentication",
+            "description": "**Lab:** Create login API manually."
+          },
+          {
+            "id": "step-lab-import-1776190384649-y1liivict-3",
+            "text": "Remember Me",
+            "description": "**Lab:** Implement remember-me functionality."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-8ff4sqlxf",
+        "title": "Authorization",
+        "icon": "fa-solid fa-user-shield",
+        "description": "Control access to resources.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-8ff4sqlxf-0",
+            "text": "Role-Based Access",
+            "description": "**Lab:** Restrict endpoints based on roles."
+          },
+          {
+            "id": "step-lab-import-1776190384649-8ff4sqlxf-1",
+            "text": "Method-Level Security",
+            "description": "Use @PreAuthorize and @PostAuthorize."
+          },
+          {
+            "id": "step-lab-import-1776190384649-8ff4sqlxf-2",
+            "text": "Expression-Based Access",
+            "description": "**Lab:** Use hasRole(), hasAuthority() expressions."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-ad2ex809l",
+        "title": "Database Integration",
+        "icon": "fa-solid fa-database",
+        "description": "Store users and roles in database.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-ad2ex809l-0",
+            "text": "JPA Integration",
+            "description": "Connect Spring Security with database."
+          },
+          {
+            "id": "step-lab-import-1776190384649-ad2ex809l-1",
+            "text": "User Entity Design",
+            "description": "Create User and Role entities."
+          },
+          {
+            "id": "step-lab-import-1776190384649-ad2ex809l-2",
+            "text": "Custom Queries",
+            "description": "**Lab:** Fetch user from DB during login."
+          },
+          {
+            "id": "step-lab-import-1776190384649-ad2ex809l-3",
+            "text": "Full Auth System",
+            "description": "**Lab:** Build Register + Login APIs using DB."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-u7lbdf0oc",
+        "title": "JWT Authentication",
+        "icon": "fa-solid fa-key",
+        "description": "Stateless authentication using tokens.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-u7lbdf0oc-0",
+            "text": "JWT Basics",
+            "description": "Structure of JWT (header, payload, signature)."
+          },
+          {
+            "id": "step-lab-import-1776190384649-u7lbdf0oc-1",
+            "text": "Token Generation",
+            "description": "**Lab:** Generate token after login."
+          },
+          {
+            "id": "step-lab-import-1776190384649-u7lbdf0oc-2",
+            "text": "JWT Filter",
+            "description": "**Lab:** Validate token using filter."
+          },
+          {
+            "id": "step-lab-import-1776190384649-u7lbdf0oc-3",
+            "text": "Secure APIs",
+            "description": "**Lab:** Protect endpoints using JWT."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-jh9zog5xl",
+        "title": "OAuth2 &amp; Social Login",
+        "icon": "fa-brands fa-google",
+        "description": "Login using external providers.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-jh9zog5xl-0",
+            "text": "OAuth2 Basics",
+            "description": "Understand authorization flow."
+          },
+          {
+            "id": "step-lab-import-1776190384649-jh9zog5xl-1",
+            "text": "Google Login",
+            "description": "**Lab:** Implement Google OAuth login."
+          },
+          {
+            "id": "step-lab-import-1776190384649-jh9zog5xl-2",
+            "text": "User Info Handling",
+            "description": "Fetch user profile from provider."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-u5hlimk61",
+        "title": "Security Features",
+        "icon": "fa-solid fa-shield-halved",
+        "description": "Important built-in protections.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-u5hlimk61-0",
+            "text": "CSRF Protection",
+            "description": "Prevent cross-site request forgery."
+          },
+          {
+            "id": "step-lab-import-1776190384649-u5hlimk61-1",
+            "text": "CORS Configuration",
+            "description": "**Lab:** Allow frontend requests."
+          },
+          {
+            "id": "step-lab-import-1776190384649-u5hlimk61-2",
+            "text": "Session Management",
+            "description": "Control session creation and limits."
+          },
+          {
+            "id": "step-lab-import-1776190384649-u5hlimk61-3",
+            "text": "Security Headers",
+            "description": "Enable headers for secure responses."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-pq82z88ff",
+        "title": "Exception Handling",
+        "icon": "fa-solid fa-bug",
+        "description": "Customize error handling in security.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-pq82z88ff-0",
+            "text": "AuthenticationEntryPoint",
+            "description": "Handle unauthorized access."
+          },
+          {
+            "id": "step-lab-import-1776190384649-pq82z88ff-1",
+            "text": "AccessDeniedHandler",
+            "description": "Handle forbidden access."
+          },
+          {
+            "id": "step-lab-import-1776190384649-pq82z88ff-2",
+            "text": "Custom Error Response",
+            "description": "**Lab:** Return JSON errors instead of default HTML."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-2dy3vocyn",
+        "title": "Custom Filters",
+        "icon": "fa-solid fa-filter",
+        "description": "Extend Spring Security behavior.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-2dy3vocyn-0",
+            "text": "Filter Chain Flow",
+            "description": "Understand execution order."
+          },
+          {
+            "id": "step-lab-import-1776190384649-2dy3vocyn-1",
+            "text": "OncePerRequestFilter",
+            "description": "**Lab:** Create custom filter."
+          },
+          {
+            "id": "step-lab-import-1776190384649-2dy3vocyn-2",
+            "text": "JWT Filter Integration",
+            "description": "**Lab:** Add filter before UsernamePasswordAuthenticationFilter."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-bwgz3skw2",
+        "title": "Method Security",
+        "icon": "fa-solid fa-code",
+        "description": "Secure business logic layer.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-bwgz3skw2-0",
+            "text": "Enable Method Security",
+            "description": "Use @EnableMethodSecurity."
+          },
+          {
+            "id": "step-lab-import-1776190384649-bwgz3skw2-1",
+            "text": "Pre/Post Authorization",
+            "description": "**Lab:** Secure service methods."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-uvmof44pg",
+        "title": "Testing",
+        "icon": "fa-solid fa-vial",
+        "description": "Test secured APIs properly.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-uvmof44pg-0",
+            "text": "MockMvc Testing",
+            "description": "**Lab:** Test secured endpoints."
+          },
+          {
+            "id": "step-lab-import-1776190384649-uvmof44pg-1",
+            "text": "Mock Users",
+            "description": "Use @WithMockUser annotation."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-wss3uyfbv",
+        "title": "Production Best Practices",
+        "icon": "fa-solid fa-rocket",
+        "description": "Make your application production-ready.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-wss3uyfbv-0",
+            "text": "Password Security",
+            "description": "Use strong hashing like BCrypt."
+          },
+          {
+            "id": "step-lab-import-1776190384649-wss3uyfbv-1",
+            "text": "Refresh Tokens",
+            "description": "**Lab:** Implement refresh token flow."
+          },
+          {
+            "id": "step-lab-import-1776190384649-wss3uyfbv-2",
+            "text": "Logging &amp; Monitoring",
+            "description": "Track authentication events."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-64tjsxe0j",
+        "title": "Microservices Security",
+        "icon": "fa-solid fa-network-wired",
+        "description": "Secure distributed systems.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-64tjsxe0j-0",
+            "text": "API Gateway Security",
+            "description": "Centralized authentication."
+          },
+          {
+            "id": "step-lab-import-1776190384649-64tjsxe0j-1",
+            "text": "JWT Across Services",
+            "description": "**Lab:** Share token between services."
+          },
+          {
+            "id": "step-lab-import-1776190384649-64tjsxe0j-2",
+            "text": "Keycloak Integration",
+            "description": "**Lab:** Use external identity provider."
+          }
+        ]
+      }
+    ]
+  }
+]
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>

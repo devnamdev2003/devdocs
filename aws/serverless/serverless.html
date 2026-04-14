@@ -1,0 +1,679 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Serverless</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- PWA -->
+        <link rel="icon" type="image/x-icon" href="https://devnamdev2003.github.io/devdocs/static/icons/favicon.ico">
+        <link rel="manifest" href="https://devnamdev2003.github.io/devdocs/static/manifest.webmanifest">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="theme-color" content="#0d1117">
+        
+        <meta name="title" content="AWS">
+        <meta name="description" content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="og:image" content="https://devnamdev2003.github.io/devdocs/static/img/aws/aws_c.png">
+        <meta property="og:title" content="AWS">
+        <meta property="og:description"
+            content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="twitter:image" content="https://devnamdev2003.github.io/devdocs/static/img/aws/aws_c.png">
+        <meta property="twitter:title" content="AWS">
+        <meta property="twitter:description"
+            content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        <meta name="description" content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../aws_index.html"><strong aria-hidden="true">1.</strong> AWS index</a></li><li class="chapter-item expanded "><a href="../aws.html"><strong aria-hidden="true">2.</strong> AWS</a></li><li class="chapter-item expanded "><a href="../aws_roadmap.html"><strong aria-hidden="true">3.</strong> AWS Roadmap</a></li><li class="chapter-item expanded "><a href="../aws_left.html"><strong aria-hidden="true">4.</strong> AWS left</a></li><li class="chapter-item expanded "><a href="../networking/networking_index.html"><strong aria-hidden="true">5.</strong> AWS Networking</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../networking/networking.html"><strong aria-hidden="true">5.1.</strong> AWS Networking</a></li><li class="chapter-item expanded "><a href="../networking/networking_ip.html"><strong aria-hidden="true">5.2.</strong> IPv4 Address Structure, Private IPs, and Public IPs</a></li><li class="chapter-item expanded "><a href="../networking/networking_subnet.html"><strong aria-hidden="true">5.3.</strong> What is Subnetting?</a></li><li class="chapter-item expanded "><a href="../networking/networking_tcp_udp.html"><strong aria-hidden="true">5.4.</strong> What are TCP and UDP?</a></li><li class="chapter-item expanded "><a href="../networking/networking_route_table.html"><strong aria-hidden="true">5.5.</strong> Route Tables</a></li><li class="chapter-item expanded "><a href="../networking/networking_port.html"><strong aria-hidden="true">5.6.</strong> Port</a></li><li class="chapter-item expanded "><a href="../networking/networking_firewall.html"><strong aria-hidden="true">5.7.</strong> Firewalls and Security Concepts</a></li><li class="chapter-item expanded "><a href="../networking/networking_cidr.html"><strong aria-hidden="true">5.8.</strong> CIDR Notation</a></li><li class="chapter-item expanded "><a href="../networking/networking_dns.html"><strong aria-hidden="true">5.9.</strong> DNS Resolution Flow</a></li><li class="chapter-item expanded "><a href="../networking/networking_igw.html"><strong aria-hidden="true">5.10.</strong> Internet Gateway (IGW) in AWS</a></li><li class="chapter-item expanded "><a href="../networking/networking_nat.html"><strong aria-hidden="true">5.11.</strong> Network Address Translation (NAT)</a></li><li class="chapter-item expanded "><a href="../networking/networking_nat_igw.html"><strong aria-hidden="true">5.12.</strong> NAT Gateway vs Internet Gateway (IGW)</a></li><li class="chapter-item expanded "><a href="../networking/networking_sg.html"><strong aria-hidden="true">5.13.</strong> Security Groups in AWS</a></li><li class="chapter-item expanded "><a href="../networking/networking_nacl.html"><strong aria-hidden="true">5.14.</strong> Network Access Control Lists (NACLs) in AWS</a></li><li class="chapter-item expanded "><a href="../networking/networking_nacl_sg.html"><strong aria-hidden="true">5.15.</strong> NACL vs Security Group (SG)</a></li><li class="chapter-item expanded "><a href="../networking/networking_doubt.html"><strong aria-hidden="true">5.16.</strong> Networking doubt</a></li></ol></li><li class="chapter-item expanded "><a href="../serverless/serverless_index.html"><strong aria-hidden="true">6.</strong> Serverless</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverless/serverless.html" class="active"><strong aria-hidden="true">6.1.</strong> Serverless</a></li><li class="chapter-item expanded "><a href="../serverless/lambda.html"><strong aria-hidden="true">6.2.</strong> AWS Lambda</a></li><li class="chapter-item expanded "><a href="../serverless/lambda_api_gatway.html"><strong aria-hidden="true">6.3.</strong> AWS API Gateway</a></li><li class="chapter-item expanded "><a href="../serverless/pricing.html"><strong aria-hidden="true">6.4.</strong> AWS Pricing</a></li><li class="chapter-item expanded "><a href="../serverless/labs/labs_index.html"><strong aria-hidden="true">6.5.</strong> Labs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverless/labs/lab1.html"><strong aria-hidden="true">6.5.1.</strong> Serverless REST API</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab2.html"><strong aria-hidden="true">6.5.2.</strong> Event-Driven Processing</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab3.html"><strong aria-hidden="true">6.5.3.</strong> Asynchronous Messaging</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab4.html"><strong aria-hidden="true">6.5.4.</strong> Scheduled & Rule-Based Serverless Jobs</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab5.html"><strong aria-hidden="true">6.5.5.</strong> Secure Serverless Compute</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../dev.html"><strong aria-hidden="true">7.</strong> dev</a></li><li class="chapter-item expanded "><a href="../aws_quiz_topic.html"><strong aria-hidden="true">8.</strong> aws_quiz_topic</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs/edit/main/md-code/aws/src/serverless/serverless.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+<h2 id=""><a class="header" href="#"><a href="../">👈</a></a></h2>
+<ul>
+<li><a href="#%EF%B8%8F-serverless-compute--complete-deep-explanation">☁️ Serverless Compute – Complete Deep Explanation</a>
+<ul>
+<li><a href="#1%EF%B8%8F%E2%83%A3-what-is-serverless-compute">1️⃣ What is Serverless Compute?</a></li>
+<li><a href="#2%EF%B8%8F%E2%83%A3-why-serverless-compute-was-introduced-the-real-problem">2️⃣ Why Serverless Compute Was Introduced (The Real Problem)</a>
+<ul>
+<li><a href="#-traditional-model-problems">🔴 Traditional Model Problems</a></li>
+<li><a href="#-what-serverless-solves">✅ What Serverless Solves</a></li>
+</ul>
+</li>
+<li><a href="#3%EF%B8%8F%E2%83%A3-key-idea-behind-serverless-compute">3️⃣ Key Idea Behind Serverless Compute</a></li>
+<li><a href="#4%EF%B8%8F%E2%83%A3-core-characteristics-of-serverless-compute">4️⃣ Core Characteristics of Serverless Compute</a></li>
+<li><a href="#5%EF%B8%8F%E2%83%A3-what-runs-in-serverless-compute">5️⃣ What Runs in Serverless Compute?</a>
+<ul>
+<li><a href="#-aws-lambda-primary-service">🟣 AWS Lambda (Primary Service)</a></li>
+</ul>
+</li>
+<li><a href="#6%EF%B8%8F%E2%83%A3-aws-lambda--the-core-of-serverless-compute">6️⃣ AWS Lambda – The Core of Serverless Compute</a>
+<ul>
+<li><a href="#what-is-aws-lambda">What is AWS Lambda?</a></li>
+</ul>
+</li>
+<li><a href="#7%EF%B8%8F%E2%83%A3-how-aws-lambda-works-step-by-step">7️⃣ How AWS Lambda Works (Step-by-Step)</a>
+<ul>
+<li><a href="#-scenario">🧩 Scenario:</a></li>
+<li><a href="#step-by-step-flow">Step-by-Step Flow</a></li>
+</ul>
+</li>
+<li><a href="#8%EF%B8%8F%E2%83%A3-event-driven-nature-very-important">8️⃣ Event-Driven Nature (Very Important)</a></li>
+<li><a href="#9%EF%B8%8F%E2%83%A3-execution-model-of-serverless-compute">9️⃣ Execution Model of Serverless Compute</a>
+<ul>
+<li><a href="#-stateless-execution">🔹 Stateless Execution</a></li>
+</ul>
+</li>
+<li><a href="#-scaling-in-serverless-compute">🔟 Scaling in Serverless Compute</a>
+<ul>
+<li><a href="#-automatic-scaling">🔹 Automatic Scaling</a></li>
+</ul>
+</li>
+<li><a href="#1%EF%B8%8F%E2%83%A31%EF%B8%8F%E2%83%A3-cost-model-of-serverless-compute">1️⃣1️⃣ Cost Model of Serverless Compute</a>
+<ul>
+<li><a href="#traditional-ec2-pricing">Traditional EC2 Pricing</a></li>
+<li><a href="#serverless-pricing">Serverless Pricing</a></li>
+</ul>
+</li>
+<li><a href="#1%EF%B8%8F%E2%83%A32%EF%B8%8F%E2%83%A3-cold-start-vs-warm-start-important-concept">1️⃣2️⃣ Cold Start vs Warm Start (Important Concept)</a>
+<ul>
+<li><a href="#cold-start">Cold Start</a></li>
+<li><a href="#warm-start">Warm Start</a></li>
+</ul>
+</li>
+<li><a href="#1%EF%B8%8F%E2%83%A33%EF%B8%8F%E2%83%A3-serverless-compute-vs-ec2-big-comparison">1️⃣3️⃣ Serverless Compute vs EC2 (Big Comparison)</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A34%EF%B8%8F%E2%83%A3-serverless-compute-vs-containers">1️⃣4️⃣ Serverless Compute vs Containers</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A35%EF%B8%8F%E2%83%A3-when-to-use-serverless-compute">1️⃣5️⃣ When to Use Serverless Compute</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A36%EF%B8%8F%E2%83%A3-when-not-to-use-serverless">1️⃣6️⃣ When NOT to Use Serverless</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A37%EF%B8%8F%E2%83%A3-security-in-serverless-compute">1️⃣7️⃣ Security in Serverless Compute</a>
+<ul>
+<li><a href="#-iam-based-access">🔹 IAM-Based Access</a></li>
+<li><a href="#-network-security">🔹 Network Security</a></li>
+<li><a href="#-no-os-access">🔹 No OS Access</a></li>
+</ul>
+</li>
+<li><a href="#1%EF%B8%8F%E2%83%A38%EF%B8%8F%E2%83%A3-high-availability--fault-tolerance">1️⃣8️⃣ High Availability &amp; Fault Tolerance</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A39%EF%B8%8F%E2%83%A3-real-world-architecture-example">1️⃣9️⃣ Real-World Architecture Example</a>
+<ul>
+<li><a href="#serverless-web-app">Serverless Web App</a></li>
+</ul>
+</li>
+<li><a href="#2%EF%B8%8F%E2%83%A30%EF%B8%8F%E2%83%A3-serverless-compute-in-aws-exams-important">2️⃣0️⃣ Serverless Compute in AWS Exams (Important)</a></li>
+<li><a href="#2%EF%B8%8F%E2%83%A31%EF%B8%8F%E2%83%A3-one-line-exam-definition">2️⃣1️⃣ One-Line Exam Definition</a></li>
+<li><a href="#2%EF%B8%8F%E2%83%A32%EF%B8%8F%E2%83%A3-real-world-analogy">2️⃣2️⃣ Real-World Analogy</a>
+<ul>
+<li><a href="#serverless--electricity-bill">Serverless = Electricity Bill</a></li>
+<li><a href="#ec2--generator">EC2 = Generator</a></li>
+</ul>
+</li>
+<li><a href="#2%EF%B8%8F%E2%83%A33%EF%B8%8F%E2%83%A3-final-summary-must-remember">2️⃣3️⃣ Final Summary (Must Remember)</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="-serverless-compute--complete-deep-explanation"><a class="header" href="#-serverless-compute--complete-deep-explanation">☁️ Serverless Compute – Complete Deep Explanation</a></h1>
+<hr />
+<h2 id="1-what-is-serverless-compute"><a class="header" href="#1-what-is-serverless-compute">1️⃣ What is Serverless Compute?</a></h2>
+<p><strong>Serverless Compute</strong> is a cloud computing model where:</p>
+<blockquote>
+<p><strong>You run code without provisioning, managing, or maintaining servers.</strong></p>
+</blockquote>
+<p>Even though the name says <em>serverless</em>:</p>
+<ul>
+<li>Servers <strong>do exist</strong></li>
+<li>But <strong>you never see or manage them</strong></li>
+</ul>
+<p>AWS takes care of:</p>
+<ul>
+<li>Server provisioning</li>
+<li>Scaling</li>
+<li>Patching</li>
+<li>Availability</li>
+<li>Capacity planning</li>
+</ul>
+<p>You focus only on:</p>
+<ul>
+<li><strong>Your code</strong></li>
+<li><strong>Your business logic</strong></li>
+</ul>
+<hr />
+<h2 id="2-why-serverless-compute-was-introduced-the-real-problem"><a class="header" href="#2-why-serverless-compute-was-introduced-the-real-problem">2️⃣ Why Serverless Compute Was Introduced (The Real Problem)</a></h2>
+<p>Before serverless, application deployment looked like this:</p>
+<h3 id="-traditional-model-problems"><a class="header" href="#-traditional-model-problems">🔴 Traditional Model Problems</a></h3>
+<ul>
+<li>
+<p>You had to:</p>
+<ul>
+<li>Launch servers (EC2)</li>
+<li>Choose instance size</li>
+<li>Configure OS</li>
+<li>Patch OS</li>
+<li>Handle scaling</li>
+</ul>
+</li>
+<li>
+<p>Servers often:</p>
+<ul>
+<li>Sit idle (wasted money)</li>
+<li>Crash under sudden traffic</li>
+</ul>
+</li>
+<li>
+<p>Scaling took:</p>
+<ul>
+<li>Time</li>
+<li>Planning</li>
+<li>Manual effort</li>
+</ul>
+</li>
+</ul>
+<p>This caused:
+❌ High operational overhead
+❌ Higher cost
+❌ Slower development</p>
+<hr />
+<h3 id="-what-serverless-solves"><a class="header" href="#-what-serverless-solves">✅ What Serverless Solves</a></h3>
+<p>Serverless compute:</p>
+<ul>
+<li>Eliminates server management</li>
+<li>Scales automatically</li>
+<li>Charges only for actual usage</li>
+<li>Improves developer productivity</li>
+</ul>
+<hr />
+<h2 id="3-key-idea-behind-serverless-compute"><a class="header" href="#3-key-idea-behind-serverless-compute">3️⃣ Key Idea Behind Serverless Compute</a></h2>
+<blockquote>
+<p><strong>“Don’t think about servers, think about execution.”</strong></p>
+</blockquote>
+<p>Instead of:</p>
+<ul>
+<li>Running applications continuously</li>
+</ul>
+<p>You:</p>
+<ul>
+<li>Run <strong>code in response to events</strong></li>
+</ul>
+<hr />
+<h2 id="4-core-characteristics-of-serverless-compute"><a class="header" href="#4-core-characteristics-of-serverless-compute">4️⃣ Core Characteristics of Serverless Compute</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Feature</th><th>Explanation</th></tr></thead><tbody>
+<tr><td>No server management</td><td>AWS handles infrastructure</td></tr>
+<tr><td>Event-driven</td><td>Code runs on triggers</td></tr>
+<tr><td>Auto-scaling</td><td>Scales automatically</td></tr>
+<tr><td>Pay-per-use</td><td>Pay only when code runs</td></tr>
+<tr><td>High availability</td><td>Built-in fault tolerance</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="5-what-runs-in-serverless-compute"><a class="header" href="#5-what-runs-in-serverless-compute">5️⃣ What Runs in Serverless Compute?</a></h2>
+<p>In AWS, serverless compute mainly refers to:</p>
+<h3 id="-aws-lambda-primary-service"><a class="header" href="#-aws-lambda-primary-service">🟣 AWS Lambda (Primary Service)</a></h3>
+<p>But serverless compute is <strong>not only Lambda</strong>.</p>
+<p>Other serverless compute services include:</p>
+<ul>
+<li>AWS Fargate (containers)</li>
+<li>AWS App Runner</li>
+<li>Step Functions (workflow execution)</li>
+</ul>
+<hr />
+<h2 id="6-aws-lambda--the-core-of-serverless-compute"><a class="header" href="#6-aws-lambda--the-core-of-serverless-compute">6️⃣ AWS Lambda – The Core of Serverless Compute</a></h2>
+<h3 id="what-is-aws-lambda"><a class="header" href="#what-is-aws-lambda">What is AWS Lambda?</a></h3>
+<blockquote>
+<p><strong>AWS Lambda lets you run code without provisioning or managing servers.</strong></p>
+</blockquote>
+<p>You upload:</p>
+<ul>
+<li>Small pieces of code (functions)</li>
+</ul>
+<p>AWS:</p>
+<ul>
+<li>Runs them</li>
+<li>Scales them</li>
+<li>Stops them automatically</li>
+</ul>
+<hr />
+<h2 id="7-how-aws-lambda-works-step-by-step"><a class="header" href="#7-how-aws-lambda-works-step-by-step">7️⃣ How AWS Lambda Works (Step-by-Step)</a></h2>
+<p>Let’s take a <strong>real example</strong>.</p>
+<h3 id="-scenario"><a class="header" href="#-scenario">🧩 Scenario:</a></h3>
+<ul>
+<li>User uploads an image to S3</li>
+<li>Image must be resized</li>
+</ul>
+<hr />
+<h3 id="step-by-step-flow"><a class="header" href="#step-by-step-flow">Step-by-Step Flow</a></h3>
+<p>1️⃣ User uploads image to S3
+2️⃣ S3 triggers Lambda event
+3️⃣ Lambda function runs
+4️⃣ Image is processed
+5️⃣ Lambda stops</p>
+<p>✔ No server running continuously
+✔ You pay only for execution time</p>
+<hr />
+<h2 id="8-event-driven-nature-very-important"><a class="header" href="#8-event-driven-nature-very-important">8️⃣ Event-Driven Nature (Very Important)</a></h2>
+<p>Lambda runs only when <strong>triggered by an event</strong>.</p>
+<p>Common triggers:</p>
+<ul>
+<li>S3 upload</li>
+<li>API Gateway request</li>
+<li>DynamoDB change</li>
+<li>CloudWatch schedule</li>
+<li>SNS message</li>
+<li>SQS message</li>
+</ul>
+<hr />
+<h2 id="9-execution-model-of-serverless-compute"><a class="header" href="#9-execution-model-of-serverless-compute">9️⃣ Execution Model of Serverless Compute</a></h2>
+<h3 id="-stateless-execution"><a class="header" href="#-stateless-execution">🔹 Stateless Execution</a></h3>
+<p>Serverless functions are:</p>
+<ul>
+<li><strong>Stateless by default</strong></li>
+</ul>
+<p>This means:</p>
+<ul>
+<li>No data stored locally between executions</li>
+<li>Each execution is independent</li>
+</ul>
+<p>State is stored in:</p>
+<ul>
+<li>DynamoDB</li>
+<li>S3</li>
+<li>RDS</li>
+<li>ElastiCache</li>
+</ul>
+<hr />
+<h2 id="-scaling-in-serverless-compute"><a class="header" href="#-scaling-in-serverless-compute">🔟 Scaling in Serverless Compute</a></h2>
+<h3 id="-automatic-scaling"><a class="header" href="#-automatic-scaling">🔹 Automatic Scaling</a></h3>
+<p>If:</p>
+<ul>
+<li>1 request → 1 function instance</li>
+<li>1000 requests → 1000 function instances</li>
+</ul>
+<p>No manual scaling required.</p>
+<p>AWS handles:</p>
+<ul>
+<li>Concurrency</li>
+<li>Load balancing</li>
+<li>Fault tolerance</li>
+</ul>
+<hr />
+<h2 id="11-cost-model-of-serverless-compute"><a class="header" href="#11-cost-model-of-serverless-compute">1️⃣1️⃣ Cost Model of Serverless Compute</a></h2>
+<h3 id="traditional-ec2-pricing"><a class="header" href="#traditional-ec2-pricing">Traditional EC2 Pricing</a></h3>
+<ul>
+<li>Pay per hour</li>
+<li>Even when idle</li>
+</ul>
+<h3 id="serverless-pricing"><a class="header" href="#serverless-pricing">Serverless Pricing</a></h3>
+<ul>
+<li>Pay per request</li>
+<li>Pay per execution duration</li>
+<li>Measured in milliseconds</li>
+</ul>
+<p>✔ No idle cost
+✔ Very cost-effective for spiky workloads</p>
+<hr />
+<h2 id="12-cold-start-vs-warm-start-important-concept"><a class="header" href="#12-cold-start-vs-warm-start-important-concept">1️⃣2️⃣ Cold Start vs Warm Start (Important Concept)</a></h2>
+<h3 id="cold-start"><a class="header" href="#cold-start">Cold Start</a></h3>
+<ul>
+<li>First invocation</li>
+<li>AWS creates execution environment</li>
+<li>Slight delay</li>
+</ul>
+<h3 id="warm-start"><a class="header" href="#warm-start">Warm Start</a></h3>
+<ul>
+<li>Environment already exists</li>
+<li>Very fast execution</li>
+</ul>
+<p>Cold start impact:</p>
+<ul>
+<li>Minor</li>
+<li>Improving with AWS optimizations</li>
+</ul>
+<hr />
+<h2 id="13-serverless-compute-vs-ec2-big-comparison"><a class="header" href="#13-serverless-compute-vs-ec2-big-comparison">1️⃣3️⃣ Serverless Compute vs EC2 (Big Comparison)</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Feature</th><th>Serverless</th><th>EC2</th></tr></thead><tbody>
+<tr><td>Server management</td><td>❌ No</td><td>✅ Yes</td></tr>
+<tr><td>Scaling</td><td>Automatic</td><td>Manual / Auto Scaling</td></tr>
+<tr><td>Pricing</td><td>Per execution</td><td>Per hour</td></tr>
+<tr><td>Best for</td><td>Event-driven apps</td><td>Long-running apps</td></tr>
+<tr><td>Idle cost</td><td>❌ None</td><td>✅ Yes</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="14-serverless-compute-vs-containers"><a class="header" href="#14-serverless-compute-vs-containers">1️⃣4️⃣ Serverless Compute vs Containers</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Feature</th><th>Serverless</th><th>Containers</th></tr></thead><tbody>
+<tr><td>Runtime control</td><td>Limited</td><td>Full</td></tr>
+<tr><td>Startup time</td><td>Faster</td><td>Slower</td></tr>
+<tr><td>Scaling</td><td>Automatic</td><td>Manual</td></tr>
+<tr><td>Management</td><td>Minimal</td><td>Moderate</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="15-when-to-use-serverless-compute"><a class="header" href="#15-when-to-use-serverless-compute">1️⃣5️⃣ When to Use Serverless Compute</a></h2>
+<p>Serverless is ideal for:</p>
+<ul>
+<li>APIs &amp; microservices</li>
+<li>Event processing</li>
+<li>Data transformation</li>
+<li>Scheduled tasks (cron jobs)</li>
+<li>Automation</li>
+<li>Real-time processing</li>
+</ul>
+<hr />
+<h2 id="16-when-not-to-use-serverless"><a class="header" href="#16-when-not-to-use-serverless">1️⃣6️⃣ When NOT to Use Serverless</a></h2>
+<p>Not ideal for:</p>
+<ul>
+<li>Long-running jobs</li>
+<li>Heavy compute workloads</li>
+<li>Stateful applications</li>
+<li>Custom OS-level control</li>
+<li>Very low-latency workloads (sometimes)</li>
+</ul>
+<hr />
+<h2 id="17-security-in-serverless-compute"><a class="header" href="#17-security-in-serverless-compute">1️⃣7️⃣ Security in Serverless Compute</a></h2>
+<h3 id="-iam-based-access"><a class="header" href="#-iam-based-access">🔹 IAM-Based Access</a></h3>
+<ul>
+<li>Lambda uses IAM roles</li>
+<li>Least privilege applies</li>
+</ul>
+<h3 id="-network-security"><a class="header" href="#-network-security">🔹 Network Security</a></h3>
+<ul>
+<li>Can run inside VPC</li>
+<li>Uses Security Groups</li>
+</ul>
+<h3 id="-no-os-access"><a class="header" href="#-no-os-access">🔹 No OS Access</a></h3>
+<ul>
+<li>No SSH</li>
+<li>Smaller attack surface</li>
+</ul>
+<hr />
+<h2 id="18-high-availability--fault-tolerance"><a class="header" href="#18-high-availability--fault-tolerance">1️⃣8️⃣ High Availability &amp; Fault Tolerance</a></h2>
+<p>AWS Lambda:</p>
+<ul>
+<li>Runs across multiple AZs</li>
+<li>Automatically retries on failure</li>
+<li>Built-in resilience</li>
+</ul>
+<p>You don’t design HA:
+👉 It’s built-in</p>
+<hr />
+<h2 id="19-real-world-architecture-example"><a class="header" href="#19-real-world-architecture-example">1️⃣9️⃣ Real-World Architecture Example</a></h2>
+<h3 id="serverless-web-app"><a class="header" href="#serverless-web-app">Serverless Web App</a></h3>
+<pre><code>User
+ ↓
+API Gateway
+ ↓
+Lambda
+ ↓
+DynamoDB
+</code></pre>
+<p>✔ No servers
+✔ Auto scaling
+✔ Pay per request</p>
+<hr />
+<h2 id="20-serverless-compute-in-aws-exams-important"><a class="header" href="#20-serverless-compute-in-aws-exams-important">2️⃣0️⃣ Serverless Compute in AWS Exams (Important)</a></h2>
+<p>Exam keywords:</p>
+<ul>
+<li>No server management</li>
+<li>Event-driven</li>
+<li>Automatic scaling</li>
+<li>Pay per execution</li>
+<li>Stateless</li>
+</ul>
+<hr />
+<h2 id="21-one-line-exam-definition"><a class="header" href="#21-one-line-exam-definition">2️⃣1️⃣ One-Line Exam Definition</a></h2>
+<blockquote>
+<p><strong>Serverless compute allows you to run code without managing servers, with automatic scaling and pay-per-use pricing.</strong></p>
+</blockquote>
+<hr />
+<h2 id="22-real-world-analogy"><a class="header" href="#22-real-world-analogy">2️⃣2️⃣ Real-World Analogy</a></h2>
+<h3 id="serverless--electricity-bill"><a class="header" href="#serverless--electricity-bill">Serverless = Electricity Bill</a></h3>
+<ul>
+<li>You don’t manage power plants</li>
+<li>You pay only when you use electricity</li>
+</ul>
+<h3 id="ec2--generator"><a class="header" href="#ec2--generator">EC2 = Generator</a></h3>
+<ul>
+<li>You buy it</li>
+<li>You maintain it</li>
+<li>You pay even when idle</li>
+</ul>
+<hr />
+<h2 id="23-final-summary-must-remember"><a class="header" href="#23-final-summary-must-remember">2️⃣3️⃣ Final Summary (Must Remember)</a></h2>
+<ul>
+<li>Serverless ≠ no servers</li>
+<li>AWS manages infrastructure</li>
+<li>Event-driven execution</li>
+<li>Auto scaling</li>
+<li>Pay only when code runs</li>
+<li>Best for modern cloud-native apps</li>
+</ul>
+<hr />
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../serverless/serverless_index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../serverless/lambda.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../serverless/serverless_index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../serverless/lambda.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,588 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>NACL vs Security Group (SG)</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- PWA -->
+        <link rel="icon" type="image/x-icon" href="https://devnamdev2003.github.io/devdocs/static/icons/favicon.ico">
+        <link rel="manifest" href="https://devnamdev2003.github.io/devdocs/static/manifest.webmanifest">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="theme-color" content="#0d1117">
+        
+        <meta name="title" content="AWS">
+        <meta name="description" content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="og:image" content="https://devnamdev2003.github.io/devdocs/static/img/aws/aws_c.png">
+        <meta property="og:title" content="AWS">
+        <meta property="og:description"
+            content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="twitter:image" content="https://devnamdev2003.github.io/devdocs/static/img/aws/aws_c.png">
+        <meta property="twitter:title" content="AWS">
+        <meta property="twitter:description"
+            content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        <meta name="description" content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../aws_index.html"><strong aria-hidden="true">1.</strong> AWS index</a></li><li class="chapter-item expanded "><a href="../aws.html"><strong aria-hidden="true">2.</strong> AWS</a></li><li class="chapter-item expanded "><a href="../aws_roadmap.html"><strong aria-hidden="true">3.</strong> AWS Roadmap</a></li><li class="chapter-item expanded "><a href="../aws_left.html"><strong aria-hidden="true">4.</strong> AWS left</a></li><li class="chapter-item expanded "><a href="../networking/networking_index.html"><strong aria-hidden="true">5.</strong> AWS Networking</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../networking/networking.html"><strong aria-hidden="true">5.1.</strong> AWS Networking</a></li><li class="chapter-item expanded "><a href="../networking/networking_ip.html"><strong aria-hidden="true">5.2.</strong> IPv4 Address Structure, Private IPs, and Public IPs</a></li><li class="chapter-item expanded "><a href="../networking/networking_subnet.html"><strong aria-hidden="true">5.3.</strong> What is Subnetting?</a></li><li class="chapter-item expanded "><a href="../networking/networking_tcp_udp.html"><strong aria-hidden="true">5.4.</strong> What are TCP and UDP?</a></li><li class="chapter-item expanded "><a href="../networking/networking_route_table.html"><strong aria-hidden="true">5.5.</strong> Route Tables</a></li><li class="chapter-item expanded "><a href="../networking/networking_port.html"><strong aria-hidden="true">5.6.</strong> Port</a></li><li class="chapter-item expanded "><a href="../networking/networking_firewall.html"><strong aria-hidden="true">5.7.</strong> Firewalls and Security Concepts</a></li><li class="chapter-item expanded "><a href="../networking/networking_cidr.html"><strong aria-hidden="true">5.8.</strong> CIDR Notation</a></li><li class="chapter-item expanded "><a href="../networking/networking_dns.html"><strong aria-hidden="true">5.9.</strong> DNS Resolution Flow</a></li><li class="chapter-item expanded "><a href="../networking/networking_igw.html"><strong aria-hidden="true">5.10.</strong> Internet Gateway (IGW) in AWS</a></li><li class="chapter-item expanded "><a href="../networking/networking_nat.html"><strong aria-hidden="true">5.11.</strong> Network Address Translation (NAT)</a></li><li class="chapter-item expanded "><a href="../networking/networking_nat_igw.html"><strong aria-hidden="true">5.12.</strong> NAT Gateway vs Internet Gateway (IGW)</a></li><li class="chapter-item expanded "><a href="../networking/networking_sg.html"><strong aria-hidden="true">5.13.</strong> Security Groups in AWS</a></li><li class="chapter-item expanded "><a href="../networking/networking_nacl.html"><strong aria-hidden="true">5.14.</strong> Network Access Control Lists (NACLs) in AWS</a></li><li class="chapter-item expanded "><a href="../networking/networking_nacl_sg.html" class="active"><strong aria-hidden="true">5.15.</strong> NACL vs Security Group (SG)</a></li><li class="chapter-item expanded "><a href="../networking/networking_doubt.html"><strong aria-hidden="true">5.16.</strong> Networking doubt</a></li></ol></li><li class="chapter-item expanded "><a href="../serverless/serverless_index.html"><strong aria-hidden="true">6.</strong> Serverless</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverless/serverless.html"><strong aria-hidden="true">6.1.</strong> Serverless</a></li><li class="chapter-item expanded "><a href="../serverless/lambda.html"><strong aria-hidden="true">6.2.</strong> AWS Lambda</a></li><li class="chapter-item expanded "><a href="../serverless/lambda_api_gatway.html"><strong aria-hidden="true">6.3.</strong> AWS API Gateway</a></li><li class="chapter-item expanded "><a href="../serverless/pricing.html"><strong aria-hidden="true">6.4.</strong> AWS Pricing</a></li><li class="chapter-item expanded "><a href="../serverless/labs/labs_index.html"><strong aria-hidden="true">6.5.</strong> Labs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverless/labs/lab1.html"><strong aria-hidden="true">6.5.1.</strong> Serverless REST API</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab2.html"><strong aria-hidden="true">6.5.2.</strong> Event-Driven Processing</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab3.html"><strong aria-hidden="true">6.5.3.</strong> Asynchronous Messaging</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab4.html"><strong aria-hidden="true">6.5.4.</strong> Scheduled & Rule-Based Serverless Jobs</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab5.html"><strong aria-hidden="true">6.5.5.</strong> Secure Serverless Compute</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../dev.html"><strong aria-hidden="true">7.</strong> dev</a></li><li class="chapter-item expanded "><a href="../aws_quiz_topic.html"><strong aria-hidden="true">8.</strong> aws_quiz_topic</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs/edit/main/md-code/aws/src/networking/networking_nacl_sg.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+<h2 id=""><a class="header" href="#"><a href="../">👈</a></a></h2>
+<ul>
+<li><a href="#-nacl-vs-security-group-sg--full-packet-flow-explained">🔐 NACL vs Security Group (SG) – FULL PACKET FLOW EXPLAINED</a>
+<ul>
+<li><a href="#1%EF%B8%8F%E2%83%A3-first-the-core-difference-must-remember">1️⃣ First, the Core Difference (Must Remember)</a></li>
+<li><a href="#2%EF%B8%8F%E2%83%A3-where-nacl-and-sg-sit-in-aws-networking">2️⃣ Where NACL and SG Sit in AWS Networking</a>
+<ul>
+<li><a href="#-actual-aws-traffic-flow-order">🔁 Actual AWS Traffic Flow Order</a></li>
+</ul>
+</li>
+<li><a href="#3%EF%B8%8F%E2%83%A3-nacl-vs-sg--high-level-comparison">3️⃣ NACL vs SG – High-Level Comparison</a></li>
+<li><a href="#4%EF%B8%8F%E2%83%A3-what-stateful-vs-stateless-really-means">4️⃣ What “Stateful” vs “Stateless” REALLY Means</a>
+<ul>
+<li><a href="#-stateless-nacl">🔹 Stateless (NACL)</a></li>
+<li><a href="#-stateful-security-group">🔹 Stateful (Security Group)</a></li>
+</ul>
+</li>
+<li><a href="#5%EF%B8%8F%E2%83%A3-full-packet-flow--public-web-server-example">5️⃣ FULL PACKET FLOW – Public Web Server Example</a>
+<ul>
+<li><a href="#-setup">🧩 Setup</a></li>
+</ul>
+</li>
+<li><a href="#6%EF%B8%8F%E2%83%A3-packet-flow-client--ec2-inbound-traffic">6️⃣ PACKET FLOW: Client → EC2 (Inbound Traffic)</a>
+<ul>
+<li><a href="#-step-1-client-sends-request">🌍 Step 1: Client Sends Request</a></li>
+<li><a href="#-step-2-internet-gateway-igw">🌐 Step 2: Internet Gateway (IGW)</a></li>
+<li><a href="#-step-3-route-table">🛣 Step 3: Route Table</a></li>
+<li><a href="#-step-4-nacl-inbound-rule-check">🔐 Step 4: NACL (Inbound Rule Check)</a></li>
+<li><a href="#-step-5-security-group-inbound-rule-check">🔐 Step 5: Security Group (Inbound Rule Check)</a></li>
+<li><a href="#-step-6-ec2-receives-request">🖥 Step 6: EC2 Receives Request</a></li>
+</ul>
+</li>
+<li><a href="#7%EF%B8%8F%E2%83%A3-packet-flow-ec2--client-outbound-response">7️⃣ PACKET FLOW: EC2 → Client (Outbound Response)</a>
+<ul>
+<li><a href="#-step-7-ec2-sends-response">🖥 Step 7: EC2 Sends Response</a></li>
+<li><a href="#-step-8-security-group-outbound-check">🔐 Step 8: Security Group (Outbound Check)</a></li>
+<li><a href="#-step-9-nacl-outbound-rule-check">🔐 Step 9: NACL (Outbound Rule Check)</a></li>
+<li><a href="#-step-10-igw-sends-response-to-internet">🌐 Step 10: IGW Sends Response to Internet</a></li>
+</ul>
+</li>
+<li><a href="#8%EF%B8%8F%E2%83%A3-required-rules-summary-very-important">8️⃣ REQUIRED RULES SUMMARY (VERY IMPORTANT)</a>
+<ul>
+<li><a href="#-security-group-rules">✅ Security Group Rules</a></li>
+<li><a href="#-nacl-rules">✅ NACL Rules</a></li>
+</ul>
+</li>
+<li><a href="#9%EF%B8%8F%E2%83%A3-what-happens-if-one-rule-is-missing">9️⃣ What Happens If One Rule Is Missing?</a>
+<ul>
+<li><a href="#-missing-nacl-outbound-ephemeral-ports">❌ Missing NACL outbound ephemeral ports</a></li>
+<li><a href="#-missing-sg-inbound-rule">❌ Missing SG inbound rule</a></li>
+<li><a href="#-missing-nacl-inbound-rule">❌ Missing NACL inbound rule</a></li>
+</ul>
+</li>
+<li><a href="#-full-packet-flow--private-ec2-with-nat-gateway">🔟 FULL PACKET FLOW – Private EC2 with NAT Gateway</a>
+<ul>
+<li><a href="#-setup-1">🧩 Setup</a></li>
+<li><a href="#flow">Flow</a></li>
+</ul>
+</li>
+<li><a href="#1%EF%B8%8F%E2%83%A31%EF%B8%8F%E2%83%A3-nacl-vs-sg--decision-rule-exam-gold">1️⃣1️⃣ NACL vs SG – Decision Rule (EXAM GOLD)</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A32%EF%B8%8F%E2%83%A3-common-aws-exam-traps">1️⃣2️⃣ Common AWS Exam Traps</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A33%EF%B8%8F%E2%83%A3-mental-model-remember-this">1️⃣3️⃣ Mental Model (REMEMBER THIS)</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A34%EF%B8%8F%E2%83%A3-one-line-exam-definitions">1️⃣4️⃣ One-Line Exam Definitions</a>
+<ul>
+<li><a href="#nacl">NACL</a></li>
+<li><a href="#security-group">Security Group</a></li>
+</ul>
+</li>
+<li><a href="#1%EF%B8%8F%E2%83%A35%EF%B8%8F%E2%83%A3-final-summary-must-remember">1️⃣5️⃣ Final Summary (Must Remember)</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="-nacl-vs-security-group-sg--full-packet-flow-explained"><a class="header" href="#-nacl-vs-security-group-sg--full-packet-flow-explained">🔐 NACL vs Security Group (SG) – FULL PACKET FLOW EXPLAINED</a></h1>
+<hr />
+<h2 id="1-first-the-core-difference-must-remember"><a class="header" href="#1-first-the-core-difference-must-remember">1️⃣ First, the Core Difference (Must Remember)</a></h2>
+<blockquote>
+<p><strong>NACL works at the subnet level and is stateless, while Security Group works at the instance level and is stateful.</strong></p>
+</blockquote>
+<p>Everything else comes from this.</p>
+<hr />
+<h2 id="2-where-nacl-and-sg-sit-in-aws-networking"><a class="header" href="#2-where-nacl-and-sg-sit-in-aws-networking">2️⃣ Where NACL and SG Sit in AWS Networking</a></h2>
+<p>Let’s first fix the <strong>order of traffic flow</strong>, because this is where most confusion happens.</p>
+<h3 id="-actual-aws-traffic-flow-order"><a class="header" href="#-actual-aws-traffic-flow-order">🔁 Actual AWS Traffic Flow Order</a></h3>
+<pre><code>Internet
+ ↓
+Internet Gateway (IGW)
+ ↓
+Route Table (decides path)
+ ↓
+NACL (Subnet-level firewall)
+ ↓
+Security Group (Instance-level firewall)
+ ↓
+EC2 Instance
+</code></pre>
+<p>📌 <strong>Both NACL and SG must allow traffic</strong>
+If <strong>either blocks</strong>, traffic is blocked.</p>
+<hr />
+<h2 id="3-nacl-vs-sg--high-level-comparison"><a class="header" href="#3-nacl-vs-sg--high-level-comparison">3️⃣ NACL vs SG – High-Level Comparison</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Feature</th><th>NACL</th><th>Security Group</th></tr></thead><tbody>
+<tr><td>Level</td><td>Subnet</td><td>Instance</td></tr>
+<tr><td>Stateful</td><td>❌ No</td><td>✅ Yes</td></tr>
+<tr><td>Allow rules</td><td>✅ Yes</td><td>✅ Yes</td></tr>
+<tr><td>Deny rules</td><td>✅ Yes</td><td>❌ No</td></tr>
+<tr><td>Rule order</td><td>Numbered (evaluated in order)</td><td>No order</td></tr>
+<tr><td>Default inbound</td><td>Allow all (default NACL)</td><td>Deny all</td></tr>
+<tr><td>Return traffic</td><td>Must be explicitly allowed</td><td>Automatically allowed</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="4-what-stateful-vs-stateless-really-means"><a class="header" href="#4-what-stateful-vs-stateless-really-means">4️⃣ What “Stateful” vs “Stateless” REALLY Means</a></h2>
+<h3 id="-stateless-nacl"><a class="header" href="#-stateless-nacl">🔹 Stateless (NACL)</a></h3>
+<blockquote>
+<p>NACL does <strong>NOT remember</strong> traffic.</p>
+</blockquote>
+<p>If a request is allowed <strong>in</strong>, the response is <strong>NOT automatically allowed</strong>.</p>
+<p>You must allow:</p>
+<ul>
+<li>Request</li>
+<li>Response
+<strong>Both directions</strong></li>
+</ul>
+<hr />
+<h3 id="-stateful-security-group"><a class="header" href="#-stateful-security-group">🔹 Stateful (Security Group)</a></h3>
+<blockquote>
+<p>Security Group <strong>remembers</strong> traffic.</p>
+</blockquote>
+<p>If a request is allowed:</p>
+<ul>
+<li>Response is automatically allowed</li>
+<li>No extra rule needed</li>
+</ul>
+<hr />
+<h2 id="5-full-packet-flow--public-web-server-example"><a class="header" href="#5-full-packet-flow--public-web-server-example">5️⃣ FULL PACKET FLOW – Public Web Server Example</a></h2>
+<p>Let’s take a <strong>real scenario</strong>.</p>
+<h3 id="-setup"><a class="header" href="#-setup">🧩 Setup</a></h3>
+<ul>
+<li>VPC: <code>10.0.0.0/16</code></li>
+<li>Public Subnet: <code>10.0.1.0/24</code></li>
+<li>EC2 private IP: <code>10.0.1.10</code></li>
+<li>EC2 public IP: <code>54.12.34.56</code></li>
+<li>Website running on <strong>port 80</strong></li>
+</ul>
+<hr />
+<h2 id="6-packet-flow-client--ec2-inbound-traffic"><a class="header" href="#6-packet-flow-client--ec2-inbound-traffic">6️⃣ PACKET FLOW: Client → EC2 (Inbound Traffic)</a></h2>
+<h3 id="-step-1-client-sends-request"><a class="header" href="#-step-1-client-sends-request">🌍 Step 1: Client Sends Request</a></h3>
+<pre><code>Client IP: 203.0.113.5
+Client Port: 53000 (ephemeral)
+Destination IP: 54.12.34.56
+Destination Port: 80
+Protocol: TCP
+</code></pre>
+<hr />
+<h3 id="-step-2-internet-gateway-igw"><a class="header" href="#-step-2-internet-gateway-igw">🌐 Step 2: Internet Gateway (IGW)</a></h3>
+<ul>
+<li>IGW maps:</li>
+</ul>
+<pre><code>54.12.34.56 → 10.0.1.10
+</code></pre>
+<p>IGW does <strong>NOT filter traffic</strong>.</p>
+<hr />
+<h3 id="-step-3-route-table"><a class="header" href="#-step-3-route-table">🛣 Step 3: Route Table</a></h3>
+<ul>
+<li>Route table confirms destination subnet</li>
+<li>Traffic forwarded internally</li>
+</ul>
+<hr />
+<h3 id="-step-4-nacl-inbound-rule-check"><a class="header" href="#-step-4-nacl-inbound-rule-check">🔐 Step 4: NACL (Inbound Rule Check)</a></h3>
+<p>NACL checks <strong>inbound rules</strong>:</p>
+<p>Required NACL inbound rule:</p>
+<pre><code>Allow TCP 80 from 0.0.0.0/0
+</code></pre>
+<p>✔ If allowed → packet continues
+❌ If denied → packet dropped here</p>
+<hr />
+<h3 id="-step-5-security-group-inbound-rule-check"><a class="header" href="#-step-5-security-group-inbound-rule-check">🔐 Step 5: Security Group (Inbound Rule Check)</a></h3>
+<p>Security Group checks inbound rules:</p>
+<p>Required SG inbound rule:</p>
+<pre><code>Allow TCP 80 from 0.0.0.0/0
+</code></pre>
+<p>✔ Allowed → packet reaches EC2
+❌ Denied → packet dropped</p>
+<hr />
+<h3 id="-step-6-ec2-receives-request"><a class="header" href="#-step-6-ec2-receives-request">🖥 Step 6: EC2 Receives Request</a></h3>
+<p>EC2 processes HTTP request.</p>
+<hr />
+<h2 id="7-packet-flow-ec2--client-outbound-response"><a class="header" href="#7-packet-flow-ec2--client-outbound-response">7️⃣ PACKET FLOW: EC2 → Client (Outbound Response)</a></h2>
+<p>Now comes the <strong>MOST IMPORTANT PART</strong>.</p>
+<hr />
+<h3 id="-step-7-ec2-sends-response"><a class="header" href="#-step-7-ec2-sends-response">🖥 Step 7: EC2 Sends Response</a></h3>
+<pre><code>Source IP: 10.0.1.10
+Source Port: 80
+Destination IP: 203.0.113.5
+Destination Port: 53000
+</code></pre>
+<hr />
+<h3 id="-step-8-security-group-outbound-check"><a class="header" href="#-step-8-security-group-outbound-check">🔐 Step 8: Security Group (Outbound Check)</a></h3>
+<p>Here is where <strong>stateful behavior</strong> matters.</p>
+<p>👉 Because inbound traffic was allowed:</p>
+<ul>
+<li>Response traffic is <strong>automatically allowed</strong></li>
+<li>No outbound rule needed</li>
+</ul>
+<p>✔ SG allows response automatically</p>
+<hr />
+<h3 id="-step-9-nacl-outbound-rule-check"><a class="header" href="#-step-9-nacl-outbound-rule-check">🔐 Step 9: NACL (Outbound Rule Check)</a></h3>
+<p>Since NACL is <strong>stateless</strong>, it checks outbound rules.</p>
+<p>You MUST have:</p>
+<pre><code>Allow TCP 1024–65535 to 0.0.0.0/0
+</code></pre>
+<p>Why?</p>
+<ul>
+<li>Client port = 53000 (ephemeral)</li>
+</ul>
+<p>❌ If missing → response blocked
+✔ If present → response allowed</p>
+<hr />
+<h3 id="-step-10-igw-sends-response-to-internet"><a class="header" href="#-step-10-igw-sends-response-to-internet">🌐 Step 10: IGW Sends Response to Internet</a></h3>
+<p>IGW maps private IP back to public IP.</p>
+<p>Client receives website response.</p>
+<hr />
+<h2 id="8-required-rules-summary-very-important"><a class="header" href="#8-required-rules-summary-very-important">8️⃣ REQUIRED RULES SUMMARY (VERY IMPORTANT)</a></h2>
+<h3 id="-security-group-rules"><a class="header" href="#-security-group-rules">✅ Security Group Rules</a></h3>
+<p>Inbound:</p>
+<pre><code>TCP 80 from 0.0.0.0/0
+</code></pre>
+<p>Outbound:</p>
+<pre><code>Allow all (default)
+</code></pre>
+<hr />
+<h3 id="-nacl-rules"><a class="header" href="#-nacl-rules">✅ NACL Rules</a></h3>
+<p>Inbound:</p>
+<pre><code>Allow TCP 80 from 0.0.0.0/0
+Allow TCP 1024–65535 from 0.0.0.0/0
+</code></pre>
+<p>Outbound:</p>
+<pre><code>Allow TCP 80 to 0.0.0.0/0
+Allow TCP 1024–65535 to 0.0.0.0/0
+</code></pre>
+<p>📌 <strong>Ephemeral ports are mandatory in NACLs</strong></p>
+<hr />
+<h2 id="9-what-happens-if-one-rule-is-missing"><a class="header" href="#9-what-happens-if-one-rule-is-missing">9️⃣ What Happens If One Rule Is Missing?</a></h2>
+<h3 id="-missing-nacl-outbound-ephemeral-ports"><a class="header" href="#-missing-nacl-outbound-ephemeral-ports">❌ Missing NACL outbound ephemeral ports</a></h3>
+<ul>
+<li>Request reaches EC2</li>
+<li>Response blocked</li>
+<li>Browser hangs</li>
+</ul>
+<h3 id="-missing-sg-inbound-rule"><a class="header" href="#-missing-sg-inbound-rule">❌ Missing SG inbound rule</a></h3>
+<ul>
+<li>Packet blocked at instance</li>
+<li>No response</li>
+</ul>
+<h3 id="-missing-nacl-inbound-rule"><a class="header" href="#-missing-nacl-inbound-rule">❌ Missing NACL inbound rule</a></h3>
+<ul>
+<li>Packet blocked before reaching EC2</li>
+</ul>
+<hr />
+<h2 id="-full-packet-flow--private-ec2-with-nat-gateway"><a class="header" href="#-full-packet-flow--private-ec2-with-nat-gateway">🔟 FULL PACKET FLOW – Private EC2 with NAT Gateway</a></h2>
+<p>Let’s quickly understand <strong>private subnet flow</strong>.</p>
+<hr />
+<h3 id="-setup-1"><a class="header" href="#-setup-1">🧩 Setup</a></h3>
+<ul>
+<li>Private subnet</li>
+<li>EC2 has <strong>no public IP</strong></li>
+<li>NAT Gateway in public subnet</li>
+</ul>
+<hr />
+<h3 id="flow"><a class="header" href="#flow">Flow</a></h3>
+<pre><code>EC2 → SG → NACL → Route Table → NAT Gateway → IGW → Internet
+</code></pre>
+<p>Return traffic:</p>
+<pre><code>Internet → IGW → NAT → Route Table → NACL → SG → EC2
+</code></pre>
+<p>📌 NACL must allow:</p>
+<ul>
+<li>Outbound ephemeral ports</li>
+<li>Inbound ephemeral ports</li>
+</ul>
+<p>📌 SG auto-allows response traffic</p>
+<hr />
+<h2 id="11-nacl-vs-sg--decision-rule-exam-gold"><a class="header" href="#11-nacl-vs-sg--decision-rule-exam-gold">1️⃣1️⃣ NACL vs SG – Decision Rule (EXAM GOLD)</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Requirement</th><th>Use</th></tr></thead><tbody>
+<tr><td>Instance-level access</td><td>Security Group</td></tr>
+<tr><td>Subnet-wide blocking</td><td>NACL</td></tr>
+<tr><td>Explicit deny</td><td>NACL</td></tr>
+<tr><td>Stateful control</td><td>Security Group</td></tr>
+<tr><td>Simple management</td><td>Security Group</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="12-common-aws-exam-traps"><a class="header" href="#12-common-aws-exam-traps">1️⃣2️⃣ Common AWS Exam Traps</a></h2>
+<p>❓ SG allows traffic but app not reachable
+➡ NACL blocking</p>
+<p>❓ Return traffic blocked
+➡ Missing ephemeral ports in NACL</p>
+<p>❓ Want to block a single IP
+➡ NACL (SG cannot deny)</p>
+<p>❓ Multiple SGs attached
+➡ Rules are combined (OR logic)</p>
+<hr />
+<h2 id="13-mental-model-remember-this"><a class="header" href="#13-mental-model-remember-this">1️⃣3️⃣ Mental Model (REMEMBER THIS)</a></h2>
+<pre><code>NACL = Border control (stateless)
+SG   = Door lock (stateful)
+</code></pre>
+<hr />
+<h2 id="14-one-line-exam-definitions"><a class="header" href="#14-one-line-exam-definitions">1️⃣4️⃣ One-Line Exam Definitions</a></h2>
+<h3 id="nacl"><a class="header" href="#nacl">NACL</a></h3>
+<blockquote>
+<p>A stateless subnet-level firewall that controls inbound and outbound traffic using allow and deny rules.</p>
+</blockquote>
+<h3 id="security-group"><a class="header" href="#security-group">Security Group</a></h3>
+<blockquote>
+<p>A stateful instance-level firewall that allows traffic and automatically permits response traffic.</p>
+</blockquote>
+<hr />
+<h2 id="15-final-summary-must-remember"><a class="header" href="#15-final-summary-must-remember">1️⃣5️⃣ Final Summary (Must Remember)</a></h2>
+<ul>
+<li>NACL is checked <strong>before</strong> SG</li>
+<li>NACL is stateless → allow both directions</li>
+<li>SG is stateful → return traffic automatic</li>
+<li>Both must allow traffic</li>
+<li>Ephemeral ports are key for NACLs</li>
+</ul>
+<hr />
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../networking/networking_nacl.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../networking/networking_doubt.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../networking/networking_nacl.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../networking/networking_doubt.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

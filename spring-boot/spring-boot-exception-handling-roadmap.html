@@ -1,0 +1,540 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Spring Boot Exception Handling Roadmap</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- PWA -->
+        <link rel="icon" type="image/x-icon" href="https://devnamdev2003.github.io/devdocs/static/icons/favicon.ico">
+        <link rel="manifest" href="https://devnamdev2003.github.io/devdocs/static/manifest.webmanifest">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="theme-color" content="#0d1117">
+        
+        <meta name="title" content="spring-boot">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://devnamdev2003.github.io/devdocs">
+        
+        <meta property="og:title" content="spring-boot">
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="twitter:title" content="spring-boot">
+
+        <meta name="description" content="Concise and practical Spring boot notes ">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="spring-boot_index.html"><strong aria-hidden="true">1.</strong> Spring Boot Index</a></li><li class="chapter-item expanded "><a href="spring-boot-exception-handling-roadmap.html" class="active"><strong aria-hidden="true">2.</strong> Spring Boot Exception Handling Roadmap</a></li><li class="chapter-item expanded "><a href="spring-security-roadmap.html"><strong aria-hidden="true">3.</strong> Spring Security Roadmap</a></li><li class="chapter-item expanded "><a href="json-code.html"><strong aria-hidden="true">4.</strong> json-code</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs/edit/main/md-code/spring-boot/src/spring-boot-exception-handling-roadmap.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+<h2 id=""><a class="header" href="#"><a href="../src">👈</a></a></h2>
+<h1 id="-spring-security-complete-roadmap-beginner--expert"><a class="header" href="#-spring-security-complete-roadmap-beginner--expert">🚀 Spring Security Complete Roadmap (Beginner → Expert)</a></h1>
+<hr />
+<h2 id="-1-fundamentals-must-be-crystal-clear"><a class="header" href="#-1-fundamentals-must-be-crystal-clear">🟢 1. Fundamentals (MUST be crystal clear)</a></h2>
+<h3 id="topics"><a class="header" href="#topics">Topics</a></h3>
+<ul>
+<li>What is Spring Security &amp; why we use it</li>
+<li>Authentication vs Authorization</li>
+<li>Security architecture overview</li>
+<li>Filters &amp; Filter Chain</li>
+<li>Spring Boot auto-configuration basics</li>
+<li>Default login mechanism</li>
+</ul>
+<h3 id="labs-"><a class="header" href="#labs-">Labs 🧪</a></h3>
+<ul>
+<li>Create a simple Spring Boot app</li>
+<li>Add Spring Security dependency → observe default login</li>
+<li>Customize username/password</li>
+<li>Disable security temporarily</li>
+</ul>
+<hr />
+<h2 id="-2-core-concepts-deep-dive"><a class="header" href="#-2-core-concepts-deep-dive">🟡 2. Core Concepts Deep Dive</a></h2>
+<h3 id="topics-1"><a class="header" href="#topics-1">Topics</a></h3>
+<ul>
+<li><code>SecurityFilterChain</code></li>
+<li><code>AuthenticationManager</code></li>
+<li><code>UserDetailsService</code></li>
+<li><code>UserDetails</code></li>
+<li><code>PasswordEncoder</code> (BCrypt etc.)</li>
+<li><code>GrantedAuthority</code> &amp; Roles</li>
+</ul>
+<h3 id="labs--1"><a class="header" href="#labs--1">Labs 🧪</a></h3>
+<ul>
+<li>Create in-memory users</li>
+<li>Implement custom <code>UserDetailsService</code></li>
+<li>Store users in DB (PostgreSQL)</li>
+<li>Encrypt passwords using BCrypt</li>
+<li>Add roles (ADMIN, USER)</li>
+</ul>
+<hr />
+<h2 id="-3-configuration-styles-very-important"><a class="header" href="#-3-configuration-styles-very-important">🟠 3. Configuration Styles (VERY IMPORTANT)</a></h2>
+<h3 id="topics-2"><a class="header" href="#topics-2">Topics</a></h3>
+<ul>
+<li>Java-based configuration (modern approach)</li>
+<li><code>SecurityFilterChain</code> bean</li>
+<li>Lambda DSL (Spring Security 6+)</li>
+<li>Deprecated WebSecurityConfigurerAdapter (just understand)</li>
+</ul>
+<h3 id="labs--2"><a class="header" href="#labs--2">Labs 🧪</a></h3>
+<ul>
+<li>
+<p>Configure endpoints:</p>
+<ul>
+<li><code>/public</code> → open</li>
+<li><code>/user</code> → authenticated</li>
+<li><code>/admin</code> → role-based</li>
+</ul>
+</li>
+<li>
+<p>Customize login page</p>
+</li>
+</ul>
+<hr />
+<h2 id="-4-authentication-mechanisms"><a class="header" href="#-4-authentication-mechanisms">🔵 4. Authentication Mechanisms</a></h2>
+<h3 id="topics-3"><a class="header" href="#topics-3">Topics</a></h3>
+<ul>
+<li>Form-based authentication</li>
+<li>HTTP Basic authentication</li>
+<li>Custom login logic</li>
+<li>Remember-me authentication</li>
+</ul>
+<h3 id="labs--3"><a class="header" href="#labs--3">Labs 🧪</a></h3>
+<ul>
+<li>Create custom login API</li>
+<li>Implement remember-me feature</li>
+<li>Add logout functionality</li>
+</ul>
+<hr />
+<h2 id="-5-authorization-access-control"><a class="header" href="#-5-authorization-access-control">🟣 5. Authorization (Access Control)</a></h2>
+<h3 id="topics-4"><a class="header" href="#topics-4">Topics</a></h3>
+<ul>
+<li>
+<p>Role-based access control</p>
+</li>
+<li>
+<p>Method-level security:</p>
+<ul>
+<li><code>@PreAuthorize</code></li>
+<li><code>@PostAuthorize</code></li>
+</ul>
+</li>
+<li>
+<p>Expression-based access control</p>
+</li>
+</ul>
+<h3 id="labs--4"><a class="header" href="#labs--4">Labs 🧪</a></h3>
+<ul>
+<li>Restrict APIs using roles</li>
+<li>Use <code>@PreAuthorize("hasRole('ADMIN')")</code></li>
+<li>Secure service layer methods</li>
+</ul>
+<hr />
+<h2 id="-6-database-integration-real-world"><a class="header" href="#-6-database-integration-real-world">🔴 6. Database Integration (Real-world)</a></h2>
+<h3 id="topics-5"><a class="header" href="#topics-5">Topics</a></h3>
+<ul>
+<li>JPA + Spring Security integration</li>
+<li>User &amp; Role entities</li>
+<li>Many-to-many mapping</li>
+<li>Custom queries for authentication</li>
+</ul>
+<h3 id="labs--5"><a class="header" href="#labs--5">Labs 🧪</a></h3>
+<ul>
+<li>
+<p>Build full auth system:</p>
+<ul>
+<li>Register API</li>
+<li>Login API</li>
+<li>Store users in DB</li>
+</ul>
+</li>
+<li>
+<p>Add role-based permissions</p>
+</li>
+</ul>
+<hr />
+<h2 id="-7-jwt-authentication-very-important-"><a class="header" href="#-7-jwt-authentication-very-important-">🟤 7. JWT Authentication (VERY IMPORTANT 🔥)</a></h2>
+<h3 id="topics-6"><a class="header" href="#topics-6">Topics</a></h3>
+<ul>
+<li>What is JWT</li>
+<li>Stateless authentication</li>
+<li>Token generation &amp; validation</li>
+<li>Filters for JWT</li>
+</ul>
+<h3 id="labs--6"><a class="header" href="#labs--6">Labs 🧪</a></h3>
+<ul>
+<li>Create JWT login API</li>
+<li>Generate token after login</li>
+<li>Create JWT filter</li>
+<li>Protect APIs using token</li>
+<li>Test using Postman</li>
+</ul>
+<hr />
+<h2 id="-8-oauth2--social-login"><a class="header" href="#-8-oauth2--social-login">⚫ 8. OAuth2 &amp; Social Login</a></h2>
+<h3 id="topics-7"><a class="header" href="#topics-7">Topics</a></h3>
+<ul>
+<li>OAuth2 basics</li>
+<li>Google/GitHub login</li>
+<li>Authorization server vs resource server</li>
+</ul>
+<h3 id="labs--7"><a class="header" href="#labs--7">Labs 🧪</a></h3>
+<ul>
+<li>Add Google login</li>
+<li>Fetch user profile</li>
+<li>Combine with your DB</li>
+</ul>
+<hr />
+<h2 id="-9-advanced-security-features"><a class="header" href="#-9-advanced-security-features">🟠 9. Advanced Security Features</a></h2>
+<h3 id="topics-8"><a class="header" href="#topics-8">Topics</a></h3>
+<ul>
+<li>CSRF protection</li>
+<li>CORS configuration</li>
+<li>Session management</li>
+<li>Stateless vs Stateful</li>
+<li>Security headers</li>
+</ul>
+<h3 id="labs--8"><a class="header" href="#labs--8">Labs 🧪</a></h3>
+<ul>
+<li>Enable/disable CSRF</li>
+<li>Configure CORS for frontend (Angular/React)</li>
+<li>Limit concurrent sessions</li>
+</ul>
+<hr />
+<h2 id="-10-exception-handling--custom-responses"><a class="header" href="#-10-exception-handling--custom-responses">🔵 10. Exception Handling &amp; Custom Responses</a></h2>
+<h3 id="topics-9"><a class="header" href="#topics-9">Topics</a></h3>
+<ul>
+<li>AuthenticationEntryPoint</li>
+<li>AccessDeniedHandler</li>
+<li>Custom error responses</li>
+</ul>
+<h3 id="labs--9"><a class="header" href="#labs--9">Labs 🧪</a></h3>
+<ul>
+<li>
+<p>Return custom JSON error for:</p>
+<ul>
+<li>Unauthorized</li>
+<li>Forbidden</li>
+</ul>
+</li>
+<li>
+<p>Handle exceptions globally</p>
+</li>
+</ul>
+<hr />
+<h2 id="-11-custom-filters--internal-flow-advanced"><a class="header" href="#-11-custom-filters--internal-flow-advanced">🟣 11. Custom Filters &amp; Internal Flow (ADVANCED)</a></h2>
+<h3 id="topics-10"><a class="header" href="#topics-10">Topics</a></h3>
+<ul>
+<li>Filter chain execution</li>
+<li>OncePerRequestFilter</li>
+<li>Adding custom filters</li>
+</ul>
+<h3 id="labs--10"><a class="header" href="#labs--10">Labs 🧪</a></h3>
+<ul>
+<li>Create custom JWT filter</li>
+<li>Log request before authentication</li>
+<li>Add filter before/after default filters</li>
+</ul>
+<hr />
+<h2 id="-12-method-security-enterprise-level"><a class="header" href="#-12-method-security-enterprise-level">🔴 12. Method Security (Enterprise Level)</a></h2>
+<h3 id="topics-11"><a class="header" href="#topics-11">Topics</a></h3>
+<ul>
+<li><code>@EnableMethodSecurity</code></li>
+<li>Securing service layer</li>
+<li>SpEL expressions</li>
+</ul>
+<h3 id="labs--11"><a class="header" href="#labs--11">Labs 🧪</a></h3>
+<ul>
+<li>Secure business logic methods</li>
+<li>Role + condition-based access</li>
+</ul>
+<hr />
+<h2 id="-13-testing-spring-security"><a class="header" href="#-13-testing-spring-security">⚫ 13. Testing Spring Security</a></h2>
+<h3 id="topics-12"><a class="header" href="#topics-12">Topics</a></h3>
+<ul>
+<li>Unit testing secured APIs</li>
+<li>Mock users</li>
+<li>Security test utilities</li>
+</ul>
+<h3 id="labs--12"><a class="header" href="#labs--12">Labs 🧪</a></h3>
+<ul>
+<li>Write test cases using MockMvc</li>
+<li>Test role-based APIs</li>
+</ul>
+<hr />
+<h2 id="-14-production-best-practices"><a class="header" href="#-14-production-best-practices">🟤 14. Production Best Practices</a></h2>
+<h3 id="topics-13"><a class="header" href="#topics-13">Topics</a></h3>
+<ul>
+<li>Password hashing strategies</li>
+<li>Token expiration &amp; refresh tokens</li>
+<li>Logging &amp; monitoring</li>
+<li>Secure API design</li>
+</ul>
+<h3 id="labs--13"><a class="header" href="#labs--13">Labs 🧪</a></h3>
+<ul>
+<li>Implement refresh token flow</li>
+<li>Add audit logging</li>
+<li>Secure sensitive endpoints</li>
+</ul>
+<hr />
+<h2 id="-15-microservices-security-advanced"><a class="header" href="#-15-microservices-security-advanced">🧠 15. Microservices Security (ADVANCED+)</a></h2>
+<h3 id="topics-14"><a class="header" href="#topics-14">Topics</a></h3>
+<ul>
+<li>API Gateway security</li>
+<li>JWT across services</li>
+<li>OAuth2 Resource Server</li>
+<li>Keycloak / Identity Providers</li>
+</ul>
+<h3 id="labs--14"><a class="header" href="#labs--14">Labs 🧪</a></h3>
+<ul>
+<li>Secure microservices using JWT</li>
+<li>Use API Gateway (Spring Cloud Gateway)</li>
+<li>Integrate with Keycloak</li>
+</ul>
+<hr />
+<h1 id="-final-goal-project-very-important"><a class="header" href="#-final-goal-project-very-important">🎯 Final Goal Project (VERY IMPORTANT)</a></h1>
+<p>Build this end-to-end:</p>
+<h3 id="-production-level-auth-system"><a class="header" href="#-production-level-auth-system">💼 "Production-Level Auth System"</a></h3>
+<ul>
+<li>Register/Login (JWT)</li>
+<li>Role-based access</li>
+<li>Refresh tokens</li>
+<li>Google login</li>
+<li>PostgreSQL DB</li>
+<li>Angular frontend (optional)</li>
+</ul>
+<hr />
+<h1 id="-how-you-should-study-important"><a class="header" href="#-how-you-should-study-important">📌 How You Should Study (IMPORTANT)</a></h1>
+<p>Since you're a <strong>System Engineer working with Spring Boot</strong>, do this:</p>
+<ol>
+<li>Learn 1 topic</li>
+<li>Immediately do the lab</li>
+<li>Build one growing project (don’t create new projects each time)</li>
+</ol>
+<hr />
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="spring-boot_index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="spring-security-roadmap.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="spring-boot_index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="spring-security-roadmap.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,689 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>AWS Networking</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- PWA -->
+        <link rel="icon" type="image/x-icon" href="https://devnamdev2003.github.io/devdocs/static/icons/favicon.ico">
+        <link rel="manifest" href="https://devnamdev2003.github.io/devdocs/static/manifest.webmanifest">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="theme-color" content="#0d1117">
+        
+        <meta name="title" content="AWS">
+        <meta name="description" content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="og:image" content="https://devnamdev2003.github.io/devdocs/static/img/aws/aws_c.png">
+        <meta property="og:title" content="AWS">
+        <meta property="og:description"
+            content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="twitter:image" content="https://devnamdev2003.github.io/devdocs/static/img/aws/aws_c.png">
+        <meta property="twitter:title" content="AWS">
+        <meta property="twitter:description"
+            content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        <meta name="description" content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../aws_index.html"><strong aria-hidden="true">1.</strong> AWS index</a></li><li class="chapter-item expanded "><a href="../aws.html"><strong aria-hidden="true">2.</strong> AWS</a></li><li class="chapter-item expanded "><a href="../aws_roadmap.html"><strong aria-hidden="true">3.</strong> AWS Roadmap</a></li><li class="chapter-item expanded "><a href="../aws_left.html"><strong aria-hidden="true">4.</strong> AWS left</a></li><li class="chapter-item expanded "><a href="../networking/networking_index.html"><strong aria-hidden="true">5.</strong> AWS Networking</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../networking/networking.html" class="active"><strong aria-hidden="true">5.1.</strong> AWS Networking</a></li><li class="chapter-item expanded "><a href="../networking/networking_ip.html"><strong aria-hidden="true">5.2.</strong> IPv4 Address Structure, Private IPs, and Public IPs</a></li><li class="chapter-item expanded "><a href="../networking/networking_subnet.html"><strong aria-hidden="true">5.3.</strong> What is Subnetting?</a></li><li class="chapter-item expanded "><a href="../networking/networking_tcp_udp.html"><strong aria-hidden="true">5.4.</strong> What are TCP and UDP?</a></li><li class="chapter-item expanded "><a href="../networking/networking_route_table.html"><strong aria-hidden="true">5.5.</strong> Route Tables</a></li><li class="chapter-item expanded "><a href="../networking/networking_port.html"><strong aria-hidden="true">5.6.</strong> Port</a></li><li class="chapter-item expanded "><a href="../networking/networking_firewall.html"><strong aria-hidden="true">5.7.</strong> Firewalls and Security Concepts</a></li><li class="chapter-item expanded "><a href="../networking/networking_cidr.html"><strong aria-hidden="true">5.8.</strong> CIDR Notation</a></li><li class="chapter-item expanded "><a href="../networking/networking_dns.html"><strong aria-hidden="true">5.9.</strong> DNS Resolution Flow</a></li><li class="chapter-item expanded "><a href="../networking/networking_igw.html"><strong aria-hidden="true">5.10.</strong> Internet Gateway (IGW) in AWS</a></li><li class="chapter-item expanded "><a href="../networking/networking_nat.html"><strong aria-hidden="true">5.11.</strong> Network Address Translation (NAT)</a></li><li class="chapter-item expanded "><a href="../networking/networking_nat_igw.html"><strong aria-hidden="true">5.12.</strong> NAT Gateway vs Internet Gateway (IGW)</a></li><li class="chapter-item expanded "><a href="../networking/networking_sg.html"><strong aria-hidden="true">5.13.</strong> Security Groups in AWS</a></li><li class="chapter-item expanded "><a href="../networking/networking_nacl.html"><strong aria-hidden="true">5.14.</strong> Network Access Control Lists (NACLs) in AWS</a></li><li class="chapter-item expanded "><a href="../networking/networking_nacl_sg.html"><strong aria-hidden="true">5.15.</strong> NACL vs Security Group (SG)</a></li><li class="chapter-item expanded "><a href="../networking/networking_doubt.html"><strong aria-hidden="true">5.16.</strong> Networking doubt</a></li></ol></li><li class="chapter-item expanded "><a href="../serverless/serverless_index.html"><strong aria-hidden="true">6.</strong> Serverless</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverless/serverless.html"><strong aria-hidden="true">6.1.</strong> Serverless</a></li><li class="chapter-item expanded "><a href="../serverless/lambda.html"><strong aria-hidden="true">6.2.</strong> AWS Lambda</a></li><li class="chapter-item expanded "><a href="../serverless/lambda_api_gatway.html"><strong aria-hidden="true">6.3.</strong> AWS API Gateway</a></li><li class="chapter-item expanded "><a href="../serverless/pricing.html"><strong aria-hidden="true">6.4.</strong> AWS Pricing</a></li><li class="chapter-item expanded "><a href="../serverless/labs/labs_index.html"><strong aria-hidden="true">6.5.</strong> Labs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverless/labs/lab1.html"><strong aria-hidden="true">6.5.1.</strong> Serverless REST API</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab2.html"><strong aria-hidden="true">6.5.2.</strong> Event-Driven Processing</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab3.html"><strong aria-hidden="true">6.5.3.</strong> Asynchronous Messaging</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab4.html"><strong aria-hidden="true">6.5.4.</strong> Scheduled & Rule-Based Serverless Jobs</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab5.html"><strong aria-hidden="true">6.5.5.</strong> Secure Serverless Compute</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../dev.html"><strong aria-hidden="true">7.</strong> dev</a></li><li class="chapter-item expanded "><a href="../aws_quiz_topic.html"><strong aria-hidden="true">8.</strong> aws_quiz_topic</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs/edit/main/md-code/aws/src/networking/networking.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+<h2 id=""><a class="header" href="#"><a href="../">👈</a></a></h2>
+<ul>
+<li><a href="#-aws-networking--complete-explanation-end-to-end">🌐 AWS Networking – COMPLETE EXPLANATION (END-TO-END)</a>
+<ul>
+<li><a href="#1%EF%B8%8F%E2%83%A3-what-is-networking-in-aws">1️⃣ What Is Networking in AWS?</a></li>
+<li><a href="#2%EF%B8%8F%E2%83%A3-core-building-block-vpc-virtual-private-cloud">2️⃣ Core Building Block: VPC (Virtual Private Cloud)</a>
+<ul>
+<li><a href="#what-is-a-vpc">What is a VPC?</a></li>
+<li><a href="#key-properties-of-a-vpc">Key Properties of a VPC</a></li>
+<li><a href="#vpc-cidr">VPC CIDR</a></li>
+</ul>
+</li>
+<li><a href="#3%EF%B8%8F%E2%83%A3-subnets--dividing-the-vpc">3️⃣ Subnets – Dividing the VPC</a>
+<ul>
+<li><a href="#what-is-a-subnet">What is a Subnet?</a></li>
+<li><a href="#why-subnets-exist">Why Subnets Exist</a></li>
+<li><a href="#example">Example</a></li>
+</ul>
+</li>
+<li><a href="#4%EF%B8%8F%E2%83%A3-public-vs-private-subnets-critical">4️⃣ Public vs Private Subnets (CRITICAL)</a>
+<ul>
+<li><a href="#public-subnet">Public Subnet</a></li>
+<li><a href="#private-subnet">Private Subnet</a></li>
+</ul>
+</li>
+<li><a href="#5%EF%B8%8F%E2%83%A3-internet-gateway-igw">5️⃣ Internet Gateway (IGW)</a>
+<ul>
+<li><a href="#what-is-igw">What is IGW?</a></li>
+<li><a href="#traffic-flow">Traffic Flow</a></li>
+</ul>
+</li>
+<li><a href="#6%EF%B8%8F%E2%83%A3-nat-gateway-private-internet-access">6️⃣ NAT Gateway (Private Internet Access)</a>
+<ul>
+<li><a href="#what-is-nat-gateway">What is NAT Gateway?</a></li>
+<li><a href="#traffic-flow-1">Traffic Flow</a></li>
+</ul>
+</li>
+<li><a href="#7%EF%B8%8F%E2%83%A3-route-tables--traffic-direction">7️⃣ Route Tables – Traffic Direction</a>
+<ul>
+<li><a href="#what-is-a-route-table">What is a Route Table?</a></li>
+<li><a href="#example-routes">Example Routes</a></li>
+</ul>
+</li>
+<li><a href="#8%EF%B8%8F%E2%83%A3-security-layer-1-nacl-subnet-firewall">8️⃣ Security Layer 1: NACL (Subnet Firewall)</a>
+<ul>
+<li><a href="#what-is-nacl">What is NACL?</a></li>
+<li><a href="#key-points">Key Points</a></li>
+<li><a href="#traffic-order">Traffic Order</a></li>
+</ul>
+</li>
+<li><a href="#9%EF%B8%8F%E2%83%A3-security-layer-2-security-groups-instance-firewall">9️⃣ Security Layer 2: Security Groups (Instance Firewall)</a>
+<ul>
+<li><a href="#what-is-a-security-group">What is a Security Group?</a></li>
+<li><a href="#key-points-1">Key Points</a></li>
+</ul>
+</li>
+<li><a href="#-full-network-traffic-flow-important">🔟 Full Network Traffic Flow (IMPORTANT)</a>
+<ul>
+<li><a href="#internet--ec2">Internet → EC2</a></li>
+</ul>
+</li>
+<li><a href="#1%EF%B8%8F%E2%83%A31%EF%B8%8F%E2%83%A3-ip-addressing-in-aws">1️⃣1️⃣ IP Addressing in AWS</a>
+<ul>
+<li><a href="#private-ip">Private IP</a></li>
+<li><a href="#public-ip">Public IP</a></li>
+<li><a href="#elastic-ip">Elastic IP</a></li>
+</ul>
+</li>
+<li><a href="#1%EF%B8%8F%E2%83%A32%EF%B8%8F%E2%83%A3-dns-in-aws-route-53">1️⃣2️⃣ DNS in AWS (Route 53)</a>
+<ul>
+<li><a href="#what-is-route-53">What is Route 53?</a></li>
+<li><a href="#dns-flow-example">DNS Flow Example</a></li>
+</ul>
+</li>
+<li><a href="#1%EF%B8%8F%E2%83%A33%EF%B8%8F%E2%83%A3-load-balancing-in-aws">1️⃣3️⃣ Load Balancing in AWS</a>
+<ul>
+<li><a href="#elastic-load-balancer-elb">Elastic Load Balancer (ELB)</a></li>
+<li><a href="#types">Types</a></li>
+</ul>
+</li>
+<li><a href="#1%EF%B8%8F%E2%83%A34%EF%B8%8F%E2%83%A3-vpc-peering--connectivity">1️⃣4️⃣ VPC Peering &amp; Connectivity</a>
+<ul>
+<li><a href="#vpc-peering">VPC Peering</a></li>
+<li><a href="#transit-gateway">Transit Gateway</a></li>
+</ul>
+</li>
+<li><a href="#1%EF%B8%8F%E2%83%A35%EF%B8%8F%E2%83%A3-serverless-networking-lambda">1️⃣5️⃣ Serverless Networking (Lambda)</a>
+<ul>
+<li><a href="#lambda-outside-vpc">Lambda Outside VPC</a></li>
+<li><a href="#lambda-inside-vpc">Lambda Inside VPC</a></li>
+</ul>
+</li>
+<li><a href="#1%EF%B8%8F%E2%83%A36%EF%B8%8F%E2%83%A3-monitoring--troubleshooting">1️⃣6️⃣ Monitoring &amp; Troubleshooting</a>
+<ul>
+<li><a href="#vpc-flow-logs">VPC Flow Logs</a></li>
+<li><a href="#cloudwatch">CloudWatch</a></li>
+</ul>
+</li>
+<li><a href="#1%EF%B8%8F%E2%83%A37%EF%B8%8F%E2%83%A3-common-aws-networking-exam-traps">1️⃣7️⃣ Common AWS Networking Exam Traps</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A38%EF%B8%8F%E2%83%A3-real-world-aws-network-architecture">1️⃣8️⃣ Real-World AWS Network Architecture</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A39%EF%B8%8F%E2%83%A3-mental-model-remember-this">1️⃣9️⃣ Mental Model (REMEMBER THIS)</a></li>
+<li><a href="#2%EF%B8%8F%E2%83%A30%EF%B8%8F%E2%83%A3-one-line-exam-definition">2️⃣0️⃣ One-Line Exam Definition</a></li>
+<li><a href="#-final-summary-very-important">✅ FINAL SUMMARY (VERY IMPORTANT)</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="-aws-networking--complete-explanation-end-to-end"><a class="header" href="#-aws-networking--complete-explanation-end-to-end">🌐 AWS Networking – COMPLETE EXPLANATION (END-TO-END)</a></h1>
+<hr />
+<h2 id="1-what-is-networking-in-aws"><a class="header" href="#1-what-is-networking-in-aws">1️⃣ What Is Networking in AWS?</a></h2>
+<p><strong>AWS Networking</strong> is about:</p>
+<blockquote>
+<p><strong>How resources inside AWS communicate with each other and with the internet—securely, reliably, and at scale.</strong></p>
+</blockquote>
+<p>In AWS, networking is built mainly around <strong>VPC (Virtual Private Cloud)</strong>.</p>
+<hr />
+<h2 id="2-core-building-block-vpc-virtual-private-cloud"><a class="header" href="#2-core-building-block-vpc-virtual-private-cloud">2️⃣ Core Building Block: VPC (Virtual Private Cloud)</a></h2>
+<h3 id="what-is-a-vpc"><a class="header" href="#what-is-a-vpc">What is a VPC?</a></h3>
+<p>A <strong>VPC</strong> is a <strong>logically isolated virtual network</strong> in AWS.</p>
+<p>Think of it as:</p>
+<blockquote>
+<p><strong>Your own private data center network inside AWS</strong></p>
+</blockquote>
+<hr />
+<h3 id="key-properties-of-a-vpc"><a class="header" href="#key-properties-of-a-vpc">Key Properties of a VPC</a></h3>
+<p>✔ Private
+✔ Customizable IP range
+✔ Full control over routing &amp; security
+✔ Spans multiple AZs</p>
+<hr />
+<h3 id="vpc-cidr"><a class="header" href="#vpc-cidr">VPC CIDR</a></h3>
+<p>When creating a VPC, you define:</p>
+<pre><code>10.0.0.0/16
+</code></pre>
+<p>This defines:</p>
+<ul>
+<li>Total IP space</li>
+<li>Max number of subnets</li>
+<li>Network boundaries</li>
+</ul>
+<hr />
+<h2 id="3-subnets--dividing-the-vpc"><a class="header" href="#3-subnets--dividing-the-vpc">3️⃣ Subnets – Dividing the VPC</a></h2>
+<h3 id="what-is-a-subnet"><a class="header" href="#what-is-a-subnet">What is a Subnet?</a></h3>
+<p>A <strong>Subnet</strong> is a <strong>smaller network inside a VPC</strong>, tied to <strong>one Availability Zone</strong>.</p>
+<hr />
+<h3 id="why-subnets-exist"><a class="header" href="#why-subnets-exist">Why Subnets Exist</a></h3>
+<ul>
+<li>High availability</li>
+<li>Traffic isolation</li>
+<li>Security separation</li>
+<li>Public vs private design</li>
+</ul>
+<hr />
+<h3 id="example"><a class="header" href="#example">Example</a></h3>
+<pre><code>VPC:        10.0.0.0/16
+Public Sub: 10.0.1.0/24
+Private Sub:10.0.2.0/24
+</code></pre>
+<hr />
+<h2 id="4-public-vs-private-subnets-critical"><a class="header" href="#4-public-vs-private-subnets-critical">4️⃣ Public vs Private Subnets (CRITICAL)</a></h2>
+<h3 id="public-subnet"><a class="header" href="#public-subnet">Public Subnet</a></h3>
+<p>A subnet is <strong>public</strong> if:</p>
+<pre><code>0.0.0.0/0 → Internet Gateway
+</code></pre>
+<p>Used for:</p>
+<ul>
+<li>Load Balancers</li>
+<li>Bastion Hosts</li>
+<li>NAT Gateway</li>
+</ul>
+<hr />
+<h3 id="private-subnet"><a class="header" href="#private-subnet">Private Subnet</a></h3>
+<p>A subnet is <strong>private</strong> if:</p>
+<ul>
+<li>No route to IGW</li>
+<li>Uses NAT for outbound internet</li>
+</ul>
+<p>Used for:</p>
+<ul>
+<li>App servers</li>
+<li>Databases</li>
+<li>Lambda (secure workloads)</li>
+</ul>
+<hr />
+<h2 id="5-internet-gateway-igw"><a class="header" href="#5-internet-gateway-igw">5️⃣ Internet Gateway (IGW)</a></h2>
+<h3 id="what-is-igw"><a class="header" href="#what-is-igw">What is IGW?</a></h3>
+<p>An <strong>Internet Gateway</strong> allows:</p>
+<ul>
+<li>Inbound + outbound internet access</li>
+<li>For resources with <strong>public IPs</strong></li>
+</ul>
+<hr />
+<h3 id="traffic-flow"><a class="header" href="#traffic-flow">Traffic Flow</a></h3>
+<pre><code>EC2 (Public IP)
+ ↓
+Route Table
+ ↓
+Internet Gateway
+ ↓
+Internet
+</code></pre>
+<p>📌 IGW does NOT provide security.</p>
+<hr />
+<h2 id="6-nat-gateway-private-internet-access"><a class="header" href="#6-nat-gateway-private-internet-access">6️⃣ NAT Gateway (Private Internet Access)</a></h2>
+<h3 id="what-is-nat-gateway"><a class="header" href="#what-is-nat-gateway">What is NAT Gateway?</a></h3>
+<p>A <strong>NAT Gateway</strong> allows:</p>
+<blockquote>
+<p><strong>Private subnet resources to access the internet outbound only</strong></p>
+</blockquote>
+<hr />
+<h3 id="traffic-flow-1"><a class="header" href="#traffic-flow-1">Traffic Flow</a></h3>
+<pre><code>Private EC2
+ ↓
+NAT Gateway
+ ↓
+Internet Gateway
+ ↓
+Internet
+</code></pre>
+<p>✔ Outbound allowed
+❌ Inbound blocked</p>
+<hr />
+<h2 id="7-route-tables--traffic-direction"><a class="header" href="#7-route-tables--traffic-direction">7️⃣ Route Tables – Traffic Direction</a></h2>
+<h3 id="what-is-a-route-table"><a class="header" href="#what-is-a-route-table">What is a Route Table?</a></h3>
+<p>A <strong>Route Table</strong> defines:</p>
+<blockquote>
+<p><strong>Where network traffic should go</strong></p>
+</blockquote>
+<hr />
+<h3 id="example-routes"><a class="header" href="#example-routes">Example Routes</a></h3>
+<pre><code>10.0.0.0/16 → local
+0.0.0.0/0   → IGW
+</code></pre>
+<p>📌 Subnets become public or private <strong>based on route tables</strong>.</p>
+<hr />
+<h2 id="8-security-layer-1-nacl-subnet-firewall"><a class="header" href="#8-security-layer-1-nacl-subnet-firewall">8️⃣ Security Layer 1: NACL (Subnet Firewall)</a></h2>
+<h3 id="what-is-nacl"><a class="header" href="#what-is-nacl">What is NACL?</a></h3>
+<p>A <strong>Network ACL</strong> is:</p>
+<ul>
+<li>Stateless</li>
+<li>Subnet-level firewall</li>
+</ul>
+<hr />
+<h3 id="key-points"><a class="header" href="#key-points">Key Points</a></h3>
+<p>✔ Allow + Deny rules
+✔ Rule order matters
+✔ Must allow return traffic explicitly</p>
+<hr />
+<h3 id="traffic-order"><a class="header" href="#traffic-order">Traffic Order</a></h3>
+<pre><code>Route Table
+ ↓
+NACL
+ ↓
+Security Group
+</code></pre>
+<hr />
+<h2 id="9-security-layer-2-security-groups-instance-firewall"><a class="header" href="#9-security-layer-2-security-groups-instance-firewall">9️⃣ Security Layer 2: Security Groups (Instance Firewall)</a></h2>
+<h3 id="what-is-a-security-group"><a class="header" href="#what-is-a-security-group">What is a Security Group?</a></h3>
+<p>A <strong>Security Group</strong> is:</p>
+<ul>
+<li>Stateful</li>
+<li>Instance-level firewall</li>
+</ul>
+<hr />
+<h3 id="key-points-1"><a class="header" href="#key-points-1">Key Points</a></h3>
+<p>✔ Allow rules only
+✔ Return traffic auto-allowed
+✔ Best practice: SG-to-SG rules</p>
+<hr />
+<h2 id="-full-network-traffic-flow-important"><a class="header" href="#-full-network-traffic-flow-important">🔟 Full Network Traffic Flow (IMPORTANT)</a></h2>
+<h3 id="internet--ec2"><a class="header" href="#internet--ec2">Internet → EC2</a></h3>
+<pre><code>Internet
+ ↓
+IGW
+ ↓
+Route Table
+ ↓
+NACL
+ ↓
+Security Group
+ ↓
+EC2
+</code></pre>
+<p>📌 <strong>ALL must allow traffic</strong></p>
+<hr />
+<h2 id="11-ip-addressing-in-aws"><a class="header" href="#11-ip-addressing-in-aws">1️⃣1️⃣ IP Addressing in AWS</a></h2>
+<h3 id="private-ip"><a class="header" href="#private-ip">Private IP</a></h3>
+<ul>
+<li>Used inside VPC</li>
+<li>Not internet-routable</li>
+</ul>
+<h3 id="public-ip"><a class="header" href="#public-ip">Public IP</a></h3>
+<ul>
+<li>Internet-routable</li>
+<li>Changes on stop/start</li>
+</ul>
+<h3 id="elastic-ip"><a class="header" href="#elastic-ip">Elastic IP</a></h3>
+<ul>
+<li>Static public IP</li>
+<li>Paid if unused</li>
+</ul>
+<hr />
+<h2 id="12-dns-in-aws-route-53"><a class="header" href="#12-dns-in-aws-route-53">1️⃣2️⃣ DNS in AWS (Route 53)</a></h2>
+<h3 id="what-is-route-53"><a class="header" href="#what-is-route-53">What is Route 53?</a></h3>
+<p>AWS DNS service:</p>
+<ul>
+<li>Converts domain names → IP addresses</li>
+</ul>
+<p>Used for:</p>
+<ul>
+<li>Websites</li>
+<li>Load balancers</li>
+<li>APIs</li>
+</ul>
+<hr />
+<h3 id="dns-flow-example"><a class="header" href="#dns-flow-example">DNS Flow Example</a></h3>
+<pre><code>example.com
+ ↓
+Route 53
+ ↓
+ALB / EC2 / API Gateway
+</code></pre>
+<hr />
+<h2 id="13-load-balancing-in-aws"><a class="header" href="#13-load-balancing-in-aws">1️⃣3️⃣ Load Balancing in AWS</a></h2>
+<h3 id="elastic-load-balancer-elb"><a class="header" href="#elastic-load-balancer-elb">Elastic Load Balancer (ELB)</a></h3>
+<p>Distributes traffic across:</p>
+<ul>
+<li>Multiple EC2</li>
+<li>Multiple AZs</li>
+</ul>
+<hr />
+<h3 id="types"><a class="header" href="#types">Types</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Type</th><th>Use Case</th></tr></thead><tbody>
+<tr><td>ALB</td><td>HTTP / HTTPS</td></tr>
+<tr><td>NLB</td><td>TCP / UDP</td></tr>
+<tr><td>CLB</td><td>Legacy</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="14-vpc-peering--connectivity"><a class="header" href="#14-vpc-peering--connectivity">1️⃣4️⃣ VPC Peering &amp; Connectivity</a></h2>
+<h3 id="vpc-peering"><a class="header" href="#vpc-peering">VPC Peering</a></h3>
+<ul>
+<li>Connect two VPCs</li>
+<li>Private communication</li>
+<li>No transitive routing</li>
+</ul>
+<hr />
+<h3 id="transit-gateway"><a class="header" href="#transit-gateway">Transit Gateway</a></h3>
+<ul>
+<li>Hub-and-spoke networking</li>
+<li>Large enterprise setups</li>
+</ul>
+<hr />
+<h2 id="15-serverless-networking-lambda"><a class="header" href="#15-serverless-networking-lambda">1️⃣5️⃣ Serverless Networking (Lambda)</a></h2>
+<h3 id="lambda-outside-vpc"><a class="header" href="#lambda-outside-vpc">Lambda Outside VPC</a></h3>
+<ul>
+<li>No ENI</li>
+<li>Internet access by default</li>
+</ul>
+<h3 id="lambda-inside-vpc"><a class="header" href="#lambda-inside-vpc">Lambda Inside VPC</a></h3>
+<ul>
+<li>ENI created</li>
+<li>Needs NAT for internet</li>
+<li>Uses Security Groups</li>
+</ul>
+<hr />
+<h2 id="16-monitoring--troubleshooting"><a class="header" href="#16-monitoring--troubleshooting">1️⃣6️⃣ Monitoring &amp; Troubleshooting</a></h2>
+<h3 id="vpc-flow-logs"><a class="header" href="#vpc-flow-logs">VPC Flow Logs</a></h3>
+<ul>
+<li>Capture traffic info</li>
+<li>Used for debugging &amp; security</li>
+</ul>
+<h3 id="cloudwatch"><a class="header" href="#cloudwatch">CloudWatch</a></h3>
+<ul>
+<li>Metrics &amp; logs</li>
+</ul>
+<hr />
+<h2 id="17-common-aws-networking-exam-traps"><a class="header" href="#17-common-aws-networking-exam-traps">1️⃣7️⃣ Common AWS Networking Exam Traps</a></h2>
+<p>❓ Public IP but no internet
+➡ Route table / SG issue</p>
+<p>❓ Private EC2 needs updates
+➡ NAT Gateway</p>
+<p>❓ Want to block IP explicitly
+➡ NACL</p>
+<p>❓ Lambda expensive suddenly
+➡ NAT Gateway cost</p>
+<hr />
+<h2 id="18-real-world-aws-network-architecture"><a class="header" href="#18-real-world-aws-network-architecture">1️⃣8️⃣ Real-World AWS Network Architecture</a></h2>
+<pre><code>Internet
+ ↓
+CloudFront
+ ↓
+ALB (Public Subnet)
+ ↓
+App EC2 (Private Subnet)
+ ↓
+RDS (Private Subnet)
+</code></pre>
+<p>✔ Secure
+✔ Scalable
+✔ Highly available</p>
+<hr />
+<h2 id="19-mental-model-remember-this"><a class="header" href="#19-mental-model-remember-this">1️⃣9️⃣ Mental Model (REMEMBER THIS)</a></h2>
+<pre><code>VPC = Network
+Subnets = Sections
+Route Table = GPS
+IGW/NAT = Gateways
+NACL = Border check
+SG = Door lock
+</code></pre>
+<hr />
+<h2 id="20-one-line-exam-definition"><a class="header" href="#20-one-line-exam-definition">2️⃣0️⃣ One-Line Exam Definition</a></h2>
+<blockquote>
+<p><strong>AWS networking provides a secure, scalable, and isolated virtual network using VPC, subnets, routing, gateways, and security controls.</strong></p>
+</blockquote>
+<hr />
+<h2 id="-final-summary-very-important"><a class="header" href="#-final-summary-very-important">✅ FINAL SUMMARY (VERY IMPORTANT)</a></h2>
+<ul>
+<li>VPC is the foundation</li>
+<li>CIDR defines IP space</li>
+<li>Subnets divide networks</li>
+<li>Route tables control paths</li>
+<li>IGW &amp; NAT handle internet</li>
+<li>NACL &amp; SG secure traffic</li>
+<li>Everything works together</li>
+</ul>
+<hr />
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../networking/networking_index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../networking/networking_ip.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../networking/networking_index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../networking/networking_ip.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

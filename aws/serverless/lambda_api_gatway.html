@@ -1,0 +1,681 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>AWS API Gateway</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- PWA -->
+        <link rel="icon" type="image/x-icon" href="https://devnamdev2003.github.io/devdocs/static/icons/favicon.ico">
+        <link rel="manifest" href="https://devnamdev2003.github.io/devdocs/static/manifest.webmanifest">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="theme-color" content="#0d1117">
+        
+        <meta name="title" content="AWS">
+        <meta name="description" content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="og:image" content="https://devnamdev2003.github.io/devdocs/static/img/aws/aws_c.png">
+        <meta property="og:title" content="AWS">
+        <meta property="og:description"
+            content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="twitter:image" content="https://devnamdev2003.github.io/devdocs/static/img/aws/aws_c.png">
+        <meta property="twitter:title" content="AWS">
+        <meta property="twitter:description"
+            content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        <meta name="description" content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../aws_index.html"><strong aria-hidden="true">1.</strong> AWS index</a></li><li class="chapter-item expanded "><a href="../aws.html"><strong aria-hidden="true">2.</strong> AWS</a></li><li class="chapter-item expanded "><a href="../aws_roadmap.html"><strong aria-hidden="true">3.</strong> AWS Roadmap</a></li><li class="chapter-item expanded "><a href="../aws_left.html"><strong aria-hidden="true">4.</strong> AWS left</a></li><li class="chapter-item expanded "><a href="../networking/networking_index.html"><strong aria-hidden="true">5.</strong> AWS Networking</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../networking/networking.html"><strong aria-hidden="true">5.1.</strong> AWS Networking</a></li><li class="chapter-item expanded "><a href="../networking/networking_ip.html"><strong aria-hidden="true">5.2.</strong> IPv4 Address Structure, Private IPs, and Public IPs</a></li><li class="chapter-item expanded "><a href="../networking/networking_subnet.html"><strong aria-hidden="true">5.3.</strong> What is Subnetting?</a></li><li class="chapter-item expanded "><a href="../networking/networking_tcp_udp.html"><strong aria-hidden="true">5.4.</strong> What are TCP and UDP?</a></li><li class="chapter-item expanded "><a href="../networking/networking_route_table.html"><strong aria-hidden="true">5.5.</strong> Route Tables</a></li><li class="chapter-item expanded "><a href="../networking/networking_port.html"><strong aria-hidden="true">5.6.</strong> Port</a></li><li class="chapter-item expanded "><a href="../networking/networking_firewall.html"><strong aria-hidden="true">5.7.</strong> Firewalls and Security Concepts</a></li><li class="chapter-item expanded "><a href="../networking/networking_cidr.html"><strong aria-hidden="true">5.8.</strong> CIDR Notation</a></li><li class="chapter-item expanded "><a href="../networking/networking_dns.html"><strong aria-hidden="true">5.9.</strong> DNS Resolution Flow</a></li><li class="chapter-item expanded "><a href="../networking/networking_igw.html"><strong aria-hidden="true">5.10.</strong> Internet Gateway (IGW) in AWS</a></li><li class="chapter-item expanded "><a href="../networking/networking_nat.html"><strong aria-hidden="true">5.11.</strong> Network Address Translation (NAT)</a></li><li class="chapter-item expanded "><a href="../networking/networking_nat_igw.html"><strong aria-hidden="true">5.12.</strong> NAT Gateway vs Internet Gateway (IGW)</a></li><li class="chapter-item expanded "><a href="../networking/networking_sg.html"><strong aria-hidden="true">5.13.</strong> Security Groups in AWS</a></li><li class="chapter-item expanded "><a href="../networking/networking_nacl.html"><strong aria-hidden="true">5.14.</strong> Network Access Control Lists (NACLs) in AWS</a></li><li class="chapter-item expanded "><a href="../networking/networking_nacl_sg.html"><strong aria-hidden="true">5.15.</strong> NACL vs Security Group (SG)</a></li><li class="chapter-item expanded "><a href="../networking/networking_doubt.html"><strong aria-hidden="true">5.16.</strong> Networking doubt</a></li></ol></li><li class="chapter-item expanded "><a href="../serverless/serverless_index.html"><strong aria-hidden="true">6.</strong> Serverless</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverless/serverless.html"><strong aria-hidden="true">6.1.</strong> Serverless</a></li><li class="chapter-item expanded "><a href="../serverless/lambda.html"><strong aria-hidden="true">6.2.</strong> AWS Lambda</a></li><li class="chapter-item expanded "><a href="../serverless/lambda_api_gatway.html" class="active"><strong aria-hidden="true">6.3.</strong> AWS API Gateway</a></li><li class="chapter-item expanded "><a href="../serverless/pricing.html"><strong aria-hidden="true">6.4.</strong> AWS Pricing</a></li><li class="chapter-item expanded "><a href="../serverless/labs/labs_index.html"><strong aria-hidden="true">6.5.</strong> Labs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverless/labs/lab1.html"><strong aria-hidden="true">6.5.1.</strong> Serverless REST API</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab2.html"><strong aria-hidden="true">6.5.2.</strong> Event-Driven Processing</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab3.html"><strong aria-hidden="true">6.5.3.</strong> Asynchronous Messaging</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab4.html"><strong aria-hidden="true">6.5.4.</strong> Scheduled & Rule-Based Serverless Jobs</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab5.html"><strong aria-hidden="true">6.5.5.</strong> Secure Serverless Compute</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../dev.html"><strong aria-hidden="true">7.</strong> dev</a></li><li class="chapter-item expanded "><a href="../aws_quiz_topic.html"><strong aria-hidden="true">8.</strong> aws_quiz_topic</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs/edit/main/md-code/aws/src/serverless/lambda_api_gatway.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+<h2 id=""><a class="header" href="#"><a href="../">👈</a></a></h2>
+<ul>
+<li><a href="#-aws-lambda-with-api-gateway--complete-deep-dive">🌐 AWS Lambda with API Gateway – COMPLETE DEEP DIVE</a>
+<ul>
+<li><a href="#1%EF%B8%8F%E2%83%A3-what-is-api-gateway--lambda-in-simple-words">1️⃣ What Is API Gateway + Lambda (In Simple Words)</a></li>
+<li><a href="#2%EF%B8%8F%E2%83%A3-why-api-gateway-is-needed-with-lambda">2️⃣ Why API Gateway Is Needed with Lambda</a>
+<ul>
+<li><a href="#-problem-lambda-has-no-public-endpoint">🔴 Problem: Lambda Has No Public Endpoint</a></li>
+<li><a href="#-solution-api-gateway">✅ Solution: API Gateway</a></li>
+</ul>
+</li>
+<li><a href="#3%EF%B8%8F%E2%83%A3-high-level-architecture">3️⃣ High-Level Architecture</a></li>
+<li><a href="#4%EF%B8%8F%E2%83%A3-what-is-api-gateway">4️⃣ What Is API Gateway?</a></li>
+<li><a href="#5%EF%B8%8F%E2%83%A3-types-of-apis-in-api-gateway-important">5️⃣ Types of APIs in API Gateway (Important)</a>
+<ul>
+<li><a href="#1%EF%B8%8F%E2%83%A3-rest-api">1️⃣ REST API</a></li>
+<li><a href="#2%EF%B8%8F%E2%83%A3-http-api-most-used-with-lambda">2️⃣ HTTP API (Most used with Lambda)</a></li>
+</ul>
+</li>
+<li><a href="#6%EF%B8%8F%E2%83%A3-why-lambda--api-gateway-is-serverless">6️⃣ Why Lambda + API Gateway Is Serverless</a></li>
+<li><a href="#7%EF%B8%8F%E2%83%A3-full-request-flow-very-important">7️⃣ Full Request Flow (VERY IMPORTANT)</a>
+<ul>
+<li><a href="#-scenario">🧩 Scenario</a></li>
+<li><a href="#-step-by-step-flow">🔁 STEP-BY-STEP FLOW</a></li>
+<li><a href="#-step-1-client-sends-http-request">🟢 Step 1: Client Sends HTTP Request</a></li>
+<li><a href="#-step-2-api-gateway-receives-request">🟢 Step 2: API Gateway Receives Request</a></li>
+<li><a href="#-step-3-api-gateway-triggers-lambda">🟢 Step 3: API Gateway Triggers Lambda</a></li>
+<li><a href="#-step-4-lambda-executes-code">🟢 Step 4: Lambda Executes Code</a></li>
+<li><a href="#-step-5-lambda-returns-response">🟢 Step 5: Lambda Returns Response</a></li>
+<li><a href="#-step-6-api-gateway-sends-response-to-client">🟢 Step 6: API Gateway Sends Response to Client</a></li>
+</ul>
+</li>
+<li><a href="#8%EF%B8%8F%E2%83%A3-visual-flow-diagram-mental-model">8️⃣ Visual Flow Diagram (Mental Model)</a></li>
+<li><a href="#9%EF%B8%8F%E2%83%A3-lambda-handler-example-conceptual">9️⃣ Lambda Handler Example (Conceptual)</a></li>
+<li><a href="#-authentication-with-api-gateway--lambda">🔟 Authentication with API Gateway + Lambda</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A31%EF%B8%8F%E2%83%A3-api-gateway-throttling--rate-limiting">1️⃣1️⃣ API Gateway Throttling &amp; Rate Limiting</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A32%EF%B8%8F%E2%83%A3-error-handling-flow">1️⃣2️⃣ Error Handling Flow</a>
+<ul>
+<li><a href="#lambda-error">Lambda Error</a></li>
+<li><a href="#client-error">Client Error</a></li>
+</ul>
+</li>
+<li><a href="#1%EF%B8%8F%E2%83%A33%EF%B8%8F%E2%83%A3-cold-start-impact-with-api-gateway">1️⃣3️⃣ Cold Start Impact with API Gateway</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A34%EF%B8%8F%E2%83%A3-security-model-very-important">1️⃣4️⃣ Security Model (Very Important)</a>
+<ul>
+<li><a href="#api-gateway-security">API Gateway Security</a></li>
+<li><a href="#lambda-security">Lambda Security</a></li>
+<li><a href="#network">Network</a></li>
+</ul>
+</li>
+<li><a href="#1%EF%B8%8F%E2%83%A35%EF%B8%8F%E2%83%A3-cost-model-combined">1️⃣5️⃣ Cost Model (Combined)</a>
+<ul>
+<li><a href="#api-gateway-cost">API Gateway Cost</a></li>
+<li><a href="#lambda-cost">Lambda Cost</a></li>
+</ul>
+</li>
+<li><a href="#1%EF%B8%8F%E2%83%A36%EF%B8%8F%E2%83%A3-api-gateway-vs-alb--lambda">1️⃣6️⃣ API Gateway vs ALB + Lambda</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A37%EF%B8%8F%E2%83%A3-when-to-use-api-gateway--lambda">1️⃣7️⃣ When to Use API Gateway + Lambda</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A38%EF%B8%8F%E2%83%A3-when-not-to-use-this-combo">1️⃣8️⃣ When NOT to Use This Combo</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A39%EF%B8%8F%E2%83%A3-common-aws-exam-traps">1️⃣9️⃣ Common AWS Exam Traps</a></li>
+<li><a href="#2%EF%B8%8F%E2%83%A30%EF%B8%8F%E2%83%A3-real-world-serverless-api-architecture">2️⃣0️⃣ Real-World Serverless API Architecture</a></li>
+<li><a href="#2%EF%B8%8F%E2%83%A31%EF%B8%8F%E2%83%A3-one-line-exam-definition">2️⃣1️⃣ One-Line Exam Definition</a></li>
+<li><a href="#2%EF%B8%8F%E2%83%A32%EF%B8%8F%E2%83%A3-mental-model-to-remember-forever">2️⃣2️⃣ Mental Model to Remember Forever</a></li>
+<li><a href="#2%EF%B8%8F%E2%83%A33%EF%B8%8F%E2%83%A3-final-summary-must-remember">2️⃣3️⃣ Final Summary (Must Remember)</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="-aws-lambda-with-api-gateway--complete-deep-dive"><a class="header" href="#-aws-lambda-with-api-gateway--complete-deep-dive">🌐 AWS Lambda with API Gateway – COMPLETE DEEP DIVE</a></h1>
+<hr />
+<h2 id="1-what-is-api-gateway--lambda-in-simple-words"><a class="header" href="#1-what-is-api-gateway--lambda-in-simple-words">1️⃣ What Is API Gateway + Lambda (In Simple Words)</a></h2>
+<p><strong>API Gateway + Lambda</strong> is the most common <strong>serverless backend architecture</strong> in AWS.</p>
+<blockquote>
+<p><strong>API Gateway acts as the front door (HTTP endpoint), and Lambda runs the backend logic.</strong></p>
+</blockquote>
+<p>Instead of:</p>
+<ul>
+<li>Web server</li>
+<li>Load balancer</li>
+<li>Auto Scaling Group</li>
+</ul>
+<p>You use:</p>
+<ul>
+<li>API Gateway (handles HTTP)</li>
+<li>Lambda (runs code)</li>
+</ul>
+<hr />
+<h2 id="2-why-api-gateway-is-needed-with-lambda"><a class="header" href="#2-why-api-gateway-is-needed-with-lambda">2️⃣ Why API Gateway Is Needed with Lambda</a></h2>
+<h3 id="-problem-lambda-has-no-public-endpoint"><a class="header" href="#-problem-lambda-has-no-public-endpoint">🔴 Problem: Lambda Has No Public Endpoint</a></h3>
+<p>Lambda:</p>
+<ul>
+<li>Cannot be accessed directly via URL</li>
+<li>Runs only when <strong>triggered by events</strong></li>
+</ul>
+<p>So:
+❌ Browser cannot call Lambda directly</p>
+<hr />
+<h3 id="-solution-api-gateway"><a class="header" href="#-solution-api-gateway">✅ Solution: API Gateway</a></h3>
+<p>API Gateway:</p>
+<ul>
+<li>Provides <strong>HTTP/HTTPS endpoint</strong></li>
+<li>Accepts requests from clients</li>
+<li>Triggers Lambda</li>
+<li>Returns response to client</li>
+</ul>
+<hr />
+<h2 id="3-high-level-architecture"><a class="header" href="#3-high-level-architecture">3️⃣ High-Level Architecture</a></h2>
+<pre><code>Client (Browser / Mobile / App)
+ ↓
+API Gateway (HTTPS Endpoint)
+ ↓
+AWS Lambda (Business Logic)
+ ↓
+Database / S3 / DynamoDB
+</code></pre>
+<p>✔ No servers
+✔ Auto scaling
+✔ Pay per request</p>
+<hr />
+<h2 id="4-what-is-api-gateway"><a class="header" href="#4-what-is-api-gateway">4️⃣ What Is API Gateway?</a></h2>
+<p><strong>Amazon API Gateway</strong> is a <strong>fully managed service</strong> to:</p>
+<ul>
+<li>Create REST APIs / HTTP APIs / WebSocket APIs</li>
+<li>Handle authentication</li>
+<li>Throttle traffic</li>
+<li>Route requests</li>
+<li>Integrate with backend services</li>
+</ul>
+<hr />
+<h2 id="5-types-of-apis-in-api-gateway-important"><a class="header" href="#5-types-of-apis-in-api-gateway-important">5️⃣ Types of APIs in API Gateway (Important)</a></h2>
+<h3 id="1-rest-api"><a class="header" href="#1-rest-api">1️⃣ REST API</a></h3>
+<ul>
+<li>Feature-rich</li>
+<li>Supports request/response mapping</li>
+<li>More expensive</li>
+</ul>
+<h3 id="2-http-api-most-used-with-lambda"><a class="header" href="#2-http-api-most-used-with-lambda">2️⃣ HTTP API (Most used with Lambda)</a></h3>
+<ul>
+<li>Lightweight</li>
+<li>Faster</li>
+<li>Cheaper</li>
+<li>Limited features</li>
+</ul>
+<p>📌 <strong>For exams &amp; real apps: HTTP API + Lambda is preferred</strong></p>
+<hr />
+<h2 id="6-why-lambda--api-gateway-is-serverless"><a class="header" href="#6-why-lambda--api-gateway-is-serverless">6️⃣ Why Lambda + API Gateway Is Serverless</a></h2>
+<p>Because:</p>
+<ul>
+<li>No EC2</li>
+<li>No load balancer</li>
+<li>No scaling configuration</li>
+<li>No OS management</li>
+</ul>
+<p>AWS handles:</p>
+<ul>
+<li>Traffic spikes</li>
+<li>Scaling</li>
+<li>Availability</li>
+<li>Fault tolerance</li>
+</ul>
+<hr />
+<h2 id="7-full-request-flow-very-important"><a class="header" href="#7-full-request-flow-very-important">7️⃣ Full Request Flow (VERY IMPORTANT)</a></h2>
+<p>Let’s go <strong>step by step</strong>.</p>
+<hr />
+<h3 id="-scenario"><a class="header" href="#-scenario">🧩 Scenario</a></h3>
+<p>User opens:</p>
+<pre><code>https://api.example.com/users
+</code></pre>
+<hr />
+<h3 id="-step-by-step-flow"><a class="header" href="#-step-by-step-flow">🔁 STEP-BY-STEP FLOW</a></h3>
+<hr />
+<h3 id="-step-1-client-sends-http-request"><a class="header" href="#-step-1-client-sends-http-request">🟢 Step 1: Client Sends HTTP Request</a></h3>
+<pre><code>GET /users
+Headers
+Body (optional)
+</code></pre>
+<hr />
+<h3 id="-step-2-api-gateway-receives-request"><a class="header" href="#-step-2-api-gateway-receives-request">🟢 Step 2: API Gateway Receives Request</a></h3>
+<p>API Gateway:</p>
+<ul>
+<li>Terminates HTTPS</li>
+<li>Validates request</li>
+<li>Applies throttling &amp; auth (if configured)</li>
+</ul>
+<hr />
+<h3 id="-step-3-api-gateway-triggers-lambda"><a class="header" href="#-step-3-api-gateway-triggers-lambda">🟢 Step 3: API Gateway Triggers Lambda</a></h3>
+<p>API Gateway:</p>
+<ul>
+<li>Converts HTTP request into <strong>event object</strong></li>
+<li>Sends event to Lambda</li>
+</ul>
+<p>Example event contains:</p>
+<ul>
+<li>HTTP method</li>
+<li>Path</li>
+<li>Headers</li>
+<li>Query parameters</li>
+<li>Body</li>
+</ul>
+<hr />
+<h3 id="-step-4-lambda-executes-code"><a class="header" href="#-step-4-lambda-executes-code">🟢 Step 4: Lambda Executes Code</a></h3>
+<p>Lambda:</p>
+<ul>
+<li>Receives event</li>
+<li>Runs handler function</li>
+<li>Executes business logic</li>
+<li>Fetches data (DB, S3, etc.)</li>
+</ul>
+<hr />
+<h3 id="-step-5-lambda-returns-response"><a class="header" href="#-step-5-lambda-returns-response">🟢 Step 5: Lambda Returns Response</a></h3>
+<p>Lambda returns:</p>
+<ul>
+<li>Status code</li>
+<li>Headers</li>
+<li>Body</li>
+</ul>
+<hr />
+<h3 id="-step-6-api-gateway-sends-response-to-client"><a class="header" href="#-step-6-api-gateway-sends-response-to-client">🟢 Step 6: API Gateway Sends Response to Client</a></h3>
+<p>API Gateway:</p>
+<ul>
+<li>Converts Lambda output to HTTP response</li>
+<li>Sends it back to client</li>
+</ul>
+<hr />
+<h2 id="8-visual-flow-diagram-mental-model"><a class="header" href="#8-visual-flow-diagram-mental-model">8️⃣ Visual Flow Diagram (Mental Model)</a></h2>
+<pre><code>Client
+ ↓
+API Gateway
+ ↓
+Lambda
+ ↓
+Response
+</code></pre>
+<p>Simple, clean, powerful.</p>
+<hr />
+<h2 id="9-lambda-handler-example-conceptual"><a class="header" href="#9-lambda-handler-example-conceptual">9️⃣ Lambda Handler Example (Conceptual)</a></h2>
+<p>Lambda receives <strong>event</strong> from API Gateway.</p>
+<p>Event contains:</p>
+<ul>
+<li><code>httpMethod</code></li>
+<li><code>path</code></li>
+<li><code>queryStringParameters</code></li>
+<li><code>headers</code></li>
+<li><code>body</code></li>
+</ul>
+<p>Lambda processes and returns:</p>
+<ul>
+<li><code>statusCode</code></li>
+<li><code>headers</code></li>
+<li><code>body</code></li>
+</ul>
+<p>📌 API Gateway handles HTTP → Lambda → HTTP translation.</p>
+<hr />
+<h2 id="-authentication-with-api-gateway--lambda"><a class="header" href="#-authentication-with-api-gateway--lambda">🔟 Authentication with API Gateway + Lambda</a></h2>
+<p>API Gateway supports:</p>
+<ul>
+<li>IAM authentication</li>
+<li>Lambda Authorizer</li>
+<li>Cognito User Pools</li>
+<li>API keys</li>
+</ul>
+<p>Lambda itself:</p>
+<ul>
+<li>Should NOT handle auth directly (best practice)</li>
+</ul>
+<hr />
+<h2 id="11-api-gateway-throttling--rate-limiting"><a class="header" href="#11-api-gateway-throttling--rate-limiting">1️⃣1️⃣ API Gateway Throttling &amp; Rate Limiting</a></h2>
+<p>API Gateway protects Lambda by:</p>
+<ul>
+<li>Limiting requests per second</li>
+<li>Preventing abuse</li>
+<li>Avoiding Lambda throttling</li>
+</ul>
+<p>Example:</p>
+<pre><code>1000 requests/second
+</code></pre>
+<p>Very important in exams.</p>
+<hr />
+<h2 id="12-error-handling-flow"><a class="header" href="#12-error-handling-flow">1️⃣2️⃣ Error Handling Flow</a></h2>
+<h3 id="lambda-error"><a class="header" href="#lambda-error">Lambda Error</a></h3>
+<ul>
+<li>Returns 5xx error</li>
+<li>API Gateway forwards error</li>
+</ul>
+<h3 id="client-error"><a class="header" href="#client-error">Client Error</a></h3>
+<ul>
+<li>4xx returned</li>
+</ul>
+<p>API Gateway + Lambda together:</p>
+<ul>
+<li>Handle graceful failures</li>
+</ul>
+<hr />
+<h2 id="13-cold-start-impact-with-api-gateway"><a class="header" href="#13-cold-start-impact-with-api-gateway">1️⃣3️⃣ Cold Start Impact with API Gateway</a></h2>
+<p>Cold start affects:</p>
+<ul>
+<li>Lambda initialization time</li>
+<li>API response latency</li>
+</ul>
+<p>API Gateway itself:</p>
+<ul>
+<li>Has NO cold start</li>
+</ul>
+<p>Mitigation:</p>
+<ul>
+<li>Provisioned concurrency</li>
+<li>Smaller runtime</li>
+<li>Avoid VPC if possible</li>
+</ul>
+<hr />
+<h2 id="14-security-model-very-important"><a class="header" href="#14-security-model-very-important">1️⃣4️⃣ Security Model (Very Important)</a></h2>
+<h3 id="api-gateway-security"><a class="header" href="#api-gateway-security">API Gateway Security</a></h3>
+<ul>
+<li>Public HTTPS endpoint</li>
+<li>WAF integration</li>
+<li>Throttling</li>
+</ul>
+<h3 id="lambda-security"><a class="header" href="#lambda-security">Lambda Security</a></h3>
+<ul>
+<li>IAM execution role</li>
+<li>Least privilege</li>
+</ul>
+<h3 id="network"><a class="header" href="#network">Network</a></h3>
+<ul>
+<li>Lambda can run inside VPC if needed</li>
+</ul>
+<hr />
+<h2 id="15-cost-model-combined"><a class="header" href="#15-cost-model-combined">1️⃣5️⃣ Cost Model (Combined)</a></h2>
+<h3 id="api-gateway-cost"><a class="header" href="#api-gateway-cost">API Gateway Cost</a></h3>
+<ul>
+<li>Charged per request</li>
+</ul>
+<h3 id="lambda-cost"><a class="header" href="#lambda-cost">Lambda Cost</a></h3>
+<ul>
+<li>Requests + duration</li>
+</ul>
+<p>✔ No idle cost
+✔ Pay per call</p>
+<p>This is why serverless is cheap for spiky traffic.</p>
+<hr />
+<h2 id="16-api-gateway-vs-alb--lambda"><a class="header" href="#16-api-gateway-vs-alb--lambda">1️⃣6️⃣ API Gateway vs ALB + Lambda</a></h2>
+<p>API Gateway:</p>
+<ul>
+<li>API-focused</li>
+<li>Authentication</li>
+<li>Throttling</li>
+<li>Request mapping</li>
+</ul>
+<p>ALB:</p>
+<ul>
+<li>Simple routing</li>
+<li>Less API features</li>
+</ul>
+<p>📌 For REST APIs → API Gateway
+📌 For simple HTTP routing → ALB</p>
+<hr />
+<h2 id="17-when-to-use-api-gateway--lambda"><a class="header" href="#17-when-to-use-api-gateway--lambda">1️⃣7️⃣ When to Use API Gateway + Lambda</a></h2>
+<p>Perfect for:</p>
+<ul>
+<li>REST APIs</li>
+<li>Microservices</li>
+<li>Mobile backend</li>
+<li>Web backend</li>
+<li>Event-driven apps</li>
+</ul>
+<hr />
+<h2 id="18-when-not-to-use-this-combo"><a class="header" href="#18-when-not-to-use-this-combo">1️⃣8️⃣ When NOT to Use This Combo</a></h2>
+<p>Avoid if:</p>
+<ul>
+<li>Long-running workloads</li>
+<li>Streaming responses</li>
+<li>Extremely low-latency systems</li>
+<li>Stateful applications</li>
+</ul>
+<hr />
+<h2 id="19-common-aws-exam-traps"><a class="header" href="#19-common-aws-exam-traps">1️⃣9️⃣ Common AWS Exam Traps</a></h2>
+<p>❓ Can Lambda expose HTTP endpoint directly
+➡ ❌ No</p>
+<p>❓ API Gateway handles scaling
+➡ ✅ Yes</p>
+<p>❓ Lambda auto scales with API traffic
+➡ ✅ Yes</p>
+<p>❓ API Gateway replaces load balancer
+➡ ✅ Yes (for APIs)</p>
+<hr />
+<h2 id="20-real-world-serverless-api-architecture"><a class="header" href="#20-real-world-serverless-api-architecture">2️⃣0️⃣ Real-World Serverless API Architecture</a></h2>
+<pre><code>User
+ ↓
+CloudFront
+ ↓
+API Gateway
+ ↓
+Lambda
+ ↓
+DynamoDB
+</code></pre>
+<p>✔ Secure
+✔ Scalable
+✔ Cost-effective</p>
+<hr />
+<h2 id="21-one-line-exam-definition"><a class="header" href="#21-one-line-exam-definition">2️⃣1️⃣ One-Line Exam Definition</a></h2>
+<blockquote>
+<p><strong>API Gateway provides a managed HTTP endpoint that triggers AWS Lambda functions to build fully serverless APIs.</strong></p>
+</blockquote>
+<hr />
+<h2 id="22-mental-model-to-remember-forever"><a class="header" href="#22-mental-model-to-remember-forever">2️⃣2️⃣ Mental Model to Remember Forever</a></h2>
+<pre><code>API Gateway = Front door
+Lambda = Brain
+</code></pre>
+<hr />
+<h2 id="23-final-summary-must-remember"><a class="header" href="#23-final-summary-must-remember">2️⃣3️⃣ Final Summary (Must Remember)</a></h2>
+<ul>
+<li>Lambda cannot be called directly by browser</li>
+<li>API Gateway provides HTTP access</li>
+<li>Fully serverless architecture</li>
+<li>Auto scaling &amp; pay-per-use</li>
+<li>Most common AWS backend pattern</li>
+</ul>
+<hr />
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../serverless/lambda.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../serverless/pricing.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../serverless/lambda.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../serverless/pricing.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

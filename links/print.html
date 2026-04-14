@@ -1,0 +1,464 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title></title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+        <!-- PWA -->
+        <link rel="icon" type="image/x-icon" href="https://devnamdev2003.github.io/devdocs/static/icons/favicon.ico">
+        <link rel="manifest" href="https://devnamdev2003.github.io/devdocs/static/manifest.webmanifest">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="theme-color" content="#0d1117">
+        
+        <meta name="title" content="Links">
+        <meta name="description" content="All my live projects and deployments, organized in one place.">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="og:image" content="https://devnamdev2003.github.io/devdocs/static/img/links/links_c.png">
+        <meta property="og:title" content="Links">
+        <meta property="og:description"
+            content="All my live projects and deployments, organized in one place.">
+        
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="twitter:image" content="https://devnamdev2003.github.io/devdocs/static/img/links/links_c.png">
+        <meta property="twitter:title" content="Links">
+        <meta property="twitter:description"
+            content="All my live projects and deployments, organized in one place.">
+        <meta name="description" content="All my live projects and deployments, organized in one place.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="links.html"><strong aria-hidden="true">1.</strong> Links</a></li><li class="chapter-item expanded "><a href="links2.html"><strong aria-hidden="true">2.</strong> Profiles & Coding Links</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/links" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <style>
+h2{
+    margin-top: 0;
+}
+</style>
+<h2 id=""><a class="header" href="#"><a href="../src">👈</a></a></h2>
+<h1 id="-project--deployment-links"><a class="header" href="#-project--deployment-links">🌐 Project &amp; Deployment Links</a></h1>
+<hr />
+<h2 id="-web-pages"><a class="header" href="#-web-pages">🌐 Web Pages</a></h2>
+<p>Fully rendered web pages, documentation sites, and interactive frontend applications.</p>
+<ol>
+<li>
+<p><strong>Personal Portfolio</strong><br />
+<a href="https://devnamdev2003.github.io/devnamdev2003.github.io">https://devnamdev2003.github.io/devnamdev2003.github.io</a></p>
+</li>
+<li>
+<p><strong>DevDocs</strong> – Personal technical documentation (AWS, Python, JS, Databases)<br />
+<a href="https://devnamdev2003.github.io/devdocs">https://devnamdev2003.github.io/devdocs</a></p>
+</li>
+<li>
+<p><strong>mdBook Demo</strong> – mdBook structure and feature showcase<br />
+<a href="https://devnamdev2003.github.io/mdbook-demo">https://devnamdev2003.github.io/mdbook-demo</a></p>
+</li>
+<li>
+<p><strong>JavaScript Projects</strong> – Collection of JavaScript mini-projects<br />
+<a href="https://devnamdev2003.github.io/js_projects">https://devnamdev2003.github.io/js_projects</a></p>
+</li>
+<li>
+<p><strong>Interview Bootcamp</strong> – Interview preparation notes and resources<br />
+<a href="https://devnamdev2003.github.io/interview_bootcamp">https://devnamdev2003.github.io/interview_bootcamp</a></p>
+</li>
+<li>
+<p><strong>Guitar Tunes</strong> – Music-based frontend project<br />
+<a href="https://devnamdev2003.github.io/guitar_tunes">https://devnamdev2003.github.io/guitar_tunes</a></p>
+</li>
+<li>
+<p><strong>ChatBot UI</strong> – Frontend chatbot interface<br />
+<a href="https://devnamdev2003.github.io/chatBot">https://devnamdev2003.github.io/chatBot</a></p>
+</li>
+<li>
+<p><strong>AI Interview Assistant (Frontend)</strong><br />
+<a href="https://devnamdev2003.github.io/AI_Interview_Assistant/Frontend/">https://devnamdev2003.github.io/AI_Interview_Assistant/Frontend/</a></p>
+</li>
+</ol>
+<hr />
+<h2 id="-backend-apis--services-render"><a class="header" href="#-backend-apis--services-render">🧠 Backend APIs &amp; Services (Render)</a></h2>
+<p>Live backend services, REST APIs, and server-side applications hosted on Render.</p>
+<ol>
+<li>
+<p><strong>Django Chat Backend</strong> – Real-time chat backend<br />
+<a href="https://django-chat-application.onrender.com/">https://django-chat-application.onrender.com/</a></p>
+</li>
+<li>
+<p><strong>Rentify Backend</strong> – Rental management API<br />
+<a href="https://rentify-decode.onrender.com/">https://rentify-decode.onrender.com/</a></p>
+</li>
+<li>
+<p><strong>DevNoms Backend</strong> – Real-time chat backend
+<a href="https://coders813-django-chat-application.hf.space/">https://coders813-django-chat-application.hf.space/</a></p>
+</li>
+<li>
+<p><strong>Contact API</strong> – Contact management REST API<br />
+<a href="https://contactapi-1uvn.onrender.com/">https://contactapi-1uvn.onrender.com/</a></p>
+</li>
+<li>
+<p><strong>ExWise API (Django)</strong> – Expense tracking backend<br />
+<a href="https://exwiseapi.onrender.com/">https://exwiseapi.onrender.com/</a></p>
+</li>
+<li>
+<p><strong>ExpenseWise API (Spring Boot)</strong> – Expense tracking backend<br />
+<a href="https://api-expensewise.onrender.com/">https://api-expensewise.onrender.com/</a></p>
+</li>
+</ol>
+<hr />
+<h2 id="-frontend-deployments-vercel"><a class="header" href="#-frontend-deployments-vercel">🌍 Frontend Deployments (Vercel)</a></h2>
+<p>Production-grade frontend deployments.</p>
+<ol>
+<li>
+<p><strong>ExpenseWise (Production)</strong><br />
+<a href="https://devnamdev2003.github.io/angular-expense-tracker/">https://devnamdev2003.github.io/angular-expense-tracker/</a></p>
+</li>
+<li>
+<p><strong>ExpenseWise (APK / Dev Build)</strong><br />
+<a href="https://exwisedev.vercel.app/">https://exwisedev.vercel.app/</a></p>
+</li>
+<li>
+<p><strong>ExpenseWise Documentation</strong><br />
+<a href="https://exwisedoc.vercel.app/">https://exwisedoc.vercel.app/</a></p>
+</li>
+</ol>
+<hr />
+<h2 id="-frontend-deployments-netlify"><a class="header" href="#-frontend-deployments-netlify">🌐 Frontend Deployments (Netlify)</a></h2>
+<p>Static frontend applications hosted on Netlify.</p>
+<ol>
+<li><strong>AI Chat Bot</strong><br />
+<a href="https://chatwithaibot.netlify.app/">https://chatwithaibot.netlify.app/</a></li>
+</ol>
+<!-- 2. **PDF Tools App**  
+  [https://pdf813.netlify.app/](https://pdf813.netlify.app/) -->
+<ol start="3">
+<li><strong>DevDocs (Netlify Version)</strong><br />
+<a href="https://dev-docs.netlify.app/">https://dev-docs.netlify.app/</a></li>
+</ol>
+<hr />
+<h2 id="-readme-files-web-page"><a class="header" href="#-readme-files-web-page">💻 README Files Web Page</a></h2>
+<p>Projects where GitHub Pages primarily renders the <code>README.md</code> as the landing page.</p>
+<ol>
+<li>
+<p>Java by Kunal Kushwaha<br />
+<a href="https://devnamdev2003.github.io/java-by-kunal-kushwaha">https://devnamdev2003.github.io/java-by-kunal-kushwaha</a></p>
+</li>
+<li>
+<p>Angular Expense Tracker<br />
+<a href="https://devnamdev2003.github.io/angular-expense-tracker">https://devnamdev2003.github.io/angular-expense-tracker</a></p>
+</li>
+<li>
+<p>Developer Portfolio (Repository View)<br />
+<a href="https://devnamdev2003.github.io/devnamdev2003">https://devnamdev2003.github.io/devnamdev2003</a></p>
+</li>
+<li>
+<p>Django Chat App (Overview)<br />
+<a href="https://devnamdev2003.github.io/django-chat-app">https://devnamdev2003.github.io/django-chat-app</a></p>
+</li>
+<li>
+<p>DevNoms – Project Overview<br />
+<a href="https://devnamdev2003.github.io/devnoms">https://devnamdev2003.github.io/devnoms</a></p>
+</li>
+<li>
+<p>AI Interview Assistant – Documentation<br />
+<a href="https://devnamdev2003.github.io/AI_Interview_Assistant">https://devnamdev2003.github.io/AI_Interview_Assistant</a></p>
+</li>
+<li>
+<p>Rentify – Rental Management System<br />
+<a href="https://devnamdev2003.github.io/Rentify">https://devnamdev2003.github.io/Rentify</a></p>
+</li>
+<li>
+<p>ExcelBot – Excel Automation Tool<br />
+<a href="https://devnamdev2003.github.io/ExcelBot">https://devnamdev2003.github.io/ExcelBot</a></p>
+</li>
+<li>
+<p>SQLEase – SQL-Based Leasing System<br />
+<a href="https://devnamdev2003.github.io/SQLEase">https://devnamdev2003.github.io/SQLEase</a></p>
+</li>
+<li>
+<p>Result Automation System<br />
+<a href="https://devnamdev2003.github.io/result_automation_system">https://devnamdev2003.github.io/result_automation_system</a></p>
+</li>
+<li>
+<p>Django Starter Template<br />
+<a href="https://devnamdev2003.github.io/Django_template">https://devnamdev2003.github.io/Django_template</a></p>
+</li>
+<li>
+<p>PC Assistant – Desktop Automation Project<br />
+<a href="https://devnamdev2003.github.io/PC_Assistant">https://devnamdev2003.github.io/PC_Assistant</a></p>
+</li>
+<li>
+<p>CS50 Python Problem Sets<br />
+<a href="https://devnamdev2003.github.io/CS50_Python_problem_set">https://devnamdev2003.github.io/CS50_Python_problem_set</a></p>
+</li>
+</ol>
+<hr />
+<div style="break-before: page; page-break-before: always;"></div><style>
+h2{
+    margin-top: 0;
+}
+</style>
+<h2 id="-1"><a class="header" href="#-1"><a href="../src">👈</a></a></h2>
+<h1 id="-profiles--coding-links"><a class="header" href="#-profiles--coding-links">🔗 Profiles &amp; Coding Links</a></h1>
+<h2 id="-coding--problem-solving-platforms"><a class="header" href="#-coding--problem-solving-platforms">💻 Coding &amp; Problem-Solving Platforms</a></h2>
+<p>Used for DSA practice, competitive programming, and technical skill evaluation.</p>
+<div class="table-wrapper"><table><thead><tr><th>Platform</th><th>Link</th></tr></thead><tbody>
+<tr><td>LeetCode</td><td><a href="https://leetcode.com/devnamdevcse/">https://leetcode.com/devnamdevcse/</a></td></tr>
+<tr><td>GeeksForGeeks</td><td><a href="https://auth.geeksforgeeks.org/user/devnamdevcse/">https://auth.geeksforgeeks.org/user/devnamdevcse/</a></td></tr>
+<tr><td>CodeChef</td><td><a href="https://www.codechef.com/users/devnamdev2003">https://www.codechef.com/users/devnamdev2003</a></td></tr>
+<tr><td>HackerRank</td><td><a href="https://www.hackerrank.com/devnamdevcse">https://www.hackerrank.com/devnamdevcse</a></td></tr>
+<tr><td>Kaggle</td><td><a href="https://www.kaggle.com/devnamdev">https://www.kaggle.com/devnamdev</a></td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-developer--open-source-profiles"><a class="header" href="#-developer--open-source-profiles">🧑‍💻 Developer &amp; Open-Source Profiles</a></h2>
+<p>Platforms showcasing projects, articles, and open-source contributions.</p>
+<div class="table-wrapper"><table><thead><tr><th>Platform</th><th>Link</th></tr></thead><tbody>
+<tr><td>GitHub</td><td><a href="https://github.com/devnamdev2003">https://github.com/devnamdev2003</a></td></tr>
+<tr><td>Dev.to</td><td><a href="https://dev.to/devnamdev2003">https://dev.to/devnamdev2003</a></td></tr>
+<tr><td>CodePen</td><td><a href="https://codepen.io/devnamdev2003">https://codepen.io/devnamdev2003</a></td></tr>
+<tr><td>Devpost</td><td><a href="https://devpost.com/devnamdevcse">https://devpost.com/devnamdevcse</a></td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-professional--freelancing-platforms"><a class="header" href="#-professional--freelancing-platforms">💼 Professional &amp; Freelancing Platforms</a></h2>
+<p>Used for professional presence, hiring, and freelance work.</p>
+<div class="table-wrapper"><table><thead><tr><th>Platform</th><th>Link</th></tr></thead><tbody>
+<tr><td>LinkedIn</td><td><a href="https://www.linkedin.com/in/dev-namdev-275536226/">https://www.linkedin.com/in/dev-namdev-275536226/</a></td></tr>
+<tr><td>Freelancer</td><td><a href="https://www.freelancer.com/u/Devnamdev2003">https://www.freelancer.com/u/Devnamdev2003</a></td></tr>
+<tr><td>Unstop</td><td><a href="https://unstop.com/u/devnamdev813">https://unstop.com/u/devnamdev813</a></td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-social--community-platforms"><a class="header" href="#-social--community-platforms">🌐 Social &amp; Community Platforms</a></h2>
+<p>Social presence and community interaction.</p>
+<div class="table-wrapper"><table><thead><tr><th>Platform</th><th>Link</th></tr></thead><tbody>
+<tr><td>Twitter</td><td><a href="https://x.com/devnamdev813">https://x.com/devnamdev813</a></td></tr>
+<tr><td>Instagram</td><td><a href="https://www.instagram.com/dev_namdev813/">https://www.instagram.com/dev_namdev813/</a></td></tr>
+<tr><td>Facebook</td><td><a href="https://www.facebook.com/dev.namdev813/">https://www.facebook.com/dev.namdev813/</a></td></tr>
+<tr><td>Snapchat</td><td><a href="https://www.snapchat.com/add/devnamdev813">https://www.snapchat.com/add/devnamdev813</a></td></tr>
+<tr><td>Telegram</td><td><a href="https://t.me/devnamdev813">https://t.me/devnamdev813</a></td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-link-aggregator"><a class="header" href="#-link-aggregator">🔗 Link Aggregator</a></h2>
+<p>Single place to access all profiles.</p>
+<div class="table-wrapper"><table><thead><tr><th>Platform</th><th>Link</th></tr></thead><tbody>
+<tr><td>Linktree</td><td><a href="https://linktr.ee/devnamdev">https://linktr.ee/devnamdev</a></td></tr>
+</tbody></table>
+</div>
+<hr />
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>

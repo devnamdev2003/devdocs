@@ -1,0 +1,1015 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>json-code</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- PWA -->
+        <link rel="icon" type="image/x-icon" href="https://devnamdev2003.github.io/devdocs/static/icons/favicon.ico">
+        <link rel="manifest" href="https://devnamdev2003.github.io/devdocs/static/manifest.webmanifest">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="theme-color" content="#0d1117">
+        
+        <meta name="title" content="spring-boot">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://devnamdev2003.github.io/devdocs">
+        
+        <meta property="og:title" content="spring-boot">
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="twitter:title" content="spring-boot">
+
+        <meta name="description" content="Concise and practical Spring boot notes ">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="spring-boot_index.html"><strong aria-hidden="true">1.</strong> Spring Boot Index</a></li><li class="chapter-item expanded "><a href="spring-boot-exception-handling-roadmap.html"><strong aria-hidden="true">2.</strong> Spring Boot Exception Handling Roadmap</a></li><li class="chapter-item expanded "><a href="spring-security-roadmap.html"><strong aria-hidden="true">3.</strong> Spring Security Roadmap</a></li><li class="chapter-item expanded "><a href="json-code.html" class="active"><strong aria-hidden="true">4.</strong> json-code</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs/edit/main/md-code/spring-boot/src/json-code.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+<h2 id=""><a class="header" href="#"><a href="../src">👈</a></a></h2>
+<pre><code class="language-json">[
+  {
+    "category": "Spring Boot Exception Handling",
+    "labs": [
+      {
+        "id": "lab-import-1776190588145-l8h6m05e0",
+        "title": "Basics of Exception Handling",
+        "icon": "fa-solid fa-circle-info",
+        "description": "Understand how exceptions work in Java and default Spring Boot behavior.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-l8h6m05e0-0",
+            "text": "Checked vs Unchecked Exceptions",
+            "description": "Difference between compile-time and runtime exceptions."
+          },
+          {
+            "id": "step-lab-import-1776190588145-l8h6m05e0-1",
+            "text": "Default Spring Boot Error Response",
+            "description": "Observe default JSON error structure returned by Spring Boot."
+          },
+          {
+            "id": "step-lab-import-1776190588145-l8h6m05e0-2",
+            "text": "HTTP Status Codes",
+            "description": "Learn 200, 400, 404, 500 and their API meanings."
+          },
+          {
+            "id": "step-lab-import-1776190588145-l8h6m05e0-3",
+            "text": "Lab: Basic Exception Testing",
+            "description": "Create `/test/{id}` API and throw RuntimeException and NullPointerException to observe default response."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-e8klppt3f",
+        "title": "Controller Level Exception Handling",
+        "icon": "fa-solid fa-layer-group",
+        "description": "Handle exceptions locally in controllers.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-e8klppt3f-0",
+            "text": "@ExceptionHandler",
+            "description": "Handle specific exceptions inside a controller."
+          },
+          {
+            "id": "step-lab-import-1776190588145-e8klppt3f-1",
+            "text": "Custom Error Response",
+            "description": "Return meaningful messages instead of default error."
+          },
+          {
+            "id": "step-lab-import-1776190588145-e8klppt3f-2",
+            "text": "Lab: Controller-Level Handling",
+            "description": "Handle RuntimeException using @ExceptionHandler and return custom JSON response."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-qkineqg2v",
+        "title": "Global Exception Handling",
+        "icon": "fa-solid fa-globe",
+        "description": "Centralized exception handling across application.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-qkineqg2v-0",
+            "text": "@ControllerAdvice",
+            "description": "Apply exception handling globally."
+          },
+          {
+            "id": "step-lab-import-1776190588145-qkineqg2v-1",
+            "text": "@RestControllerAdvice",
+            "description": "Return JSON responses globally."
+          },
+          {
+            "id": "step-lab-import-1776190588145-qkineqg2v-2",
+            "text": "Generic Exception Handling",
+            "description": "Catch all exceptions in one place."
+          },
+          {
+            "id": "step-lab-import-1776190588145-qkineqg2v-3",
+            "text": "Lab: Global Handler",
+            "description": "Create GlobalExceptionHandler class and handle all exceptions."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-belnztho6",
+        "title": "Custom Exceptions",
+        "icon": "fa-solid fa-user-xmark",
+        "description": "Define business-specific exceptions.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-belnztho6-0",
+            "text": "Create Custom Exception",
+            "description": "Example: UserNotFoundException extends RuntimeException."
+          },
+          {
+            "id": "step-lab-import-1776190588145-belnztho6-1",
+            "text": "Business vs System Exceptions",
+            "description": "Separate business logic errors from technical errors."
+          },
+          {
+            "id": "step-lab-import-1776190588145-belnztho6-2",
+            "text": "Lab: Custom Exception",
+            "description": "Throw UserNotFoundException when user not found and handle globally."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-34qphvlk4",
+        "title": "Custom Error Response Structure",
+        "icon": "fa-solid fa-code",
+        "description": "Design consistent API error format.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-34qphvlk4-0",
+            "text": "ErrorResponse DTO",
+            "description": "Include timestamp, status, message, path."
+          },
+          {
+            "id": "step-lab-import-1776190588145-34qphvlk4-1",
+            "text": "Standard API Format",
+            "description": "Maintain uniform structure across APIs."
+          },
+          {
+            "id": "step-lab-import-1776190588145-34qphvlk4-2",
+            "text": "Lab: Structured Response",
+            "description": "Create ErrorResponse class and return structured JSON for all errors."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-kj09hixiu",
+        "title": "Handling Specific Exceptions",
+        "icon": "fa-solid fa-bug",
+        "description": "Handle common Spring exceptions.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-kj09hixiu-0",
+            "text": "MethodArgumentNotValidException",
+            "description": "Occurs during validation failure."
+          },
+          {
+            "id": "step-lab-import-1776190588145-kj09hixiu-1",
+            "text": "HttpMessageNotReadableException",
+            "description": "Occurs when request body is invalid."
+          },
+          {
+            "id": "step-lab-import-1776190588145-kj09hixiu-2",
+            "text": "ConstraintViolationException",
+            "description": "Occurs in query/path validation."
+          },
+          {
+            "id": "step-lab-import-1776190588145-kj09hixiu-3",
+            "text": "Lab: Specific Exception Handling",
+            "description": "Trigger and handle each exception with custom messages."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-frq23bccs",
+        "title": "Validation Error Handling",
+        "icon": "fa-solid fa-check-circle",
+        "description": "Handle validation errors in request data.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-frq23bccs-0",
+            "text": "Bean Validation",
+            "description": "Use @NotNull, @Size, @Email."
+          },
+          {
+            "id": "step-lab-import-1776190588145-frq23bccs-1",
+            "text": "Field-Level Error Mapping",
+            "description": "Return errors per field."
+          },
+          {
+            "id": "step-lab-import-1776190588145-frq23bccs-2",
+            "text": "Multiple Error Aggregation",
+            "description": "Return all validation errors in one response."
+          },
+          {
+            "id": "step-lab-import-1776190588145-frq23bccs-3",
+            "text": "Lab: Validation Handling",
+            "description": "Send invalid request and return structured validation errors."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-trkiizd3c",
+        "title": "ResponseStatus Annotation",
+        "icon": "fa-solid fa-tag",
+        "description": "Set HTTP status directly on exceptions.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-trkiizd3c-0",
+            "text": "@ResponseStatus",
+            "description": "Annotate exception with HTTP status."
+          },
+          {
+            "id": "step-lab-import-1776190588145-trkiizd3c-1",
+            "text": "Comparison with Global Handler",
+            "description": "Understand flexibility differences."
+          },
+          {
+            "id": "step-lab-import-1776190588145-trkiizd3c-2",
+            "text": "Lab: ResponseStatus Usage",
+            "description": "Annotate custom exception and compare with global handler output."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-1plb4hv7y",
+        "title": "Handling 404 Errors",
+        "icon": "fa-solid fa-triangle-exclamation",
+        "description": "Customize not found errors.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-1plb4hv7y-0",
+            "text": "NoHandlerFoundException",
+            "description": "Enable exception for missing endpoints."
+          },
+          {
+            "id": "step-lab-import-1776190588145-1plb4hv7y-1",
+            "text": "Configuration Setup",
+            "description": "Use spring.mvc.throw-exception-if-no-handler-found=true."
+          },
+          {
+            "id": "step-lab-import-1776190588145-1plb4hv7y-2",
+            "text": "Lab: Custom 404 Handling",
+            "description": "Handle 404 globally with custom message."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-zzm8hxj75",
+        "title": "Spring Boot Error Internals",
+        "icon": "fa-solid fa-gears",
+        "description": "Understand internal error flow.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-zzm8hxj75-0",
+            "text": "BasicErrorController",
+            "description": "Default error controller in Spring Boot."
+          },
+          {
+            "id": "step-lab-import-1776190588145-zzm8hxj75-1",
+            "text": "ErrorAttributes",
+            "description": "Customize error fields."
+          },
+          {
+            "id": "step-lab-import-1776190588145-zzm8hxj75-2",
+            "text": "Lab: Override ErrorAttributes",
+            "description": "Customize default error response fields."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-c88gfctyk",
+        "title": "Logging &amp; Monitoring",
+        "icon": "fa-solid fa-file-lines",
+        "description": "Handle logging for production systems.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-c88gfctyk-0",
+            "text": "Logging Exceptions",
+            "description": "Use logger for error tracking."
+          },
+          {
+            "id": "step-lab-import-1776190588145-c88gfctyk-1",
+            "text": "Log Levels",
+            "description": "ERROR, WARN usage."
+          },
+          {
+            "id": "step-lab-import-1776190588145-c88gfctyk-2",
+            "text": "Sensitive Data Protection",
+            "description": "Avoid logging passwords/tokens."
+          },
+          {
+            "id": "step-lab-import-1776190588145-c88gfctyk-3",
+            "text": "Lab: Logging Setup",
+            "description": "Log all exceptions using SLF4J logger."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-ukarj41p8",
+        "title": "Security Exception Handling",
+        "icon": "fa-solid fa-shield-halved",
+        "description": "Handle security-related exceptions.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-ukarj41p8-0",
+            "text": "AuthenticationEntryPoint",
+            "description": "Handle 401 Unauthorized."
+          },
+          {
+            "id": "step-lab-import-1776190588145-ukarj41p8-1",
+            "text": "AccessDeniedHandler",
+            "description": "Handle 403 Forbidden."
+          },
+          {
+            "id": "step-lab-import-1776190588145-ukarj41p8-2",
+            "text": "Lab: Security Errors",
+            "description": "Return custom JSON for 401 and 403 errors."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-j7lpnzt36",
+        "title": "Global API Response Wrapper",
+        "icon": "fa-solid fa-box",
+        "description": "Standardize API responses.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-j7lpnzt36-0",
+            "text": "Success &amp; Error Wrapper",
+            "description": "Include success flag, data, error."
+          },
+          {
+            "id": "step-lab-import-1776190588145-j7lpnzt36-1",
+            "text": "Consistent API Design",
+            "description": "Apply same structure everywhere."
+          },
+          {
+            "id": "step-lab-import-1776190588145-j7lpnzt36-2",
+            "text": "Lab: Response Wrapper",
+            "description": "Wrap all API responses into common format."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-vfjc5ucfa",
+        "title": "Microservices Exception Handling",
+        "icon": "fa-solid fa-network-wired",
+        "description": "Handle errors across services.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-vfjc5ucfa-0",
+            "text": "Feign/WebClient Handling",
+            "description": "Handle external service errors."
+          },
+          {
+            "id": "step-lab-import-1776190588145-vfjc5ucfa-1",
+            "text": "Error Mapping",
+            "description": "Convert external errors into internal format."
+          },
+          {
+            "id": "step-lab-import-1776190588145-vfjc5ucfa-2",
+            "text": "Lab: Microservice Error Handling",
+            "description": "Handle downstream API errors and map responses."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190588145-e6nr8gs0y",
+        "title": "Production Best Practices",
+        "icon": "fa-solid fa-star",
+        "description": "Industry-level practices for exception handling.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190588145-e6nr8gs0y-0",
+            "text": "Never Expose Raw Exceptions",
+            "description": "Always hide internal stack traces."
+          },
+          {
+            "id": "step-lab-import-1776190588145-e6nr8gs0y-1",
+            "text": "Use Meaningful Messages",
+            "description": "Provide user-friendly error responses."
+          },
+          {
+            "id": "step-lab-import-1776190588145-e6nr8gs0y-2",
+            "text": "Separate Exception Types",
+            "description": "Business vs Technical exceptions."
+          },
+          {
+            "id": "step-lab-import-1776190588145-e6nr8gs0y-3",
+            "text": "Lab: Production Setup",
+            "description": "Implement complete production-ready exception handling system."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "category": "Spring Security Complete Roadmap",
+    "labs": [
+      {
+        "id": "lab-import-1776190384649-amcl33at1",
+        "title": "Fundamentals",
+        "icon": "fa-solid fa-book",
+        "description": "Understand core concepts of Spring Security and how it works internally.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-amcl33at1-0",
+            "text": "Introduction to Spring Security",
+            "description": "What is Spring Security, why it is used, and its role in securing applications."
+          },
+          {
+            "id": "step-lab-import-1776190384649-amcl33at1-1",
+            "text": "Authentication vs Authorization",
+            "description": "Authentication = who you are, Authorization = what you can access."
+          },
+          {
+            "id": "step-lab-import-1776190384649-amcl33at1-2",
+            "text": "Security Architecture",
+            "description": "Understand filter chain, security context, and flow of request.\n\n[Medium blog](https://medium.com/@iiizmkarim/spring-security-6-architecture-real-world-implementation-and-best-practices-75c0a514c65e)"
+          },
+          {
+            "id": "step-lab-import-1776190384649-amcl33at1-3",
+            "text": "Default Configuration",
+            "description": "**Lab:** Create Spring Boot app → add dependency → observe default login page."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-gougmwpni",
+        "title": "Core Components",
+        "icon": "fa-solid fa-cogs",
+        "description": "Deep dive into important internal classes used in authentication.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-gougmwpni-0",
+            "text": "SecurityFilterChain",
+            "description": "Main component that defines security rules."
+          },
+          {
+            "id": "step-lab-import-1776190384649-gougmwpni-1",
+            "text": "AuthenticationManager",
+            "description": "Handles authentication process."
+          },
+          {
+            "id": "step-lab-import-1776190384649-gougmwpni-2",
+            "text": "UserDetailsService",
+            "description": "**Lab:** Create custom UserDetailsService and load user from memory/DB."
+          },
+          {
+            "id": "step-lab-import-1776190384649-gougmwpni-3",
+            "text": "PasswordEncoder",
+            "description": "**Lab:** Use BCryptPasswordEncoder to hash passwords."
+          },
+          {
+            "id": "step-lab-import-1776190384649-gougmwpni-4",
+            "text": "Roles and Authorities",
+            "description": "Difference between ROLE_USER and authorities."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-amm595zj8",
+        "title": "Configuration",
+        "icon": "fa-solid fa-sliders",
+        "description": "Modern configuration using Spring Security 6.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-amm595zj8-0",
+            "text": "SecurityFilterChain Bean",
+            "description": "Define security rules using Java configuration."
+          },
+          {
+            "id": "step-lab-import-1776190384649-amm595zj8-1",
+            "text": "Lambda DSL",
+            "description": "Modern way to configure security in Spring Boot."
+          },
+          {
+            "id": "step-lab-import-1776190384649-amm595zj8-2",
+            "text": "Endpoint Security",
+            "description": "**Lab:** /public (open), /user (auth), /admin (role-based)."
+          },
+          {
+            "id": "step-lab-import-1776190384649-amm595zj8-3",
+            "text": "Custom Login Page",
+            "description": "**Lab:** Replace default login with custom UI."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-y1liivict",
+        "title": "Authentication Methods",
+        "icon": "fa-solid fa-lock",
+        "description": "Different ways to authenticate users.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-y1liivict-0",
+            "text": "Form Login",
+            "description": "Default login form handling."
+          },
+          {
+            "id": "step-lab-import-1776190384649-y1liivict-1",
+            "text": "HTTP Basic Auth",
+            "description": "Used for APIs and testing."
+          },
+          {
+            "id": "step-lab-import-1776190384649-y1liivict-2",
+            "text": "Custom Authentication",
+            "description": "**Lab:** Create login API manually."
+          },
+          {
+            "id": "step-lab-import-1776190384649-y1liivict-3",
+            "text": "Remember Me",
+            "description": "**Lab:** Implement remember-me functionality."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-8ff4sqlxf",
+        "title": "Authorization",
+        "icon": "fa-solid fa-user-shield",
+        "description": "Control access to resources.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-8ff4sqlxf-0",
+            "text": "Role-Based Access",
+            "description": "**Lab:** Restrict endpoints based on roles."
+          },
+          {
+            "id": "step-lab-import-1776190384649-8ff4sqlxf-1",
+            "text": "Method-Level Security",
+            "description": "Use @PreAuthorize and @PostAuthorize."
+          },
+          {
+            "id": "step-lab-import-1776190384649-8ff4sqlxf-2",
+            "text": "Expression-Based Access",
+            "description": "**Lab:** Use hasRole(), hasAuthority() expressions."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-ad2ex809l",
+        "title": "Database Integration",
+        "icon": "fa-solid fa-database",
+        "description": "Store users and roles in database.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-ad2ex809l-0",
+            "text": "JPA Integration",
+            "description": "Connect Spring Security with database."
+          },
+          {
+            "id": "step-lab-import-1776190384649-ad2ex809l-1",
+            "text": "User Entity Design",
+            "description": "Create User and Role entities."
+          },
+          {
+            "id": "step-lab-import-1776190384649-ad2ex809l-2",
+            "text": "Custom Queries",
+            "description": "**Lab:** Fetch user from DB during login."
+          },
+          {
+            "id": "step-lab-import-1776190384649-ad2ex809l-3",
+            "text": "Full Auth System",
+            "description": "**Lab:** Build Register + Login APIs using DB."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-u7lbdf0oc",
+        "title": "JWT Authentication",
+        "icon": "fa-solid fa-key",
+        "description": "Stateless authentication using tokens.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-u7lbdf0oc-0",
+            "text": "JWT Basics",
+            "description": "Structure of JWT (header, payload, signature)."
+          },
+          {
+            "id": "step-lab-import-1776190384649-u7lbdf0oc-1",
+            "text": "Token Generation",
+            "description": "**Lab:** Generate token after login."
+          },
+          {
+            "id": "step-lab-import-1776190384649-u7lbdf0oc-2",
+            "text": "JWT Filter",
+            "description": "**Lab:** Validate token using filter."
+          },
+          {
+            "id": "step-lab-import-1776190384649-u7lbdf0oc-3",
+            "text": "Secure APIs",
+            "description": "**Lab:** Protect endpoints using JWT."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-jh9zog5xl",
+        "title": "OAuth2 &amp; Social Login",
+        "icon": "fa-brands fa-google",
+        "description": "Login using external providers.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-jh9zog5xl-0",
+            "text": "OAuth2 Basics",
+            "description": "Understand authorization flow."
+          },
+          {
+            "id": "step-lab-import-1776190384649-jh9zog5xl-1",
+            "text": "Google Login",
+            "description": "**Lab:** Implement Google OAuth login."
+          },
+          {
+            "id": "step-lab-import-1776190384649-jh9zog5xl-2",
+            "text": "User Info Handling",
+            "description": "Fetch user profile from provider."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-u5hlimk61",
+        "title": "Security Features",
+        "icon": "fa-solid fa-shield-halved",
+        "description": "Important built-in protections.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-u5hlimk61-0",
+            "text": "CSRF Protection",
+            "description": "Prevent cross-site request forgery."
+          },
+          {
+            "id": "step-lab-import-1776190384649-u5hlimk61-1",
+            "text": "CORS Configuration",
+            "description": "**Lab:** Allow frontend requests."
+          },
+          {
+            "id": "step-lab-import-1776190384649-u5hlimk61-2",
+            "text": "Session Management",
+            "description": "Control session creation and limits."
+          },
+          {
+            "id": "step-lab-import-1776190384649-u5hlimk61-3",
+            "text": "Security Headers",
+            "description": "Enable headers for secure responses."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-pq82z88ff",
+        "title": "Exception Handling",
+        "icon": "fa-solid fa-bug",
+        "description": "Customize error handling in security.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-pq82z88ff-0",
+            "text": "AuthenticationEntryPoint",
+            "description": "Handle unauthorized access."
+          },
+          {
+            "id": "step-lab-import-1776190384649-pq82z88ff-1",
+            "text": "AccessDeniedHandler",
+            "description": "Handle forbidden access."
+          },
+          {
+            "id": "step-lab-import-1776190384649-pq82z88ff-2",
+            "text": "Custom Error Response",
+            "description": "**Lab:** Return JSON errors instead of default HTML."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-2dy3vocyn",
+        "title": "Custom Filters",
+        "icon": "fa-solid fa-filter",
+        "description": "Extend Spring Security behavior.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-2dy3vocyn-0",
+            "text": "Filter Chain Flow",
+            "description": "Understand execution order."
+          },
+          {
+            "id": "step-lab-import-1776190384649-2dy3vocyn-1",
+            "text": "OncePerRequestFilter",
+            "description": "**Lab:** Create custom filter."
+          },
+          {
+            "id": "step-lab-import-1776190384649-2dy3vocyn-2",
+            "text": "JWT Filter Integration",
+            "description": "**Lab:** Add filter before UsernamePasswordAuthenticationFilter."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-bwgz3skw2",
+        "title": "Method Security",
+        "icon": "fa-solid fa-code",
+        "description": "Secure business logic layer.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-bwgz3skw2-0",
+            "text": "Enable Method Security",
+            "description": "Use @EnableMethodSecurity."
+          },
+          {
+            "id": "step-lab-import-1776190384649-bwgz3skw2-1",
+            "text": "Pre/Post Authorization",
+            "description": "**Lab:** Secure service methods."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-uvmof44pg",
+        "title": "Testing",
+        "icon": "fa-solid fa-vial",
+        "description": "Test secured APIs properly.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-uvmof44pg-0",
+            "text": "MockMvc Testing",
+            "description": "**Lab:** Test secured endpoints."
+          },
+          {
+            "id": "step-lab-import-1776190384649-uvmof44pg-1",
+            "text": "Mock Users",
+            "description": "Use @WithMockUser annotation."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-wss3uyfbv",
+        "title": "Production Best Practices",
+        "icon": "fa-solid fa-rocket",
+        "description": "Make your application production-ready.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-wss3uyfbv-0",
+            "text": "Password Security",
+            "description": "Use strong hashing like BCrypt."
+          },
+          {
+            "id": "step-lab-import-1776190384649-wss3uyfbv-1",
+            "text": "Refresh Tokens",
+            "description": "**Lab:** Implement refresh token flow."
+          },
+          {
+            "id": "step-lab-import-1776190384649-wss3uyfbv-2",
+            "text": "Logging &amp; Monitoring",
+            "description": "Track authentication events."
+          }
+        ]
+      },
+      {
+        "id": "lab-import-1776190384649-64tjsxe0j",
+        "title": "Microservices Security",
+        "icon": "fa-solid fa-network-wired",
+        "description": "Secure distributed systems.",
+        "steps": [
+          {
+            "id": "step-lab-import-1776190384649-64tjsxe0j-0",
+            "text": "API Gateway Security",
+            "description": "Centralized authentication."
+          },
+          {
+            "id": "step-lab-import-1776190384649-64tjsxe0j-1",
+            "text": "JWT Across Services",
+            "description": "**Lab:** Share token between services."
+          },
+          {
+            "id": "step-lab-import-1776190384649-64tjsxe0j-2",
+            "text": "Keycloak Integration",
+            "description": "**Lab:** Use external identity provider."
+          }
+        ]
+      }
+    ]
+  }
+]
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="spring-security-roadmap.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="spring-security-roadmap.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

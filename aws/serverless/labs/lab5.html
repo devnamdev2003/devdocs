@@ -1,0 +1,520 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Secure Serverless Compute</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- PWA -->
+        <link rel="icon" type="image/x-icon" href="https://devnamdev2003.github.io/devdocs/static/icons/favicon.ico">
+        <link rel="manifest" href="https://devnamdev2003.github.io/devdocs/static/manifest.webmanifest">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="theme-color" content="#0d1117">
+        
+        <meta name="title" content="AWS">
+        <meta name="description" content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="og:image" content="https://devnamdev2003.github.io/devdocs/static/img/aws/aws_c.png">
+        <meta property="og:title" content="AWS">
+        <meta property="og:description"
+            content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="twitter:image" content="https://devnamdev2003.github.io/devdocs/static/img/aws/aws_c.png">
+        <meta property="twitter:title" content="AWS">
+        <meta property="twitter:description"
+            content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        <meta name="description" content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../aws_index.html"><strong aria-hidden="true">1.</strong> AWS index</a></li><li class="chapter-item expanded "><a href="../../aws.html"><strong aria-hidden="true">2.</strong> AWS</a></li><li class="chapter-item expanded "><a href="../../aws_roadmap.html"><strong aria-hidden="true">3.</strong> AWS Roadmap</a></li><li class="chapter-item expanded "><a href="../../aws_left.html"><strong aria-hidden="true">4.</strong> AWS left</a></li><li class="chapter-item expanded "><a href="../../networking/networking_index.html"><strong aria-hidden="true">5.</strong> AWS Networking</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../networking/networking.html"><strong aria-hidden="true">5.1.</strong> AWS Networking</a></li><li class="chapter-item expanded "><a href="../../networking/networking_ip.html"><strong aria-hidden="true">5.2.</strong> IPv4 Address Structure, Private IPs, and Public IPs</a></li><li class="chapter-item expanded "><a href="../../networking/networking_subnet.html"><strong aria-hidden="true">5.3.</strong> What is Subnetting?</a></li><li class="chapter-item expanded "><a href="../../networking/networking_tcp_udp.html"><strong aria-hidden="true">5.4.</strong> What are TCP and UDP?</a></li><li class="chapter-item expanded "><a href="../../networking/networking_route_table.html"><strong aria-hidden="true">5.5.</strong> Route Tables</a></li><li class="chapter-item expanded "><a href="../../networking/networking_port.html"><strong aria-hidden="true">5.6.</strong> Port</a></li><li class="chapter-item expanded "><a href="../../networking/networking_firewall.html"><strong aria-hidden="true">5.7.</strong> Firewalls and Security Concepts</a></li><li class="chapter-item expanded "><a href="../../networking/networking_cidr.html"><strong aria-hidden="true">5.8.</strong> CIDR Notation</a></li><li class="chapter-item expanded "><a href="../../networking/networking_dns.html"><strong aria-hidden="true">5.9.</strong> DNS Resolution Flow</a></li><li class="chapter-item expanded "><a href="../../networking/networking_igw.html"><strong aria-hidden="true">5.10.</strong> Internet Gateway (IGW) in AWS</a></li><li class="chapter-item expanded "><a href="../../networking/networking_nat.html"><strong aria-hidden="true">5.11.</strong> Network Address Translation (NAT)</a></li><li class="chapter-item expanded "><a href="../../networking/networking_nat_igw.html"><strong aria-hidden="true">5.12.</strong> NAT Gateway vs Internet Gateway (IGW)</a></li><li class="chapter-item expanded "><a href="../../networking/networking_sg.html"><strong aria-hidden="true">5.13.</strong> Security Groups in AWS</a></li><li class="chapter-item expanded "><a href="../../networking/networking_nacl.html"><strong aria-hidden="true">5.14.</strong> Network Access Control Lists (NACLs) in AWS</a></li><li class="chapter-item expanded "><a href="../../networking/networking_nacl_sg.html"><strong aria-hidden="true">5.15.</strong> NACL vs Security Group (SG)</a></li><li class="chapter-item expanded "><a href="../../networking/networking_doubt.html"><strong aria-hidden="true">5.16.</strong> Networking doubt</a></li></ol></li><li class="chapter-item expanded "><a href="../../serverless/serverless_index.html"><strong aria-hidden="true">6.</strong> Serverless</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../serverless/serverless.html"><strong aria-hidden="true">6.1.</strong> Serverless</a></li><li class="chapter-item expanded "><a href="../../serverless/lambda.html"><strong aria-hidden="true">6.2.</strong> AWS Lambda</a></li><li class="chapter-item expanded "><a href="../../serverless/lambda_api_gatway.html"><strong aria-hidden="true">6.3.</strong> AWS API Gateway</a></li><li class="chapter-item expanded "><a href="../../serverless/pricing.html"><strong aria-hidden="true">6.4.</strong> AWS Pricing</a></li><li class="chapter-item expanded "><a href="../../serverless/labs/labs_index.html"><strong aria-hidden="true">6.5.</strong> Labs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../serverless/labs/lab1.html"><strong aria-hidden="true">6.5.1.</strong> Serverless REST API</a></li><li class="chapter-item expanded "><a href="../../serverless/labs/lab2.html"><strong aria-hidden="true">6.5.2.</strong> Event-Driven Processing</a></li><li class="chapter-item expanded "><a href="../../serverless/labs/lab3.html"><strong aria-hidden="true">6.5.3.</strong> Asynchronous Messaging</a></li><li class="chapter-item expanded "><a href="../../serverless/labs/lab4.html"><strong aria-hidden="true">6.5.4.</strong> Scheduled & Rule-Based Serverless Jobs</a></li><li class="chapter-item expanded "><a href="../../serverless/labs/lab5.html" class="active"><strong aria-hidden="true">6.5.5.</strong> Secure Serverless Compute</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../dev.html"><strong aria-hidden="true">7.</strong> dev</a></li><li class="chapter-item expanded "><a href="../../aws_quiz_topic.html"><strong aria-hidden="true">8.</strong> aws_quiz_topic</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs/edit/main/md-code/aws/src/serverless/labs/lab5.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+<h2 id=""><a class="header" href="#"><a href="../../">👈</a></a></h2>
+<h1 id="-hands-on-5"><a class="header" href="#-hands-on-5">🧪 HANDS-ON 5</a></h1>
+<h2 id="secure-serverless-compute"><a class="header" href="#secure-serverless-compute">Secure Serverless Compute</a></h2>
+<h3 id="aws-lambda--vpc--security-groups--secrets-manager"><a class="header" href="#aws-lambda--vpc--security-groups--secrets-manager">(AWS Lambda + VPC + Security Groups + Secrets Manager)</a></h3>
+<p>This lab teaches you how <strong>real companies run Lambda securely</strong>.</p>
+<hr />
+<h2 id="1-what-you-are-building-big-picture"><a class="header" href="#1-what-you-are-building-big-picture">1️⃣ What You Are Building (Big Picture)</a></h2>
+<p>You are building a Lambda function that:</p>
+<blockquote>
+<p><strong>Runs inside a private VPC and securely accesses a private resource (DB / service) using secrets.</strong></p>
+</blockquote>
+<p>No public exposure.
+No hardcoded credentials.</p>
+<hr />
+<h3 id="-architecture"><a class="header" href="#-architecture">🏗 Architecture</a></h3>
+<pre><code>Client / Event
+ ↓
+AWS Lambda (inside VPC)
+ ↓
+Security Group
+ ↓
+Private Resource (RDS / EC2 / internal API)
+ ↑
+AWS Secrets Manager
+</code></pre>
+<hr />
+<h2 id="2-why-this-lab-is-very-important"><a class="header" href="#2-why-this-lab-is-very-important">2️⃣ Why This Lab Is VERY IMPORTANT</a></h2>
+<p>This lab teaches:</p>
+<p>✔ Lambda inside VPC
+✔ Private networking
+✔ Security Groups with Lambda
+✔ Secrets management
+✔ Enterprise security patterns
+✔ Cold start trade-offs</p>
+<p>📌 <strong>This is how real production systems work.</strong></p>
+<hr />
+<h2 id="3-the-core-problem-this-lab-solves"><a class="header" href="#3-the-core-problem-this-lab-solves">3️⃣ The Core Problem This Lab Solves</a></h2>
+<h3 id="-problem-1-lambda-is-public-by-default"><a class="header" href="#-problem-1-lambda-is-public-by-default">🔴 Problem 1: Lambda Is Public by Default</a></h3>
+<p>By default:</p>
+<ul>
+<li>Lambda runs outside your VPC</li>
+<li>It can access public AWS services</li>
+<li>It cannot access <strong>private resources</strong></li>
+</ul>
+<hr />
+<h3 id="-problem-2-credentials-must-be-secure"><a class="header" href="#-problem-2-credentials-must-be-secure">🔴 Problem 2: Credentials Must Be Secure</a></h3>
+<p>Hardcoding:</p>
+<pre><code class="language-txt">DB_PASSWORD=admin123
+</code></pre>
+<p>❌ Security risk
+❌ Compliance violation
+❌ Exam trap</p>
+<hr />
+<h3 id="-solution"><a class="header" href="#-solution">✅ Solution</a></h3>
+<ul>
+<li>Put Lambda <strong>inside VPC</strong></li>
+<li>Use <strong>Security Groups</strong></li>
+<li>Store secrets in <strong>Secrets Manager</strong></li>
+</ul>
+<hr />
+<h2 id="4-key-concept-lambda-inside-a-vpc"><a class="header" href="#4-key-concept-lambda-inside-a-vpc">4️⃣ Key Concept: Lambda Inside a VPC</a></h2>
+<h3 id="what-does-this-really-mean"><a class="header" href="#what-does-this-really-mean">What does this really mean?</a></h3>
+<p>When Lambda runs in a VPC:</p>
+<ul>
+<li>AWS creates <strong>ENIs (Elastic Network Interfaces)</strong></li>
+<li>Lambda attaches to your subnets</li>
+<li>Lambda follows <strong>VPC networking rules</strong></li>
+</ul>
+<p>📌 Lambda behaves like an EC2 <strong>network-wise</strong> (not compute-wise).</p>
+<hr />
+<h2 id="5-networking-setup-critical"><a class="header" href="#5-networking-setup-critical">5️⃣ Networking Setup (CRITICAL)</a></h2>
+<h3 id="typical-secure-setup"><a class="header" href="#typical-secure-setup">Typical Secure Setup</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Component</th><th>Placement</th></tr></thead><tbody>
+<tr><td>Lambda</td><td>Private Subnet</td></tr>
+<tr><td>Database</td><td>Private Subnet</td></tr>
+<tr><td>NAT Gateway</td><td>Public Subnet</td></tr>
+<tr><td>Internet Gateway</td><td>VPC</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h3 id="why-private-subnet"><a class="header" href="#why-private-subnet">Why Private Subnet?</a></h3>
+<p>Because:</p>
+<ul>
+<li>Lambda should not be directly exposed</li>
+<li>DB must not be public</li>
+<li>Security best practice</li>
+</ul>
+<hr />
+<h2 id="6-full-execution-flow-very-important"><a class="header" href="#6-full-execution-flow-very-important">6️⃣ Full Execution Flow (VERY IMPORTANT)</a></h2>
+<p>Let’s go step by step.</p>
+<hr />
+<h3 id="-step-1-lambda-is-triggered"><a class="header" href="#-step-1-lambda-is-triggered">🟢 Step 1: Lambda Is Triggered</a></h3>
+<p>Trigger could be:</p>
+<ul>
+<li>API Gateway</li>
+<li>EventBridge</li>
+<li>SQS</li>
+<li>S3</li>
+</ul>
+<p>Trigger does NOT change networking behavior.</p>
+<hr />
+<h3 id="-step-2-lambda-gets-eni-in-vpc"><a class="header" href="#-step-2-lambda-gets-eni-in-vpc">🟢 Step 2: Lambda Gets ENI in VPC</a></h3>
+<p>AWS:</p>
+<ul>
+<li>Creates ENI in your subnet</li>
+<li>Assigns private IP</li>
+<li>Attaches Security Group</li>
+</ul>
+<p>This is transparent to you.</p>
+<hr />
+<h3 id="-step-3-lambda-fetches-secret"><a class="header" href="#-step-3-lambda-fetches-secret">🟢 Step 3: Lambda Fetches Secret</a></h3>
+<p>Lambda:</p>
+<ul>
+<li>Calls AWS Secrets Manager</li>
+<li>Uses IAM role</li>
+<li>Retrieves credentials securely</li>
+</ul>
+<p>📌 No password in code
+📌 No config file</p>
+<hr />
+<h3 id="-step-4-lambda-connects-to-private-resource"><a class="header" href="#-step-4-lambda-connects-to-private-resource">🟢 Step 4: Lambda Connects to Private Resource</a></h3>
+<p>Lambda:</p>
+<ul>
+<li>Uses private IP</li>
+<li>Security Group allows access</li>
+<li>DB / service accepts connection</li>
+</ul>
+<hr />
+<h3 id="-step-5-lambda-completes-execution"><a class="header" href="#-step-5-lambda-completes-execution">🟢 Step 5: Lambda Completes Execution</a></h3>
+<ul>
+<li>Connection closes</li>
+<li>Execution ends</li>
+<li>No server remains</li>
+</ul>
+<hr />
+<h2 id="7-security-groups-with-lambda-very-important"><a class="header" href="#7-security-groups-with-lambda-very-important">7️⃣ Security Groups with Lambda (VERY IMPORTANT)</a></h2>
+<h3 id="security-group-rules"><a class="header" href="#security-group-rules">Security Group Rules</a></h3>
+<p>Lambda SG:</p>
+<pre><code>Outbound → DB port (e.g. 3306)
+</code></pre>
+<p>Database SG:</p>
+<pre><code>Inbound → from Lambda SG
+</code></pre>
+<p>📌 <strong>Security Group to Security Group reference</strong>
+(best practice, no IPs).</p>
+<hr />
+<h2 id="8-secrets-manager-critical-security-concept"><a class="header" href="#8-secrets-manager-critical-security-concept">8️⃣ Secrets Manager (CRITICAL SECURITY CONCEPT)</a></h2>
+<h3 id="why-secrets-manager"><a class="header" href="#why-secrets-manager">Why Secrets Manager?</a></h3>
+<p>It:</p>
+<ul>
+<li>Stores credentials securely</li>
+<li>Encrypts secrets</li>
+<li>Rotates secrets automatically</li>
+<li>Integrates with IAM</li>
+</ul>
+<hr />
+<h3 id="what-secrets-are-stored"><a class="header" href="#what-secrets-are-stored">What Secrets Are Stored?</a></h3>
+<ul>
+<li>DB username/password</li>
+<li>API keys</li>
+<li>Tokens</li>
+<li>Certificates</li>
+</ul>
+<hr />
+<h3 id="how-lambda-accesses-secrets"><a class="header" href="#how-lambda-accesses-secrets">How Lambda Accesses Secrets</a></h3>
+<pre><code>Lambda
+ ↓
+IAM Role
+ ↓
+Secrets Manager
+</code></pre>
+<p>IAM policy example:</p>
+<ul>
+<li><code>secretsmanager:GetSecretValue</code></li>
+</ul>
+<hr />
+<h2 id="9-iam-role-design-exam-important"><a class="header" href="#9-iam-role-design-exam-important">9️⃣ IAM Role Design (Exam Important)</a></h2>
+<p>Lambda execution role needs:</p>
+<p>✔ Access to Secrets Manager
+✔ Access to logs (CloudWatch)
+✔ Access to other AWS services</p>
+<p>❌ Never store credentials in environment variables (unless encrypted)</p>
+<hr />
+<h2 id="-internet-access-from-vpc-lambda-big-exam-trap"><a class="header" href="#-internet-access-from-vpc-lambda-big-exam-trap">🔟 Internet Access from VPC Lambda (BIG EXAM TRAP)</a></h2>
+<h3 id="-can-lambda-access-internet-inside-vpc"><a class="header" href="#-can-lambda-access-internet-inside-vpc">❓ Can Lambda access internet inside VPC?</a></h3>
+<p>❌ NOT by default</p>
+<hr />
+<h3 id="-how-to-enable-internet-access"><a class="header" href="#-how-to-enable-internet-access">✅ How to Enable Internet Access</a></h3>
+<pre><code>Lambda (Private Subnet)
+ ↓
+NAT Gateway
+ ↓
+Internet Gateway
+</code></pre>
+<p>📌 <strong>NAT Gateway is required</strong>
+📌 <strong>This increases cost</strong></p>
+<hr />
+<h2 id="11-cold-start-impact-very-important"><a class="header" href="#11-cold-start-impact-very-important">1️⃣1️⃣ Cold Start Impact (VERY IMPORTANT)</a></h2>
+<p>Lambda in VPC:</p>
+<ul>
+<li>Needs ENI creation</li>
+<li>Cold starts are <strong>slower</strong></li>
+</ul>
+<p>Mitigation:</p>
+<ul>
+<li>Provisioned concurrency</li>
+<li>Keep function warm</li>
+<li>Avoid VPC unless required</li>
+</ul>
+<hr />
+<h2 id="12-cost-implications-real-world"><a class="header" href="#12-cost-implications-real-world">1️⃣2️⃣ Cost Implications (Real World)</a></h2>
+<p>Additional costs:</p>
+<ul>
+<li>NAT Gateway hourly cost</li>
+<li>NAT data processing cost</li>
+</ul>
+<p>📌 Many “expensive Lambda” problems are actually <strong>NAT Gateway costs</strong>.</p>
+<hr />
+<h2 id="13-common-enterprise-use-cases"><a class="header" href="#13-common-enterprise-use-cases">1️⃣3️⃣ Common Enterprise Use Cases</a></h2>
+<ul>
+<li>Lambda → RDS</li>
+<li>Lambda → internal microservice</li>
+<li>Lambda → private API</li>
+<li>Secure backend processing</li>
+</ul>
+<hr />
+<h2 id="14-common-mistakes-very-important"><a class="header" href="#14-common-mistakes-very-important">1️⃣4️⃣ Common Mistakes (VERY IMPORTANT)</a></h2>
+<p>❌ Hardcoding secrets
+❌ Using public DB
+❌ Missing SG rules
+❌ Forgetting NAT for internet access
+❌ Overusing VPC Lambda</p>
+<hr />
+<h2 id="15-aws-exam-points-must-remember"><a class="header" href="#15-aws-exam-points-must-remember">1️⃣5️⃣ AWS Exam Points (MUST REMEMBER)</a></h2>
+<ul>
+<li>Lambda can run inside VPC</li>
+<li>Uses ENIs</li>
+<li>Security Groups apply to Lambda</li>
+<li>Secrets Manager for credentials</li>
+<li>NAT Gateway needed for internet</li>
+<li>VPC increases cold start time</li>
+</ul>
+<hr />
+<h2 id="16-mental-model-remember-forever"><a class="header" href="#16-mental-model-remember-forever">1️⃣6️⃣ Mental Model (REMEMBER FOREVER)</a></h2>
+<pre><code>Lambda in VPC = Secure employee inside office
+Secrets Manager = Locker with keys
+Security Group = Door access rules
+</code></pre>
+<hr />
+<h2 id="17-why-this-lab-completes-serverless-mastery"><a class="header" href="#17-why-this-lab-completes-serverless-mastery">1️⃣7️⃣ Why This Lab Completes Serverless Mastery</a></h2>
+<p>After all 5 labs, you now understand:</p>
+<p>✔ APIs
+✔ Events
+✔ Async processing
+✔ Scheduling
+✔ Security &amp; networking</p>
+<p>👉 <strong>This is full serverless compute coverage</strong>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../serverless/labs/lab4.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../dev.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../serverless/labs/lab4.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../dev.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

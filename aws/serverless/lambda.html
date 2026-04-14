@@ -1,0 +1,767 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>AWS Lambda</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- PWA -->
+        <link rel="icon" type="image/x-icon" href="https://devnamdev2003.github.io/devdocs/static/icons/favicon.ico">
+        <link rel="manifest" href="https://devnamdev2003.github.io/devdocs/static/manifest.webmanifest">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="theme-color" content="#0d1117">
+        
+        <meta name="title" content="AWS">
+        <meta name="description" content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="og:image" content="https://devnamdev2003.github.io/devdocs/static/img/aws/aws_c.png">
+        <meta property="og:title" content="AWS">
+        <meta property="og:description"
+            content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="twitter:image" content="https://devnamdev2003.github.io/devdocs/static/img/aws/aws_c.png">
+        <meta property="twitter:title" content="AWS">
+        <meta property="twitter:description"
+            content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        <meta name="description" content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../aws_index.html"><strong aria-hidden="true">1.</strong> AWS index</a></li><li class="chapter-item expanded "><a href="../aws.html"><strong aria-hidden="true">2.</strong> AWS</a></li><li class="chapter-item expanded "><a href="../aws_roadmap.html"><strong aria-hidden="true">3.</strong> AWS Roadmap</a></li><li class="chapter-item expanded "><a href="../aws_left.html"><strong aria-hidden="true">4.</strong> AWS left</a></li><li class="chapter-item expanded "><a href="../networking/networking_index.html"><strong aria-hidden="true">5.</strong> AWS Networking</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../networking/networking.html"><strong aria-hidden="true">5.1.</strong> AWS Networking</a></li><li class="chapter-item expanded "><a href="../networking/networking_ip.html"><strong aria-hidden="true">5.2.</strong> IPv4 Address Structure, Private IPs, and Public IPs</a></li><li class="chapter-item expanded "><a href="../networking/networking_subnet.html"><strong aria-hidden="true">5.3.</strong> What is Subnetting?</a></li><li class="chapter-item expanded "><a href="../networking/networking_tcp_udp.html"><strong aria-hidden="true">5.4.</strong> What are TCP and UDP?</a></li><li class="chapter-item expanded "><a href="../networking/networking_route_table.html"><strong aria-hidden="true">5.5.</strong> Route Tables</a></li><li class="chapter-item expanded "><a href="../networking/networking_port.html"><strong aria-hidden="true">5.6.</strong> Port</a></li><li class="chapter-item expanded "><a href="../networking/networking_firewall.html"><strong aria-hidden="true">5.7.</strong> Firewalls and Security Concepts</a></li><li class="chapter-item expanded "><a href="../networking/networking_cidr.html"><strong aria-hidden="true">5.8.</strong> CIDR Notation</a></li><li class="chapter-item expanded "><a href="../networking/networking_dns.html"><strong aria-hidden="true">5.9.</strong> DNS Resolution Flow</a></li><li class="chapter-item expanded "><a href="../networking/networking_igw.html"><strong aria-hidden="true">5.10.</strong> Internet Gateway (IGW) in AWS</a></li><li class="chapter-item expanded "><a href="../networking/networking_nat.html"><strong aria-hidden="true">5.11.</strong> Network Address Translation (NAT)</a></li><li class="chapter-item expanded "><a href="../networking/networking_nat_igw.html"><strong aria-hidden="true">5.12.</strong> NAT Gateway vs Internet Gateway (IGW)</a></li><li class="chapter-item expanded "><a href="../networking/networking_sg.html"><strong aria-hidden="true">5.13.</strong> Security Groups in AWS</a></li><li class="chapter-item expanded "><a href="../networking/networking_nacl.html"><strong aria-hidden="true">5.14.</strong> Network Access Control Lists (NACLs) in AWS</a></li><li class="chapter-item expanded "><a href="../networking/networking_nacl_sg.html"><strong aria-hidden="true">5.15.</strong> NACL vs Security Group (SG)</a></li><li class="chapter-item expanded "><a href="../networking/networking_doubt.html"><strong aria-hidden="true">5.16.</strong> Networking doubt</a></li></ol></li><li class="chapter-item expanded "><a href="../serverless/serverless_index.html"><strong aria-hidden="true">6.</strong> Serverless</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverless/serverless.html"><strong aria-hidden="true">6.1.</strong> Serverless</a></li><li class="chapter-item expanded "><a href="../serverless/lambda.html" class="active"><strong aria-hidden="true">6.2.</strong> AWS Lambda</a></li><li class="chapter-item expanded "><a href="../serverless/lambda_api_gatway.html"><strong aria-hidden="true">6.3.</strong> AWS API Gateway</a></li><li class="chapter-item expanded "><a href="../serverless/pricing.html"><strong aria-hidden="true">6.4.</strong> AWS Pricing</a></li><li class="chapter-item expanded "><a href="../serverless/labs/labs_index.html"><strong aria-hidden="true">6.5.</strong> Labs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverless/labs/lab1.html"><strong aria-hidden="true">6.5.1.</strong> Serverless REST API</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab2.html"><strong aria-hidden="true">6.5.2.</strong> Event-Driven Processing</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab3.html"><strong aria-hidden="true">6.5.3.</strong> Asynchronous Messaging</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab4.html"><strong aria-hidden="true">6.5.4.</strong> Scheduled & Rule-Based Serverless Jobs</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab5.html"><strong aria-hidden="true">6.5.5.</strong> Secure Serverless Compute</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../dev.html"><strong aria-hidden="true">7.</strong> dev</a></li><li class="chapter-item expanded "><a href="../aws_quiz_topic.html"><strong aria-hidden="true">8.</strong> aws_quiz_topic</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs/edit/main/md-code/aws/src/serverless/lambda.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+<h2 id=""><a class="header" href="#"><a href="../">👈</a></a></h2>
+<ul>
+<li><a href="#%EF%B8%8F-aws-lambda--deep-dive-complete-explanation">☁️ AWS Lambda – DEEP DIVE (Complete Explanation)</a>
+<ul>
+<li><a href="#1%EF%B8%8F%E2%83%A3-what-is-aws-lambda">1️⃣ What is AWS Lambda?</a>
+<ul>
+<li><a href="#simple-definition">Simple definition:</a></li>
+</ul>
+</li>
+<li><a href="#2%EF%B8%8F%E2%83%A3-why-aws-lambda-exists-the-real-problem">2️⃣ Why AWS Lambda Exists (The Real Problem)</a>
+<ul>
+<li><a href="#problems">Problems:</a></li>
+<li><a href="#-lambda-solves-this">✅ Lambda Solves This</a></li>
+</ul>
+</li>
+<li><a href="#3%EF%B8%8F%E2%83%A3-core-philosophy-of-aws-lambda">3️⃣ Core Philosophy of AWS Lambda</a></li>
+<li><a href="#4%EF%B8%8F%E2%83%A3-aws-lambda-architecture-high-level">4️⃣ AWS Lambda Architecture (High Level)</a></li>
+<li><a href="#5%EF%B8%8F%E2%83%A3-what-is-a-lambda-function">5️⃣ What Is a Lambda Function?</a></li>
+<li><a href="#6%EF%B8%8F%E2%83%A3-supported-runtimes">6️⃣ Supported Runtimes</a></li>
+<li><a href="#7%EF%B8%8F%E2%83%A3-lambda-execution-model-very-important">7️⃣ Lambda Execution Model (VERY IMPORTANT)</a>
+<ul>
+<li><a href="#-step-by-step-lambda-execution-flow">🔁 Step-by-Step Lambda Execution Flow</a></li>
+</ul>
+</li>
+<li><a href="#8%EF%B8%8F%E2%83%A3-cold-start-vs-warm-start-critical-concept">8️⃣ Cold Start vs Warm Start (CRITICAL CONCEPT)</a>
+<ul>
+<li><a href="#-cold-start">🔴 Cold Start</a></li>
+<li><a href="#-warm-start">🟢 Warm Start</a></li>
+</ul>
+</li>
+<li><a href="#9%EF%B8%8F%E2%83%A3-lambda-is-stateless-very-important">9️⃣ Lambda Is Stateless (VERY IMPORTANT)</a></li>
+<li><a href="#-event-sources-triggers">🔟 Event Sources (Triggers)</a>
+<ul>
+<li><a href="#-api-gateway">🔹 API Gateway</a></li>
+<li><a href="#-s3">🔹 S3</a></li>
+<li><a href="#-dynamodb-streams">🔹 DynamoDB Streams</a></li>
+<li><a href="#-sqs--sns">🔹 SQS / SNS</a></li>
+<li><a href="#-cloudwatch-events">🔹 CloudWatch Events</a></li>
+</ul>
+</li>
+<li><a href="#1%EF%B8%8F%E2%83%A31%EF%B8%8F%E2%83%A3-lambda-with-api-gateway-very-common">1️⃣1️⃣ Lambda with API Gateway (Very Common)</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A32%EF%B8%8F%E2%83%A3-memory-cpu-and-performance">1️⃣2️⃣ Memory, CPU, and Performance</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A33%EF%B8%8F%E2%83%A3-timeout-limits">1️⃣3️⃣ Timeout Limits</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A34%EF%B8%8F%E2%83%A3-concurrency-and-scaling">1️⃣4️⃣ Concurrency and Scaling</a>
+<ul>
+<li><a href="#-automatic-scaling">🔹 Automatic Scaling</a></li>
+<li><a href="#-concurrency-limit">🔹 Concurrency Limit</a></li>
+</ul>
+</li>
+<li><a href="#1%EF%B8%8F%E2%83%A35%EF%B8%8F%E2%83%A3-throttling-behavior">1️⃣5️⃣ Throttling Behavior</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A36%EF%B8%8F%E2%83%A3-iam-and-security-in-lambda">1️⃣6️⃣ IAM and Security in Lambda</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A37%EF%B8%8F%E2%83%A3-lambda-in-a-vpc-important">1️⃣7️⃣ Lambda in a VPC (Important)</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A38%EF%B8%8F%E2%83%A3-environment-variables">1️⃣8️⃣ Environment Variables</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A39%EF%B8%8F%E2%83%A3-error-handling--retries">1️⃣9️⃣ Error Handling &amp; Retries</a>
+<ul>
+<li><a href="#-synchronous-invocation">🔹 Synchronous Invocation</a></li>
+<li><a href="#-asynchronous-invocation">🔹 Asynchronous Invocation</a></li>
+</ul>
+</li>
+<li><a href="#2%EF%B8%8F%E2%83%A30%EF%B8%8F%E2%83%A3-monitoring--logging">2️⃣0️⃣ Monitoring &amp; Logging</a>
+<ul>
+<li><a href="#-cloudwatch-logs">🔹 CloudWatch Logs</a></li>
+<li><a href="#-cloudwatch-metrics">🔹 CloudWatch Metrics</a></li>
+</ul>
+</li>
+<li><a href="#2%EF%B8%8F%E2%83%A31%EF%B8%8F%E2%83%A3-cost-model-very-important">2️⃣1️⃣ Cost Model (VERY IMPORTANT)</a></li>
+<li><a href="#2%EF%B8%8F%E2%83%A32%EF%B8%8F%E2%83%A3-lambda-vs-ec2-clear-difference">2️⃣2️⃣ Lambda vs EC2 (Clear Difference)</a></li>
+<li><a href="#2%EF%B8%8F%E2%83%A33%EF%B8%8F%E2%83%A3-lambda-vs-containers">2️⃣3️⃣ Lambda vs Containers</a></li>
+<li><a href="#2%EF%B8%8F%E2%83%A34%EF%B8%8F%E2%83%A3-when-to-use-aws-lambda">2️⃣4️⃣ When to Use AWS Lambda</a></li>
+<li><a href="#2%EF%B8%8F%E2%83%A35%EF%B8%8F%E2%83%A3-when-not-to-use-aws-lambda">2️⃣5️⃣ When NOT to Use AWS Lambda</a></li>
+<li><a href="#2%EF%B8%8F%E2%83%A36%EF%B8%8F%E2%83%A3-common-aws-exam-traps">2️⃣6️⃣ Common AWS Exam Traps</a></li>
+<li><a href="#2%EF%B8%8F%E2%83%A37%EF%B8%8F%E2%83%A3-real-world-example">2️⃣7️⃣ Real-World Example</a>
+<ul>
+<li><a href="#image-processing-pipeline">Image Processing Pipeline</a></li>
+</ul>
+</li>
+<li><a href="#2%EF%B8%8F%E2%83%A38%EF%B8%8F%E2%83%A3-one-line-exam-definition">2️⃣8️⃣ One-Line Exam Definition</a></li>
+<li><a href="#2%EF%B8%8F%E2%83%A39%EF%B8%8F%E2%83%A3-mental-model-to-remember-forever">2️⃣9️⃣ Mental Model to Remember Forever</a></li>
+<li><a href="#3%EF%B8%8F%E2%83%A30%EF%B8%8F%E2%83%A3-final-summary-must-remember">3️⃣0️⃣ Final Summary (Must Remember)</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="-aws-lambda--deep-dive-complete-explanation"><a class="header" href="#-aws-lambda--deep-dive-complete-explanation">☁️ AWS Lambda – DEEP DIVE (Complete Explanation)</a></h1>
+<hr />
+<h2 id="1-what-is-aws-lambda"><a class="header" href="#1-what-is-aws-lambda">1️⃣ What is AWS Lambda?</a></h2>
+<p><strong>AWS Lambda</strong> is a <strong>serverless compute service</strong> that lets you <strong>run code without provisioning or managing servers</strong>.</p>
+<h3 id="simple-definition"><a class="header" href="#simple-definition">Simple definition:</a></h3>
+<blockquote>
+<p><strong>AWS Lambda runs your code in response to events and automatically manages the underlying compute resources.</strong></p>
+</blockquote>
+<p>You:</p>
+<ul>
+<li>Upload code</li>
+<li>Define a trigger</li>
+</ul>
+<p>AWS:</p>
+<ul>
+<li>Runs the code</li>
+<li>Scales it</li>
+<li>Stops it</li>
+</ul>
+<hr />
+<h2 id="2-why-aws-lambda-exists-the-real-problem"><a class="header" href="#2-why-aws-lambda-exists-the-real-problem">2️⃣ Why AWS Lambda Exists (The Real Problem)</a></h2>
+<p>Before Lambda, even for <strong>small tasks</strong>, you had to:</p>
+<ul>
+<li>Launch EC2</li>
+<li>Select instance type</li>
+<li>Configure OS</li>
+<li>Install runtime</li>
+<li>Manage scaling</li>
+<li>Pay even when idle</li>
+</ul>
+<h3 id="problems"><a class="header" href="#problems">Problems:</a></h3>
+<p>❌ High cost for idle servers
+❌ Too much operational effort
+❌ Slow development</p>
+<hr />
+<h3 id="-lambda-solves-this"><a class="header" href="#-lambda-solves-this">✅ Lambda Solves This</a></h3>
+<p>Lambda was created so developers can:</p>
+<ul>
+<li>Focus only on <strong>business logic</strong></li>
+<li>Not worry about <strong>infrastructure</strong></li>
+</ul>
+<hr />
+<h2 id="3-core-philosophy-of-aws-lambda"><a class="header" href="#3-core-philosophy-of-aws-lambda">3️⃣ Core Philosophy of AWS Lambda</a></h2>
+<blockquote>
+<p><strong>Run code only when needed, scale automatically, and pay only for execution time.</strong></p>
+</blockquote>
+<p>This is the heart of serverless.</p>
+<hr />
+<h2 id="4-aws-lambda-architecture-high-level"><a class="header" href="#4-aws-lambda-architecture-high-level">4️⃣ AWS Lambda Architecture (High Level)</a></h2>
+<p>Internally, AWS Lambda runs your function inside:</p>
+<ul>
+<li>Secure containers</li>
+<li>Managed by AWS</li>
+<li>Distributed across multiple AZs</li>
+</ul>
+<p>You never:</p>
+<ul>
+<li>See the servers</li>
+<li>Access the OS</li>
+<li>Manage capacity</li>
+</ul>
+<hr />
+<h2 id="5-what-is-a-lambda-function"><a class="header" href="#5-what-is-a-lambda-function">5️⃣ What Is a Lambda Function?</a></h2>
+<p>A <strong>Lambda function</strong> consists of:</p>
+<ol>
+<li>Code (your logic)</li>
+<li>Runtime (Python, Java, Node.js, etc.)</li>
+<li>Handler (entry point)</li>
+<li>Configuration (memory, timeout)</li>
+<li>IAM role (permissions)</li>
+</ol>
+<hr />
+<h2 id="6-supported-runtimes"><a class="header" href="#6-supported-runtimes">6️⃣ Supported Runtimes</a></h2>
+<p>AWS Lambda supports multiple languages, including:</p>
+<ul>
+<li>Python</li>
+<li>Java</li>
+<li>Node.js</li>
+<li>Go</li>
+<li>.NET</li>
+<li>Ruby</li>
+</ul>
+<p>You can also use:</p>
+<ul>
+<li><strong>Custom runtimes</strong></li>
+<li><strong>Container images</strong></li>
+</ul>
+<hr />
+<h2 id="7-lambda-execution-model-very-important"><a class="header" href="#7-lambda-execution-model-very-important">7️⃣ Lambda Execution Model (VERY IMPORTANT)</a></h2>
+<p>Let’s understand <strong>exactly how Lambda executes code</strong>.</p>
+<hr />
+<h3 id="-step-by-step-lambda-execution-flow"><a class="header" href="#-step-by-step-lambda-execution-flow">🔁 Step-by-Step Lambda Execution Flow</a></h3>
+<p>1️⃣ Event triggers Lambda
+2️⃣ AWS creates an execution environment
+3️⃣ Runtime is initialized
+4️⃣ Handler function is invoked
+5️⃣ Code runs
+6️⃣ Response is returned
+7️⃣ Environment may be reused</p>
+<hr />
+<h2 id="8-cold-start-vs-warm-start-critical-concept"><a class="header" href="#8-cold-start-vs-warm-start-critical-concept">8️⃣ Cold Start vs Warm Start (CRITICAL CONCEPT)</a></h2>
+<hr />
+<h3 id="-cold-start"><a class="header" href="#-cold-start">🔴 Cold Start</a></h3>
+<p>Occurs when:</p>
+<ul>
+<li>Function is invoked for the first time</li>
+<li>Or after long inactivity</li>
+</ul>
+<p>AWS must:</p>
+<ul>
+<li>Create container</li>
+<li>Load runtime</li>
+<li>Initialize code</li>
+</ul>
+<p>This causes:</p>
+<ul>
+<li>Slight delay (milliseconds)</li>
+</ul>
+<hr />
+<h3 id="-warm-start"><a class="header" href="#-warm-start">🟢 Warm Start</a></h3>
+<p>Occurs when:</p>
+<ul>
+<li>Execution environment already exists</li>
+</ul>
+<p>Benefits:</p>
+<ul>
+<li>Faster execution</li>
+<li>No setup delay</li>
+</ul>
+<p>📌 AWS tries to reuse environments automatically.</p>
+<hr />
+<h2 id="9-lambda-is-stateless-very-important"><a class="header" href="#9-lambda-is-stateless-very-important">9️⃣ Lambda Is Stateless (VERY IMPORTANT)</a></h2>
+<p>Each Lambda execution is:</p>
+<ul>
+<li>Independent</li>
+<li>Stateless</li>
+</ul>
+<p>This means:</p>
+<ul>
+<li>Data is NOT preserved between runs</li>
+</ul>
+<p>To store state, use:</p>
+<ul>
+<li>DynamoDB</li>
+<li>S3</li>
+<li>RDS</li>
+<li>ElastiCache</li>
+</ul>
+<hr />
+<h2 id="-event-sources-triggers"><a class="header" href="#-event-sources-triggers">🔟 Event Sources (Triggers)</a></h2>
+<p>Lambda is <strong>event-driven</strong>.</p>
+<p>Common triggers:</p>
+<h3 id="-api-gateway"><a class="header" href="#-api-gateway">🔹 API Gateway</a></h3>
+<ul>
+<li>REST APIs</li>
+<li>HTTP APIs</li>
+</ul>
+<h3 id="-s3"><a class="header" href="#-s3">🔹 S3</a></h3>
+<ul>
+<li>File uploads</li>
+<li>Deletions</li>
+</ul>
+<h3 id="-dynamodb-streams"><a class="header" href="#-dynamodb-streams">🔹 DynamoDB Streams</a></h3>
+<ul>
+<li>Table changes</li>
+</ul>
+<h3 id="-sqs--sns"><a class="header" href="#-sqs--sns">🔹 SQS / SNS</a></h3>
+<ul>
+<li>Messaging systems</li>
+</ul>
+<h3 id="-cloudwatch-events"><a class="header" href="#-cloudwatch-events">🔹 CloudWatch Events</a></h3>
+<ul>
+<li>Scheduled jobs (cron)</li>
+</ul>
+<hr />
+<h2 id="11-lambda-with-api-gateway-very-common"><a class="header" href="#11-lambda-with-api-gateway-very-common">1️⃣1️⃣ Lambda with API Gateway (Very Common)</a></h2>
+<p>Typical serverless API flow:</p>
+<pre><code>Client
+ ↓
+API Gateway
+ ↓
+Lambda
+ ↓
+DynamoDB
+</code></pre>
+<p>✔ No servers
+✔ Auto scaling
+✔ Pay per request</p>
+<hr />
+<h2 id="12-memory-cpu-and-performance"><a class="header" href="#12-memory-cpu-and-performance">1️⃣2️⃣ Memory, CPU, and Performance</a></h2>
+<p>Lambda does NOT let you choose CPU directly.</p>
+<p>Instead:</p>
+<ul>
+<li>CPU scales <strong>proportionally with memory</strong></li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>128 MB → Low CPU</li>
+<li>1024 MB → More CPU</li>
+<li>3008 MB → High CPU</li>
+</ul>
+<p>📌 Increasing memory can <strong>reduce execution time</strong>.</p>
+<hr />
+<h2 id="13-timeout-limits"><a class="header" href="#13-timeout-limits">1️⃣3️⃣ Timeout Limits</a></h2>
+<p>Each Lambda function has:</p>
+<ul>
+<li>Maximum execution time: <strong>15 minutes</strong></li>
+</ul>
+<p>If execution exceeds timeout:
+❌ Function is terminated</p>
+<hr />
+<h2 id="14-concurrency-and-scaling"><a class="header" href="#14-concurrency-and-scaling">1️⃣4️⃣ Concurrency and Scaling</a></h2>
+<h3 id="-automatic-scaling"><a class="header" href="#-automatic-scaling">🔹 Automatic Scaling</a></h3>
+<p>Each request:</p>
+<ul>
+<li>Gets its own execution environment</li>
+</ul>
+<p>AWS handles:</p>
+<ul>
+<li>Scaling</li>
+<li>Load balancing</li>
+<li>Fault tolerance</li>
+</ul>
+<hr />
+<h3 id="-concurrency-limit"><a class="header" href="#-concurrency-limit">🔹 Concurrency Limit</a></h3>
+<p>Default:</p>
+<ul>
+<li>1,000 concurrent executions (per region)</li>
+</ul>
+<p>You can:</p>
+<ul>
+<li>Request increase</li>
+<li>Set reserved concurrency</li>
+</ul>
+<hr />
+<h2 id="15-throttling-behavior"><a class="header" href="#15-throttling-behavior">1️⃣5️⃣ Throttling Behavior</a></h2>
+<p>If concurrency limit is reached:</p>
+<ul>
+<li>New requests are throttled</li>
+<li>Client receives error</li>
+</ul>
+<p>Important for:</p>
+<ul>
+<li>APIs</li>
+<li>Event processing</li>
+</ul>
+<hr />
+<h2 id="16-iam-and-security-in-lambda"><a class="header" href="#16-iam-and-security-in-lambda">1️⃣6️⃣ IAM and Security in Lambda</a></h2>
+<p>Lambda uses <strong>IAM roles</strong>.</p>
+<p>Each function:</p>
+<ul>
+<li>Has an <strong>execution role</strong></li>
+<li>Defines what AWS services it can access</li>
+</ul>
+<p>Example:</p>
+<pre><code>Lambda → S3
+Lambda → DynamoDB
+</code></pre>
+<p>Principle:</p>
+<blockquote>
+<p><strong>Least privilege</strong></p>
+</blockquote>
+<hr />
+<h2 id="17-lambda-in-a-vpc-important"><a class="header" href="#17-lambda-in-a-vpc-important">1️⃣7️⃣ Lambda in a VPC (Important)</a></h2>
+<p>Lambda can run:</p>
+<ul>
+<li>Inside a VPC</li>
+<li>Access private resources</li>
+</ul>
+<p>But:</p>
+<ul>
+<li>Requires ENIs</li>
+<li>May increase cold start time</li>
+</ul>
+<p>Use cases:</p>
+<ul>
+<li>Access RDS</li>
+<li>Access private EC2</li>
+</ul>
+<hr />
+<h2 id="18-environment-variables"><a class="header" href="#18-environment-variables">1️⃣8️⃣ Environment Variables</a></h2>
+<p>Lambda supports:</p>
+<ul>
+<li>Environment variables</li>
+<li>Configuration values</li>
+<li>Secrets (via AWS Secrets Manager)</li>
+</ul>
+<p>Avoid hardcoding credentials.</p>
+<hr />
+<h2 id="19-error-handling--retries"><a class="header" href="#19-error-handling--retries">1️⃣9️⃣ Error Handling &amp; Retries</a></h2>
+<h3 id="-synchronous-invocation"><a class="header" href="#-synchronous-invocation">🔹 Synchronous Invocation</a></h3>
+<ul>
+<li>Client gets response immediately</li>
+<li>Errors returned to caller</li>
+</ul>
+<h3 id="-asynchronous-invocation"><a class="header" href="#-asynchronous-invocation">🔹 Asynchronous Invocation</a></h3>
+<ul>
+<li>
+<p>AWS retries automatically</p>
+</li>
+<li>
+<p>Failed events can go to:</p>
+<ul>
+<li>Dead Letter Queue (DLQ)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="20-monitoring--logging"><a class="header" href="#20-monitoring--logging">2️⃣0️⃣ Monitoring &amp; Logging</a></h2>
+<h3 id="-cloudwatch-logs"><a class="header" href="#-cloudwatch-logs">🔹 CloudWatch Logs</a></h3>
+<ul>
+<li>Every Lambda execution is logged</li>
+</ul>
+<h3 id="-cloudwatch-metrics"><a class="header" href="#-cloudwatch-metrics">🔹 CloudWatch Metrics</a></h3>
+<ul>
+<li>Invocations</li>
+<li>Duration</li>
+<li>Errors</li>
+<li>Throttles</li>
+</ul>
+<p>Observability is built-in.</p>
+<hr />
+<h2 id="21-cost-model-very-important"><a class="header" href="#21-cost-model-very-important">2️⃣1️⃣ Cost Model (VERY IMPORTANT)</a></h2>
+<p>You pay for:</p>
+<ol>
+<li>Number of requests</li>
+<li>Execution duration (ms)</li>
+<li>Memory allocated</li>
+</ol>
+<p>You do NOT pay for:</p>
+<ul>
+<li>Idle time</li>
+<li>Servers</li>
+<li>OS</li>
+</ul>
+<p>This makes Lambda:
+✔ Extremely cost-effective
+✔ Ideal for spiky workloads</p>
+<hr />
+<h2 id="22-lambda-vs-ec2-clear-difference"><a class="header" href="#22-lambda-vs-ec2-clear-difference">2️⃣2️⃣ Lambda vs EC2 (Clear Difference)</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Feature</th><th>Lambda</th><th>EC2</th></tr></thead><tbody>
+<tr><td>Server management</td><td>❌ No</td><td>✅ Yes</td></tr>
+<tr><td>Scaling</td><td>Automatic</td><td>Manual / ASG</td></tr>
+<tr><td>Billing</td><td>Per execution</td><td>Per hour</td></tr>
+<tr><td>Idle cost</td><td>❌ None</td><td>✅ Yes</td></tr>
+<tr><td>OS access</td><td>❌ No</td><td>✅ Yes</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="23-lambda-vs-containers"><a class="header" href="#23-lambda-vs-containers">2️⃣3️⃣ Lambda vs Containers</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Feature</th><th>Lambda</th><th>Containers</th></tr></thead><tbody>
+<tr><td>Startup</td><td>Fast</td><td>Slower</td></tr>
+<tr><td>Control</td><td>Limited</td><td>High</td></tr>
+<tr><td>Scaling</td><td>Automatic</td><td>Manual</td></tr>
+<tr><td>Best for</td><td>Event-driven</td><td>Long-running apps</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="24-when-to-use-aws-lambda"><a class="header" href="#24-when-to-use-aws-lambda">2️⃣4️⃣ When to Use AWS Lambda</a></h2>
+<p>Perfect for:</p>
+<ul>
+<li>APIs</li>
+<li>Event processing</li>
+<li>Automation</li>
+<li>Data transformation</li>
+<li>Scheduled jobs</li>
+<li>Microservices</li>
+</ul>
+<hr />
+<h2 id="25-when-not-to-use-aws-lambda"><a class="header" href="#25-when-not-to-use-aws-lambda">2️⃣5️⃣ When NOT to Use AWS Lambda</a></h2>
+<p>Avoid for:</p>
+<ul>
+<li>Long-running jobs</li>
+<li>Stateful apps</li>
+<li>Heavy compute workloads</li>
+<li>Custom OS requirements</li>
+</ul>
+<hr />
+<h2 id="26-common-aws-exam-traps"><a class="header" href="#26-common-aws-exam-traps">2️⃣6️⃣ Common AWS Exam Traps</a></h2>
+<p>❓ Lambda runs continuously
+➡ ❌ No, it runs only on events</p>
+<p>❓ Lambda stores state locally
+➡ ❌ No, it is stateless</p>
+<p>❓ Lambda needs servers
+➡ ❌ AWS manages them</p>
+<p>❓ Lambda scales automatically
+➡ ✅ Yes</p>
+<hr />
+<h2 id="27-real-world-example"><a class="header" href="#27-real-world-example">2️⃣7️⃣ Real-World Example</a></h2>
+<h3 id="image-processing-pipeline"><a class="header" href="#image-processing-pipeline">Image Processing Pipeline</a></h3>
+<pre><code>S3 Upload
+ ↓
+Lambda
+ ↓
+Resize Image
+ ↓
+Store in S3
+</code></pre>
+<p>✔ No servers
+✔ Event-driven
+✔ Auto scaling</p>
+<hr />
+<h2 id="28-one-line-exam-definition"><a class="header" href="#28-one-line-exam-definition">2️⃣8️⃣ One-Line Exam Definition</a></h2>
+<blockquote>
+<p><strong>AWS Lambda is a serverless compute service that runs code in response to events with automatic scaling and pay-per-use pricing.</strong></p>
+</blockquote>
+<hr />
+<h2 id="29-mental-model-to-remember-forever"><a class="header" href="#29-mental-model-to-remember-forever">2️⃣9️⃣ Mental Model to Remember Forever</a></h2>
+<pre><code>Event → Lambda → Response → Stop
+</code></pre>
+<p>No idle resources.</p>
+<hr />
+<h2 id="30-final-summary-must-remember"><a class="header" href="#30-final-summary-must-remember">3️⃣0️⃣ Final Summary (Must Remember)</a></h2>
+<ul>
+<li>Lambda is serverless compute</li>
+<li>Event-driven execution</li>
+<li>Stateless by design</li>
+<li>Auto scaling</li>
+<li>Pay only when code runs</li>
+<li>Core service for modern AWS architectures</li>
+</ul>
+<hr />
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../serverless/serverless.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../serverless/lambda_api_gatway.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../serverless/serverless.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../serverless/lambda_api_gatway.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,613 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Internet Gateway (IGW) in AWS</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- PWA -->
+        <link rel="icon" type="image/x-icon" href="https://devnamdev2003.github.io/devdocs/static/icons/favicon.ico">
+        <link rel="manifest" href="https://devnamdev2003.github.io/devdocs/static/manifest.webmanifest">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="theme-color" content="#0d1117">
+        
+        <meta name="title" content="AWS">
+        <meta name="description" content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="og:image" content="https://devnamdev2003.github.io/devdocs/static/img/aws/aws_c.png">
+        <meta property="og:title" content="AWS">
+        <meta property="og:description"
+            content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://devnamdev2003.github.io/devdocs">
+        <meta property="twitter:image" content="https://devnamdev2003.github.io/devdocs/static/img/aws/aws_c.png">
+        <meta property="twitter:title" content="AWS">
+        <meta property="twitter:description"
+            content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        <meta name="description" content="Clear and structured notes on AWS services, architecture, and cloud fundamentals.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../aws_index.html"><strong aria-hidden="true">1.</strong> AWS index</a></li><li class="chapter-item expanded "><a href="../aws.html"><strong aria-hidden="true">2.</strong> AWS</a></li><li class="chapter-item expanded "><a href="../aws_roadmap.html"><strong aria-hidden="true">3.</strong> AWS Roadmap</a></li><li class="chapter-item expanded "><a href="../aws_left.html"><strong aria-hidden="true">4.</strong> AWS left</a></li><li class="chapter-item expanded "><a href="../networking/networking_index.html"><strong aria-hidden="true">5.</strong> AWS Networking</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../networking/networking.html"><strong aria-hidden="true">5.1.</strong> AWS Networking</a></li><li class="chapter-item expanded "><a href="../networking/networking_ip.html"><strong aria-hidden="true">5.2.</strong> IPv4 Address Structure, Private IPs, and Public IPs</a></li><li class="chapter-item expanded "><a href="../networking/networking_subnet.html"><strong aria-hidden="true">5.3.</strong> What is Subnetting?</a></li><li class="chapter-item expanded "><a href="../networking/networking_tcp_udp.html"><strong aria-hidden="true">5.4.</strong> What are TCP and UDP?</a></li><li class="chapter-item expanded "><a href="../networking/networking_route_table.html"><strong aria-hidden="true">5.5.</strong> Route Tables</a></li><li class="chapter-item expanded "><a href="../networking/networking_port.html"><strong aria-hidden="true">5.6.</strong> Port</a></li><li class="chapter-item expanded "><a href="../networking/networking_firewall.html"><strong aria-hidden="true">5.7.</strong> Firewalls and Security Concepts</a></li><li class="chapter-item expanded "><a href="../networking/networking_cidr.html"><strong aria-hidden="true">5.8.</strong> CIDR Notation</a></li><li class="chapter-item expanded "><a href="../networking/networking_dns.html"><strong aria-hidden="true">5.9.</strong> DNS Resolution Flow</a></li><li class="chapter-item expanded "><a href="../networking/networking_igw.html" class="active"><strong aria-hidden="true">5.10.</strong> Internet Gateway (IGW) in AWS</a></li><li class="chapter-item expanded "><a href="../networking/networking_nat.html"><strong aria-hidden="true">5.11.</strong> Network Address Translation (NAT)</a></li><li class="chapter-item expanded "><a href="../networking/networking_nat_igw.html"><strong aria-hidden="true">5.12.</strong> NAT Gateway vs Internet Gateway (IGW)</a></li><li class="chapter-item expanded "><a href="../networking/networking_sg.html"><strong aria-hidden="true">5.13.</strong> Security Groups in AWS</a></li><li class="chapter-item expanded "><a href="../networking/networking_nacl.html"><strong aria-hidden="true">5.14.</strong> Network Access Control Lists (NACLs) in AWS</a></li><li class="chapter-item expanded "><a href="../networking/networking_nacl_sg.html"><strong aria-hidden="true">5.15.</strong> NACL vs Security Group (SG)</a></li><li class="chapter-item expanded "><a href="../networking/networking_doubt.html"><strong aria-hidden="true">5.16.</strong> Networking doubt</a></li></ol></li><li class="chapter-item expanded "><a href="../serverless/serverless_index.html"><strong aria-hidden="true">6.</strong> Serverless</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverless/serverless.html"><strong aria-hidden="true">6.1.</strong> Serverless</a></li><li class="chapter-item expanded "><a href="../serverless/lambda.html"><strong aria-hidden="true">6.2.</strong> AWS Lambda</a></li><li class="chapter-item expanded "><a href="../serverless/lambda_api_gatway.html"><strong aria-hidden="true">6.3.</strong> AWS API Gateway</a></li><li class="chapter-item expanded "><a href="../serverless/pricing.html"><strong aria-hidden="true">6.4.</strong> AWS Pricing</a></li><li class="chapter-item expanded "><a href="../serverless/labs/labs_index.html"><strong aria-hidden="true">6.5.</strong> Labs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverless/labs/lab1.html"><strong aria-hidden="true">6.5.1.</strong> Serverless REST API</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab2.html"><strong aria-hidden="true">6.5.2.</strong> Event-Driven Processing</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab3.html"><strong aria-hidden="true">6.5.3.</strong> Asynchronous Messaging</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab4.html"><strong aria-hidden="true">6.5.4.</strong> Scheduled & Rule-Based Serverless Jobs</a></li><li class="chapter-item expanded "><a href="../serverless/labs/lab5.html"><strong aria-hidden="true">6.5.5.</strong> Secure Serverless Compute</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../dev.html"><strong aria-hidden="true">7.</strong> dev</a></li><li class="chapter-item expanded "><a href="../aws_quiz_topic.html"><strong aria-hidden="true">8.</strong> aws_quiz_topic</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/devnamdev2003/devdocs/edit/main/md-code/aws/src/networking/networking_igw.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <style>
+h2{
+    margin-top: 0;
+}
+
+</style>
+<h2 id=""><a class="header" href="#"><a href="../">👈</a></a></h2>
+<ul>
+<li><a href="#-internet-gateway-igw-in-aws--complete-explanation">🌐 Internet Gateway (IGW) in AWS – Complete Explanation</a>
+<ul>
+<li><a href="#1%EF%B8%8F%E2%83%A3-what-is-an-internet-gateway">1️⃣ What is an Internet Gateway?</a>
+<ul>
+<li><a href="#simple-definition">Simple definition:</a></li>
+</ul>
+</li>
+<li><a href="#2%EF%B8%8F%E2%83%A3-why-internet-gateway-is-needed">2️⃣ Why Internet Gateway Is Needed</a>
+<ul>
+<li><a href="#-problem-1-vpc-is-isolated-by-default">🔴 Problem 1: VPC Is Isolated by Default</a></li>
+<li><a href="#-problem-2-internet-needs-a-logical-entryexit-point">🔴 Problem 2: Internet Needs a Logical Entry/Exit Point</a></li>
+<li><a href="#-solution-internet-gateway">✅ Solution: Internet Gateway</a></li>
+</ul>
+</li>
+<li><a href="#3%EF%B8%8F%E2%83%A3-what-exactly-does-an-internet-gateway-do">3️⃣ What Exactly Does an Internet Gateway Do?</a>
+<ul>
+<li><a href="#-1-route-target-for-internet-traffic">🔹 1. Route Target for Internet Traffic</a></li>
+<li><a href="#-2-public-ip-translation-one-to-one-nat">🔹 2. Public IP Translation (One-to-One NAT)</a></li>
+</ul>
+</li>
+<li><a href="#4%EF%B8%8F%E2%83%A3-important-characteristics-of-internet-gateway">4️⃣ Important Characteristics of Internet Gateway</a></li>
+<li><a href="#5%EF%B8%8F%E2%83%A3-internet-gateway-vs-nat-gateway-high-level">5️⃣ Internet Gateway vs NAT Gateway (High-Level)</a></li>
+<li><a href="#6%EF%B8%8F%E2%83%A3-how-internet-gateway-works-traffic-flow">6️⃣ How Internet Gateway Works (Traffic Flow)</a>
+<ul>
+<li><a href="#-scenario-public-ec2-accessing-internet">🟢 Scenario: Public EC2 Accessing Internet</a></li>
+<li><a href="#step-by-step-flow-outbound">Step-by-Step Flow (Outbound)</a>
+<ul>
+<li><a href="#1%EF%B8%8F%E2%83%A3-ec2-sends-request">1️⃣ EC2 sends request</a></li>
+<li><a href="#2%EF%B8%8F%E2%83%A3-route-table-check">2️⃣ Route Table Check</a></li>
+<li><a href="#3%EF%B8%8F%E2%83%A3-internet-gateway-translation">3️⃣ Internet Gateway Translation</a></li>
+<li><a href="#4%EF%B8%8F%E2%83%A3-traffic-goes-to-internet">4️⃣ Traffic goes to Internet</a></li>
+</ul>
+</li>
+<li><a href="#step-by-step-flow-inbound-response">Step-by-Step Flow (Inbound Response)</a>
+<ul>
+<li><a href="#5%EF%B8%8F%E2%83%A3-internet-responds">5️⃣ Internet responds</a></li>
+<li><a href="#6%EF%B8%8F%E2%83%A3-igw-maps-back">6️⃣ IGW maps back</a></li>
+<li><a href="#7%EF%B8%8F%E2%83%A3-security-group-check">7️⃣ Security Group Check</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#7%EF%B8%8F%E2%83%A3-conditions-required-for-internet-access-very-important">7️⃣ Conditions Required for Internet Access (VERY IMPORTANT)</a>
+<ul>
+<li><a href="#-1-internet-gateway-attached-to-vpc">✅ 1. Internet Gateway attached to VPC</a></li>
+<li><a href="#-2-route-table-has-00000--igw">✅ 2. Route table has <code>0.0.0.0/0 → IGW</code></a></li>
+<li><a href="#-3-ec2-has-a-public-ipv4-address">✅ 3. EC2 has a <strong>public IPv4 address</strong></a></li>
+<li><a href="#-4-security-group-allows-traffic">✅ 4. Security Group allows traffic</a></li>
+<li><a href="#-5-nacl-allows-traffic">✅ 5. NACL allows traffic</a></li>
+</ul>
+</li>
+<li><a href="#8%EF%B8%8F%E2%83%A3-public-subnet-explained-using-igw">8️⃣ Public Subnet Explained Using IGW</a></li>
+<li><a href="#9%EF%B8%8F%E2%83%A3-private-subnet-and-igw">9️⃣ Private Subnet and IGW</a></li>
+<li><a href="#-internet-gateway-and-security">🔟 Internet Gateway and Security</a>
+<ul>
+<li><a href="#important-clarification">Important Clarification:</a></li>
+</ul>
+</li>
+<li><a href="#1%EF%B8%8F%E2%83%A31%EF%B8%8F%E2%83%A3-internet-gateway-vs-firewall-common-confusion">1️⃣1️⃣ Internet Gateway vs Firewall (Common Confusion)</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A32%EF%B8%8F%E2%83%A3-attaching-an-internet-gateway">1️⃣2️⃣ Attaching an Internet Gateway</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A33%EF%B8%8F%E2%83%A3-internet-gateway-limitations">1️⃣3️⃣ Internet Gateway Limitations</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A34%EF%B8%8F%E2%83%A3-common-aws-exam-traps">1️⃣4️⃣ Common AWS Exam Traps</a>
+<ul>
+<li><a href="#-ec2-has-public-ip-but-no-internet">❓ EC2 has public IP but no internet</a></li>
+<li><a href="#-private-ec2-reachable-from-internet">❓ Private EC2 reachable from internet</a></li>
+<li><a href="#-igw-attached-but-still-no-access">❓ IGW attached but still no access</a></li>
+</ul>
+</li>
+<li><a href="#1%EF%B8%8F%E2%83%A35%EF%B8%8F%E2%83%A3-internet-gateway-with-ipv6">1️⃣5️⃣ Internet Gateway with IPv6</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A36%EF%B8%8F%E2%83%A3-real-world-analogy">1️⃣6️⃣ Real-World Analogy</a>
+<ul>
+<li><a href="#internet-gateway--main-gate-of-a-society">Internet Gateway = Main Gate of a Society</a></li>
+</ul>
+</li>
+<li><a href="#1%EF%B8%8F%E2%83%A37%EF%B8%8F%E2%83%A3-one-line-exam-definition">1️⃣7️⃣ One-Line Exam Definition</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A38%EF%B8%8F%E2%83%A3-key-differences-summary">1️⃣8️⃣ Key Differences Summary</a></li>
+<li><a href="#1%EF%B8%8F%E2%83%A39%EF%B8%8F%E2%83%A3-final-summary-very-important">1️⃣9️⃣ Final Summary (Very Important)</a></li>
+<li><a href="#2%EF%B8%8F%E2%83%A30%EF%B8%8F%E2%83%A3-mental-model-to-remember">2️⃣0️⃣ Mental Model to Remember</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="-internet-gateway-igw-in-aws--complete-explanation"><a class="header" href="#-internet-gateway-igw-in-aws--complete-explanation">🌐 Internet Gateway (IGW) in AWS – Complete Explanation</a></h1>
+<hr />
+<h2 id="1-what-is-an-internet-gateway"><a class="header" href="#1-what-is-an-internet-gateway">1️⃣ What is an Internet Gateway?</a></h2>
+<p>An <strong>Internet Gateway (IGW)</strong> is a <strong>managed AWS component</strong> that allows <strong>communication between a VPC and the public internet</strong>.</p>
+<h3 id="simple-definition"><a class="header" href="#simple-definition">Simple definition:</a></h3>
+<blockquote>
+<p><strong>An Internet Gateway enables resources inside a VPC to connect to the internet and allows internet traffic to reach public resources in the VPC.</strong></p>
+</blockquote>
+<hr />
+<h2 id="2-why-internet-gateway-is-needed"><a class="header" href="#2-why-internet-gateway-is-needed">2️⃣ Why Internet Gateway Is Needed</a></h2>
+<p>Let’s first understand the <strong>problem</strong>.</p>
+<h3 id="-problem-1-vpc-is-isolated-by-default"><a class="header" href="#-problem-1-vpc-is-isolated-by-default">🔴 Problem 1: VPC Is Isolated by Default</a></h3>
+<p>When you create a VPC:</p>
+<ul>
+<li>It is a <strong>private network</strong></li>
+<li>It has <strong>no internet access</strong></li>
+<li>Even if an EC2 has a public IP, it <strong>cannot access the internet</strong></li>
+</ul>
+<p>Why?
+Because:</p>
+<ul>
+<li>There is <strong>no path</strong> to the internet</li>
+</ul>
+<hr />
+<h3 id="-problem-2-internet-needs-a-logical-entryexit-point"><a class="header" href="#-problem-2-internet-needs-a-logical-entryexit-point">🔴 Problem 2: Internet Needs a Logical Entry/Exit Point</a></h3>
+<p>AWS does not allow:</p>
+<ul>
+<li>Random internet traffic directly entering your VPC</li>
+</ul>
+<p>Instead:</p>
+<ul>
+<li>Internet traffic must pass through a <strong>controlled gateway</strong></li>
+</ul>
+<hr />
+<h3 id="-solution-internet-gateway"><a class="header" href="#-solution-internet-gateway">✅ Solution: Internet Gateway</a></h3>
+<p>The Internet Gateway:</p>
+<ul>
+<li>Acts as the <strong>bridge</strong> between your VPC and the internet</li>
+<li>Provides <strong>routing + translation support</strong></li>
+</ul>
+<hr />
+<h2 id="3-what-exactly-does-an-internet-gateway-do"><a class="header" href="#3-what-exactly-does-an-internet-gateway-do">3️⃣ What Exactly Does an Internet Gateway Do?</a></h2>
+<p>An IGW performs <strong>two critical functions</strong>:</p>
+<hr />
+<h3 id="-1-route-target-for-internet-traffic"><a class="header" href="#-1-route-target-for-internet-traffic">🔹 1. Route Target for Internet Traffic</a></h3>
+<p>The IGW acts as a <strong>target in route tables</strong>.</p>
+<p>Example:</p>
+<pre><code>0.0.0.0/0 → Internet Gateway
+</code></pre>
+<p>This tells AWS:</p>
+<blockquote>
+<p>“Send all unknown traffic to the internet through IGW”</p>
+</blockquote>
+<hr />
+<h3 id="-2-public-ip-translation-one-to-one-nat"><a class="header" href="#-2-public-ip-translation-one-to-one-nat">🔹 2. Public IP Translation (One-to-One NAT)</a></h3>
+<p>The IGW performs <strong>NAT for public IPv4 addresses</strong>:</p>
+<ul>
+<li>Maps public IP ↔ private IP</li>
+<li>For instances that have a public IP</li>
+</ul>
+<p>This is NOT the same as NAT Gateway.</p>
+<hr />
+<h2 id="4-important-characteristics-of-internet-gateway"><a class="header" href="#4-important-characteristics-of-internet-gateway">4️⃣ Important Characteristics of Internet Gateway</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Feature</th><th>IGW</th></tr></thead><tbody>
+<tr><td>Managed by AWS</td><td>✅ Yes</td></tr>
+<tr><td>Scalable</td><td>✅ Automatically</td></tr>
+<tr><td>Highly available</td><td>✅ Yes</td></tr>
+<tr><td>Attached to VPC</td><td>✅ One IGW per VPC</td></tr>
+<tr><td>Stateful</td><td>❌ No</td></tr>
+<tr><td>Firewall</td><td>❌ No</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="5-internet-gateway-vs-nat-gateway-high-level"><a class="header" href="#5-internet-gateway-vs-nat-gateway-high-level">5️⃣ Internet Gateway vs NAT Gateway (High-Level)</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Feature</th><th>IGW</th><th>NAT Gateway</th></tr></thead><tbody>
+<tr><td>Direction</td><td>Inbound + Outbound</td><td>Outbound only</td></tr>
+<tr><td>Used by</td><td>Public subnets</td><td>Private subnets</td></tr>
+<tr><td>Requires public IP</td><td>Yes</td><td>No</td></tr>
+<tr><td>Accepts inbound traffic</td><td>Yes</td><td>No</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="6-how-internet-gateway-works-traffic-flow"><a class="header" href="#6-how-internet-gateway-works-traffic-flow">6️⃣ How Internet Gateway Works (Traffic Flow)</a></h2>
+<p>Let’s break this into <strong>clear packet-level flow</strong>.</p>
+<hr />
+<h3 id="-scenario-public-ec2-accessing-internet"><a class="header" href="#-scenario-public-ec2-accessing-internet">🟢 Scenario: Public EC2 Accessing Internet</a></h3>
+<p>Assume:</p>
+<ul>
+<li>VPC CIDR: <code>10.0.0.0/16</code></li>
+<li>Public Subnet: <code>10.0.1.0/24</code></li>
+<li>EC2 private IP: <code>10.0.1.10</code></li>
+<li>EC2 public IP: <code>3.110.45.21</code></li>
+</ul>
+<hr />
+<h3 id="step-by-step-flow-outbound"><a class="header" href="#step-by-step-flow-outbound">Step-by-Step Flow (Outbound)</a></h3>
+<h4 id="1-ec2-sends-request"><a class="header" href="#1-ec2-sends-request">1️⃣ EC2 sends request</a></h4>
+<pre><code>Source IP: 10.0.1.10
+Destination IP: 142.250.195.14 (google.com)
+</code></pre>
+<hr />
+<h4 id="2-route-table-check"><a class="header" href="#2-route-table-check">2️⃣ Route Table Check</a></h4>
+<p>Route table has:</p>
+<pre><code>0.0.0.0/0 → IGW
+</code></pre>
+<p>So traffic is sent to IGW.</p>
+<hr />
+<h4 id="3-internet-gateway-translation"><a class="header" href="#3-internet-gateway-translation">3️⃣ Internet Gateway Translation</a></h4>
+<p>IGW replaces:</p>
+<pre><code>Source IP: 10.0.1.10 → 3.110.45.21
+</code></pre>
+<hr />
+<h4 id="4-traffic-goes-to-internet"><a class="header" href="#4-traffic-goes-to-internet">4️⃣ Traffic goes to Internet</a></h4>
+<p>Internet sees request from:</p>
+<pre><code>3.110.45.21
+</code></pre>
+<hr />
+<h3 id="step-by-step-flow-inbound-response"><a class="header" href="#step-by-step-flow-inbound-response">Step-by-Step Flow (Inbound Response)</a></h3>
+<h4 id="5-internet-responds"><a class="header" href="#5-internet-responds">5️⃣ Internet responds</a></h4>
+<pre><code>Destination IP: 3.110.45.21
+</code></pre>
+<hr />
+<h4 id="6-igw-maps-back"><a class="header" href="#6-igw-maps-back">6️⃣ IGW maps back</a></h4>
+<p>IGW maps:</p>
+<pre><code>3.110.45.21 → 10.0.1.10
+</code></pre>
+<hr />
+<h4 id="7-security-group-check"><a class="header" href="#7-security-group-check">7️⃣ Security Group Check</a></h4>
+<p>Inbound traffic allowed only if:</p>
+<ul>
+<li>Security Group allows it</li>
+</ul>
+<hr />
+<p>✔ Connection successful
+✔ EC2 accessed internet</p>
+<hr />
+<h2 id="7-conditions-required-for-internet-access-very-important"><a class="header" href="#7-conditions-required-for-internet-access-very-important">7️⃣ Conditions Required for Internet Access (VERY IMPORTANT)</a></h2>
+<p>For an EC2 instance to access the internet via IGW, <strong>ALL</strong> must be true:</p>
+<h3 id="-1-internet-gateway-attached-to-vpc"><a class="header" href="#-1-internet-gateway-attached-to-vpc">✅ 1. Internet Gateway attached to VPC</a></h3>
+<h3 id="-2-route-table-has-00000--igw"><a class="header" href="#-2-route-table-has-00000--igw">✅ 2. Route table has <code>0.0.0.0/0 → IGW</code></a></h3>
+<h3 id="-3-ec2-has-a-public-ipv4-address"><a class="header" href="#-3-ec2-has-a-public-ipv4-address">✅ 3. EC2 has a <strong>public IPv4 address</strong></a></h3>
+<h3 id="-4-security-group-allows-traffic"><a class="header" href="#-4-security-group-allows-traffic">✅ 4. Security Group allows traffic</a></h3>
+<h3 id="-5-nacl-allows-traffic"><a class="header" href="#-5-nacl-allows-traffic">✅ 5. NACL allows traffic</a></h3>
+<p>❗ Missing <strong>any one</strong> → No internet</p>
+<hr />
+<h2 id="8-public-subnet-explained-using-igw"><a class="header" href="#8-public-subnet-explained-using-igw">8️⃣ Public Subnet Explained Using IGW</a></h2>
+<p>A <strong>public subnet</strong> is NOT special by name.</p>
+<p>A subnet is public <strong>only if</strong>:</p>
+<ul>
+<li>Its route table points to an <strong>Internet Gateway</strong></li>
+</ul>
+<pre><code>0.0.0.0/0 → IGW
+</code></pre>
+<hr />
+<h2 id="9-private-subnet-and-igw"><a class="header" href="#9-private-subnet-and-igw">9️⃣ Private Subnet and IGW</a></h2>
+<p>Private subnets:</p>
+<ul>
+<li>Do NOT have a route to IGW</li>
+<li>Use NAT Gateway instead</li>
+</ul>
+<p>❗ If a private subnet points to IGW:</p>
+<ul>
+<li>It becomes public</li>
+</ul>
+<hr />
+<h2 id="-internet-gateway-and-security"><a class="header" href="#-internet-gateway-and-security">🔟 Internet Gateway and Security</a></h2>
+<h3 id="important-clarification"><a class="header" href="#important-clarification">Important Clarification:</a></h3>
+<blockquote>
+<p><strong>Internet Gateway does NOT provide security.</strong></p>
+</blockquote>
+<p>It does:</p>
+<ul>
+<li>Routing</li>
+<li>Address translation</li>
+</ul>
+<p>It does NOT:</p>
+<ul>
+<li>Block traffic</li>
+<li>Inspect packets</li>
+<li>Act like firewall</li>
+</ul>
+<p>Security is enforced by:</p>
+<ul>
+<li>Security Groups</li>
+<li>NACLs</li>
+<li>AWS WAF</li>
+</ul>
+<hr />
+<h2 id="11-internet-gateway-vs-firewall-common-confusion"><a class="header" href="#11-internet-gateway-vs-firewall-common-confusion">1️⃣1️⃣ Internet Gateway vs Firewall (Common Confusion)</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Feature</th><th>IGW</th><th>Firewall</th></tr></thead><tbody>
+<tr><td>Allows internet access</td><td>✅ Yes</td><td>❌ No</td></tr>
+<tr><td>Filters traffic</td><td>❌ No</td><td>✅ Yes</td></tr>
+<tr><td>Route traffic</td><td>✅ Yes</td><td>❌ No</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="12-attaching-an-internet-gateway"><a class="header" href="#12-attaching-an-internet-gateway">1️⃣2️⃣ Attaching an Internet Gateway</a></h2>
+<p>Steps:</p>
+<ol>
+<li>Create IGW</li>
+<li>Attach to VPC</li>
+<li>Update route table</li>
+</ol>
+<p>Without step 3:
+❌ No internet</p>
+<hr />
+<h2 id="13-internet-gateway-limitations"><a class="header" href="#13-internet-gateway-limitations">1️⃣3️⃣ Internet Gateway Limitations</a></h2>
+<ul>
+<li>One IGW per VPC</li>
+<li>No security rules</li>
+<li>No traffic logging</li>
+<li>No inbound restriction by itself</li>
+</ul>
+<hr />
+<h2 id="14-common-aws-exam-traps"><a class="header" href="#14-common-aws-exam-traps">1️⃣4️⃣ Common AWS Exam Traps</a></h2>
+<h3 id="-ec2-has-public-ip-but-no-internet"><a class="header" href="#-ec2-has-public-ip-but-no-internet">❓ EC2 has public IP but no internet</a></h3>
+<p>➡ Route table missing IGW</p>
+<h3 id="-private-ec2-reachable-from-internet"><a class="header" href="#-private-ec2-reachable-from-internet">❓ Private EC2 reachable from internet</a></h3>
+<p>➡ Impossible via IGW alone</p>
+<h3 id="-igw-attached-but-still-no-access"><a class="header" href="#-igw-attached-but-still-no-access">❓ IGW attached but still no access</a></h3>
+<p>➡ Security Group / NACL issue</p>
+<hr />
+<h2 id="15-internet-gateway-with-ipv6"><a class="header" href="#15-internet-gateway-with-ipv6">1️⃣5️⃣ Internet Gateway with IPv6</a></h2>
+<p>For IPv6:</p>
+<ul>
+<li>IGW provides <strong>direct routing</strong></li>
+<li>No NAT required</li>
+<li>Public IPv6 addresses are globally routable</li>
+</ul>
+<hr />
+<h2 id="16-real-world-analogy"><a class="header" href="#16-real-world-analogy">1️⃣6️⃣ Real-World Analogy</a></h2>
+<h3 id="internet-gateway--main-gate-of-a-society"><a class="header" href="#internet-gateway--main-gate-of-a-society">Internet Gateway = Main Gate of a Society</a></h3>
+<ul>
+<li>Only one gate</li>
+<li>All outsiders enter here</li>
+<li>Security guards (SG/NACL) decide entry</li>
+<li>Roads (route tables) guide traffic</li>
+</ul>
+<hr />
+<h2 id="17-one-line-exam-definition"><a class="header" href="#17-one-line-exam-definition">1️⃣7️⃣ One-Line Exam Definition</a></h2>
+<blockquote>
+<p><strong>An Internet Gateway is a horizontally scaled, highly available AWS component that enables communication between a VPC and the internet.</strong></p>
+</blockquote>
+<hr />
+<h2 id="18-key-differences-summary"><a class="header" href="#18-key-differences-summary">1️⃣8️⃣ Key Differences Summary</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Component</th><th>Purpose</th></tr></thead><tbody>
+<tr><td>IGW</td><td>Internet access</td></tr>
+<tr><td>Route Table</td><td>Traffic direction</td></tr>
+<tr><td>SG</td><td>Instance security</td></tr>
+<tr><td>NACL</td><td>Subnet security</td></tr>
+<tr><td>NAT Gateway</td><td>Private outbound access</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="19-final-summary-very-important"><a class="header" href="#19-final-summary-very-important">1️⃣9️⃣ Final Summary (Very Important)</a></h2>
+<ul>
+<li>IGW connects VPC to internet</li>
+<li>Required for public subnets</li>
+<li>Works with route tables</li>
+<li>Requires public IP</li>
+<li>Does not provide security</li>
+<li>Essential AWS networking component</li>
+</ul>
+<hr />
+<h2 id="20-mental-model-to-remember"><a class="header" href="#20-mental-model-to-remember">2️⃣0️⃣ Mental Model to Remember</a></h2>
+<pre><code>EC2 → Route Table → Internet Gateway → Internet
+</code></pre>
+<hr />
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../networking/networking_dns.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../networking/networking_nat.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../networking/networking_dns.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../networking/networking_nat.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
